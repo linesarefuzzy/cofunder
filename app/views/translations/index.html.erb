@@ -1,0 +1,31 @@
+<h1>Listing translations</h1>
+
+<table>
+  <tr>
+    <th>Language</th>
+    <th>Remotetable</th>
+    <th>Remoteid</th>
+    <th>Remotecolumnname</th>
+    <th>Translatedcontent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @translations.each do |translation| %>
+  <tr>
+    <td><%= translation.Language %></td>
+    <td><%= translation.RemoteTable %></td>
+    <td><%= translation.RemoteID %></td>
+    <td><%= translation.RemoteColumnName %></td>
+    <td><%= translation.TranslatedContent %></td>
+    <td><%= link_to 'Show', translation %></td>
+    <td><%= link_to 'Edit', edit_translation_path(translation) %></td>
+    <td><%= link_to 'Destroy', translation, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Translation', new_translation_path %>

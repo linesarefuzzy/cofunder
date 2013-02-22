@@ -1,0 +1,23 @@
+<h1>Listing cooperatives</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cooperatives.each do |cooperative| %>
+  <tr>
+    <td><%= cooperative.Name %></td>
+    <td><%= link_to 'Show', cooperative %></td>
+    <td><%= link_to 'Edit', edit_cooperative_path(cooperative) %></td>
+    <td><%= link_to 'Destroy', cooperative, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cooperative', new_cooperative_path %>
