@@ -3,7 +3,7 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     @loans = Loan.all
-    @loans_page = Loan.limit(20)
+    @loans_page = Loan.where(:Nivel => ['Prestamo Activo','Prestamo Completo']).order('SigningDate DESC').limit(20)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,31 +1,31 @@
 <h1>Loans</h1>
 
 <div class="span_12">
-	<div class="row clearfix">
-		<ul>
-			<% @loans_page.each do |loan| %>
-				<li class="loan clearfix">
-					<div class="pic img-polaroid">
-						<% #if loan.thumb_path %>
-							<p>
-								<%= link_to (loan) do %>
-									<img src="http://www.theworkingworld.org/{{ loan.thumb_path }}" alt="{{ loan.cooperative }}">
-								<% end %>
-							</p>
-						<% #end %>
-					</div>
-					<div class="desc">
-						<p><%= link_to "Project with #{loan.Cooperative.Name}", loan %></a><br>
-							<%= loan.get_short_description %>
-						</p>
-					</div>
-					<div class="facts">
-						<p><%= loan.SigningDate %><br>
-						<%= loan.Amount#_formatted 
-						%></p>
-					</div>
-				</li>
-			<% end %>
-		</ul>
-	</div><!-- /.row -->
+  <div class="row clearfix">
+    <ul>
+      <% @loans_page.each do |loan| %>
+        <li class="loan clearfix">
+          <div class="pic img-polaroid">
+            <% if loan.thumb_path %>
+              <p>
+                <%= link_to (loan) do %>
+                  <img src="http://www.theworkingworld.org/<%= loan.thumb_path %>" 
+                    alt="Project with <%=loan.Cooperative.Name%>">
+                <% end %>
+              </p>
+            <% end %>
+          </div>
+          <div class="desc">
+            <p><%= link_to "Project with #{loan.Cooperative.Name}", loan %></a><br>
+              <%= loan.get_short_description %>
+            </p>
+          </div>
+          <div class="facts">
+            <p><%= loan.SigningDate.to_s(:long) %><br>
+            <%= loan.amount_formatted %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div><!-- /.row -->
 </div><!-- /.span_12 -->
