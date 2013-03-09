@@ -16,8 +16,8 @@
 				<div id="nav"><ul class="nav-ui">
 					<li class="nav-item"><a class="whatwedo" href="#">What We Do</a></li>
 					<li class="nav-item"><a class="where_we_work" href="#">Where We Work</a></li>
-          <!-- <li class="nav-item"><a class="loan_list" href="<%= url_for loans_path %>">Find Loans</a></li> -->
-					<li class="nav-item"><% link_to "Find Loans", loans_path, :class=>"loan_list" %></li>
+          <li class="nav-item"><a class="loan_list" href="<%= url_for loans_path %>">Find Loans</a></li>
+          <!-- <li class="nav-item"><% link_to "Find Loans", loans_path, :class=>"loan_list" %></li> -->
           <!-- {% if request.user.is_authenticated %}
           <li class="nav-item dropdown usermenu">
             <a href="{% url 'loans.views.user_profile' %}" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
@@ -38,8 +38,9 @@
 	</div>
 
 	<div class="container">
-    <!-- {% include "includes/messages.html" %} -->
-
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert %><p class="alert"><%= alert %></p><% end %>
+    
     <%= yield %>
 		
 		<!-- FOOTER -->
