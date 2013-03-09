@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>The Working World</title>
+  <%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+  <%= javascript_include_tag "bootstrap.min" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id="header_group">
+		<div id="header_inner_wrap">
+			<div id="brand"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></div>
+				<div id="nav"><ul class="nav-ui">
+					<li class="nav-item"><a class="whatwedo" href="#">What We Do</a></li>
+					<li class="nav-item"><a class="where_we_work" href="#">Where We Work</a></li>
+          <!-- <li class="nav-item"><a class="loan_list" href="<%= url_for loans_path %>">Find Loans</a></li> -->
+					<li class="nav-item"><% link_to "Find Loans", loans_path, :class=>"loan_list" %></li>
+          <!-- {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown usermenu">
+            <a href="{% url 'loans.views.user_profile' %}" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+              {{ request.user.get_full_name }}
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{% url 'loans.views.user_profile' %}">Profile</a></li>
+              <li><a href="{% url 'loans.views.logout_view' %}">Sign Out</a></li>
+            </ul>
+          </li>
+          {% else %}
+          <li class="nav-item"><a class="btn sign_in" href="{% url 'loans.views.login_view' %}">Sign In</a></li>
+          {% endif %} -->
+				</ul></div> 
+			</div>
+		</div>
+	</div>
 
-<%= yield %>
+	<div class="container">
+    <!-- {% include "includes/messages.html" %} -->
 
+    <%= yield %>
+		
+		<!-- FOOTER -->
+		<footer>
+			<p class="pull-right"><a href="#">Back to top</a></p>
+			<p>&copy;2013 The Working World, United States | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+		</footer>
+	</div> <!-- /container -->
 </body>
 </html>
