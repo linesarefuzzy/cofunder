@@ -1,4 +1,11 @@
 Tww::Application.routes.draw do
+
+  devise_for :users
+  
+  devise_scope :user do 
+    match 'profile' => 'devise/registrations#show' 
+  end
+
   resources :translations
 
 

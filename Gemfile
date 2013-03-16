@@ -40,3 +40,6 @@ gem 'jquery-rails'
 
 # JavaScript Runtime
 gem "therubyracer", :require => 'v8'
+
+# Devise (user auth)
+gem 'devise'

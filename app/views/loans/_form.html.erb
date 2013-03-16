@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :Cooperative %><br />
-    <%= f.collection_select :CooperativeID, Cooperative.all, :ID, :Name %>
+    <%= f.collection_select :CooperativeID, Cooperative.order('Name'), :ID, :Name %>
   </div>
   <div class="actions">
     <%= f.submit %>
