@@ -1,14 +1,16 @@
+<% content_for :title, "Loans" %>
+
 <h1>Loans</h1>
 
 <div class="span_12">
   <div class="row clearfix">
     <ul>
-      <% @loans_page.each do |loan| %>
+      <% @loan_list.each do |loan| %>
         <li class="loan clearfix">
           <div class="pic img-polaroid">
             <% if loan.thumb_path %>
               <p>
-                <%= link_to (loan) do %>
+                <%= link_to loan do %>
                   <img src="http://www.theworkingworld.org/<%= loan.thumb_path %>" 
                     alt="Project with <%=loan.Cooperative.Name%>">
                 <% end %>

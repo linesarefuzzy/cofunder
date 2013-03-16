@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309032549) do
+ActiveRecord::Schema.define(:version => 20130313072253) do
 
   create_table "AccountClasses", :primary_key => "ID", :force => true do |t|
     t.string "ClassID",      :null => false
@@ -820,21 +820,34 @@ ActiveRecord::Schema.define(:version => 20130309032549) do
 
   add_index "todo", ["Priority"], :name => "Priority"
 
+  create_table "user_loan_contributions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "loan_id"
+    t.decimal  "amount",     :precision => 12, :scale => 2
+    t.decimal  "balance",    :precision => 12, :scale => 2
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
+  add_index "user_loan_contributions", ["loan_id"], :name => "index_user_loan_contributions_on_loan_id"
+  add_index "user_loan_contributions", ["user_id"], :name => "index_user_loan_contributions_on_user_id"
+
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                                 :default => "", :null => false
+    t.string   "encrypted_password",                                    :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                                            :null => false
+    t.datetime "updated_at",                                                            :null => false
     t.string   "first_name"
     t.string   "last_name"
+    t.decimal  "balance",                :precision => 12, :scale => 2
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

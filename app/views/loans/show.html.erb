@@ -1,25 +1,54 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title, @loan.name %>
 
-<p>
-  <b>Amount:</b>
-  <%= @loan.Amount %>
-</p>
+<div class="pull-right"><a class="btn btn-link" href="<% url_for loans_path %>">&lt; Back to Loan List</a></div>
+<div class="span_12">
+      <div class="row">
+<h1><%= @loan.name %></h1>
 
-<p>
-  <b>Rate:</b>
-  <%= @loan.Rate %>
-</p>
-
-<p>
-  <b>Nivel:</b>
-  <%= @loan.Nivel %>
-</p>
-
-<p>
-  <b>Cooperative:</b>
-  <%= @loan.Cooperative.Name %>
-</p>
-
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+<% if @loan.picture_paths %>
+  <div class="picture img-polaroid">
+    <img src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>">
+  </div>
+<% end %>
+<div class="short_description">
+  <%= @loan.get_short_description %>
+</div>
+<div class="description">
+  <h3>Details</h3>
+  <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
+</div>
+<div class="lend">
+  <a class="button lend_button btn" href="<%= url_for :controller=>'loans', :action=>'lend' %>">Lend</a>
+</div>
+<%
+=begin %>
+<div class="loan_calendar">
+  <h3>Calendar</h3>
+  <ul>
+    <% for paso in loan.pasos %>
+    <li class="paso <%= paso.is_completed %>">
+      Milestone <%= paso.date %>: <%= paso.summary %>
+      <% if paso.completed %>
+      (Completed <%= paso.completed %>)
+      <% else %>
+      (Not yet completed)
+      <% endif %>
+      <% if paso.details %><br>Details: <%= paso.details %><% endif %>
+      <ul>
+        <% for log in paso.logs %>
+        <li class="log">Log <%= log.date %>: <%= log.explanation %>
+          <ul>
+            <li>Progress: <%= log.progress %></li>
+            <li>Details: <%= log.detailed_explanation %></li>
+          </ul>
+        </li>
+        <% endfor %>
+      </ul>
+    </li>
+    <% endfor %>
+  </ul>
+</div>
+<%
+=end %>
+    </div><!-- /.row -->
+  </div><!-- /.span_12 -->

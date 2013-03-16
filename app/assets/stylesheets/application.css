@@ -12,13 +12,6 @@
  *= require_tree .
  */
 
-/* ----- load reset.css -------*/
-@import url("reset.css");
-
-/* ----- load boot.css -------*/
-@import url("boot.css");
-
-
 
 body{
   background:#efefef url(/images/navbar.png)repeat-x top;

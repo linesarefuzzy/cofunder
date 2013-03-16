@@ -3,7 +3,7 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     @loans = Loan.all
-    @loans_page = Loan.where(:Nivel => ['Prestamo Activo','Prestamo Completo']).order('SigningDate DESC').limit(20)
+    @loan_list = Loan.where(:Nivel => ['Prestamo Activo','Prestamo Completo']).order('SigningDate DESC').limit(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,6 +22,10 @@ class LoansController < ApplicationController
     end
   end
 
+  def lend_form
+    @loan = Loan.find(params[:id])
+  end
+
   # GET /loans/new
   # GET /loans/new.json
   def new
@@ -34,9 +38,9 @@ class LoansController < ApplicationController
   end
 
   # GET /loans/1/edit
-  def edit
-    @loan = Loan.find(params[:id])
-  end
+  # def edit
+  #   @loan = Loan.find(params[:id])
+  # end
 
   # POST /loans
   # POST /loans.json
