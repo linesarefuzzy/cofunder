@@ -18,7 +18,7 @@
   <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
 </div>
 <div class="lend">
-  <a class="button lend_button btn" href="<%= url_for :controller=>'loans', :action=>'lend' %>">Lend</a>
+  <a class="button lend_button btn" href="<%= url_for '#' %>">Lend</a>
 </div>
 <%
 =begin %>

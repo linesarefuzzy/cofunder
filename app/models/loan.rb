@@ -10,6 +10,10 @@ class Loan < ActiveRecord::Base
   belongs_to :Division, :foreign_key => 'SourceDivision'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
   
+  def name
+    return "Project with " + self.Cooperative.Name
+  end
+  
   def get_short_description(language_code="EN")
     return get_translation('Loans', 'ShortDescription', self.ID, language_code)
   end

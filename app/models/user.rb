@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   def get_full_name
-    return self.first_name + ' ' + self.last_name
+    if self.first_name && self.last_name
+      return (self.first_name + ' ' + self.last_name)
+    else
+      return 'User'
+    end
   end
 end
