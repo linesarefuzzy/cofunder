@@ -1,6 +1,6 @@
 <h1>Listing cooperatives</h1>
 
-<table>
+<table class="table">
   <tr>
     <th>Name</th>
     <th></th>
@@ -11,9 +11,9 @@
 <% @cooperatives.each do |cooperative| %>
   <tr>
     <td><%= cooperative.Name %></td>
-    <td><%= link_to 'Show', cooperative %></td>
-    <td><%= link_to 'Edit', edit_cooperative_path(cooperative) %></td>
-    <td><%= link_to 'Destroy', cooperative, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td class="btn btn-link"><%= link_to 'Show', cooperative %></td>
+    <td class="btn btn-link"><%= link_to 'Edit', edit_cooperative_path(cooperative) %></td>
+    <td class="btn btn-link"><%= link_to 'Destroy', cooperative, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
