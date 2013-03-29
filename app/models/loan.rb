@@ -39,4 +39,8 @@ class Loan < ActiveRecord::Base
     symbol = symbol.sub(/\$/, ' $') # add space before $ (pretty)
     return number_to_currency(self.Amount, :unit => symbol)
   end
+  
+  def project_events
+		return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID)
+	end
 end

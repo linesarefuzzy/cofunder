@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Member: 
+  ProjectID: 
+  ProjectTable: MyString
+  Summary: MyString
+  Details: MyText
+  Date: 2013-03-29 17:23:20
+  Finalized: 
+  Completed: 2013-03-29
+  Type: MyString
+
+two:
+  Member: 
+  ProjectID: 
+  ProjectTable: MyString
+  Summary: MyString
+  Details: MyText
+  Date: 2013-03-29 17:23:20
+  Finalized: 
+  Completed: 2013-03-29
+  Type: MyString
