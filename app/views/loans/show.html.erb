@@ -1,13 +1,13 @@
 <% content_for :title, @loan.name %>
 
 <div class="pull-right"><a class="btn btn-link" href="<% url_for loans_path %>">&lt; Back to Loan List</a></div>
-<div class="span_12">
+<div class="span7">
       <div class="row">
 <h1><%= @loan.name %></h1>
 
 <% if @loan.picture_paths %>
   <div class="picture img-polaroid">
-    <img src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>">
+    <img src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"  height="199" width="300" />
   </div>
 <% end %>
 <div class="short_description">
@@ -20,13 +20,16 @@
 <div class="lend">
   <a class="button lend_button btn" href="<%= url_for '#' %>">Lend</a>
 </div>
+ </div><!-- /.row -->
+  </div><!-- /.span7 -->
 <%
 =begin %>
-<div class="loan_calendar">
+<div class="loan_calendar span5">
+<div class="row">
   <h3>Calendar</h3>
-  <ul>
+  <ul class="nav nav-tabs">
     <% for paso in loan.pasos %>
-    <li class="paso <%= paso.is_completed %>">
+    <li class="paso active <%= paso.is_completed %>">
       Milestone <%= paso.date %>: <%= paso.summary %>
       <% if paso.completed %>
       (Completed <%= paso.completed %>)
@@ -51,4 +54,4 @@
 <%
 =end %>
     </div><!-- /.row -->
-  </div><!-- /.span_12 -->
+  </div><!-- /.span5 -->
