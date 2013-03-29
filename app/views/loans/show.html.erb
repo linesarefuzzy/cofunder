@@ -29,27 +29,23 @@
   <ul class="nav nav-tabs">
     <% @loan.project_events.each do |paso| %>
     <li class="paso active <%= paso.completed_or_not %>">
-      <%= paso.date %>: <%= paso.Summary %>
+      <%= paso.date %>: <%= paso.summary %>
       <% if paso.Completed %>
       (Completed <%= paso.Completed %>)
       <% else %>
       (Not yet completed)
       <% end %>
       <% if paso.Details %><br>Details: <%= paso.Details %><% end %>
-<%
-=begin%>
       <ul>
-        <% for log in paso.logs %>
+        <% paso.logs.each do |log| %>
         <li class="log">Log <%= log.date %>: <%= log.explanation %>
           <ul>
-            <li>Progress: <%= log.progress %></li>
+            <li>Progress: <%= log.Progress %></li>
             <li>Details: <%= log.detailed_explanation %></li>
           </ul>
         </li>
-        <% endfor %>
+        <% end %>
       </ul>
-<%
-=end%>
     </li>
     <% end %>
   </ul>

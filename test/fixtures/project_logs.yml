@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  Member: 
+  ProjectID: 
+  ProjectTable: MyString
+  Paso: 
+  Date: 2013-03-29 18:18:10
+  Progress: MyString
+  Explanation: MyString
+  DetailedExplanation: MyText
+  AdditionalNotes: MyText
+
+two:
+  Member: 
+  ProjectID: 
+  ProjectTable: MyString
+  Paso: 
+  Date: 2013-03-29 18:18:10
+  Progress: MyString
+  Explanation: MyString
+  DetailedExplanation: MyText
+  AdditionalNotes: MyText
