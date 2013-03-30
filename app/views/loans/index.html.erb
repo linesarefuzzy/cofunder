@@ -28,7 +28,7 @@
      <% if loan.thumb_path %>
              
                 <%= link_to loan do %>
-                  <img class="coop_pic_sm img-polaroid" src="http://www.theworkingworld.org/<%= loan.thumb_path %>" 
+                  <img class="coop_pic_sm img-polaroid" src="<%= loan.thumb_path %>" 
                     alt="Project with <%=loan.Cooperative.Name%>">
                 <% end %>
               </td>

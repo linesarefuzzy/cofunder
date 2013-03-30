@@ -23,7 +23,7 @@
       <div class="pull-right user_img pic">
         <% if loan.thumb_path %>
           <a href="<% url 'loans.views.loan_detail' loan.id %>">
-            <img src="http://www.theworkingworld.org/<%= loan.thumb_path %>" alt="<%= loan.cooperative %>">
+            <img src="<%= loan.thumb_path %>" alt="<%= loan.cooperative %>">
           </a>
         <% endif %>
       </div>

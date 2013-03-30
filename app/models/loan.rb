@@ -40,7 +40,7 @@ class Loan < ActiveRecord::Base
     return number_to_currency(self.Amount, :unit => symbol)
   end
   
-  def project_events
-		return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID)
+  def project_events(order_by="Completed IS NULL, Completed, Date")
+		return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
 	end
 end

@@ -7,7 +7,7 @@
 
 <% if @loan.picture_paths %>
   <div class="picture img-polaroid">
-    <img src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"  height="199" width="300" />
+    <img src="<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"  height="199" width="300" />
   </div>
 <% end %>
 <div class="short_description">
@@ -35,13 +35,14 @@
       <% else %>
       (Not yet completed)
       <% end %>
-      <% if paso.Details %><br>Details: <%= paso.Details %><% end %>
+      <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
       <ul>
         <% paso.logs.each do |log| %>
-        <li class="log">Log <%= log.date %>: <%= log.explanation %>
+        <li class="log <%= log.Progress.parameterize.underscore %>">
+          Log <%= log.date %>: <%= log.explanation %>
           <ul>
             <li>Progress: <%= log.Progress %></li>
-            <li>Details: <%= log.detailed_explanation %></li>
+            <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
           </ul>
         </li>
         <% end %>
