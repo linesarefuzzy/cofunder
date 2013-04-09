@@ -5,10 +5,12 @@
       <div class="row">
 <h1><%= @loan.name %></h1>
 
-<% if @loan.picture_paths %>
-  <div class="picture img-polaroid">
-    <img src="<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"  height="199" width="300" />
-  </div>
+<% if @pictures %>
+  <% @pictures.each do |path| %>
+    <div class="picture img-polaroid">
+      <img src="<%= path[:medium] %>" alt="<%= @loan.name %>" height="199" width="300">
+    </div>
+  <% end %>
 <% end %>
 <div class="short_description">
   <%= @loan.get_short_description %>

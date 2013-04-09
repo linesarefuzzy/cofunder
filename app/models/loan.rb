@@ -22,17 +22,21 @@ class Loan < ActiveRecord::Base
     return get_translation('Loans', 'Description', self.ID, language_code)
   end
   
-  def picture_paths
-    return get_picture_paths('Loans', self.ID) || get_picture_paths('Cooperatives', self.Cooperative.ID)
+  def picture_paths(limit=1)
+    return get_picture_paths('Loans', self.ID, limit) || get_picture_paths('Cooperatives', self.Cooperative.ID, limit)
   end
   
-  def thumb_path
-    paths = self.picture_paths
-    if paths 
-      return paths[:thumb]
-    end
+  def main_picture
+    return self.picture_paths.try(:first)
   end
   
+  # def thumb_path
+  #   paths = self.picture_paths
+  #   if paths 
+  #     return paths[0][:thumb]
+  #   end
+  # end
+
   def amount_formatted
     country = self.Division.Country
     symbol = Currency.where(:Country => country).first.Symbol
@@ -41,6 +45,6 @@ class Loan < ActiveRecord::Base
   end
   
   def project_events(order_by="Completed IS NULL, Completed, Date")
-		return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
-	end
+    return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+  end
 end
