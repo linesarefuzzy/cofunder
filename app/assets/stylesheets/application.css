@@ -15,12 +15,13 @@
 
 body{
    background:#444 url(/images/bg.png)repeat;
- 
+ -webkit-font-smoothing: antialiased;
+ color: #333435;
 
  }
 
- h1 {font-size: 23px; font-weight: bolder; color: white;}
-h2, h3 {font-size: 22px; font-weight: bolder; color:#ab0a19;}
+ h1 {font-size: 22px; font-weight: bolder; color: #333435;}
+h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
  #header_group {
   background:#e5e5e5 url(/images/navbar.png)repeat-x top;
             height: 60px;
@@ -133,7 +134,7 @@ form .required p {
 .panel_static{height:480px; color: white; margin-top:30px; font-size: 13.60px; font-weight: 500;} 
 .panel_content_top{margin-top: -30px;}
 .copy_front_big{font-size: 18px; color: #020404; line-height: 22px; font-weight: bolder;} 
-.copy_front_low{font-size: 15px; color: #020404; line-height: 24px; font-weight: 300;}    
+.copy_front_low{font-size: 14px; color: #020404; line-height: 23px; font-weight: 300;}    
 li.loan {
 	margin: 25px 0;
 }

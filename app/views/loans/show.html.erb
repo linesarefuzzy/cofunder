@@ -1,57 +1,64 @@
 <% content_for :title, @loan.name %>
-
-<div class="pull-right"><a class="btn btn-link" href="<% url_for loans_path %>">&lt; Back to Loan List</a></div>
+<style>
+  .picture { height: 200px; max-width:300px;}
+  .detail_wrap{background: #f9f9f9; border-top: 1px solid #E9ECE4; padding:6px;}
+  .detail_gutter{margin-left: 15px;}
+</style>
+<script>
+$(function () {
+$('#calendar a:last').tab('show');
+})
+</script>
+<div class="pull-right"><a class="btn btn" href="<% url_for loans_path %>">&lt; Back to Loan List</a></div>
+<div class="span12 container">
+<div class="row">
 <div class="span7">
       <div class="row">
-<h1><%= @loan.name %></h1>
+      <div class="detail_wrap">
+<h1 class="detail_gutter"><%= @loan.name %></h1>
 
 <% if @loan.picture_paths %>
-  <div class="picture img-polaroid">
-    <img src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"  height="199" width="300" />
-  </div>
+ 
+ <p class="detail_gutter"><img class="img-polaroid picture" src="http://www.theworkingworld.org/<%= @loan.picture_paths[:medium] %>" alt="<%= @loan.name %>"/>
+</p>
 <% end %>
+
 <div class="short_description">
-  <%= @loan.get_short_description %>
+  <br/>
+  <p class="detail_gutter"><%= @loan.get_short_description %></p>
+    <br/>
 </div>
 <div class="description">
-  <h3>Details</h3>
-  <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
+  <h3 class="detail_gutter">Details</h3>
+  <p class="copy_front_low detail_gutter"><%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
+  </p>
 </div>
 <div class="lend">
-  <a class="button lend_button btn" href="<%= url_for '#' %>">Lend</a>
-</div>
+  <a class="button lend_button btn pull-right" href="<%= url_for '#' %>">Lend</a><br/><br/>
+  
+    </div>
+    </div>
+<hr/>
  </div><!-- /.row -->
   </div><!-- /.span7 -->
-<%
-=begin %>
+
 <div class="loan_calendar span5">
-<div class="row">
-  <h3>Calendar</h3>
-  <ul class="nav nav-tabs">
-    <% for paso in loan.pasos %>
-    <li class="paso active <%= paso.is_completed %>">
-      Milestone <%= paso.date %>: <%= paso.summary %>
-      <% if paso.completed %>
-      (Completed <%= paso.completed %>)
-      <% else %>
-      (Not yet completed)
-      <% endif %>
-      <% if paso.details %><br>Details: <%= paso.details %><% endif %>
-      <ul>
-        <% for log in paso.logs %>
-        <li class="log">Log <%= log.date %>: <%= log.explanation %>
-          <ul>
-            <li>Progress: <%= log.progress %></li>
-            <li>Details: <%= log.detailed_explanation %></li>
-          </ul>
-        </li>
-        <% endfor %>
-      </ul>
-    </li>
-    <% endfor %>
-  </ul>
+<div class="row pull-right">
+     <ul class="nav nav-tabs">
+    <li><a href="#loanTrack" data-toggle="tab">Loan Track</a></li>
+    <li><a href="#loanList data-toggle="tab">Loan List</a></li>
+    <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+    </ul>
+    <div id="about_loan" class="tab-content">
+<div class="tab-pane active" id="loanTrack">Loan Track</div>
+<div class="tab-pane" id="loanList">Loan Pasos</div>
+<div class="tab-pane" id="calendar">I am a calendar</div>
 </div>
-<%
-=end %>
+</div>
+
     </div><!-- /.row -->
   </div><!-- /.span5 -->
+</div><!-- /.row -->
+  </div><!-- /.span12 -->
+  
+  
