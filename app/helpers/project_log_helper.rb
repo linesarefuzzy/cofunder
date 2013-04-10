@@ -1,0 +1,2 @@
+module ProjectLogHelper
+end
