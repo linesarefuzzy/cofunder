@@ -4,7 +4,7 @@
   .loans{background: #fff; clear:both;}
   .loans_type{font-size: medium; color: #444; margin-left: 16px; font-weight: bold;}
   .loans_items{}
-  .coop_pic_sm{width: 80px; height: 80px; float: left; margin-left: 10px; margin-right: 5px;}
+  .coop_pic_sm{width: 90px; height: 90px; float: left; margin-left: 10px; margin-right: 5px;}
   .coop_name {font-weight: bold; color: #444; font-size: 14px;}
   .desc{color: #333; font-size: 13px; width: 610px; }
   .facts { }
@@ -14,12 +14,17 @@
   .payment_status{color: orange;}
   .lend_btn{float: right; margin-right: 10px;}
   .loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
+  .section-title{margin-left: 25px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #444;}
+  .table td, .table th { border: none;}
+  .loans{margin-top: 20px; background: transparent;}
+
 </style>
 
 
-<h1 class="title">Loans</h1>
-<div class="row span_12">
-  <table class="table table-condensed">
+
+<div class="row span_12 loans">
+<h1 class="section-title">Loans</h1>
+  <table class="table">
     <% @loan_list.each do |loan| %>
     <tr class="loans_items"><!-- start lend item from loans list.-->
       <td class="loan_item">
@@ -36,20 +41,12 @@
       </td>
       <td> 
         <div class="facts">
-          <%= loan.SigningDate.to_s(:long) %><br>
-          <%= loan.amount_formatted %><br>
-          <p class="lend_btn"><button class="btn btn-mini" type="button">Add Loan</button></p>
+          <p><%= loan.SigningDate.to_s(:long) %></p>
+          <p><%= loan.amount_formatted %></p>
+           <p class="progress bar"></p>
+          <p class="lend_btn"><button class="btn" type="button">Add Loan</button></p>
         </div>
-        <div class="btn-toolbar">
-          <div class="btn-group">
-            <a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-thumbs-up"></i></a>
-            <a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-heart"></i></a>
-            <a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-share-alt"></i></a>
-          </div>
-          <div class="btn-group">
-            <a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-trash"></i></a>
-          </div>
-        </div>
+        
       </td>
     </tr><!-- end lend item from loans list.-->
     <% end %>

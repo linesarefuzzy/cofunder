@@ -2,12 +2,11 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title><%=h yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World</title>
+  <title><%=h yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World : Cofunder</title>
   <%= javascript_include_tag "application" %>
-  <%= stylesheet_link_tag    "reset", :media => "all" %>
-  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
-  <%= javascript_include_tag "bootstrap.min" %>
+   <%= javascript_include_tag "bootstrap" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
 
@@ -47,6 +46,7 @@
     
     <!-- FOOTER -->
     <footer>
+    <hr/>
       <p class="pull-right"><a href="#">Back to top</a></p>
       <p>&copy;2013 The Working World, United States | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
     </footer>

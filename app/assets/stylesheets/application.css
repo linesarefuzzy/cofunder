@@ -12,18 +12,22 @@
  *= require_tree .
  */
 
-
+   
 body{
-   background:#444 url(/images/bg.png)repeat;
+   background:#e5e5e5 url(/images/bg.png);
+   background-repeat: repeat;
  -webkit-font-smoothing: antialiased;
  color: #333435;
-
+ 
  }
+a :hover{text-decoration: none;} 
 
- h1 {font-size: 22px; font-weight: bolder; color: #333435;}
+.main_title {font-size: 22px; font-weight: bolder; color: #f3f3f3;}
+.section-title{margin-left: 25px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #262626;}
+.sub_heading{font-size: 23px; font-weight: 600; text-transform: uppercase; color: #262626;}
 h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
  #header_group {
-  background:#e5e5e5 url(/images/navbar.png)repeat-x top;
+  background: url(/images/navbar.png)repeat-x top;
             height: 60px;
             padding: 0;
 }
@@ -31,10 +35,10 @@ hr {
    width:960px;
    margin-top: 20px;
     margin-bottom: 20px;
-    border-top: 1px solid #E9ECE4;
-  border-bottom: 1px solid #f9f9f9;
-  border-left:1px solid #E9ECE4;
-  border-right:1px solid #E9ECE4;
+    border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #eeeeee;
+  border-left:1px solid #e5e5e5;
+  border-right:1px solid #e5e5e5;
    display: block;
    clear: both; 
 }
@@ -57,7 +61,7 @@ hr {
 #nav .sign_in{color: #444;}
 .custom > li > a:hover {
     background: transparent;}
-a:hover{color: #fdf8f8; text-decoration: none; }            
+.nav-item a:hover{color: #fdf8f8; text-decoration: none; }            
 .nav-ui { margin-top: 3px; }
 .nav-item{display: inline; vertical-align: baseline;}
 .whatwedo {text-decoration: none; text-transform: uppercase; color: white; font-family: Sans-Serif, Arial; 
@@ -70,6 +74,7 @@ font-weight: bolder; font-size: 14px; padding:5px; margin-right: 34px;}
 font-weight: bolder; font-size: 14px; padding: 5px; margin-right: 34px;}
 .sign_in {text-decoration: none; text-transform: uppercase; color: #666; font-family: Sans-Serif, Arial; 
 font-weight: bold; font-size: 14px;}
+.feature_container{margin-left: 20px;}
 .user_name {
     font-size: 18px;
   font-weight: bold;
@@ -131,8 +136,9 @@ form .required p {
       height: 480px;
       z-index: -100;
     }
+.landing_pic {float: left; margin-top: 20px; }    
 .panel_static{height:480px; color: white; margin-top:30px; font-size: 13.60px; font-weight: 500;} 
-.panel_content_top{margin-top: -30px;}
+.panel_content_top{margin-top: -40px;}
 .copy_front_big{font-size: 18px; color: #020404; line-height: 22px; font-weight: bolder;} 
 .copy_front_low{font-size: 14px; color: #020404; line-height: 23px; font-weight: 300;}    
 li.loan {
@@ -150,4 +156,5 @@ li.loan {
 .usermenu a.dropdown-toggle {
 	color:white;
 }
-#footer {clear both; width: 100%;}
+
+#footer {clear both; width: 940px; }
