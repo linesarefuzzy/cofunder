@@ -1,17 +1,31 @@
 <% content_for :title, @loan.name %>
 
+<% content_for :head do %>
 <style>
-  .picture { height: 200px; max-width:300px;}
+  .picture { height: 400px; margin: auto; }
   .detail_wrap{background: #f9f9f9; border-top: 1px solid #E9ECE4; padding:6px;}
   .detail_gutter{margin-left: 15px;}
 </style>
+
 <script>
   $(function () {
-    $('#calendar a:last').tab('show');
+    // Initiate tabs
+    $('.nav-tabs a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    })
+    $('.nav-tabs a:first').tab('show'); // Select first tab
+    
+    // Initiate slideshow
+    $('.carousel-inner .item').first().addClass('active')
+    $('.carousel-indicators li').first().addClass('active')
+    $('.carousel').carousel('cycle')
   })
 </script>
+<% end #content_for %>
 
 <div class="pull-right"><a class="btn btn" href="<% url_for loans_path %>">&lt; Back to Loan List</a></div>
+
 <div class="span12 container">
   <div class="row">
     <div class="span7">
@@ -20,13 +34,28 @@
           <h1 class="detail_gutter"><%= @loan.name %></h1>
 
           <% if @pictures %>
-            <% @pictures.each do |path| %>
-              <p class="detail_gutter">
-                <img class="img-polaroid picture" src="<%= path[:medium] %>" alt="<%= @loan.name %>">
-              </p>
-            <% end %>
-          <% end %>
+            <div id="myCarousel" class="carousel slide">
+              <ol class="carousel-indicators">
+                <% for i in (0..(@pictures.count-1)) do %>
+                  <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+                <% end %>
+              </ol>
 
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <% @pictures.each do |path| %>
+                  <div class="item">
+                    <img class="img-polaroid picture" src="<%= path[:large] %>" alt="<%= @loan.name %>">
+                  </div>
+                <% end %>
+              </div>
+
+              <!-- Carousel nav -->
+              <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+              <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div> <!-- /carousel -->
+          <% end #if @pictures %>
+          
           <div class="short_description">
             <br>
             <p class="detail_gutter"><%= @loan.get_short_description %></p>
@@ -55,14 +84,13 @@
       <div class="row pull-right">
         <ul class="nav nav-tabs">
           <li><a href="#summary" data-toggle="tab">Summary</a></li>
-          <li><a href="#loanList" data-toggle="tab">Other Loans</a></li>
           <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+          <li><a href="#loanList" data-toggle="tab">Other Loans</a></li>
+          <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
         </ul>
         <div id="about_loan" class="tab-content">
-          <div class="tab-pane active" id="summary">Summary</div>
-
-          <div class="tab-pane" id="loanList">
-            Other Loans to this Co-op
+          <div class="tab-pane active" id="summary">
+            Summary
           </div>
 
           <div class="tab-pane" id="calendar">
@@ -92,6 +120,11 @@
               <% end %>
             </ul>
           </div>
+          
+          <div class="tab-pane" id="loanList">
+            Other Loans to this Co-op
+          </div>
+
         </div>
       </div><!-- /.row -->
     </div><!-- /.span5 -->
