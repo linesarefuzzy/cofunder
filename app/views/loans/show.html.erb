@@ -2,7 +2,7 @@
 
 <% content_for :head do %>
 <style>
-  .picture { height: 400px; margin: auto; }
+  .picture { height: 400px; margin: auto; max-width:550px; }
   .detail_wrap{ background: #f9f9f9; border-top: 1px solid #E9ECE4; padding:6px; margin-top:20px; }
   .detail_page{margin-top:20px;}
   .detail_gutter{margin-left: 24px;}
@@ -32,11 +32,13 @@
            
             <% if @pictures %>
               <div id="myCarousel" class="carousel slide">
-                <ol class="carousel-indicators">
-                  <% for i in (0..(@pictures.count-1)) do %>
-                    <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
-                  <% end %>
-                </ol>
+                <% if @pictures.count > 1 %>
+                  <ol class="carousel-indicators">
+                    <% for i in (0..(@pictures.count-1)) do %>
+                      <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+                    <% end %>
+                  </ol>
+                <% end %>
 
                 <!-- Carousel items -->
                 <div class="carousel-inner">
@@ -48,8 +50,10 @@
                 </div>
 
                 <!-- Carousel nav -->
-                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <% if @pictures.count > 1 %>
+                  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <% end %>
               </div> <!-- /carousel -->
             <% end #if @pictures %>
           
