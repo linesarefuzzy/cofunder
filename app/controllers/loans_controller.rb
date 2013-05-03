@@ -15,7 +15,7 @@ class LoansController < ApplicationController
   # GET /loans/1.json
   def show
     @loan = Loan.find(params[:id])
-    @pictures = @loan.picture_paths(3)
+    @pictures = @loan.picture_paths(5) # for slideshow
 
     respond_to do |format|
       format.html # show.html.erb
