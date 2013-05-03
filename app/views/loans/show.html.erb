@@ -83,7 +83,7 @@
         <div class="row">
           <ul class="nav nav-tabs">
             <li><a href="#summary" data-toggle="tab">Summary</a></li>
-            <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+            <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
             <li><a href="#loanList" data-toggle="tab">Past Loans</a></li>
             <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
           </ul>
@@ -112,7 +112,7 @@
               </table>
             </div>
 
-            <div class="tab-pane" id="calendar">
+            <div class="tab-pane" id="timeline">
               <ul class="calendar">
                 <% @loan.project_events.each do |paso| %>
                 <li class="paso active <%= paso.completed_or_not %>">
