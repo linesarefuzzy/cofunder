@@ -1,11 +1,12 @@
-<h1>Listing cooperatives</h1>
-
+<div class="container">
+<h1 class="section-title">Listing cooperatives</h1>
+<p class="btn pull-right"><%= link_to 'Add New Cooperative', new_cooperative_path %></p><br/>
 <table class="table">
   <tr>
-    <th>Name</th>
+    <th>Name of Cooperative</th>
     <th></th>
     <th></th>
-    <th></th>
+     <th></th>
   </tr>
 
 <% @cooperatives.each do |cooperative| %>
@@ -18,6 +19,5 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Cooperative', new_cooperative_path %>
+<br/>
+</div>

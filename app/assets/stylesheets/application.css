@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require home
  */
 
    
@@ -18,11 +18,11 @@ body{
    background-repeat: repeat;
  -webkit-font-smoothing: antialiased;
  color: #333435;
- 
+
  }
 a :hover{text-decoration: none;} 
 
-.main_title {font-size: 22px; font-weight: bolder; color: #f3f3f3;}
+.main_title {font-size: 24px; font-weight: bolder; color: #fff;}
 .section-title{margin-left: 25px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #262626;}
 .sub_heading{font-size: 23px; font-weight: 600; text-transform: uppercase; color: #262626;}
 h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
@@ -42,6 +42,59 @@ hr {
    display: block;
    clear: both; 
 }
+// CSS TABLE ZEBRA 
+ table .table tr:nth-child(even) {
+    background: rgba(0,0,0,0.1);
+}
+
+.button_home a{
+   background-color:#b0261e;
+   width: 110px;
+    padding:10px;
+    position:relative;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size:18px;
+    font-weight: bold;
+    text-decoration:none;
+    text-align: center;
+    color:#f6f6f6;
+    border: solid 1px #7b2828;
+    
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top:-6px;
+    z-index:100;
+    }
+    
+ .button_home a:active{
+ padding-bottom:9px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:11px;
+    top:1px;
+    background-image: linear-gradient(bottom, rgb(171,27,27) 100%, rgb(212,51,51) 0%);
+    } 
+ .button_home a:before{
+  background-color:#ccd0d5;
+    content:"";
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    padding:8px;
+    left:-8px;
+    top:-8px;
+    z-index:-1;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 1px #909193, 0px 1px 0px #fff;
+ }     
+.content {
+    font: 1em/1.4 Segoe, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+ 
+.title {
+    font: 1.7em/1.2 Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
 
 #header_inner_wrap { 
                     margin: 0 auto;
@@ -49,7 +102,7 @@ hr {
 }
 #brand {
         position: absolute;
-        margin-top: -3px;
+        margin-top: -5px;
 }
 #nav {
       float: right;
@@ -62,19 +115,63 @@ hr {
 .custom > li > a:hover {
     background: transparent;}
 .nav-item a:hover{color: #fdf8f8; text-decoration: none; }            
-.nav-ui { margin-top: 3px; }
+.nav-ui { margin-top: 10px; }
 .nav-item{display: inline; vertical-align: baseline;}
-.whatwedo {text-decoration: none; text-transform: uppercase; color: white; font-family: Sans-Serif, Arial; 
-font-weight: bolder; font-size: 14px; padding: 5px; margin-right: 34px;}
-.where_we_work{text-decoration: none; text-transform: uppercase; color: white; font-family: Sans-Serif, Arial; 
-font-weight: bolder; font-size: 14px; padding: 5px; margin-right: 34px;}
-.loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: Sans-Serif, Arial; 
-font-weight: bolder; font-size: 14px; padding:5px; margin-right: 34px;}
-.contact {text-decoration: none; text-transform: uppercase; color: white; font-family: Sans-Serif, Arial; 
-font-weight: bolder; font-size: 14px; padding: 5px; margin-right: 34px;}
-.sign_in {text-decoration: none; text-transform: uppercase; color: #666; font-family: Sans-Serif, Arial; 
-font-weight: bold; font-size: 14px;}
-.feature_container{margin-left: 20px;}
+.whatwedo {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
+a:hover.whatwedo{background: rgba(0,0,0,.15);}
+.where_we_work{text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
+font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
+a:hover.where_we_work{background: rgba(0,0,0,.15);}
+.loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+font-weight: bold; font-size: 18px; padding:5px; margin-right: 34px;}
+a:hover.loan_list{background: rgba(0,0,0,.15);}
+.contact {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
+.sign_in {text-decoration: none; text-transform: uppercase; color: #666; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: bold; font-size: 18px; margin-top:-6px;}
+.feature_container{margin-left: 20px; margin-top: 20px;}
+.short_description {color: #000; font-size: 14px; font-weight:800;opacity: 0.9; }
+.home_img {}
+.home_board {
+    text-align: center;
+    overflow: hidden;
+   
+    width: 100%;
+    height: 440px;
+    background: url("/images/coop_intro2.jpg") no-repeat top transparent;
+    
+}
+.main_blurb_wrap{margin-top: 15px; text-align: left; padding-left: 30px; color: white; font-weight: 600; font-size: 16px;}
+.main_vdio_wrap{margin-top: 40px; float: right;}
+.home_lead_block_left{margin-top: 60px;}
+.home_lead_block_right{margin-top: 40px;}
+.update-box {
+    width: 320px;
+    position: relative;
+    margin: 0 auto 20px auto;
+    padding: 25px 15px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow:
+        0 1px 1px rgba(0,0,0,0.3),
+        solid 0 1px 0 rgba(255,255,255,0.1); 
+    cursor: default;
+    display: block;
+}
+
+.calendar{list-style: none;} 
+.update-box-color {
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+opacity: 0.4;
+border: 1px solid #e8e8e8;
 .user_name {
     font-size: 18px;
   font-weight: bold;
@@ -128,17 +225,10 @@ form .required p {
 	border: 1px solid #ddd;
 	color: #444;
 }
-.image_full img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 480px;
-      z-index: -100;
-    }
-.landing_pic {float: left; margin-top: 20px; }    
+
+.landing_pic {float: left; margin-top: 20px; width: 400px; height: 250px; }    
 .panel_static{height:480px; color: white; margin-top:30px; font-size: 13.60px; font-weight: 500;} 
-.panel_content_top{margin-top: -40px;}
+.panel_content_top{margin-top: 30px;}
 .copy_front_big{font-size: 18px; color: #020404; line-height: 22px; font-weight: bolder;} 
 .copy_front_low{font-size: 14px; color: #020404; line-height: 23px; font-weight: 300;}    
 li.loan {

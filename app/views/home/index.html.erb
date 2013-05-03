@@ -1,17 +1,11 @@
 
-<div class="image_full">
-<img src="images/coop_intro2.jpg" alt="cofunder panel"/>
-</div>
-
-
-
- <div class="container">
-
+<div class="home_img home_board">
       <!-- Three columns of text below the carousel -->
-      <div class="row panel_static">
-        <div class="span7">
+      <div class="row">
+        <div class="span7 main_blurb_wrap">
+
           <h1 class="main_title">21<sup>st</sup> Century Job Creation</h1>
-          <p>The Working World has coined a development strategy that
+          <p class="copy_front_main">The Working World has coined a development strategy that
 creates quality, lasting jobs anchored in local communities. Over
 six years of work, we have invested more than $2 million dollars
 in job creation with a 95%+ project maturation rate, without ever
@@ -19,31 +13,28 @@ creating debt in the neighborhoods we serve. We started in Argentina, where we s
 proved that they can be replicated in Nicaragua, and now, with
 our latest office in New York, we are out to bring innovative
 21st century job creation to the U.S.</p>
-<p>Democratic worker control puts into practice the idea that every
+<p class="copy_front_main">Democratic worker control puts into practice the idea that every
 contributing member of a business should have a voice in the
-decision- making process. W orker-owners, as they are often
+decision- making process. Worker-owners, as they are often
 called, meet in regularly scheduled assemblies where business
 decisions are either made consensually or delegated to smaller
-working groups
-</p>      <p class="btn pull-right"><%= link_to "Lend Now »", loans_path %></p>
+working groups</p>  <br/>    
+<p class="button_home pull-right"><%= link_to "Lend Now ➾", loans_path %></p>
         </div><!-- /.span7 -->
-        <div class="span5">
-          <p><iframe class="img-polaroid" src="http://player.vimeo.com/video/54305256?badge=0" width="400" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+        <div class="span5 main_vdio_wrap">
+<p><iframe class="img-polaroid" src="http://player.vimeo.com/video/54305256?badge=0" width="460" height="300" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
         </div><!-- /.span5-->
-       
+       </div><!-- #home_board.home_img-->
       </div><!-- /.row -->
 
-
-
       <!-- START THE FEATURETTES -->
-            
-         <div class="row panel_content_top">
-          <hr/>
-          <div class="span5">
-          <p class="landing_pic"><img class="img-polaroid" src="images/gear.png" alt="infographic"></p>
+ <div class="container">    
+         <div class="row">
+          <div class="span5 home_lead_block_left">
+          <p class="landing_pic"><img class="img-polaroid" src="images/gear.png" alt="infographic" ></p>
         </div><!-- /.span5-->
-        <div class="span7">
-            <div class="feature_container">
+        <div class="span7 home_lead_block_right">
+            <div class="feature_container clearfix">
             <h2 class="sub_heading">Invest in community wealth creation</h2>
          <p class="copy_front_big">In order to bring our expanded model of finance to
 scale, we are currently partnering with people like
@@ -51,7 +42,7 @@ you are looking for a high-impact social return on
 their investment to help finance $250,000 of capital
 for our loan fund.</p>
 <p class="copy_front_low"><strong>We are seeking investments from
-$5 to $50,000 for a two-year term</strong>. This <em>“mezzanine”</em>
+$5 to $50,000 for a two-year term</strong>.<br/> This <em>“mezzanine”</em>
 debt is the second level of protection after first-loss
 equity, and it is key to forming the basis for a larger
 loan fund with a strong focus on impact. Every dollar
@@ -63,7 +54,6 @@ dollars in subsequent investments.</p>
             
       </div><!-- /.row -->
 
-      <hr/>
 
 <div><p class="btn"><%= link_to "Loan List", loans_path %></p>
 <p class="btn"><%= link_to "Cooperatives", cooperatives_path %></p></div>

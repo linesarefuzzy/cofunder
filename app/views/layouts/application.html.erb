@@ -38,18 +38,19 @@
     </div>
   </div>
 
-  <div class="container">
+
     <% if notice %><p class="notice"><%= notice %></p><% end %>
     <% if alert %><p class="alert"><%= alert %></p><% end %>
     
     <%= yield %>
     
     <!-- FOOTER -->
+    <div class="container">
     <footer>
     <hr/>
       <p class="pull-right"><a href="#">Back to top</a></p>
       <p>&copy;2013 The Working World, United States | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
     </footer>
-  </div> <!-- /container -->
+    </div>
 </body>
 </html>

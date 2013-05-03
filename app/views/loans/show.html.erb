@@ -10,7 +10,7 @@
 
 <script>
   $(function () {
-    $('#calendar a:last').tab('show');
+    $('.loan_calendar a:last').tab('show');
   })
 </script>
 <!--  initialize the slideshow when the DOM is ready -->
@@ -23,10 +23,9 @@ $(function() {
 });
 
 </script>
-
 	
 	<!--  end slideshow script  -->
-
+	<div class="container">
 <div class="span12 container detail_page">
   <div class="row">
     <div class="span7">
@@ -68,24 +67,38 @@ $(function() {
     </div><!-- /.span7 -->
 
     <div class="loan_calendar span5 detail_page">
-      <div class="row pull-right">
-        <ul class="nav nav-pills">
+      <div class="row">
+        <ul class="nav nav-tabs">
           <li><a href="#summary" data-toggle="tab">Update</a></li>
           <li><a href="#loanList" data-toggle="tab">Past Loans</a></li>
           <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
         </ul>
         <div id="about_loan" class="tab-content">
           <div class="tab-pane active" id="summary">
-           <div class="short_description">
-            <p class="detail_gutter"><%= @loan.get_short_description %></p></div>
-             </div>
+          
+            <p class="detail_gutter short_description update-box update-box-color"><%= @loan.get_short_description %></p></div>
+          
 
           <div class="tab-pane" id="loanList">
-            Other Loans to this Co-op
+            <table class="table">
+ <tr class="success">
+<td>1</td>
+<td>Chilavert Artes Gráficas</td>
+<td>May 23, 2011</td>
+<td>AR$7,236</td>
+<td>On Time</td>
+</tr>
+<tr class="success">
+<td>2</td>
+<td>Chilavert Artes Gráficas</td>
+<td>March 10, 2011</td>
+<td>AR$13,236</td>
+<td>On Time</td>
+</tr>
+</table>
           </div>
 
           <div class="tab-pane" id="calendar">
-            <h3 class="section-title">Calendar</h3>
             <ul class="calendar">
               <% @loan.project_events.each do |paso| %>
               <li class="paso active <%= paso.completed_or_not %>">
@@ -96,18 +109,16 @@ $(function() {
                 (Not yet completed)
                 <% end %>
                 <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-                <ul>
+        
                   <% paso.logs.each do |log| %>
                   <li class="log <%= log.Progress.parameterize.underscore %>">
                     Log <%= log.date %>: <%= log.explanation %>
-                    <ul>
+               
                       <li>Progress: <%= log.Progress %></li>
                       <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-                    </ul>
+
                   </li>
                   <% end %>
-                </ul>
-              </li>
               <% end %>
             </ul>
           </div>
@@ -116,4 +127,4 @@ $(function() {
     </div><!-- /.span5 -->
   </div><!-- /.row -->
 </div><!-- /.span12 -->
-
+</div><!-- /.container -->
