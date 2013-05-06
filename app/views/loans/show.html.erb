@@ -123,16 +123,18 @@
                   (Not yet completed)
                   <% end %>
                   <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-        
+                  <ul>
                     <% paso.logs.each do |log| %>
                     <li class="log <%= log.Progress.parameterize.underscore %>">
                       Log <%= log.date %>: <%= log.explanation %>
-               
+                      <ul>
                         <li>Progress: <%= log.Progress %></li>
                         <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-
+                      </ul>
                     </li>
                     <% end %>
+                  </ul>
+                </li>
                 <% end %>
               </ul>
             </div>

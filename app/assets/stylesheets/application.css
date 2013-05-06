@@ -160,7 +160,6 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
     display: block;
 }
 
-.calendar{list-style: none;} 
 .update-box-color {
   background: rgb(255,255,255); /* Old browsers */
   background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6+ */
