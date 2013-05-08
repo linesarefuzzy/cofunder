@@ -4,13 +4,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title><%=h yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World : Cofunder</title>
   <%= javascript_include_tag "application" %>
-   <%= javascript_include_tag "bootstrap" %>
+  <%= javascript_include_tag "bootstrap" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
   <%= yield :head %>
-
 </head>
+
 <body>
   <div id="header_group">
     <div id="header_inner_wrap">
@@ -38,19 +41,18 @@
     </div>
   </div>
 
-
-    <% if notice %><p class="notice"><%= notice %></p><% end %>
-    <% if alert %><p class="alert"><%= alert %></p><% end %>
-    
-    <%= yield %>
-    
-    <!-- FOOTER -->
-    <div class="container">
-    <footer>
+  <% if notice %><p class="notice"><%= notice %></p><% end %>
+  <% if alert %><p class="alert"><%= alert %></p><% end %>
+  
+  <%= yield %>
+  
+  <!-- FOOTER -->
+  <div class="container">
+  <footer>
     <hr/>
       <p class="pull-right"><a href="#">Back to top</a></p>
       <p>&copy;2013 The Working World, United States | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
-    </footer>
-    </div>
+  </footer>
+  </div>
 </body>
 </html>
