@@ -49,3 +49,7 @@ gem 'devise'
 
 gem 'twitter-bootstrap-rails'
 # gem 'bootstrap-sass', '~> 2.3.1.0'
+
+# Pagination
+gem "will_paginate", "~> 3.0.4"
+gem 'will_paginate-bootstrap'

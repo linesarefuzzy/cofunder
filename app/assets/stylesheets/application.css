@@ -42,6 +42,7 @@ hr {
    display: block;
    clear: both; 
 }
+
 /* CSS TABLE ZEBRA */
  table .table tr:nth-child(even) {
     background: rgba(0,0,0,0.1);

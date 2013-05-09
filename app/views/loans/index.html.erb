@@ -17,42 +17,42 @@
   .section-title{margin-left: 10px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #444;}
   .table td, .table th { border: none;}
   .loans{margin-top: 20px; background: transparent;}
-
+  .pagination {text-align: center;}
 </style>
 
 
- <div class="container">
-<div class="row span_12 loans">
-<h1 class="section-title">Loans</h1>
-  <table class="table">
-    <% @loan_list.each do |loan| %>
-    <tr class="loans_items well" style="opacity: 0.8;"><!-- start lend item from loans list.-->
-      <td class="loan_item">
-        <% if loan.main_picture %>
-          <%= link_to loan do %>
-            <img class="coop_pic_sm img-polaroid" src="<%= loan.main_picture[:thumb] %>" 
-              alt="Project with <%=loan.Cooperative.Name%>">
-          <% end %>
+<div class="container">
+  <div class="row span_12 loans">
+    <h1 class="section-title">Loans</h1>
+      <table class="table">
+        <% @loan_list.each do |loan| %>
+        <tr class="loans_items well" style="opacity: 0.8;"><!-- start lend item from loans list.-->
+          <td class="loan_item">
+            <% if loan.main_picture %>
+              <%= link_to loan do %>
+                <img class="coop_pic_sm img-polaroid" src="<%= loan.main_picture[:thumb] %>" 
+                  alt="Project with <%=loan.Cooperative.Name%>">
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <p class="coop_name"><%= link_to "Project with #{loan.Cooperative.Name}", loan %></p>
+            <p class="desc"><%= loan.get_short_description %></p>
+          </td>
+          <td> 
+            <div class="facts">
+              <p><%= loan.SigningDate.to_s(:long) %></p>
+              <p><%= loan.amount_formatted %></p>
+              <p class="progress  progress-danger" style="background:#444;">  
+                <span class="bar" data-percentage="75" style="width: 75%;"></span>  
+              </p>  
+              <p><button class="lend_btn btn" type="button" style="margin-top: -8px;">Add Loan</button></p>
+            </div> 
+          </td>
+        </tr><!-- end lend item from loans list.-->
         <% end %>
-      </td>
-      <td>
-        <p class="coop_name"><%= link_to "Project with #{loan.Cooperative.Name}", loan %></p>
-        <p class="desc"><%= loan.get_short_description %></p>
-      </td>
-      <td> 
-        <div class="facts">
-          <p><%= loan.SigningDate.to_s(:long) %></p>
-          <p><%= loan.amount_formatted %></p>
-           <p class="progress  progress-danger" style="background:#444;">  
-  <span class="bar" data-percentage="75" style="width: 75%;"></span>  
-</p>  
-          <p><button class="lend_btn btn" type="button" style="margin-top: -8px;">Add Loan</button></p>
-          
-        </div> 
-      </td>
-    </tr><!-- end lend item from loans list.-->
-
-    <% end %>
-  </table>
-</div><!-- /.row -->
+      </table>
+      
+      <%= will_paginate @loan_list, :renderer => BootstrapPagination::Rails %>
+  </div><!-- /.row -->
 </div><!-- /.container -->
