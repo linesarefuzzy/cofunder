@@ -10,6 +10,24 @@ class Loan < ActiveRecord::Base
   belongs_to :Division, :foreign_key => 'SourceDivision'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
   
+  scope :country, ->(country) { 
+    joins(:Division).where('Divisions.Country' => country) unless country == 'all' 
+  }
+  scope :status, ->(status) {
+    where(:Nivel => case status
+      when 'active' then 'Prestamo Activo'
+      when 'completed' then 'Prestamo Completo'
+      when 'all' then ['Prestamo Activo','Prestamo Completo']
+    end)
+  }
+
+  def self.filter_by_params(params)
+    scoped = self.scoped
+    scoped = scoped.country(params[:country]) if params[:country]
+    scoped = scoped.status(params[:status]) if params[:status]
+    scoped
+  end
+  
   def name
     if self.Cooperative then "Project with " + self.Cooperative.Name 
     else "Project " + self.ID.to_s end
@@ -41,12 +59,5 @@ class Loan < ActiveRecord::Base
   
   def project_events(order_by="Completed IS NULL, Completed, Date")
     return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
-  end
-
-  def self.filter_by_params(params)
-    scoped = self.scoped
-    scoped = scoped.joins(:Division).where('Divisions.Country' => params[:country]) if params[:country]
-    scoped = scoped.where(:Nivel => params[:nivel]) if params[:nivel]
-    scoped
   end
 end

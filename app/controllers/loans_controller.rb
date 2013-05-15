@@ -2,15 +2,8 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    # filter loan list
-    filters = {}
-    filters[:nivel] = case params[:status]
-      when 'completed' then 'Prestamo Completo'
-      when 'all' then ['Prestamo Activo','Prestamo Completo']
-      else 'Prestamo Activo' # show active loans by default
-    end
-    filters[:country] = params[:country] == 'all' ? nil : params[:country]
-    @loans = Loan.filter_by_params(filters).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
+    params[:status] = 'active' if params[:status].blank? # show active loans by default
+    @loans = Loan.filter_by_params(params).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
 
     @countries = Country.order(:Name).pluck(:Name)
 
