@@ -42,4 +42,11 @@ class Loan < ActiveRecord::Base
   def project_events(order_by="Completed IS NULL, Completed, Date")
     return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
+
+  def self.filter_by_params(params)
+    scoped = self.scoped
+    scoped = scoped.joins(:Division).where('Divisions.Country' => params[:country]) if params[:country]
+    scoped = scoped.where(:Nivel => params[:nivel]) if params[:nivel]
+    scoped
+  end
 end

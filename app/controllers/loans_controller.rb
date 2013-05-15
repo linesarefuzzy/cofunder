@@ -3,19 +3,15 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     # filter loan list
-    nivel = case params[:show]
+    filters = {}
+    filters[:nivel] = case params[:status]
       when 'completed' then 'Prestamo Completo'
       when 'all' then ['Prestamo Activo','Prestamo Completo']
       else 'Prestamo Activo' # show active loans by default
     end
-    country = (params[:country] == 'all' ? nil : params[:country])
-    
-    if country
-      @loans = Loan.joins(:Division).where(:Nivel => nivel, 'Divisions.Country' => country).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
-    else
-      @loans = Loan.where(:Nivel => nivel).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
-    end
-    
+    filters[:country] = params[:country] == 'all' ? nil : params[:country]
+    @loans = Loan.filter_by_params(filters).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
+
     @countries = Country.order(:Name).pluck(:Name)
 
     respond_to do |format|
