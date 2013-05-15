@@ -11,8 +11,11 @@ class Loan < ActiveRecord::Base
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
   
   def name
-    return "Project with " + self.Cooperative.Name
+    if self.Cooperative then "Project with " + self.Cooperative.Name 
+    else "Project " + self.ID.to_s end
   end
+  
+  def country; self.Division.Country end
   
   def get_short_description(language_code="EN")
     return get_translation('Loans', 'ShortDescription', self.ID, language_code)
@@ -29,17 +32,9 @@ class Loan < ActiveRecord::Base
   def main_picture
     return self.picture_paths.try(:first)
   end
-  
-  # def thumb_path
-  #   paths = self.picture_paths
-  #   if paths 
-  #     return paths[0][:thumb]
-  #   end
-  # end
-
+    
   def amount_formatted
-    country = self.Division.Country
-    symbol = Currency.where(:Country => country).first.Symbol
+    symbol = Currency.where(:Country => self.country).first.Symbol
     symbol = symbol.sub(/\$/, ' $') # add space before $ (pretty)
     return number_to_currency(self.Amount, :unit => symbol)
   end

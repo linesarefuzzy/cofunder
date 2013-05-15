@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
   add_index "Cooperatives", ["Ownership", "OwnershipChangeDate"], :name => "ownership"
   add_index "Cooperatives", ["Sector", "Industry"], :name => "sector"
 
+  create_table "Countries", :primary_key => "ID", :force => true do |t|
+    t.string  "Name",       :null => false
+    t.integer "LanguageID"
+  end
+
+  add_index "Countries", ["Name"], :name => "Name", :unique => true
+
   create_table "Currencies", :primary_key => "ID", :force => true do |t|
     t.string  "Name",            :limit => 50, :default => "",          :null => false
     t.string  "Symbol",          :limit => 20, :default => "",          :null => false
@@ -176,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "Code",     :limit => 2,   :null => false
     t.string  "Name",     :limit => 200, :null => false
     t.integer "Priority", :limit => 2,   :null => false
+    t.string  "Country",  :limit => 500
   end
 
   create_table "LoanAgentTransactions", :primary_key => "ID", :force => true do |t|
@@ -197,11 +205,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
   add_index "LoanAgentTransactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "LoanInstallments", :primary_key => "ID", :force => true do |t|
-    t.integer "LoanID",         :default => 0, :null => false
-    t.date    "DateDue",                       :null => false
-    t.integer "CapitalCuota",   :default => 0, :null => false
-    t.integer "InterestCuota"
-    t.date    "DateRefinanced"
+    t.integer "LoanID",  :default => 0, :null => false
+    t.date    "DateDue",                :null => false
+    t.float   "Amount"
   end
 
   add_index "LoanInstallments", ["LoanID", "DateDue"], :name => "LoanID"

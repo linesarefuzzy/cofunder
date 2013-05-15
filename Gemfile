@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -38,7 +38,7 @@ gem 'jquery-rails'
 
 group :development do
   # To use debugger
-  gem 'ruby-debug'
+  gem 'debugger'
 end
 
 # JavaScript Runtime
@@ -53,3 +53,6 @@ gem 'twitter-bootstrap-rails'
 # Pagination
 gem "will_paginate", "~> 3.0.4"
 gem 'will_paginate-bootstrap'
+
+# Remove UTF8 parameter from GET forms
+gem 'utf8_enforcer_workaround'

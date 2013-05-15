@@ -1,4 +1,6 @@
 <% content_for :title, "Loans" %>
+
+<% content_for :head do %>
 <style>
   .lend_item_group{background: #fff;}
   .loans{background: #fff; clear:both;}
@@ -18,30 +20,62 @@
   .table td, .table th { border: none;}
   .loans{margin-top: 20px; background: transparent;}
   .pagination {text-align: center;}
+  .filters div {float: left;}
+  .filters .country {float: right;}
+  .filters .country label {margin: 6px;}
 </style>
 
+<script>
+  function filter(status) {
+    $('#show_filter').val(status)
+    $('#filter_form').submit()
+  }
+</script>
+<% end %>
 
 <div class="container">
   <div class="row span_12 loans">
     <h1 class="section-title">Loans</h1>
+    <div class="filters">
+      <%= form_tag({}, {:id => "filter_form", :method => "get"}) do %>
+        <%= hidden_field_tag(:show, params[:show], :id => "show_filter") %>
+        <div class="show">
+          <ul class="nav nav-pills">
+            <li class="disabled"><a href="#">Show:</a></li>
+            <li class="<%= params[:show].blank? || params[:show]=='active' ? 'active' : '' %>"><a href="#" onclick="filter('active')">Active</a></li>
+            <li class="<%= params[:show]=='completed' ? 'active' : '' %>"><a href="#" onclick="filter('completed')">Completed</a></li>
+            <li class="<%= params[:show]=='all' ? 'active' : '' %>"><a href="#" onclick="filter('all')">All</a></li>
+          </ul>
+        </div>
+        <div class="country">
+          <div><%= label_tag(:country, "Country: ") %></div>
+          <div>
+            <%= select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]), :onchange => "this.form.submit()") %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% if @loans.empty? %>
+      <b class="empty">No loans found.</b>
+    <% else %>
       <table class="table">
-        <% @loan_list.each do |loan| %>
+        <% @loans.each do |loan| %>
         <tr class="loans_items well" style="opacity: 0.8;"><!-- start lend item from loans list.-->
           <td class="loan_item">
             <% if loan.main_picture %>
               <%= link_to loan do %>
                 <img class="coop_pic_sm img-polaroid" src="<%= loan.main_picture[:thumb] %>" 
-                  alt="Project with <%=loan.Cooperative.Name%>">
+                  alt="<%=loan.name%>">
               <% end %>
             <% end %>
           </td>
           <td>
-            <p class="coop_name"><%= link_to "Project with #{loan.Cooperative.Name}", loan %></p>
+            <p class="coop_name"><%= link_to loan.name, loan %></p>
             <p class="desc"><%= loan.get_short_description %></p>
           </td>
           <td> 
             <div class="facts">
-              <p><%= loan.SigningDate.to_s(:long) %></p>
+              <p><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></p>
               <p><%= loan.amount_formatted %></p>
               <p class="progress  progress-danger" style="background:#444;">  
                 <span class="bar" data-percentage="75" style="width: 75%;"></span>  
@@ -52,7 +86,8 @@
         </tr><!-- end lend item from loans list.-->
         <% end %>
       </table>
-      
-      <%= will_paginate @loan_list, :renderer => BootstrapPagination::Rails %>
+    <% end %>
+    
+    <%= will_paginate @loans, :renderer => BootstrapPagination::Rails %>
   </div><!-- /.row -->
 </div><!-- /.container -->
