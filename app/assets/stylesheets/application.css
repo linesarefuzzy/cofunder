@@ -173,7 +173,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .payment_status{color: orange;}
 .lend_btn{float: right; margin-right: 10px; margin-top; -3px;}
 .loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
-.section-title{margin-left: 10px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #444;}
+.section-title{margin-left: 10px; font-size: 23px; font-weight: 400; color: #444;}
 .loans{margin-top: 20px; background: transparent;}
 .pagination {text-align: center;}
 .filters div {float: left;}
