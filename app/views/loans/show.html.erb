@@ -64,16 +64,17 @@
           <br>
         </div>-->
 
-        <div class="description">
+        <div class="description_box well">
           <h3 class="section-title">About This Project</h3>
+          <div class="lend">
+          <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
+        </div>
+         <h5 class="coop_name">Current Report</h5> 
           <p class="copy_front_low detail_gutter">
             <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
           </p>
         </div>
      
-        <div class="lend">
-          <a class="button lend_button btn pull-right" href="<%= url_for '#' %>">Lend</a><br/><br/>
-        </div>
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7 -->
 

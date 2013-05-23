@@ -148,7 +148,7 @@ a:hover.nav_link{background: rgba(0,0,0,.15);}
     background: url("/images/coop_intro2.jpg") no-repeat top transparent;
 }
 .main_blurb_wrap{margin-top: 15px; text-align: left; padding-left: 30px; color: white; font-weight: 600; font-size: 16px;}
-.main_vdio_wrap{margin-top: 40px; float: right;}
+.main_vdio_wrap{margin-top: 40px; float: left;}
 .home_lead_block_left{}
 .home_lead_block_right{}
 .landing_pic{max-width: 350px;}
@@ -180,9 +180,6 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .filters div {float: left;}
 .filters .country {float: right;}
 .filters .country label {margin: 6px;}
-.paso {color: #666; width: 350px;display: block; line-height: 1.3em; }
-.active{list-style: none; color: #666; display: table-caption;}
-.completed{color: #555; display: table-caption; }
 
 /* SIGN IN and SIGN UP FORMS STYLES */
 .contact {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
@@ -197,6 +194,12 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 .detail_page{margin-top:20px;}
 .detail_gutter{margin-left: 10px;}
 .carousel-control {top: 50%;}
+.copy_front_low{max-width: 510px; color: #022121; font-weight: inherit; font-size: 13pt;}
+.lend_button{background: url(/images/lend_btn.png)no-repeat; width: 109px; height: 40px; margin-top: -40px; margin-right: 20px; }
+.short_description{color: #666;}
+.paso {color: #666; width: 350px;display: block; line-height: 1.3em; }
+.active{list-style: none; color: #666; display: table-caption;}
+.completed{color: #555; display: table-caption; }
 .update-box {
     width: 320px;
     position: relative;
@@ -210,7 +213,7 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
     cursor: default;
     display: block;
 }
-.short_description{color: #666;}
+
 .update-box-color {
   background: #f8f9ef;
   border: 1px solid #e8e8e8;
