@@ -44,13 +44,17 @@
 </nav>
     </div>
   </div>
-   <div class="alert alert-success">
+   <div class="alert alert-success"> 
+  <% if notice %>
     <button type="button" class="close" data-dismiss="alert">&times;</button>  
-  <% if notice %><p class="notice"><i class="icon-ok"></i><strong>Well done!</strong><%= notice %></p><% end %>
+    <p class="notice"><i class="icon-ok"></i><strong>Well done!</strong><%= notice %></p>
+    <% end %>
    </div>
-  <div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>  
-  <% if alert %><p class="alert"><i class="icon-info-sign"></i><strong>Warning!</strong><%= alert %></p><% end %>
+  <div class="alert">  
+  <% if alert %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button> 
+    <p class="alert"><i class="icon-info-sign"></i><strong>Warning!</strong><%= alert %></p>
+    <% end %>
   </div>
   <%= yield %>
   
