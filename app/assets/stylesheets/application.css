@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= 
  *
  */
 
@@ -24,17 +25,17 @@ body{
 a :hover{text-decoration: none;}
 a :active :focus :visited :link {color: #f3f3f3;}
 
-// HEADINGS
+/* HEADINGS SECTION TITLES */
 .main_title {font-size: 24px; font-weight: bolder; color: #fff;}
-.section-title{margin-left: 10px; font-size: 22px; font-weight: bold; color: #212121;}
+.section-title{margin-left:10px; font-size: 22px; font-weight: bold; color: #212121;}
 .sub_heading{font-size: 23px; font-weight: 600; text-transform: uppercase; color: #262626;}
-h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
+h1, h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
  #header_group {
   background: url(/images/navbar.png)repeat-x top;
             height: 60px;
             padding: 0;
 }
-   // CSS TABLE ZEBRA 
+/* CSS TABLE ZEBRA */
  table tr:nth-child(even) {
     background: rgba(0,0,0,0.1);
 }
@@ -123,7 +124,7 @@ iframe[seamless]{
             width: auto;
             margin-top: 10px;
 }
-// NAVIGATION STYLES
+/* NAVIGATION STYLES*/
 #nav a{color: #f3f3f3;}
 #nav .sign_in{color: #444;}
 .custom > li > a:hover {
@@ -191,7 +192,7 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 .picture { height: 400px; margin: auto; max-width:550px; }
 .detail_wrap{ background: transparent;  padding:6px; margin-top:20px; }
 .detail_page{margin-top:20px;}
-.detail_gutter{margin-left: 24px;}
+.detail_gutter{margin-left: 10px;}
 .carousel-control {top: 50%;}
 .update-box {
     width: 320px;
@@ -243,7 +244,7 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 
-// HOME STYLES
+/* HOME STYLES */ 
 .landing_pic {float: left; margin-top: 20px; width: 400px; height: 250px; }    
 .panel_static{height:480px; color: white; margin-top:30px; font-size: 13.60px; font-weight: 500;} 
 .panel_content_top{margin-top: 30px;}
@@ -252,10 +253,6 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 li.loan {
 	margin: 25px 0;
 }
-
-.chart{margin-left:-35px; margin-top:-10px; max-width: 380px;}
-.user_img{margin-top:-200px; margin-right:10px;}
-.mk_loan_btn{width: 107px;margin-top:-80px; margin-right:10px;}
 
 .errorlist {
 	color:red;
