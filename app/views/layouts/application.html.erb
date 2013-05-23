@@ -2,11 +2,13 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title><%=h yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World : Cofunder</title>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "bootstrap" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+   <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -17,8 +19,11 @@
 <body>
   <div id="header_group">
     <div id="header_inner_wrap">
-      <div id="brand"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></div>
-      <div id="nav"><ul class="nav-ui">
+      
+    <div id="brand"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></div>
+    
+      <div id="nav">
+        <ul class="nav-ui">
         <li class="nav-item"><a class="nav_link" href="#">What We Do</a></li>
         <li class="nav-item"><a class="nav_link" href="#">Where We Work</a></li>
         <li class="nav-item"><a class="loan_list nav_link" href="<%= url_for loans_path %>">Find Loans</a></li>
@@ -37,7 +42,8 @@
         <% else %>
         <li class="nav-item"><a class="btn sign_in" href="<%= url_for new_user_session_path %>">Sign In</a></li>
         <% end %>
-      </ul></div> 
+      </ul></div>
+   
     </div>
   </div>
 
