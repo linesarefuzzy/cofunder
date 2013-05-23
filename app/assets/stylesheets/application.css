@@ -9,8 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= 
- *
  */
 
      /* Large desktop */
@@ -150,7 +148,7 @@ iframe[seamless]{
 font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
 a:hover.nav_link{background: rgba(0,0,0,.15);}
 
-// HOME STYLES
+/* HOME STYLES */
 .feature_container{margin-left: 20px; margin-top: 20px;}
 .short_description {color: #000; font-size: 14px; font-weight:800;opacity: 0.9; }
 .home_img {}
@@ -167,8 +165,8 @@ a:hover.nav_link{background: rgba(0,0,0,.15);}
 .home_lead_block_right{}
 .landing_pic{max-width: 350px;}
 .block_section {margin-top: 40px;}
-//LOAN LIST STYLES
-.back_link {margin-top: 20px;}
+
+/* LOAN LIST STYLES */
 .loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 font-weight: bold; font-size: 18px; padding:5px; margin-right: 34px;}
 a:hover.loan_list{background: rgba(0,0,0,.15);}
@@ -195,18 +193,16 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .filters .country {float: right;}
 .filters .country label {margin: 6px;} 
 
-// SIGN IN and SIGN UP FORMS STYLES
+/* SIGN IN and SIGN UP FORMS STYLES */
 .contact {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
 .sign_in {text-decoration: none; text-transform: uppercase; color: #666; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-weight: bold; font-size: 18px; margin-top:-6px;}
 
-
-// DETAIL LOAN PAGE STYLES
-.back_link {margin-left: 10px; margin-right: 10px;}
+/* LOAN DETAIL PAGE STYLES */
 .language {font-style: normal; font-weight: bold; color: #999; margin-right: 40px;}
-.picture { height: 400px; margin: auto; max-width:550px; }
-.detail_wrap{ background: transparent;  padding:6px; margin-top:20px; }
+.picture { height: 340px; margin: auto; max-width:510px; }
+.detail_wrap{ background: transparent;  padding:6px; }
 .detail_page{margin-top:20px;}
 .detail_gutter{margin-left: 10px;}
 .carousel-control {top: 50%;}
