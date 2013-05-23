@@ -35,7 +35,7 @@
           <td class="loan_item thum_holder">
             <% if loan.main_picture %>
               <%= link_to loan do %>
-                <img class="coop_pic_sm img-polaroid" src="<%= loan.main_picture[:thumb] %>" 
+                <img class="coop_pic_sm img-rounded" src="<%= loan.main_picture[:thumb] %>" 
                   alt="<%=loan.name%>">
               <% end %>
             <% end %>

@@ -73,7 +73,6 @@ iframe[seamless]{
     text-align: center;
     color:#f6f6f6;
     border: solid 1px #7b2828;
-    
     border-radius: 5px;
     margin-right: 20px;
     margin-top:-6px;
@@ -160,7 +159,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .thum_holder{max-width: 130px;  }
 .loan_list_wrap{ height: auto;}
 .loan_list_item_wrap{background:#fdfdfd url(img/gray_tex.png) repeat top;}
-.coop_pic_sm{ max-width: 80px; max-height: 80px; margin: 5px;}
+.coop_pic_sm{ max-width: 80px; height: 80px; margin: 10px; border:8px solid#e0e0e0; border-radius: 5px;}
 .coop_name{font-size: 14pt; font-weight: bold; color: #832828; margin-top:10px;}
 .about_coop{font-size: 11pt; letter-spacing: 0.1em; font-weight: 400; color#999; line-height: 13pt;}
 .detail_link {color: #5F2B26; font-size: 10pt; margin-left: 8px; font-weight: bold; text-transform: uppercase; margin-right: 20px;}
