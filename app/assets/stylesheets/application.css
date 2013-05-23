@@ -148,8 +148,10 @@ a:hover.nav_link{background: rgba(0,0,0,.15);}
 }
 .main_blurb_wrap{margin-top: 15px; text-align: left; padding-left: 30px; color: white; font-weight: 600; font-size: 16px;}
 .main_vdio_wrap{margin-top: 40px; float: right;}
-.home_lead_block_left{margin-top: 60px;}
-.home_lead_block_right{margin-top: 40px;}
+.home_lead_block_left{}
+.home_lead_block_right{}
+.landing_pic{max-width: 350px;}
+.block_section {margin-top: 40px;}
 
 /* LOAN LIST STYLES */
 .loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
@@ -171,7 +173,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .payment_status{color: orange;}
 .lend_btn{float: right; margin-right: 10px; margin-top; -3px;}
 .loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
-.section-title{margin-left: 10px; font-size: 23px; font-weight: 400; color: #444;}
+.section-title{margin-left: 10px; font-size: 23px; font-weight: 400;  color: #444;}
 .loans{margin-top: 20px; background: transparent;}
 .pagination {text-align: center;}
 .filters div {float: left;}
@@ -184,8 +186,7 @@ font-weight: bold; font-size: 18px; padding: 5px; margin-right: 34px;}
 .sign_in {text-decoration: none; text-transform: uppercase; color: #666; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-weight: bold; font-size: 18px; margin-top:-6px;}
 
-
-/* DETAIL LOAN PAGE STYLES */
+/* LOAN DETAIL PAGE STYLES */
 .language {font-style: normal; font-weight: bold; color: #999; margin-right: 40px;}
 .picture { height: 340px; margin: auto; max-width:510px; }
 .detail_wrap{ background: transparent;  padding:6px; }
@@ -205,7 +206,7 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
     cursor: default;
     display: block;
 }
-
+.short_description{color: #666;}
 .update-box-color {
   background: #f8f9ef;
   border: 1px solid #e8e8e8;
