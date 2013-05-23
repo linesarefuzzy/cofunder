@@ -19,9 +19,9 @@
     <div id="header_inner_wrap">
       <div id="brand"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></div>
       <div id="nav"><ul class="nav-ui">
-        <li class="nav-item"><a class="whatwedo" href="#">What We Do</a></li>
-        <li class="nav-item"><a class="where_we_work" href="#">Where We Work</a></li>
-        <li class="nav-item"><a class="loan_list" href="<%= url_for loans_path %>">Find Loans</a></li>
+        <li class="nav-item"><a class="nav_link" href="#">What We Do</a></li>
+        <li class="nav-item"><a class="nav_link" href="#">Where We Work</a></li>
+        <li class="nav-item"><a class="loan_list nav_link" href="<%= url_for loans_path %>">Find Loans</a></li>
         <!-- <li class="nav-item"><% link_to "Find Loans", loans_path, :class=>"loan_list" %></li> -->
         <% if user_signed_in? %>
         <li class="nav-item dropdown usermenu">

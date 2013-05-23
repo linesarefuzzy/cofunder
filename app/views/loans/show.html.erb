@@ -1,13 +1,6 @@
 <% content_for :title, @loan.name %>
 
 <% content_for :head do %>
-<style>
-  .picture { height: 400px; margin: auto; max-width:550px; }
-  .detail_wrap{ background: #f9f9f9; border-top: 1px solid #E9ECE4; padding:6px; margin-top:20px; }
-  .detail_page{margin-top:20px;}
-  .detail_gutter{margin-left: 24px;}
-  .carousel-control {top: 49%;}
-</style>
 
 <script>
   $(function () {
@@ -28,8 +21,10 @@
     <div class="row">
       <div class="span7">
         <div class="row">
+         <p class="language pull-right"><a href="#">English</a>/<a href="#">Spanish</a></p>
           <div class="detail_wrap row">
             <h1 class="section-title"><%= @loan.name %></h1>
+           
            
             <% if @pictures %>
               <div id="myCarousel" class="carousel slide">
@@ -81,7 +76,7 @@
       </div><!-- /.span7 -->
 
       <div class="loan_calendar span5 detail_page">
-        <div class="row">
+        <div class="row pull-right">
           <ul class="nav nav-tabs">
             <li><a href="#summary" data-toggle="tab">Summary</a></li>
             <li><a href="#timeline" data-toggle="tab">Timeline</a></li>

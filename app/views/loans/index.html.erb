@@ -1,29 +1,7 @@
 <% content_for :title, "Loans" %>
 
 <% content_for :head do %>
-<style>
-  .lend_item_group{background: #fff;}
-  .loans{background: #fff; clear:both;}
-  .loans_type{font-size: medium; color: #444; margin-left: 16px; font-weight: bold;}
-  .loans_items{}
-  .coop_pic_sm{width: 90px; height: 90px; float: left; margin-left: 10px; margin-right: 5px; margin-top:9px;}
-  .coop_name {font-weight: bold; color: #444; font-size: 16px; font-weight: 500;}
-  .desc{color: #333; font-size: 14px; font-weight:normal; width: 610px; }
-  .facts { }
-  .loan_item{ }
-  .loan_info{color: #333; font-size: 11.6px; text-transform: none; margin-bottom: -15px;}
-  .loan_status{color: #333; font-size: 11.6px; text-transform: none;}
-  .payment_status{color: orange;}
-  .lend_btn{float: right; margin-right: 10px; margin-top; -3px;}
-  .loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
-  .section-title{margin-left: 10px; font-size: 23px; font-weight: 400; text-transform: uppercase; color: #444;}
-  .table td, .table th { border: none;}
-  .loans{margin-top: 20px; background: transparent;}
-  .pagination {text-align: center;}
-  .filters div {float: left;}
-  .filters .country {float: right;}
-  .filters .country label {margin: 6px;}
-</style>
+
 <% end %>
 
 <div class="container">
@@ -51,10 +29,10 @@
     <% if @loans.empty? %>
       <b class="empty">No loans found.</b>
     <% else %>
-      <table class="table">
+      <table class="table loan_list_wrap table-bordered">
         <% @loans.each do |loan| %>
-        <tr class="loans_items well" style="opacity: 0.8;"><!-- start lend item from loans list.-->
-          <td class="loan_item">
+        <tr class="loans_items well loan_list_item_wrap" style="opacity: 0.9;"><!-- start lend item from loans list.-->
+          <td class="loan_item thum_holder">
             <% if loan.main_picture %>
               <%= link_to loan do %>
                 <img class="coop_pic_sm img-polaroid" src="<%= loan.main_picture[:thumb] %>" 
@@ -63,18 +41,20 @@
             <% end %>
           </td>
           <td>
-            <p class="coop_name"><%= link_to loan.name, loan %></p>
-            <p class="desc"><%= loan.get_short_description %></p>
+            <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
+            <p class="about_coop"><%= loan.get_short_description %><br/>
+            <a class="detail_link pull-right" href="#">More Details</a>
+            </p>
           </td>
           <td> 
-            <div class="facts">
-              <p><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></p>
-              <p><%= loan.amount_formatted %></p>
+            <p class="facts">
+              <span class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></span><br/>
+              <span class="loan_ammount"><%= loan.amount_formatted %></span><br/>
               <p class="progress  progress-danger" style="background:#444;">  
                 <span class="bar" data-percentage="75" style="width: 75%;"></span>  
               </p>  
-              <p><button class="lend_btn btn" type="button" style="margin-top: -8px;">Add Loan</button></p>
-            </div> 
+              <p><button class="lend_btn btn" type="button">Add Loan</button></p>
+            </p> 
           </td>
         </tr><!-- end lend item from loans list.-->
         <% end %>
