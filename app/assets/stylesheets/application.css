@@ -155,6 +155,7 @@ a:hover.nav_link{background: rgba(0,0,0,.15);}
 .landing_pic{max-width: 350px;}
 .block_section {margin-top: 40px;}
 //LOAN LIST STYLES
+.back_link {margin-top: 20px;}
 .loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
 font-weight: bold; font-size: 18px; padding:5px; margin-right: 34px;}
 a:hover.loan_list{background: rgba(0,0,0,.15);}
@@ -209,7 +210,7 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
     cursor: default;
     display: block;
 }
-
+.short_description{color: #666;}
 .update-box-color {
   background: #f8f9ef;
   border: 1px solid #e8e8e8;
