@@ -88,7 +88,10 @@
         <div id="about_loan" class="tab-content">
 
           <div class="tab-pane active" id="summary">
-            <p class="detail_gutter short_description update-box update-box-color"><%= @loan.get_short_description %></p>
+            <p class="detail_gutter short_description update-box update-box-color"><br/>
+          <span><i class="icon-map-marker"><strong style="margin-left: 16px; font-style: normal;"><%= @loan.country %></strong></i></span>
+          <span style="margin-left: 100px;"><i class="icon-time"><strong style="margin-left: 16px; font-style: normal;"><%= @SigningDate %></strong></i></span><br/>
+              <span><%= @loan.get_short_description %></span></p>
           </div>
 
           <div class="tab-pane" id="loanList">

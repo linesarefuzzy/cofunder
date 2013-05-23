@@ -179,7 +179,10 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .pagination {text-align: center;}
 .filters div {float: left;}
 .filters .country {float: right;}
-.filters .country label {margin: 6px;} 
+.filters .country label {margin: 6px;}
+.paso {color: #666; width: 350px;display: block; line-height: 1.3em; }
+.active{list-style: none; color: #666; display: table-caption;}
+.completed{color: #555; display: table-caption; }
 
 /* SIGN IN and SIGN UP FORMS STYLES */
 .contact {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
@@ -197,8 +200,8 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 .update-box {
     width: 320px;
     position: relative;
-    margin: 0 auto 20px auto;
-    padding: 25px 15px;
+    margin: 0 auto 15px auto;
+    padding: 10px 15px;
     text-align: left;
     border-radius: 5px;
     box-shadow:
