@@ -1,5 +1,5 @@
 class ProjectLog < ActiveRecord::Base
-  include Legacy, Project, TranslationModule
+  include Legacy, ProjectModule, TranslationModule
   
   belongs_to :Member, :foreign_key => 'MemberID'
   belongs_to :Paso, :foreign_key => 'PasoID'
