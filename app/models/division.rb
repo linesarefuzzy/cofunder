@@ -1,4 +1,4 @@
 class Division < ActiveRecord::Base
-  self.table_name = 'Divisions'
+  include Legacy
   attr_accessible :Country, :Name
 end

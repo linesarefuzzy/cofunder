@@ -1,4 +1,4 @@
 class Language < ActiveRecord::Base
-  self.table_name = 'Languages'
+  include Legacy
   attr_accessible :Code, :Name, :Priority
 end

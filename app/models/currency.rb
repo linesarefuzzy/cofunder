@@ -1,4 +1,4 @@
 class Currency < ActiveRecord::Base
-  self.table_name = 'Currencies'
+  include Legacy
   attr_accessible :Country, :Description, :Name, :Symbol
 end

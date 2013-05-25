@@ -1,11 +1,6 @@
-require 'project_module'
-require 'translation_module'
-
 class ProjectLog < ActiveRecord::Base
-  include ProjectModule, TranslationModule
+  include Legacy, Project, TranslationModule
   
-  self.table_name = 'ProjectLogs'
-  self.primary_key = 'ID'
   belongs_to :Member, :foreign_key => 'MemberID'
   belongs_to :Paso, :foreign_key => 'PasoID'
   attr_accessible :AdditionalNotes, :Date, :Progress, :ProjectID, :ProjectTable

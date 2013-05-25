@@ -1,5 +1,5 @@
 class Translation < ActiveRecord::Base
-  self.table_name = 'Translations'
+  include Legacy
   belongs_to :Language, :foreign_key => 'Language'
   attr_accessible :RemoteColumnName, :RemoteID, :RemoteTable, :TranslatedContent
 end

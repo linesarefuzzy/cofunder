@@ -1,15 +1,10 @@
-require 'translation_module'
-require 'media_module'
-
 class Loan < ActiveRecord::Base
-  include TranslationModule, MediaModule, ActionView::Helpers::NumberHelper
+  include Legacy, TranslationModule, MediaModule, ActionView::Helpers::NumberHelper
 
-  self.table_name = 'Loans'
-  self.primary_key = 'ID'
   belongs_to :Cooperative, :foreign_key => 'CooperativeID'
   belongs_to :Division, :foreign_key => 'SourceDivision'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
-  
+
   scope :country, ->(country) { 
     joins(:Division).where('Divisions.Country' => country) unless country == 'all' 
   }

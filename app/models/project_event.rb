@@ -1,11 +1,6 @@
-require 'project_module'
-require 'translation_module'
-
 class ProjectEvent < ActiveRecord::Base
-  include ProjectModule, TranslationModule
+  include Legacy, ProjectModule, TranslationModule
   
-  self.table_name = 'ProjectEvents'
-  self.primary_key = 'ID'
   belongs_to :Member, :foreign_key => 'MemberID'
   has_many :ProjectLogs, :foreign_key => 'PasoID'
   alias_attribute :logs, :ProjectLogs
