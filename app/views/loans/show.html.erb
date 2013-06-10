@@ -27,7 +27,7 @@
   </div>
   
   <div class="row">
-    <div class="span7">
+    <div class="span7 main_content">
       <div class="detail_wrap">
         <h1 class="section-title"><%= @loan.name %></h1>
        
@@ -76,20 +76,20 @@
         </div>
      
       </div><!-- /.detail_wrap -->
-    </div><!-- /.span7 -->
+    </div><!-- /.span7.main_content -->
 
-    <div class="loan_calendar span5">
-      <div class="row pull-right">
+    <div class="span5 sidebar">
+      <div class="row">
         <ul class="nav nav-tabs">
           <li><a href="#summary" data-toggle="tab">Summary</a></li>
           <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
           <li><a href="#loanList" data-toggle="tab">Past Loans</a></li>
           <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
         </ul>
+        
         <div id="about_loan" class="tab-content">
-
           <div class="tab-pane active" id="summary">
-            <div class="detail_gutter short_description update-box update-box-color">
+            <div class="detail_gutter short_description update-box update-box-color pull-left">
               <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
               <div class="info"><i class="icon-time"></i> <%= @loan.signing_date_pretty %></div>
               <div class="short_description"><%= @loan.get_short_description %></div>
@@ -146,8 +146,9 @@
             Other Loans to this Co-op
           </div>
 
-        </div>
+        </div><!-- /#about_loan -->
       </div><!-- /.row -->
-    </div><!-- /.span5 -->
+    </div><!-- /.span5.sidebar -->
+    
   </div><!-- /.row -->
 </div><!-- /.container -->
