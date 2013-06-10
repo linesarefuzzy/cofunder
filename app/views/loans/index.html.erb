@@ -43,8 +43,9 @@
           </td>
           <td> 
             <p class="facts">
-              <span class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></span><br/>
-              <span class="loan_ammount"><%= loan.amount_formatted %></span><br/>
+              <div class="location"><%= loan.location %>
+              <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
+              <div class="loan_amount"><%= loan.amount_formatted %></div>
               <p class="progress  progress-danger" style="background:#444;">  
                 <span class="bar" data-percentage="75" style="width: 75%;"></span>  
               </p>  

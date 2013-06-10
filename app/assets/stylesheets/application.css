@@ -168,7 +168,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .sign_date{font-weight: inherit; font-variant: normal; color: #832828;}
 .facts{width: 170px; margin: 5px;}
 .money_sym{text-transform: uppercase; font-style: normal; font-weight: 500; color: #5F2B26;}
-.loan_ammount{color:#612C28; font-weight: bold }
+.loan_amount{color:#612C28; font-weight: bold }
 .loan_info{color: #333; font-size: 11.6px; text-transform: none; margin-bottom: -15px;}
 .loan_status{color: #333; font-size: 11.6px; text-transform: none;}
 .payment_status{color: orange;}
@@ -193,6 +193,8 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 .detail_wrap{ background: transparent;  padding:6px; }
 .detail_page{margin-top:20px;}
 .detail_gutter{margin-left: 10px;}
+.detail_gutter .info {float: left; margin-right: 10px;}
+.detail_gutter .short_description {clear: both;}
 .carousel-control {top: 50%;}
 .copy_front_low{max-width: 510px; color: #022121; font-weight: inherit; font-size: 13pt;}
 .lend_button{background: url(/images/lend_btn.png)no-repeat; width: 109px; height: 40px; margin-top: -40px; margin-right: 20px; }

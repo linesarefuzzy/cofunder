@@ -29,6 +29,8 @@ class Loan < ActiveRecord::Base
   end
   
   def country; self.Division.Country end
+  def location; self.Cooperative.City + ', ' + self.country end
+  def signing_date_pretty; self.signing_date.strftime("%b %e, %Y") end
   
   def get_short_description(language_code="EN")
     return get_translation('Loans', 'ShortDescription', self.ID, language_code)
