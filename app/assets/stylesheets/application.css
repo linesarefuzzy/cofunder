@@ -208,7 +208,6 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 .active{list-style: none; color: #666; display: table-caption;}
 .completed{color: #555; display: table-caption; }
 .update-box {
-    width: 320px;
     position: relative;
     margin: 0 auto 15px auto;
     padding: 10px 15px;

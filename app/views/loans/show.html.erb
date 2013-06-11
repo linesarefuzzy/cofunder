@@ -19,10 +19,12 @@
       <div class="back_link pull-left">
         <a class="btn btn-link" href="<%= url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
       </div>
+      <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
         <button type="button" class="btn">English</button>
         <button type="button" class="btn">Spanish</button>
       </div>
+      -->
     </div>
   </div>
   
@@ -67,9 +69,9 @@
         <div class="description_box well">
           <h3 class="section-title">About This Project</h3>
           <div class="lend">
-          <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
-        </div>
-         <h5 class="coop_name">Current Report</h5> 
+            <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
+          </div>
+          <h5 class="coop_name">Current Report</h5> 
           <p class="copy_front_low detail_gutter">
             <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
           </p>
