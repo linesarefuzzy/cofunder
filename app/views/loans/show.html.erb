@@ -42,13 +42,13 @@
             <% end %>
 
             <!-- Carousel items -->
-            <div class="carousel-inner">
-              <% @pictures.each do |path| %>
-                <div class="item">
-                  <img class="img-polaroid picture" src="<%= path[:large] %>" alt="<%= @loan.name %>">
-                </div>
-              <% end %>
-            </div>
+            <a href="<%= url_for @loan %>/gallery">
+              <div class="carousel-inner">
+                <% @pictures.each do |path| %>
+                  <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
+                <% end %>
+              </div>
+            </a>
 
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>

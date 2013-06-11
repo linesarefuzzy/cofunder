@@ -189,13 +189,18 @@ font-weight: bold; font-size: 18px; margin-top:-6px;}
 
 /* LOAN DETAIL PAGE STYLES */
 .language {font-style: normal; font-weight: bold; color: #999; margin-right: 40px;}
-.picture { height: 340px; margin: auto; max-width:510px; }
 .detail_wrap{ background: transparent;  padding:6px; }
 .detail_page{margin-top:20px;}
 .detail_gutter{margin-left: 10px;}
 .detail_gutter .info {float: left; margin-right: 10px;}
 .detail_gutter .short_description {clear: both;}
 .carousel-control {top: 50%;}
+.carousel-inner .item {
+  height: 400px; 
+  background-position:center center; 
+  background-size:contain;
+  background-repeat:no-repeat;
+}
 .copy_front_low{max-width: 510px; color: #022121; font-weight: inherit; font-size: 13pt;}
 .lend_button{background: url(/images/lend_btn.png)no-repeat; width: 109px; height: 40px; margin-top: -40px; margin-right: 20px; }
 .short_description{color: #666;}
