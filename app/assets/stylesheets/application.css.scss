@@ -9,8 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require_tree .
  */
 
+@import "bootstrap";
+@import "bootstrap-responsive";
   
 body{
    background:#e5e5e5 url(/images/bg.png);
@@ -38,7 +41,6 @@ h1, h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
     background: rgba(0,0,0,0.1);
 }
 hr {
-   width:960px;
    margin-top: 20px;
     margin-bottom: 20px;
     border-top: 1px solid #e5e5e5;
@@ -163,7 +165,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .loan_list_item_wrap{background:#fdfdfd url(img/gray_tex.png) repeat top;}
 .coop_pic_sm {background-position:center center; background-size:cover; width:100px; height: 100px; margin: 5px; border:5px solid #e0e0e0; border-radius: 4px;}
 .coop_name{font-size: 14pt; font-weight: bold; color: #832828; margin-top:10px;}
-.about_coop{font-size: 11pt; letter-spacing: 0.1em; font-weight: 400; color#999; line-height: 13pt;}
+.about_coop{font-size: 11pt; letter-spacing: 0.1em; font-weight: 400; color: #999; line-height: 13pt;}
 .detail_link {color: #5F2B26; font-size: 10pt; margin-left: 8px; font-weight: bold; text-transform: uppercase; margin-right: 20px;}
 .sign_date{font-weight: inherit; font-variant: normal; color: #832828;}
 .facts{width: 170px; margin: 5px;}
@@ -172,7 +174,7 @@ a:hover.loan_list{background: rgba(0,0,0,.15);}
 .loan_info{color: #333; font-size: 11.6px; text-transform: none; margin-bottom: -15px;}
 .loan_status{color: #333; font-size: 11.6px; text-transform: none;}
 .payment_status{color: orange;}
-.lend_btn{float: right; margin-right: 10px; margin-top; -3px;}
+.lend_btn{float: right; margin-right: 10px; margin-top: -3px;}
 .loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
 .section-title{margin-left: 10px; font-size: 23px; font-weight: 400;  color: #444;}
 .loans{margin-top: 20px; background: transparent;}
@@ -274,4 +276,4 @@ li.loan {
 	color:white;
 }
 
-#footer {clear both; width: 940px; }
+#footer {clear: both; width: 940px; }
