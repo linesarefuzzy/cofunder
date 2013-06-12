@@ -2,53 +2,200 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* LOAN LIST STYLES */
-.loan_list {text-decoration: none; text-transform: uppercase; color: white; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
-font-weight: bold; font-size: 18px; padding:5px; margin-right: 34px;}
-a:hover.loan_list{background: rgba(0,0,0,.15);}
-.thum_holder{max-width: 130px;  }
-.loan_list_wrap{ height: auto;}
-.loan_list_item_wrap{background:#fdfdfd url(img/gray_tex.png) repeat top;}
-.coop_pic_sm {background-position:center center; background-size:cover; width:100px; height: 100px; margin: 5px; border:5px solid #e0e0e0; border-radius: 4px;}
-.coop_name{font-size: 14pt; font-weight: bold; color: #832828; margin-top:10px;}
-.about_coop{font-size: 11pt; letter-spacing: 0.1em; font-weight: 400; color: #999; line-height: 13pt;}
-.detail_link {color: #5F2B26; font-size: 10pt; margin-left: 8px; font-weight: bold; text-transform: uppercase; margin-right: 20px;}
-.sign_date{font-weight: inherit; font-variant: normal; color: #832828;}
-.facts{width: 170px; margin: 5px;}
-.money_sym{text-transform: uppercase; font-style: normal; font-weight: 500; color: #5F2B26;}
-.loan_amount{color:#612C28; font-weight: bold }
-.loan_info{color: #333; font-size: 11.6px; text-transform: none; margin-bottom: -15px;}
-.loan_status{color: #333; font-size: 11.6px; text-transform: none;}
-.payment_status{color: orange;}
-.lend_btn{float: right; margin-right: 10px; margin-top: -3px;}
-.loan_list_container { clear: both; background: #efefef; border: 1px solid #444;}
-.section-title{margin-left: 10px; font-size: 23px; font-weight: 400;  color: #444;}
-.loans{margin-top: 20px; background: transparent;}
-.pagination {text-align: center;}
-.filters div {float: left;}
-.filters .country {float: right;}
-.filters .country label {margin: 6px;}
+/** LOAN LIST STYLES **/
 
-/* LOAN DETAIL PAGE STYLES */
-.language {font-style: normal; font-weight: bold; color: #999; margin-right: 40px;}
-.detail_wrap{ background: transparent;  padding:6px; }
-.detail_page{margin-top:20px;}
-.detail_gutter{margin-left: 10px;}
-.detail_gutter .info {float: left; margin-right: 10px;}
-.detail_gutter .short_description {clear: both;}
-.carousel-control {top: 50%;}
-.carousel-inner .item {
-  height: 400px; 
-  background-position:center center; 
-  background-size:contain;
-  background-repeat:no-repeat;
+.loan_list {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+  margin-right: 34px;
 }
-.copy_front_low{max-width: 510px; color: #022121; font-weight: inherit; font-size: 13pt;}
-.lend_button{background: url(/images/lend_btn.png)no-repeat; width: 109px; height: 40px; margin-top: -40px; margin-right: 20px; }
-.short_description{color: #666;}
-.paso {color: #666; width: 350px;display: block; line-height: 1.3em; }
-.active{list-style: none; color: #666; display: table-caption;}
-.completed{color: #555; display: table-caption; }
+a:hover.loan_list {
+  background: rgba(0,0,0,.15);
+}
+.thum_holder {
+  max-width: 130px;
+}
+.loan_list_wrap {
+  height: auto;
+}
+.loan_list_item_wrap {
+  background: #fdfdfd url('img/gray_tex.png') repeat top;
+}
+li.loan {
+  margin: 25px 0;
+}
+
+.coop_pic_sm {
+  background-position: center center;
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border: 5px solid #e0e0e0;
+  border-radius: 4px;
+}
+.coop_name {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #832828;
+  margin-top: 10px;
+}
+.about_coop {
+  font-size: 11pt;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: #999;
+  line-height: 13pt;
+}
+.detail_link {
+  color: #5F2B26;
+  font-size: 10pt;
+  margin-left: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 20px;
+}
+.sign_date {
+  font-weight: inherit;
+  font-variant: normal;
+  color: #832828;
+}
+.facts {
+  width: 170px;
+  margin: 5px;
+}
+.money_sym {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  color: #5F2B26;
+}
+.loan_amount {
+  color: #612C28;
+  font-weight: bold
+}
+.loan_info {
+  color: #333;
+  font-size: 11.6px;
+  text-transform: none;
+  margin-bottom: -15px;
+}
+.loan_status {
+  color: #333;
+  font-size: 11.6px;
+  text-transform: none;
+}
+.payment_status {
+  color: orange;
+}
+.lend_btn {
+  float: right;
+  margin-right: 10px;
+  margin-top: -3px;
+}
+.loan_list_container {
+  clear: both;
+  background: #efefef;
+  border: 1px solid #444;
+}
+.section-title {
+  margin-left: 10px;
+  font-size: 23px;
+  font-weight: 400;
+  color: #444;
+}
+.loans {
+  margin-top: 20px;
+  background: transparent;
+}
+.pagination {
+  text-align: center;
+}
+.filters div {
+  float: left;
+}
+.filters .country {
+  float: right;
+}
+.filters .country label {
+  margin: 6px;
+}
+
+
+/** LOAN DETAIL PAGE STYLES **/
+
+.language {
+  font-style: normal;
+  font-weight: bold;
+  color: #999;
+  margin-right: 40px;
+}
+
+.detail_wrap {
+  background: transparent;
+  padding: 6px;
+}
+.detail_page {
+  margin-top: 20px;
+}
+.detail_gutter {
+  margin-left: 10px;
+}
+.detail_gutter .info {
+  float: left;
+  margin-right: 10px;
+}
+.detail_gutter .short_description {
+  clear: both;
+}
+
+.carousel-control {
+  top: 50%;
+}
+.carousel-inner .item {
+  height: 400px;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.copy_front_low {
+  max-width: 510px;
+  color: #022121;
+  font-weight: inherit;
+  font-size: 13pt;
+}
+.lend_button {
+  background: url('/images/lend_btn.png')no-repeat;
+  width: 109px;
+  height: 40px;
+  margin-top: -40px;
+  margin-right: 20px;
+}
+.short_description {
+  color: #666;
+}
+.paso {
+  color: #666;
+  width: 350px;
+  display: block;
+  line-height: 1.3em;
+}
+.active {
+  list-style: none;
+  color: #666;
+  display: table-caption;
+}
+.completed {
+  color: #555;
+  display: table-caption;
+}
+
 .update-box {
   position: relative;
   margin: 0 auto 15px auto;
