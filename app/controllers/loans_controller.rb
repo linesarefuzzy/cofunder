@@ -18,6 +18,7 @@ class LoansController < ApplicationController
   def show
     @loan = Loan.find(params[:id])
     @pictures = @loan.picture_paths(5) # for slideshow
+    @other_loans = Loan.status('all').joins(:Cooperative).where('Loans.ID <> ? AND Cooperatives.ID = ?', @loan.id, @loan.Cooperative.id).order("SigningDate DESC")
 
     respond_to do |format|
       format.html # show.html.erb

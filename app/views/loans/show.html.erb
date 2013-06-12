@@ -93,14 +93,24 @@
           <div class="tab-pane active" id="summary">
             <div class="detail_gutter short_description update-box update-box-color pull-left">
               <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
-              <div class="info"><i class="icon-time"></i> <%= @loan.signing_date_pretty %></div>
+              <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+              <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
               <div class="short_description"><%= @loan.get_short_description %></div>
             </div>
           </div>
 
           <div class="tab-pane" id="loanList">
-            <table class="table">
-              <tr class="success">
+            <table class="table" data-provides="rowlink">
+              <% if @other_loans.empty? %>
+                <p class="empty">No other loans to this cooperative.</p>
+              <% else @other_loans.each do |loan| %>
+                <tr>
+                  <td><%= link_to loan.signing_date_pretty, loan %></td>
+                  <td><%= loan.amount_formatted %></td>
+                  <td><%= loan.nivel='Prestamo Completo' ? 'Completed' : 'Active' %></td>
+                </tr>
+              <% end end %>
+              <!-- <tr class="success">
                 <td>1</td>
                 <td>Chilavert Artes Gráficas</td>
                 <td>May 23, 2011</td>
@@ -113,7 +123,7 @@
                 <td>March 10, 2011</td>
                 <td>AR$13,236</td>
                 <td>On Time</td>
-              </tr>
+              </tr> -->
             </table>
           </div>
 

@@ -122,6 +122,8 @@ iframe[seamless]{
             width: auto;
             margin-top: 10px;
 }
+.empty {font-weight: bold;}
+
 /* NAVIGATION STYLES*/
 .navbar-inner {border: none; background-image: none; background: transparent;}
 #nav a{color: #f3f3f3;}
