@@ -14,6 +14,7 @@
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import "bootstrap-rowlink";
   
 body {
   background: #e5e5e5 url('/images/bg.png') repeat;
@@ -44,6 +45,9 @@ iframe[seamless] {
 
 .errorlist {
   color: red;
+}
+.empty {
+  font-weight: bold;
 }
 
 
@@ -143,6 +147,6 @@ a:hover.nav_link {
 
 
 /* CSS TABLE ZEBRA */
-table tr:nth-child(even) {
+/*table tr:nth-child(even) {
   background: rgba(0,0,0,0.1);
-}
+}*/

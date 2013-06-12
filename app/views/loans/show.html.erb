@@ -68,11 +68,13 @@
 
         <div class="description_box well">
           <h3 class="section-title">About This Project</h3>
+          <!--
           <div class="lend">
             <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
           </div>
           <h5 class="coop_name">Current Report</h5> 
-          <p class="copy_front_low detail_gutter">
+          -->
+          <p class="loan_description detail_gutter">
             <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
           </p>
         </div>
@@ -85,46 +87,18 @@
         <ul class="nav nav-tabs">
           <li><a href="#summary" data-toggle="tab">Summary</a></li>
           <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-          <li><a href="#loanList" data-toggle="tab">Past Loans</a></li>
+          <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
           <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
         </ul>
         
         <div id="about_loan" class="tab-content">
-          <div class="tab-pane active" id="summary">
+          <div class="tab-pane" id="summary">
             <div class="detail_gutter short_description update-box update-box-color pull-left">
               <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
               <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
               <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
               <div class="short_description"><%= @loan.get_short_description %></div>
             </div>
-          </div>
-
-          <div class="tab-pane" id="loanList">
-            <table class="table" data-provides="rowlink">
-              <% if @other_loans.empty? %>
-                <p class="empty">No other loans to this cooperative.</p>
-              <% else @other_loans.each do |loan| %>
-                <tr>
-                  <td><%= link_to loan.signing_date_pretty, loan %></td>
-                  <td><%= loan.amount_formatted %></td>
-                  <td><%= loan.nivel='Prestamo Completo' ? 'Completed' : 'Active' %></td>
-                </tr>
-              <% end end %>
-              <!-- <tr class="success">
-                <td>1</td>
-                <td>Chilavert Artes Gráficas</td>
-                <td>May 23, 2011</td>
-                <td>AR$7,236</td>
-                <td>On Time</td>
-              </tr>
-              <tr class="success">
-                <td>2</td>
-                <td>Chilavert Artes Gráficas</td>
-                <td>March 10, 2011</td>
-                <td>AR$13,236</td>
-                <td>On Time</td>
-              </tr> -->
-            </table>
           </div>
 
           <div class="tab-pane" id="timeline">
@@ -154,8 +128,27 @@
             </ul>
           </div>
       
-          <div class="tab-pane" id="loanList">
-            Other Loans to this Co-op
+          <div class="tab-pane" id="other_loans">
+            <h4>All Loans to this Co-op</h4>
+            <% if @other_loans.empty? %>
+              <p class="empty">No other loans to this cooperative.</p>
+            <% else %>
+              <table class="table other_loans" data-provides="rowlink">
+                <% @other_loans.each do |loan| %>
+                  <tr class="<%= 'selected' if loan.id == @loan.id %>">
+                    <td>
+                      <% if loan.id == @loan.id %>
+                        <%= loan.signing_date_pretty %>
+                      <% else %>
+                        <%= link_to loan.signing_date_pretty, loan, :class => "rowlink" %>
+                      <% end %>
+                    </td>
+                    <td><%= loan.amount_formatted %></td>
+                    <td><%= loan.status %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% end %>
           </div>
 
         </div><!-- /#about_loan -->

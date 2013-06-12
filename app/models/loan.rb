@@ -32,6 +32,13 @@ class Loan < ActiveRecord::Base
   def location; self.Cooperative.City + ', ' + self.country end
   def signing_date_pretty; self.signing_date.strftime("%b %e, %Y") end
   
+  def status
+    case self.nivel
+      when 'Prestamo Activo' then 'Active'
+      when 'Prestamo Completo' then 'Completed'
+    end
+  end
+  
   def get_short_description(language_code="EN")
     return get_translation('Loans', 'ShortDescription', self.ID, language_code)
   end

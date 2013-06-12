@@ -164,14 +164,14 @@ li.loan {
   background-repeat: no-repeat;
 }
 
-.copy_front_low {
+.loan_description {
   max-width: 510px;
   color: #022121;
   font-weight: inherit;
   font-size: 13pt;
 }
 .lend_button {
-  background: url('/images/lend_btn.png')no-repeat;
+  background: url('/images/lend_btn.png') no-repeat;
   width: 109px;
   height: 40px;
   margin-top: -40px;
@@ -243,4 +243,15 @@ li.loan {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.other_loans {
+  .selected {
+    background-color: rgb(243, 243, 243);
+    font-weight: bold;
+    /*color: rgb(164,164,164);*/
+  }
+  /*tr.rowlink:hover {
+      background-color: #CC6;
+    }*/
 }
