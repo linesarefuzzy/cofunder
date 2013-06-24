@@ -15,3 +15,11 @@
 //= require bootstrap
 //= require bootstrap-rowlink
 //= require_tree .
+
+$(function () {
+  $('.currency_symbol').tooltip({
+    placement:'left',
+    delay: 500,
+    container: 'body'
+  })
+})

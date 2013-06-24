@@ -1,5 +1,5 @@
 class Loan < ActiveRecord::Base
-  include Legacy, TranslationModule, MediaModule, ActionView::Helpers::NumberHelper
+  include Legacy, TranslationModule, MediaModule
 
   belongs_to :Cooperative, :foreign_key => 'CooperativeID'
   belongs_to :Division, :foreign_key => 'SourceDivision'
@@ -56,9 +56,7 @@ class Loan < ActiveRecord::Base
   end
     
   def amount_formatted
-    symbol = Currency.where(:Country => self.country).first.Symbol
-    symbol = symbol.sub(/\$/, ' $') # add space before $ (pretty)
-    return number_to_currency(self.Amount, :unit => symbol)
+    return currency_format(self.amount, self.country)
   end
   
   def project_events(order_by="Completed IS NULL, Completed, Date")
