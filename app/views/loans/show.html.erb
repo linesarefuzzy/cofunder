@@ -88,7 +88,9 @@
           <li><a href="#summary" data-toggle="tab">Summary</a></li>
           <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
           <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
-          <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
+          <% unless @repayments.empty? %>
+            <li><a href="#payments" data-toggle="tab">Payments</a></li>
+          <% end %>
         </ul>
         
         <div id="about_loan" class="tab-content">
@@ -129,10 +131,10 @@
           </div>
       
           <div class="tab-pane" id="other_loans">
-            <h4>All Loans to this Co-op</h4>
-            <% if @other_loans.empty? %>
+            <% if @other_loans.count == 1 %>
               <p class="empty">No other loans to this cooperative.</p>
             <% else %>
+              <h4>All Loans to this Co-op</h4>
               <table class="table other_loans" data-provides="rowlink">
                 <% @other_loans.each do |loan| %>
                   <tr class="<%= 'selected' if loan.id == @loan.id %>">
@@ -150,6 +152,24 @@
               </table>
             <% end %>
           </div>
+          
+          <% unless @repayments.empty? %>
+            <div class="tab-pane" id="payments">
+              <h4>Payment Schedule</h4>
+              <table class="table repayments">
+                <!-- <tr>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr> -->
+                <% @repayments.each do |pmt| %>
+                  <tr class="<%= pmt.status %>">
+                    <td><%= pmt.status_date %></td>
+                    <td><%= pmt.amount_formatted %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
 
         </div><!-- /#about_loan -->
       </div><!-- /.row -->

@@ -257,3 +257,15 @@ li.loan {
       background-color: #CC6;
     }*/
 }
+
+.repayments {
+  .overdue td {
+    background-color: #f2dede;
+  }
+  .paid td {
+    background-color: #dff0d8;
+  }
+  .due td {
+    /*background-color: #d9edf7;*/
+  }
+}

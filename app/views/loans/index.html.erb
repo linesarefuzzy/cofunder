@@ -38,7 +38,9 @@
           <td>
             <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
             <p class="about_coop"><%= loan.get_short_description %></p>
-            <p class="detail_link pull-right"><a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a></p>
+            <p class="detail_link pull-right">
+              <a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a>
+            </p>
           </td>
           <td> 
             <p class="facts">

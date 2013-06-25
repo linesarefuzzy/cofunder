@@ -3,6 +3,7 @@ class Loan < ActiveRecord::Base
 
   belongs_to :Cooperative, :foreign_key => 'CooperativeID'
   belongs_to :Division, :foreign_key => 'SourceDivision'
+  has_many :repayments, :foreign_key => 'LoanID'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
 
   scope :country, ->(country) { 
