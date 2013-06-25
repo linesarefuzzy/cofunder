@@ -6,11 +6,11 @@ module TranslationModule
       :RemoteID => id
     )
     begin
-      # content = translations.joins(:Language).where(:languages => {:Code => language_code}).first.TranslatedContent
-      content = translations.joins(:Language).where('Languages.Code' => language_code).first.TranslatedContent
+      # content = translations.joins(:language).where(:languages => {:Code => language_code}).first.TranslatedContent
+      content = translations.joins(:language).where('Languages.Code' => language_code).first.TranslatedContent
     rescue NoMethodError
       begin
-        content = translations.joins(:Language).order('Languages.Priority').first.TranslatedContent
+        content = translations.joins(:language).order('Languages.Priority').first.TranslatedContent
       rescue NoMethodError
         return ''
       end

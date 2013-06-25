@@ -18,7 +18,7 @@ class LoansController < ApplicationController
   def show
     @loan = Loan.find(params[:id])
     @pictures = @loan.picture_paths(5) # for slideshow
-    @other_loans = @loan.Cooperative.Loans.status('all').order("SigningDate DESC")
+    @other_loans = @loan.cooperative.loans.status('all').order("SigningDate DESC")
     @repayments = @loan.repayments.order('DateDue')
 
     respond_to do |format|

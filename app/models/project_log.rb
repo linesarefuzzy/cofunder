@@ -1,8 +1,8 @@
 class ProjectLog < ActiveRecord::Base
   include Legacy, ProjectModule, TranslationModule
   
-  belongs_to :Member, :foreign_key => 'MemberID'
-  belongs_to :Paso, :foreign_key => 'PasoID'
+  belongs_to :member, :foreign_key => 'MemberID'
+  belongs_to :paso, :foreign_key => 'PasoID'
   attr_accessible :AdditionalNotes, :Date, :Progress, :ProjectID, :ProjectTable
   
   def project; get_project(self); end

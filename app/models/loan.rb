@@ -1,13 +1,13 @@
 class Loan < ActiveRecord::Base
   include Legacy, TranslationModule, MediaModule
 
-  belongs_to :Cooperative, :foreign_key => 'CooperativeID'
-  belongs_to :Division, :foreign_key => 'SourceDivision'
+  belongs_to :cooperative, :foreign_key => 'CooperativeID'
+  belongs_to :division, :foreign_key => 'SourceDivision'
   has_many :repayments, :foreign_key => 'LoanID'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
 
   scope :country, ->(country) { 
-    joins(:Division).where('Divisions.Country' => country) unless country == 'all' 
+    joins(:division).where('Divisions.Country' => country) unless country == 'all' 
   }
   scope :status, ->(status) {
     where(:Nivel => case status
@@ -25,13 +25,13 @@ class Loan < ActiveRecord::Base
   end
   
   def name
-    if self.Cooperative then "Project with " + self.Cooperative.Name 
+    if self.cooperative then "Project with " + self.cooperative.Name 
     else "Project " + self.ID.to_s end
   end
   
-  def country; self.Division.Country end
-  def location; self.Cooperative.City + ', ' + self.country end
-  def signing_date_pretty; self.signing_date.strftime("%b %e, %Y") end
+  def country; self.division.Country; end
+  def location; self.cooperative.City + ', ' + self.country; end
+  def signing_date_pretty; self.signing_date.strftime("%b %e, %Y"); end
   
   def status
     case self.nivel
@@ -49,7 +49,7 @@ class Loan < ActiveRecord::Base
   end
   
   def picture_paths(limit=1)
-    return get_picture_paths('Loans', self.ID, limit) || get_picture_paths('Cooperatives', self.Cooperative.ID, limit)
+    return get_picture_paths('Loans', self.ID, limit) || get_picture_paths('Cooperatives', self.cooperative.ID, limit)
   end
   
   def main_picture

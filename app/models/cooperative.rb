@@ -1,5 +1,5 @@
 class Cooperative < ActiveRecord::Base
   include Legacy
   attr_accessible :Name
-  has_many :Loans, :foreign_key => 'CooperativeID'
+  has_many :loans, :foreign_key => 'CooperativeID'
 end
