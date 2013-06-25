@@ -37,19 +37,20 @@
           </td>
           <td>
             <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
-            <p class="about_coop"><%= loan.get_short_description %><br/>
-            <a class="detail_link pull-right" href="#">More Details</a>
-            </p>
+            <p class="about_coop"><%= loan.get_short_description %></p>
+            <p class="detail_link pull-right"><a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a></p>
           </td>
           <td> 
             <p class="facts">
               <div class="location"><%= loan.location %>
               <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
               <div class="loan_amount"><%= loan.amount_formatted %></div>
+              <!--
               <p class="progress  progress-danger" style="background:#444;">  
                 <span class="bar" data-percentage="75" style="width: 75%;"></span>  
               </p>  
               <p><button class="lend_btn btn" type="button">Add Loan</button></p>
+              -->
             </p> 
           </td>
         </tr><!-- end lend item from loans list.-->

@@ -53,11 +53,10 @@ li.loan {
   line-height: 13pt;
 }
 .detail_link {
-  color: #5F2B26;
   font-size: 10pt;
   margin-left: 8px;
   font-weight: bold;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-right: 20px;
 }
 .sign_date {
@@ -156,6 +155,9 @@ li.loan {
 
 .carousel-control {
   top: 50%;
+  &, &:link, &:visited, &:active, &:hover {
+    color: white; 
+  }
 }
 .carousel-inner .item {
   height: 400px;

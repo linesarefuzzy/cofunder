@@ -15,6 +15,8 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "bootstrap-rowlink";
+
+$tww_red: #852929;
   
 body {
   background: #e5e5e5 url('/images/bg.png') repeat;
@@ -23,8 +25,10 @@ body {
 }
 a:link, a:visited, a:active {
   /*color: #f3f3f3;*/
+  color: $tww_red;
 }
 a:hover {
+  color: rgb(73, 18, 13);
   text-decoration: none;
 }
 a.currency_symbol {
@@ -149,6 +153,15 @@ a:hover.nav_link {
   color: white;
 }
 
+.nav-pills a:hover {
+  color: $tww_red;
+}
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  color: white;
+  background-color: $tww_red;
+}
 
 /* CSS TABLE ZEBRA */
 /*table tr:nth-child(even) {
