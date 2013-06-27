@@ -35,7 +35,7 @@ h1, h2, h3 {font-size: 20px; font-weight: bolder; color:#ab0a19;}
 }
 /* CSS TABLE ZEBRA */
  table tr:nth-child(even) {
-    background: rgba(0,0,0,0.1);
+    background: rgba(255,255,0,0.1);
 }
 hr {
    width:960px;
@@ -123,7 +123,7 @@ iframe[seamless]{
             margin-top: 10px;
 }
 /* NAVIGATION STYLES*/
-.navbar-inner {border: none; background-image: none; background: transparent;}
+
 #nav a{color: #f3f3f3;}
 #nav .sign_in{color: #444;}
 .custom > li > a:hover {
