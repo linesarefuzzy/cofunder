@@ -248,9 +248,12 @@ li.loan {
 }
 
 .other_loans {
+  .rowlink {
+    /*background-color: #f3f3f3;*/
+  }
   .selected {
-    background-color: rgb(243, 243, 243);
-    font-weight: bold;
+    background-color: #f3f3f3;
+    /*font-weight: bold;*/
     /*color: rgb(164,164,164);*/
   }
   /*tr.rowlink:hover {
