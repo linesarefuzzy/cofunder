@@ -122,6 +122,7 @@ li.loan {
   margin: 6px;
 }
 
+/* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 767px) {
   .no-more-tables {
     &, thead, tbody, th, td, tr { 
@@ -130,13 +131,9 @@ li.loan {
       padding: 0;
     }
     td { 
-      /* Behave  like a "row" */
       border: none;
-      /*border-bottom: 1px solid #eee; */
       position: relative;
       padding: 15px 15px 0 15px;
-      white-space: normal;
-      text-align:left;
     }
     td.loan_item_facts {
       padding-bottom: 15px;
@@ -145,8 +142,8 @@ li.loan {
       margin: 0;
     }
   }
-  /*.no-more-tables tr { border: 1px solid #ccc; }*/
 }
+
 
 /** LOAN DETAIL PAGE STYLES **/
 
