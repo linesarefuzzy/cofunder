@@ -27,24 +27,24 @@
       <div class="span12 empty">No loans found.</div>
     <% else %>
       <div class="span12 loans">
-        <table class="table loan_list_wrap table-bordered">
+        <table class="table loan_list_wrap table-bordered no-more-tables">
           <% @loans.each do |loan| %>
           <tr class="loans_items well loan_list_item_wrap" style="opacity: 0.9;"><!-- start lend item from loans list.-->
-            <td class="loan_item thum_holder">
+            <td class="loan_item_thumb">
               <% if loan.main_picture %>
                 <%= link_to loan do %>
                   <div class="coop_pic_sm" style="background-image: url('<%= loan.main_picture[:thumb] %>');"></div>
                 <% end %>
               <% end %>
             </td>
-            <td>
+            <td class="loan_item_desc">
               <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
               <p class="about_coop"><%= loan.get_short_description %></p>
               <p class="detail_link pull-right">
                 <a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a>
               </p>
             </td>
-            <td> 
+            <td class="loan_item_facts"> 
               <p class="facts">
                 <div class="location"><%= loan.location %>
                 <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
