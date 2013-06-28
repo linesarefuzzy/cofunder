@@ -1,21 +1,14 @@
 Tww::Application.routes.draw do
 
   devise_for :users
-  
   devise_scope :user do 
     match 'profile' => 'devise/registrations#show' 
   end
 
-  resources :translations
+  get 'embedded/loans', to: 'loans#index', embedded: true
+  get 'embedded/loans/:id', to: 'loans#show', embedded: true
 
-
-  resources :cooperatives
-
-
-  resources :loans
-
-
-  get "home/index"
+  resources :loans, only: [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

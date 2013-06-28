@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row span_12 loans">
-    <h1 class="section-title">Loans</h1>
+    <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
     <div class="filters">
       <%= form_tag({}, {:method => "get"}) do %>
         <!-- <%= hidden_field_tag(:status, params[:status]) if params[:status] && params[:status] != 'active' %> -->
@@ -21,9 +21,9 @@
           </div>
         </div>
       <% end %>
-    </div>
+    </div><!-- /.filters -->
     <% if @loans.empty? %>
-      <b class="empty">No loans found.</b>
+      <p class="empty">No loans found.</p>
     <% else %>
       <table class="table loan_list_wrap table-bordered">
         <% @loans.each do |loan| %>
@@ -31,25 +31,28 @@
           <td class="loan_item thum_holder">
             <% if loan.main_picture %>
               <%= link_to loan do %>
-                <img class="coop_pic_sm img-rounded" src="<%= loan.main_picture[:thumb] %>" 
-                  alt="<%=loan.name%>">
+                <div class="coop_pic_sm" style="background-image: url('<%= loan.main_picture[:thumb] %>');"></div>
               <% end %>
             <% end %>
           </td>
           <td>
             <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
-            <p class="about_coop"><%= loan.get_short_description %><br/>
-            <a class="detail_link pull-right" href="#">More Details</a>
+            <p class="about_coop"><%= loan.get_short_description %></p>
+            <p class="detail_link pull-right">
+              <a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a>
             </p>
           </td>
           <td> 
             <p class="facts">
-              <span class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></span><br/>
-              <span class="loan_ammount"><%= loan.amount_formatted %></span><br/>
+              <div class="location"><%= loan.location %>
+              <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
+              <div class="loan_amount"><%= loan.amount_formatted %></div>
+              <!--
               <p class="progress  progress-danger" style="background:#444;">  
                 <span class="bar" data-percentage="75" style="width: 75%;"></span>  
               </p>  
               <p><button class="lend_btn btn" type="button">Add Loan</button></p>
+              -->
             </p> 
           </td>
         </tr><!-- end lend item from loans list.-->

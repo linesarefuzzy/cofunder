@@ -6,21 +6,33 @@ class LoansController < ApplicationController
     @loans = Loan.filter_by_params(params).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
 
     @countries = Country.order(:Name).pluck(:Name)
+    
+    if params[:embedded] 
+      _layout = 'embedded'
+      @embedded = true
+    else _layout = 'application' end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: _layout } # index.html.erb
       format.json { render :json => @loans }
     end
   end
-
+  
   # GET /loans/1
   # GET /loans/1.json
   def show
     @loan = Loan.find(params[:id])
     @pictures = @loan.picture_paths(5) # for slideshow
+    @other_loans = @loan.cooperative.loans.status('all').order("SigningDate DESC")
+    @repayments = @loan.repayments.order('DateDue')
+
+    if params[:embedded] 
+      _layout = 'embedded'
+      @embedded = true
+    else _layout = 'application' end
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render layout: _layout } # show.html.erb
       format.json { render :json => @loan }
     end
   end

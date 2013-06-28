@@ -47,8 +47,9 @@ gem "therubyracer", :require => 'v8'
 # Devise (user auth)
 gem 'devise'
 
-gem 'twitter-bootstrap-rails'
-# gem 'bootstrap-sass', '~> 2.3.1.0'
+# Twitter Bootstrap
+# gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 2.3.1.0'
 
 # Pagination
 gem "will_paginate", "~> 3.0.4"
@@ -56,3 +57,5 @@ gem 'will_paginate-bootstrap'
 
 # Remove UTF8 parameter from GET forms
 gem 'utf8_enforcer_workaround'
+
+gem 'haml-rails'

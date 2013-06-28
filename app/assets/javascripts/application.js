@@ -11,6 +11,15 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require bootstrap.js
 //= require jquery_ujs
+//= require bootstrap
+//= require bootstrap-rowlink
 //= require_tree .
+
+$(function () {
+  $('.currency_symbol').tooltip({
+    placement:'left',
+    delay: 500,
+    container: 'body'
+  })
+})
