@@ -17,9 +17,6 @@
 a:hover.loan_list {
   background: rgba(0,0,0,.15);
 }
-.thum_holder {
-  max-width: 130px;
-}
 .loan_list_wrap {
   height: auto;
 }
@@ -108,7 +105,7 @@ li.loan {
   font-weight: 400;
   color: #444;
 }
-.loans {
+.filters {
   margin-top: 20px;
   background: transparent;
 }
@@ -125,6 +122,31 @@ li.loan {
   margin: 6px;
 }
 
+@media (max-width: 767px) {
+  .no-more-tables {
+    &, thead, tbody, th, td, tr { 
+      display: block; 
+      border: none;
+      padding: 0;
+    }
+    td { 
+      /* Behave  like a "row" */
+      border: none;
+      /*border-bottom: 1px solid #eee; */
+      position: relative;
+      padding: 15px 15px 0 15px;
+      white-space: normal;
+      text-align:left;
+    }
+    td.loan_item_facts {
+      padding-bottom: 15px;
+    }
+    .coop_pic_sm {
+      margin: 0;
+    }
+  }
+  /*.no-more-tables tr { border: 1px solid #ccc; }*/
+}
 
 /** LOAN DETAIL PAGE STYLES **/
 

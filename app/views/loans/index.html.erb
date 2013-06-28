@@ -1,11 +1,10 @@
 <% content_for :title, "Loans" %>
 
 <div class="container">
-  <div class="row span_12 loans">
+  <div class="row filters">
     <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
-    <div class="filters">
+    <div class="span12">
       <%= form_tag({}, {:method => "get"}) do %>
-        <!-- <%= hidden_field_tag(:status, params[:status]) if params[:status] && params[:status] != 'active' %> -->
         <div class="show">
           <ul class="nav nav-pills">
             <li class="disabled"><a href="#">Show:</a></li>
@@ -21,43 +20,47 @@
           </div>
         </div>
       <% end %>
-    </div><!-- /.filters -->
+    </div><!-- /.span12 -->
+  </div><!-- /.filters -->
+  <div class="row">
     <% if @loans.empty? %>
-      <p class="empty">No loans found.</p>
+      <div class="span12 empty">No loans found.</div>
     <% else %>
-      <table class="table loan_list_wrap table-bordered">
-        <% @loans.each do |loan| %>
-        <tr class="loans_items well loan_list_item_wrap" style="opacity: 0.9;"><!-- start lend item from loans list.-->
-          <td class="loan_item thum_holder">
-            <% if loan.main_picture %>
-              <%= link_to loan do %>
-                <div class="coop_pic_sm" style="background-image: url('<%= loan.main_picture[:thumb] %>');"></div>
+      <div class="span12 loans">
+        <table class="table loan_list_wrap table-bordered no-more-tables">
+          <% @loans.each do |loan| %>
+          <tr class="loans_items well loan_list_item_wrap" style="opacity: 0.9;"><!-- start lend item from loans list.-->
+            <td class="loan_item_thumb">
+              <% if loan.main_picture %>
+                <%= link_to loan do %>
+                  <div class="coop_pic_sm" style="background-image: url('<%= loan.main_picture[:thumb] %>');"></div>
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-          <td>
-            <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
-            <p class="about_coop"><%= loan.get_short_description %></p>
-            <p class="detail_link pull-right">
-              <a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a>
-            </p>
-          </td>
-          <td> 
-            <p class="facts">
-              <div class="location"><%= loan.location %>
-              <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
-              <div class="loan_amount"><%= loan.amount_formatted %></div>
-              <!--
-              <p class="progress  progress-danger" style="background:#444;">  
-                <span class="bar" data-percentage="75" style="width: 75%;"></span>  
-              </p>  
-              <p><button class="lend_btn btn" type="button">Add Loan</button></p>
-              -->
-            </p> 
-          </td>
-        </tr><!-- end lend item from loans list.-->
-        <% end %>
-      </table>
+            </td>
+            <td class="loan_item_desc">
+              <h5 class="coop_name"><%= link_to loan.name, loan %></h5>
+              <p class="about_coop"><%= loan.get_short_description %></p>
+              <p class="detail_link pull-right">
+                <a href="<%= url_for loan %>">More details <i class="icon-chevron-right"></i></a>
+              </p>
+            </td>
+            <td class="loan_item_facts"> 
+              <p class="facts">
+                <div class="location"><%= loan.location %>
+                <div class="sign_date"><%= loan.SigningDate ? loan.SigningDate.to_s(:long) : '' %></div>
+                <div class="loan_amount"><%= loan.amount_formatted %></div>
+                <!--
+                <p class="progress  progress-danger" style="background:#444;">  
+                  <span class="bar" data-percentage="75" style="width: 75%;"></span>  
+                </p>  
+                <p><button class="lend_btn btn" type="button">Add Loan</button></p>
+                -->
+              </p> 
+            </td>
+          </tr><!-- end lend item from loans list.-->
+          <% end %>
+        </table>
+      </div>
     <% end %>
     
     <%= will_paginate @loans, :renderer => BootstrapPagination::Rails %>
