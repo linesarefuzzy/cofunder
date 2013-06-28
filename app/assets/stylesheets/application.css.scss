@@ -14,6 +14,7 @@
  */
 
 @import "bootstrap";
+body {padding-top: 40px;}
 @import "bootstrap-responsive";
 @import "bootstrap-rowlink";
 
@@ -23,6 +24,7 @@ body {
   background: #e5e5e5 url('/images/bg.png') repeat;
   -webkit-font-smoothing: antialiased;
   color: #333435;
+  
 }
 a:link, a:visited, a:active {
   /*color: #f3f3f3;*/
@@ -77,23 +79,14 @@ iframe[seamless] {
   font-weight: 600;
   text-transform: uppercase;
   color: #262626;
+  z-index: -200;
 }
 h1, h2, h3 {
   /*font-size: 20px;*/
   font-weight: bolder;
   color: #ab0a19;
 }
-#header_group {
-  background-image: url('/images/navbar.png');
-  background-repeat: repeat-x;
-  background-position: top;
-  height: 60px;
-  padding: 0;
-}
-#header_inner_wrap {
-  margin: 0 auto;
-  width: 960px;
-}
+
 #brand {
   position: absolute;
   margin-top: -5px;
@@ -105,17 +98,20 @@ h1, h2, h3 {
 
 
 /* NAVIGATION STYLES*/
-#nav {
+.nav {
   float: right;
   height: auto;
   width: auto;
   margin-top: 10px;
 }
-#nav a {
+.nav a {
   color: #f3f3f3;
 }
-#nav .sign_in {
+.nav .sign_in {
   color: #444;
+}
+.nav-collapse .collapse{
+  background: #f8f8f8;
 }
 .custom > li > a:hover {
   background-color: transparent;
@@ -132,6 +128,17 @@ h1, h2, h3 {
   vertical-align: baseline;
 }
 
+.navbar .navbar-inner{
+  background-image: url('/images/navbar.png');
+  background-repeat: repeat-x;
+  background-position: top;
+  height: 60px;
+  padding: 0;
+}
+
+.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .nav > li > a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+background: none;
+}
 .nav_link {
   text-decoration: none;
   text-transform: uppercase;
@@ -141,9 +148,10 @@ h1, h2, h3 {
   font-size: 18px;
   padding: 5px;
   margin-right: 34px;
+  color: #f3f3f3;
 }
 a:hover.nav_link {
-  background: rgba(0,0,0,.15);
+  background: rgba(0,0,0,.05);
 }
 .usermenu a.dropdown-toggle {
   color: white;
@@ -163,3 +171,41 @@ a:hover.nav_link {
 /*table tr:nth-child(even) {
   background: rgba(255,255,0,0.1);
 }*/
+/* RESPONSIVE STYLES*/
+    /* Large desktop */
+    @media (min-width: 1200px) {  }
+     
+    /* Portrait tablet to landscape and desktop */
+    @media (min-width: 768px) and (max-width: 979px) {  }
+     
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {  }
+     
+    /* Landscape phones and down */
+    @media (max-width: 480px) {
+      .navbar .navbar-inner ul{
+  width: 100%;
+  background: #f8f8f8;
+}
+.navbar .navbar-inner li{
+  text-align: left;
+  border-bottom: 1px solid #e9e9e9;
+}
+.home_board {
+  float: none; 
+
+	width: 100%;
+	height: 100%;
+}
+.vdio iframe {
+        float: none; 
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+    }
+  
