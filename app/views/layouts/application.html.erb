@@ -15,32 +15,6 @@
 
 <body>
   <div id="header_group">
-<<<<<<< HEAD
-    <div id="header_inner_wrap">  
-    <div id="brand"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></div>
-   <nav id="nav" class="nav-ui">
-	<ul class="nav-ui">
-		<li class="nav-item current"><a class="nav_link" href="#">What We Do</a></li>
-		<li class="nav-item"><a class="nav_link" href="#">Where We Work</a></li>
-		<li class="nav-item"><a class="loan_list nav_link" href="<%= url_for loans_path %>">Find Loans</a></li>
-		 <!-- <li class="nav-item"><% link_to "Find Loans", loans_path, :class=>"loan_list" %></li> -->
-        <% if user_signed_in? %>
-        <li class="nav-item dropdown usermenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-            <%= current_user.get_full_name %>
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><%= link_to "Profile", edit_user_registration_path %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-          </ul>
-        </li>
-        <% else %>
-        <li class="nav-item"><a class="btn sign_in" href="<%= url_for new_user_session_path %>">Sign In</a></li>
-        <% end %>
-	</ul>
-</nav>
-=======
     <div id="header_inner_wrap">
       <div id="brand"><a href="/"><%= image_tag "/images/tww_logo.png", :alt => "The Working World" %></a></div>
       <nav id="nav" class="">
@@ -64,7 +38,6 @@
           <% end %>
         </ul>
       </nav>
->>>>>>> cff4666370e57acd741d377dd6ac68753375871c
     </div>
   </div> 
   <% if notice %>
