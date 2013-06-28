@@ -105,11 +105,6 @@ h1, h2, h3 {
 
 
 /* NAVIGATION STYLES*/
-.navbar-inner {
-  border: none;
-  background-image: none;
-  background: transparent;
-}
 #nav {
   float: right;
   height: auto;
@@ -166,5 +161,5 @@ a:hover.nav_link {
 
 /* CSS TABLE ZEBRA */
 /*table tr:nth-child(even) {
-  background: rgba(0,0,0,0.1);
+  background: rgba(255,255,0,0.1);
 }*/

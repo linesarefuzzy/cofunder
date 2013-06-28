@@ -17,17 +17,19 @@
   <div class="row">
     <div class="span7">
       <div class="back_link pull-left">
-        <a style="color: #B3492C;" class="btn btn-link" href="<% url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
+        <a class="btn btn-link" href="<%= url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
       </div>
+      <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
         <button type="button" class="btn">English</button>
         <button type="button" class="btn">Spanish</button>
       </div>
+      -->
     </div>
   </div>
   
   <div class="row">
-    <div class="span7">
+    <div class="span7 main_content">
       <div class="detail_wrap">
         <h1 class="section-title"><%= @loan.name %></h1>
        
@@ -42,13 +44,13 @@
             <% end %>
 
             <!-- Carousel items -->
-            <div class="carousel-inner">
-              <% @pictures.each do |path| %>
-                <div class="item">
-                  <img class="img-polaroid picture" src="<%= path[:large] %>" alt="<%= @loan.name %>">
-                </div>
-              <% end %>
-            </div>
+            <a href="<%= url_for @loan %>/gallery">
+              <div class="carousel-inner">
+                <% @pictures.each do |path| %>
+                  <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
+                <% end %>
+              </div>
+            </a>
 
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>
@@ -66,52 +68,39 @@
 
         <div class="description_box well">
           <h3 class="section-title">About This Project</h3>
+          <!--
           <div class="lend">
-          <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
-        </div>
-         <h5 class="coop_name">Current Report</h5> 
-          <p class="copy_front_low detail_gutter">
+            <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
+          </div>
+          <h5 class="coop_name">Current Report</h5> 
+          -->
+          <p class="loan_description detail_gutter">
             <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
           </p>
         </div>
      
       </div><!-- /.detail_wrap -->
-    </div><!-- /.span7 -->
+    </div><!-- /.span7.main_content -->
 
-    <div class="loan_calendar span5 ">
-      <div class="row pull-right">
+    <div class="span5 sidebar">
+      <div class="row">
         <ul class="nav nav-tabs">
           <li><a href="#summary" data-toggle="tab">Summary</a></li>
           <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-          <li><a href="#loanList" data-toggle="tab">Past Loans</a></li>
-          <!-- <li><a href="<%= url_for @loan %>/photos">Photos</a></li> -->
+          <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
+          <% unless @repayments.empty? %>
+            <li><a href="#payments" data-toggle="tab">Payments</a></li>
+          <% end %>
         </ul>
+        
         <div id="about_loan" class="tab-content">
-
-          <div class="tab-pane active" id="summary">
-            <p class="detail_gutter short_description update-box update-box-color"><br/>
-          <span><i class="icon-map-marker"><strong style="margin-left: 16px; font-style: normal;"><%= @loan.country %></strong></i></span>
-          <span style="margin-left: 100px;"><i class="icon-time"><strong style="margin-left: 16px; font-style: normal;"><%= @SigningDate %></strong></i></span><br/>
-              <span><%= @loan.get_short_description %></span></p>
-          </div>
-
-          <div class="tab-pane" id="loanList">
-            <table class="table">
-              <tr class="success">
-                <td>1</td>
-                <td>Chilavert Artes Gráficas</td>
-                <td>May 23, 2011</td>
-                <td>AR$7,236</td>
-                <td>On Time</td>
-              </tr>
-              <tr class="success">
-                <td>2</td>
-                <td>Chilavert Artes Gráficas</td>
-                <td>March 10, 2011</td>
-                <td>AR$13,236</td>
-                <td>On Time</td>
-              </tr>
-            </table>
+          <div class="tab-pane" id="summary">
+            <div class="detail_gutter short_description update-box update-box-color pull-left">
+              <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
+              <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+              <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
+              <div class="short_description"><%= @loan.get_short_description %></div>
+            </div>
           </div>
 
           <div class="tab-pane" id="timeline">
@@ -141,12 +130,50 @@
             </ul>
           </div>
       
-          <div class="tab-pane" id="loanList">
-            Other Loans to this Co-op
+          <div class="tab-pane" id="other_loans">
+            <% if @other_loans.count == 1 %>
+              <p class="empty">No other loans to this cooperative.</p>
+            <% else %>
+              <h4>All Loans to this Co-op</h4>
+              <table class="table other_loans" data-provides="rowlink">
+                <% @other_loans.each do |loan| %>
+                  <tr class="<%= 'selected' if loan.id == @loan.id %>">
+                    <td>
+                      <% if loan.id == @loan.id %>
+                        <%= loan.signing_date_pretty %>
+                      <% else %>
+                        <%= link_to loan.signing_date_pretty, loan, :class => "rowlink" %>
+                      <% end %>
+                    </td>
+                    <td><%= loan.amount_formatted %></td>
+                    <td><%= loan.status %></td>
+                  </tr>
+                <% end %>
+              </table>
+            <% end %>
           </div>
+          
+          <% unless @repayments.empty? %>
+            <div class="tab-pane" id="payments">
+              <h4>Payment Schedule</h4>
+              <table class="table repayments">
+                <!-- <tr>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr> -->
+                <% @repayments.each do |pmt| %>
+                  <tr class="<%= pmt.status %>">
+                    <td><%= pmt.status_date %></td>
+                    <td><%= pmt.amount_formatted %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
 
-        </div>
+        </div><!-- /#about_loan -->
       </div><!-- /.row -->
-    </div><!-- /.span5 -->
+    </div><!-- /.span5.sidebar -->
+    
   </div><!-- /.row -->
 </div><!-- /.container -->
