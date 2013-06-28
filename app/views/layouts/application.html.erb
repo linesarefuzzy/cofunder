@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%=h yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World : Cofunder</title>
+  <title><%= yield(:title).blank? ? '' : yield(:title) + ' | ' %>The Working World : Cofunder</title>
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>

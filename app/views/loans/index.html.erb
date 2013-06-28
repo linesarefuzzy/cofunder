@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row span_12 loans">
-    <h1 class="section-title">Loans</h1>
+    <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
     <div class="filters">
       <%= form_tag({}, {:method => "get"}) do %>
         <!-- <%= hidden_field_tag(:status, params[:status]) if params[:status] && params[:status] != 'active' %> -->
@@ -21,9 +21,9 @@
           </div>
         </div>
       <% end %>
-    </div>
+    </div><!-- /.filters -->
     <% if @loans.empty? %>
-      <b class="empty">No loans found.</b>
+      <p class="empty">No loans found.</p>
     <% else %>
       <table class="table loan_list_wrap table-bordered">
         <% @loans.each do |loan| %>

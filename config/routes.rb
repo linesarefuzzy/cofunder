@@ -5,9 +5,10 @@ Tww::Application.routes.draw do
     match 'profile' => 'devise/registrations#show' 
   end
 
-  resources :loans
+  get 'embedded/loans', to: 'loans#index', embedded: true
+  get 'embedded/loans/:id', to: 'loans#show', embedded: true
 
-  get "home/index"
+  resources :loans, only: [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
