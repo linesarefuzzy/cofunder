@@ -1,0 +1,170 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require scaffolds
+ *= require_self
+ *= require_tree .
+ */
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+@import "bootstrap-rowlink";
+
+$tww_red: #852929;
+  
+body {
+  background: #e5e5e5 url('/images/bg.png') repeat;
+  -webkit-font-smoothing: antialiased;
+  color: #333435;
+}
+a:link, a:visited, a:active {
+  /*color: #f3f3f3;*/
+  color: $tww_red;
+}
+a:hover {
+  color: rgb(73, 18, 13);
+  text-decoration: none;
+}
+a.currency_symbol {
+  color: inherit;
+  border-bottom: 1px dotted;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #eeeeee;
+  display: block;
+  clear: both;
+}
+
+iframe[seamless] {
+  background-color: transparent;
+  border: 0px none transparent;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.errorlist {
+  color: red;
+}
+.empty {
+  font-weight: bold;
+}
+
+
+/* HEADERS, FOOTERS, TITLES */
+.main_title {
+  font-size: 24px;
+  font-weight: bolder;
+  color: #fff;
+}
+.section-title {
+  margin-left: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #212121;
+}
+.sub_heading {
+  font-size: 23px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #262626;
+}
+h1, h2, h3 {
+  /*font-size: 20px;*/
+  font-weight: bolder;
+  color: #ab0a19;
+}
+#header_group {
+  background-image: url('/images/navbar.png');
+  background-repeat: repeat-x;
+  background-position: top;
+  height: 60px;
+  padding: 0;
+}
+#header_inner_wrap {
+  margin: 0 auto;
+  width: 960px;
+}
+#brand {
+  position: absolute;
+  margin-top: -5px;
+}
+#footer {
+  clear: both;
+  width: 940px;
+}
+
+
+/* NAVIGATION STYLES*/
+.navbar-inner {
+  border: none;
+  background-image: none;
+  background: transparent;
+}
+#nav {
+  float: right;
+  height: auto;
+  width: auto;
+  margin-top: 10px;
+}
+#nav a {
+  color: #f3f3f3;
+}
+#nav .sign_in {
+  color: #444;
+}
+.custom > li > a:hover {
+  background-color: transparent;
+}
+.nav-item a:hover {
+  color: #fdf8f8;
+  text-decoration: none;
+}
+.nav-ui {
+  margin-top: 10px;
+}
+.nav-item {
+  display: inline;
+  vertical-align: baseline;
+}
+
+.nav_link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+  margin-right: 34px;
+}
+a:hover.nav_link {
+  background: rgba(0,0,0,.15);
+}
+.usermenu a.dropdown-toggle {
+  color: white;
+}
+
+.nav-pills a:hover {
+  color: $tww_red;
+}
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+  color: white;
+  background-color: $tww_red;
+}
+
+/* CSS TABLE ZEBRA */
+/*table tr:nth-child(even) {
+  background: rgba(0,0,0,0.1);
+}*/

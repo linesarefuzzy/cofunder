@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  loan: 
+  DateDue: 2013-06-13 19:32:15
+  DatePaid: 2013-06-13 19:32:15
+  AmountDue: 
+  AmountPaid: 
+  InterestSinceLastPayment: 
+  DateRefinanced: 2013-06-13
+
+two:
+  loan: 
+  DateDue: 2013-06-13 19:32:15
+  DatePaid: 2013-06-13 19:32:15
+  AmountDue: 
+  AmountPaid: 
+  InterestSinceLastPayment: 
+  DateRefinanced: 2013-06-13
