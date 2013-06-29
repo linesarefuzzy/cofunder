@@ -26,7 +26,7 @@
       </div>
       -->
     </div>
-  </div>
+  </div><!-- /.row -->
   
   <div class="row">
     <div class="span7 main_content">
@@ -83,96 +83,94 @@
     </div><!-- /.span7.main_content -->
 
     <div class="span5 sidebar">
-      <div class="row">
-        <ul class="nav nav-tabs">
-          <li><a href="#summary" data-toggle="tab">Summary</a></li>
-          <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-          <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
-          <% unless @repayments.empty? %>
-            <li><a href="#payments" data-toggle="tab">Payments</a></li>
-          <% end %>
-        </ul>
-        
-        <div id="about_loan" class="tab-content">
-          <div class="tab-pane" id="summary">
-            <div class="detail_gutter short_description update-box update-box-color pull-left">
-              <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
-              <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
-              <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
-              <div class="short_description"><%= @loan.get_short_description %></div>
-            </div>
-          </div>
-
-          <div class="tab-pane" id="timeline">
-            <ul class="calendar">
-              <% @loan.project_events.each do |paso| %>
-              <li class="paso active <%= paso.completed_or_not %>">
-                <%= paso.date %>: <%= paso.summary %>
-                <% if paso.Completed %>
-                (Completed <%= paso.Completed %>)
-                <% else %>
-                (Not yet completed)
-                <% end %>
-                <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-                <ul>
-                  <% paso.logs.each do |log| %>
-                  <li class="log <%= log.Progress.parameterize.underscore %>">
-                    Log <%= log.date %>: <%= log.explanation %>
-                    <ul>
-                      <li>Progress: <%= log.Progress %></li>
-                      <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-                    </ul>
-                  </li>
-                  <% end %>
-                </ul>
-              </li>
-              <% end %>
-            </ul>
-          </div>
+      <ul class="nav nav-tabs">
+        <li><a href="#summary" data-toggle="tab">Summary</a></li>
+        <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+        <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
+        <% unless @repayments.empty? %>
+          <li><a href="#payments" data-toggle="tab">Payments</a></li>
+        <% end %>
+      </ul>
       
-          <div class="tab-pane" id="other_loans">
-            <% if @other_loans.count == 1 %>
-              <p class="empty">No other loans to this cooperative.</p>
-            <% else %>
-              <h4>All Loans to this Co-op</h4>
-              <table class="table other_loans" data-provides="rowlink">
-                <% @other_loans.each do |loan| %>
-                  <tr class="<%= 'selected' if loan.id == @loan.id %>">
-                    <td>
-                      <% if loan.id == @loan.id %>
-                        <%= loan.signing_date_pretty %>
-                      <% else %>
-                        <%= link_to loan.signing_date_pretty, loan, :class => "rowlink" %>
-                      <% end %>
-                    </td>
-                    <td><%= loan.amount_formatted %></td>
-                    <td><%= loan.status %></td>
-                  </tr>
-                <% end %>
-              </table>
-            <% end %>
+      <div id="about_loan" class="tab-content">
+        <div class="tab-pane" id="summary">
+          <div class="detail_gutter short_description update-box update-box-color pull-left">
+            <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
+            <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+            <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
+            <div class="short_description"><%= @loan.get_short_description %></div>
           </div>
-          
-          <% unless @repayments.empty? %>
-            <div class="tab-pane" id="payments">
-              <h4>Payment Schedule</h4>
-              <table class="table repayments">
-                <!-- <tr>
-                  <th>Status</th>
-                  <th>Amount</th>
-                </tr> -->
-                <% @repayments.each do |pmt| %>
-                  <tr class="<%= pmt.status %>">
-                    <td><%= pmt.status_date %></td>
-                    <td><%= pmt.amount_formatted %></td>
-                  </tr>
-                <% end %>
-              </table>
-            </div>
-          <% end %>
+        </div>
 
-        </div><!-- /#about_loan -->
-      </div><!-- /.row -->
+        <div class="tab-pane" id="timeline">
+          <ul class="calendar">
+            <% @loan.project_events.each do |paso| %>
+            <li class="paso active <%= paso.completed_or_not %>">
+              <%= paso.date %>: <%= paso.summary %>
+              <% if paso.Completed %>
+              (Completed <%= paso.Completed %>)
+              <% else %>
+              (Not yet completed)
+              <% end %>
+              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
+              <ul>
+                <% paso.logs.each do |log| %>
+                <li class="log <%= log.Progress.parameterize.underscore %>">
+                  Log <%= log.date %>: <%= log.explanation %>
+                  <ul>
+                    <li>Progress: <%= log.Progress %></li>
+                    <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
+                  </ul>
+                </li>
+                <% end %>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+    
+        <div class="tab-pane" id="other_loans">
+          <% if @other_loans.count == 1 %>
+            <p class="empty">No other loans to this cooperative.</p>
+          <% else %>
+            <h4>All Loans to this Co-op</h4>
+            <table class="table other_loans" data-provides="rowlink">
+              <% @other_loans.each do |loan| %>
+                <tr class="<%= 'selected' if loan.id == @loan.id %>">
+                  <td>
+                    <% if loan.id == @loan.id %>
+                      <%= loan.signing_date_pretty %>
+                    <% else %>
+                      <%= link_to loan.signing_date_pretty, loan, :class => "rowlink" %>
+                    <% end %>
+                  </td>
+                  <td><%= loan.amount_formatted %></td>
+                  <td><%= loan.status %></td>
+                </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </div>
+        
+        <% unless @repayments.empty? %>
+          <div class="tab-pane" id="payments">
+            <h4>Payment Schedule</h4>
+            <table class="table repayments">
+              <!-- <tr>
+                <th>Status</th>
+                <th>Amount</th>
+              </tr> -->
+              <% @repayments.each do |pmt| %>
+                <tr class="<%= pmt.status %>">
+                  <td><%= pmt.status_date %></td>
+                  <td><%= pmt.amount_formatted %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        <% end %>
+
+      </div><!-- /#about_loan -->
     </div><!-- /.span5.sidebar -->
     
   </div><!-- /.row -->

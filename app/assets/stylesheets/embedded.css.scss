@@ -2,5 +2,11 @@
 
 body {
   background: transparent;
-  padding-top: 0;
+  padding: 0;
+}
+.container-fluid {
+  padding: {
+    left: 0;
+    right: 0;
+  }
 }
