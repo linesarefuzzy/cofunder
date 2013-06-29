@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row filters">
-    <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
+    <% unless @embedded %><div class="span12"><h1 class="section-title">Loans</h1></div><% end %>
     <div class="span12">
       <%= form_tag({}, {:method => "get"}) do %>
         <div class="show">

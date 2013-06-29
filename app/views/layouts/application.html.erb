@@ -14,27 +14,27 @@
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Cofunder</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li><a class="nav_link btn-link" href="#">What We Do</a></li>
-              <li><a class="nav_link btn-link"" href="#">Where We Work</a></li>
-              <li><a class="loan_list nav_link btn-link"" href="<%= url_for loans_path %>">Find Loans</a></li>
-              <li><a class="btn sign_in pull-right" href="<%= url_for new_user_session_path %>">Sign In</a></li>
-            </ul>
-            
-          </div><!--/.nav-collapse -->
-        </div><!--/.navbar navbar-inverse navbar-fixed-top -->
-      </div><!--/.navbar-inner -->
-    </div><!--/.container -->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">Cofunder</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a class="nav_link btn-link" href="#">What We Do</a></li>
+            <li><a class="nav_link btn-link"" href="#">Where We Work</a></li>
+            <li><a class="loan_list nav_link btn-link"" href="<%= url_for loans_path %>">Find Loans</a></li>
+            <li><a class="btn sign_in pull-right" href="<%= url_for new_user_session_path %>">Sign In</a></li>
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div><!--/.container -->
+    </div><!--/.navbar-inner -->
+  </div><!--/.navbar navbar-inverse navbar-fixed-top -->
      
   </div> 
   <% if notice %>
