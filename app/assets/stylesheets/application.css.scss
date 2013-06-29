@@ -10,11 +10,13 @@
  *
  *= require scaffolds
  *= require_self
- *= require_tree .
+ *= require home
+ *= require loans
+ *= require users
  */
 
 @import "bootstrap";
-body {padding-top: 40px;}
+body { padding-top: 40px; }
 @import "bootstrap-responsive";
 @import "bootstrap-rowlink";
 
@@ -26,7 +28,6 @@ body {
   background: #e5e5e5 url('/images/bg.png') repeat;
   -webkit-font-smoothing: antialiased;
   color: #333435;
-  
 }
 a:link, a:visited, a:active {
   /*color: #f3f3f3;*/

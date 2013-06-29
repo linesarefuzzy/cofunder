@@ -1,7 +1,8 @@
 <% content_for :title, "Loans" %>
+<% fluid = @embedded ? '-fluid' : '' %>
 
-<div class="container">
-  <div class="row filters">
+<div class="container<%=fluid%>">
+  <div class="row<%=fluid%> filters">
     <% unless @embedded %><div class="span12"><h1 class="section-title">Loans</h1></div><% end %>
     <div class="span12">
       <%= form_tag({}, {:method => "get"}) do %>
@@ -22,7 +23,7 @@
       <% end %>
     </div><!-- /.span12 -->
   </div><!-- /.filters -->
-  <div class="row">
+  <div class="row<%=fluid%>">
     <% if @loans.empty? %>
       <div class="span12 empty">No loans found.</div>
     <% else %>
