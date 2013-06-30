@@ -102,7 +102,7 @@ li.loan {
 .section-title {
   margin-left: 10px;
   font-size: 23px;
-  font-weight: 400;
+  /*font-weight: 400;*/
   color: #444;
 }
 .filters {
@@ -151,10 +151,11 @@ li.loan {
   color: #999;
   margin-right: 40px;
 }
-
+.back_link {
+  margin-left: 10px;
+}
 .detail_wrap {
   background: transparent;
-  padding: 6px;
 }
 .detail_page {
   margin-top: 20px;

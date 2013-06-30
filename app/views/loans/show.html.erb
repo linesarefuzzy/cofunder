@@ -17,7 +17,7 @@
   <div class="row">
     <div class="span7">
       <div class="back_link pull-left">
-        <a class="btn btn-link" href="<%= url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
+        <a class="btn-link" href="<%= url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
       </div>
       <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
@@ -44,7 +44,7 @@
             <% end %>
 
             <!-- Carousel items -->
-            <a href="<%= url_for @loan %>/gallery">
+            <a href="<%= url_for %>/gallery">
               <div class="carousel-inner">
                 <% @pictures.each do |path| %>
                   <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
@@ -59,26 +59,20 @@
             <% end %>
           </div> <!-- /carousel -->
         <% end #if @pictures %>
-        <!--
-        <div class="short_description">
-          <br>
-          <p class="detail_gutter"><%= @loan.get_short_description %></p>
-          <br>
-        </div>-->
 
-        <div class="description_box well">
-          <h3 class="section-title">About This Project</h3>
-          <!--
-          <div class="lend">
-            <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
-          </div>
-          <h5 class="coop_name">Current Report</h5> 
-          -->
-          <p class="loan_description detail_gutter">
-            <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
-          </p>
+        <!--
+        <div class="lend">
+          <a class="button lend_button pull-right" href="<%= url_for '#' %>"></a><br/><br/>
         </div>
-     
+        <h5 class="coop_name">Current Report</h5> 
+        -->
+        <div class="detail_gutter short_description update-box update-box-color pull-left">
+          <div class="info"><%= @loan.amount_formatted %></div>
+          <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
+          <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+          <div class="short_description"><%= @loan.get_short_description %></div>
+        </div>
+   
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
 
@@ -94,11 +88,11 @@
       
       <div id="about_loan" class="tab-content">
         <div class="tab-pane" id="summary">
-          <div class="detail_gutter short_description update-box update-box-color pull-left">
-            <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
-            <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
-            <div class="info"><i class="icon-arrow-right"></i> <%= @loan.amount_formatted %></div>
-            <div class="short_description"><%= @loan.get_short_description %></div>
+          <h4 class="section-title">About This Project</h4>
+          <div class="description_box well">
+            <p class="loan_description detail_gutter">
+              <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
+            </p>
           </div>
         </div>
 
