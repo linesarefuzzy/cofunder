@@ -5,8 +5,8 @@ Tww::Application.routes.draw do
     match 'profile' => 'devise/registrations#show' 
   end
 
-  get 'embedded/loans', to: 'loans#index', embedded: true
-  get 'embedded/loans/:id', to: 'loans#show', embedded: true
+  get 'embedded/loans', to: 'loans#index', embedded: true, as: :embedded_loans
+  get 'embedded/loans/:id', to: 'loans#show', embedded: true, as: :embedded_loan
 
   resources :loans, only: [:index, :show]
 

@@ -183,6 +183,10 @@ li.loan {
   background-size: contain;
   background-repeat: no-repeat;
 }
+/* Landscape phones and down, shrink height of carousel */
+@media (max-width: 480px) {
+  .carousel-inner .item { height: 250px; }
+}
 
 .loan_description {
   max-width: 510px;
