@@ -18,7 +18,8 @@
   <div class="row<%=fluid%>">
     <div class="span7">
       <div class="back_link pull-left">
-        <a class="btn-link" href="<%= url_for loans_path %>"><i class="icon-chevron-left"></i> Back to Loan List</a>
+        <a class="btn-link" href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
+          <i class="icon-chevron-left"></i> Back to Loan List</a>
       </div>
       <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
@@ -45,13 +46,13 @@
             <% end %>
 
             <!-- Carousel items -->
-            <a href="<%= url_for %>/gallery">
+            <!-- <a href="<%= url_for %>/gallery"> -->
               <div class="carousel-inner">
                 <% @pictures.each do |path| %>
                   <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
                 <% end %>
               </div>
-            </a>
+            <!-- </a> -->
 
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>
