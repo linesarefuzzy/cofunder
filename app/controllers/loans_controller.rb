@@ -3,7 +3,7 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     params[:status] = 'active' if params[:status].blank? # show active loans by default
-    @loans = Loan.filter_by_params(params).paginate(:page => params[:page], :per_page => 20).order('SigningDate DESC')
+    @loans = Loan.filter_by_params(params).paginate(:page => params[:pg], :per_page => 20).order('SigningDate DESC')
 
     @countries = Country.order(:Name).pluck(:Name)
     

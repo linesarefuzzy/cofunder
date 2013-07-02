@@ -1,7 +1,7 @@
 <% content_for :title, "Loans" %>
 <% fluid = @embedded ? '-fluid' : '' %>
 
-<div class="container<%=fluid%>">
+<div class="container<%=fluid%> loans">
   <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
   <div class="row<%=fluid%> filters">
     <div class="span12">
@@ -64,6 +64,6 @@
       </div>
     <% end %>
     
-    <%= will_paginate @loans, :renderer => BootstrapPagination::Rails %>
+    <%= will_paginate @loans, param_name: 'pg', renderer: BootstrapPagination::Rails %>
   </div><!-- /.row -->
 </div><!-- /.container -->

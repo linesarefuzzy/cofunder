@@ -31,7 +31,7 @@ class Loan < ActiveRecord::Base
   
   def country; self.division.Country; end
   def location; self.cooperative.City + ', ' + self.country; end
-  def signing_date_pretty; self.signing_date.strftime("%b %e, %Y"); end
+  def signing_date_pretty; self.signing_date.strftime("%b %e, %Y") if self.signing_date; end
   
   def status
     case self.nivel
