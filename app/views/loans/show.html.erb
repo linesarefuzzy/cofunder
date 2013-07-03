@@ -126,7 +126,7 @@
         </div>
     
         <div class="tab-pane" id="other_loans">
-          <% if @other_loans.count == 1 %>
+          <% if !@other_loans || @other_loans.count <= 1 %>
             <p class="empty">This is the first loan to this cooperative.</p>
           <% else %>
             <h4>All Loans to this Co-op</h4>
@@ -137,7 +137,8 @@
                     <% if loan.id == @loan.id %>
                       <%= loan.signing_date_pretty %>
                     <% else %>
-                      <%= link_to loan.signing_date_pretty, loan, :class => "rowlink" %>
+                      <a class="rowlink" href="<%= url_for (@embedded ? embedded_loan_path(loan) : loan) %>">
+                        <%= loan.signing_date_pretty %></a>
                     <% end %>
                   </td>
                   <td><%= loan.amount_formatted %></td>
