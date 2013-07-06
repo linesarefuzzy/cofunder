@@ -1,14 +1,7 @@
 Tww::Application.routes.draw do
 
-  devise_for :users
-  devise_scope :user do 
-    match 'profile' => 'devise/registrations#show' 
-  end
-
   get 'embedded/loans', to: 'loans#index', embedded: true, as: :embedded_loans
   get 'embedded/loans/:id', to: 'loans#show', embedded: true, as: :embedded_loan
-
-  resources :loans, only: [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +52,8 @@ Tww::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  # root :to => 'home#index'
+  root to: redirect('http://www.theworkingworld.org/')
 
   # See how all your routes lay out with "rake routes"
 
