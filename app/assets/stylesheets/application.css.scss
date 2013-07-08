@@ -215,4 +215,20 @@ a:hover.nav_link {
     height: 100%;
   }
 }
-  
+
+
+/* Additional styles for pages embedded in wordpress */
+
+body.embedded {
+  background: transparent;
+  padding: 0;
+  .container-fluid {
+    padding: {
+      left: 0;
+      right: 0;
+    }
+  }
+  .filters {
+    margin-top: 0;
+  }
+}
