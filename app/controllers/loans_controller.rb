@@ -21,7 +21,7 @@ class LoansController < ApplicationController
   # GET /loans/1
   # GET /loans/1.json
   def show
-    @loan = Loan.find(params[:id])
+    @loan = Loan.status('all').find(params[:id])
     @pictures = @loan.picture_paths(5) # for slideshow
     @other_loans = @loan.cooperative.loans.status('all').order("SigningDate DESC") if @loan.cooperative
     @repayments = @loan.repayments.order('DateDue')

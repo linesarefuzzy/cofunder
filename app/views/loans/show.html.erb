@@ -69,6 +69,7 @@
         <h5 class="coop_name">Current Report</h5> 
         -->
         <div class="detail_gutter short_description update-box update-box-color pull-left">
+          <div class="info"><%= @loan.status %></div>
           <div class="info"><%= @loan.amount_formatted %></div>
           <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
           <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
