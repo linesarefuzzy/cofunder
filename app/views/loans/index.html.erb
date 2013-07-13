@@ -9,9 +9,12 @@
         <div class="show">
           <ul class="nav nav-pills">
             <li class="disabled"><a href="#">Show:</a></li>
-            <li class="<%= 'active' if params[:status]=='active' %>"><%= link_to "Active", params.merge(status: nil) %></li>
-            <li class="<%= 'active' if params[:status]=='completed' %>"><%= link_to "Completed", params.merge(status: 'completed') %></li>
-            <li class="<%= 'active' if params[:status]=='all' %>"><%= link_to "All", params.merge(status: 'all') %></li>
+            <li class="<%= 'active' if params[:status]=='active' %>">
+              <%= link_to "Active", params.merge(status: nil, pg: nil) %></li>
+            <li class="<%= 'active' if params[:status]=='completed' %>">
+              <%= link_to "Completed", params.merge(status: 'completed', pg: nil) %></li>
+            <li class="<%= 'active' if params[:status]=='all' %>">
+              <%= link_to "All", params.merge(status: 'all', pg: nil) %></li>
           </ul>
         </div>
         <div class="country">
