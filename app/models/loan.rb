@@ -32,7 +32,8 @@ class Loan < ActiveRecord::Base
   def country; self.division.country; end
   
   def location
-    if self.cooperative then self.cooperative.city + ', ' + self.country
+    if self.cooperative.try(:city).present?
+      self.cooperative.city + ', ' + self.country
     else self.country end
   end
   
