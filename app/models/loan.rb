@@ -32,7 +32,8 @@ class Loan < ActiveRecord::Base
   def country; self.division.country; end
   
   def location
-    if self.cooperative then self.cooperative.city + ', ' + self.country
+    if self.cooperative.try(:city).present?
+      self.cooperative.city + ', ' + self.country
     else self.country end
   end
   
@@ -56,7 +57,11 @@ class Loan < ActiveRecord::Base
   end
   
   def picture_paths(limit=1)
-    return get_picture_paths('Loans', self.ID, limit) || get_picture_paths('Cooperatives', self.cooperative.ID, limit)
+    loan_pics = get_picture_paths('Loans', self.ID, limit)
+    if loan_pics.count < limit
+      coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit - loan_pics.count)
+    end
+    loan_pics + coop_pics
   end
   
   def main_picture
