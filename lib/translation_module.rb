@@ -1,20 +1,21 @@
 module TranslationModule
-  def get_translation(table_name, column_name, id, language_code='EN')
-    translations = Translation.where(
+  def get_translations(table_name, column_name, id)
+    translations = Translation.joins(:language).where(
       :RemoteTable => table_name,
       :RemoteColumnName => column_name,
       :RemoteID => id
-    )
-    begin
-      # content = translations.joins(:language).where(:languages => {:Code => language_code}).first.TranslatedContent
-      content = translations.joins(:language).where('Languages.Code' => language_code).first.TranslatedContent
-    rescue NoMethodError
-      begin
-        content = translations.joins(:language).order('Languages.Priority').first.TranslatedContent
-      rescue NoMethodError
-        return ''
-      end
+    ).order('Languages.Priority')
+    
+    translations_hash = {}
+    translations.each do |t|
+      translations_hash[t.language.code] = t.translated_content
     end
+    return translations_hash
+  end    
+
+  def get_translation(table_name, column_name, id, language_code='EN')
+    translations = get_translations(table_name, column_name, id)
+    content = translations[language_code] || translations.first[1]
     return content
   end
   
