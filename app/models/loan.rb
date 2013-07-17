@@ -58,10 +58,8 @@ class Loan < ActiveRecord::Base
   
   def picture_paths(limit=1)
     loan_pics = get_picture_paths('Loans', self.ID, limit)
-    if loan_pics.count < limit
-      coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit - loan_pics.count)
-    end
-    loan_pics + coop_pics
+    coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit - loan_pics.count)
+    return loan_pics + coop_pics
   end
   
   def main_picture
