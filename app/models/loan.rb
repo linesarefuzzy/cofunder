@@ -59,7 +59,7 @@ class Loan < ActiveRecord::Base
   def picture_paths(limit=1)
     # get first coop picture first
     coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit)
-    pics = coop_pics.count > 0 ? [coop_pics.first] : []
+    pics = (coop_pics.count > 0 ? [coop_pics.first] : [])
     return pics unless limit > pics.count
     # then loan pics
     pics += get_picture_paths('Loans', self.ID, limit - pics.count)
@@ -67,7 +67,7 @@ class Loan < ActiveRecord::Base
     # then log pics
     begin
       self.logs("Date").each do |log|
-        pics += (log_pics = get_picture_paths('ProjectLogs', log.ID, limit - pics.count))
+        pics += get_picture_paths('ProjectLogs', log.ID, limit - pics.count)
         return pics unless limit > pics.count
       end
     rescue Mysql2::Error; end # some logs have invalid dates
