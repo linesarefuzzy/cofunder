@@ -121,7 +121,14 @@ li.loan {
 .filters .country label {
   margin: 6px;
 }
+#about_loan li{
+  list-style: none;
+ 
 
+}
+.paso active li{
+ background: #f7f7f7;
+}
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
   .no-more-tables {

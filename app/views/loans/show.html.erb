@@ -75,7 +75,17 @@
           <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
           <div class="short_description"><%= @loan.get_short_description %></div>
         </div>
-   
+         
+         <div class="logs_output">
+          <% @loan.logs.each do |log| %>
+          <div class="pull-left">
+            <p class="log_short_desc"><%= log.explanation %></p>
+         </div>
+         <div class="pull-left">
+          <p class="logdate"><%= log.date %></p>
+          <p class="log-progress"><%= log.Progress %></p>
+        <% end %>
+         </div>
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
 
