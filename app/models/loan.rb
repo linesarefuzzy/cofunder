@@ -49,28 +49,48 @@ class Loan < ActiveRecord::Base
   end
   
   def get_short_description(language_code="EN")
-    return get_translation('Loans', 'ShortDescription', self.ID, language_code)
+    get_translation('Loans', 'ShortDescription', self.ID, language_code)
   end
 
   def get_description(language_code='EN')
-    return get_translation('Loans', 'Description', self.ID, language_code)
+    get_translation('Loans', 'Description', self.ID, language_code)
   end
   
   def picture_paths(limit=1)
-    loan_pics = get_picture_paths('Loans', self.ID, limit)
-    coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit - loan_pics.count)
-    return loan_pics + coop_pics
+    # get first coop picture first
+    coop_pics = get_picture_paths('Cooperatives', self.cooperative.ID, limit)
+    pics = coop_pics.count > 0 ? [coop_pics.first] : []
+    return pics unless limit > pics.count
+    # then loan pics
+    pics += get_picture_paths('Loans', self.ID, limit - pics.count)
+    return pics unless limit > pics.count
+    # then log pics
+    begin
+      self.logs("Date").each do |log|
+        pics += (log_pics = get_picture_paths('ProjectLogs', log.ID, limit - pics.count))
+        return pics unless limit > pics.count
+      end
+    rescue Mysql2::Error; end # some logs have invalid dates
+    # then remaining coop pics
+    if limit > pics.count
+      pics += coop_pics[1, limit - pics.count] || []
+    end
+    return pics
   end
   
   def main_picture
-    return self.picture_paths.try(:first)
+    self.picture_paths.try(:first)
   end
     
   def amount_formatted
-    return currency_format(self.amount, self.country)
+    currency_format(self.amount, self.country)
   end
   
   def project_events(order_by="Completed IS NULL, Completed, Date")
-    return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+  end
+
+  def logs(order_by="Date DESC")
+    ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 end
