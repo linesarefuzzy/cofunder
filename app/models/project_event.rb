@@ -24,4 +24,8 @@ class ProjectEvent < ActiveRecord::Base
   def details(language_code="EN")
     get_translation('ProjectEvents', 'Details', self.ID, language_code) || self.Details
   end
+
+  def display_date
+    self.completed || self.date
+  end
 end
