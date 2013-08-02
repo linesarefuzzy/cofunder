@@ -121,25 +121,25 @@ li.loan {
 .filters .country label {
   margin: 6px;
 }
-#about_loan li{
-  list-style: none;
- 
-
-}
-
 .calendar li{
   list-style: none;
 }
 .log_short_desc{
-  width: 440px;
+  width: 460px;
   float: left;
-  margin-right: 70px;
+  margin-right: 60px;
   margin-left: -10px;
 
 }
 .info_progress{
   font-weight: bolder;
   color: #f3f3f3;
+  
+}
+.paso-status {
+  float: right;
+}
+.paso-date{
   
 }
 /* Collapse table into stacked block elements on narrow screens */

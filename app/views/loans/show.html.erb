@@ -77,30 +77,40 @@
         </div>
          
          <div class="span7 logs_output">
-           <ul class="calendar">
+           <div class="calendar">
             <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>">
-              <%= paso.date %>: <%= paso.summary %>
-              <% if paso.Completed %>
-              (Completed <%= paso.Completed %>)
+             <div class="">
+            <p class="paso active <%= paso.completed_or_not %>"></p>
+               <p class="log_short_desc info"><%= paso.summary %></p>
+             </div>
+             
+               <div class="">
+        <p class="paso-date info"><i class="icon-calendar"></i><strong><%= paso.date %></strong></p>
+              <p><% if paso.Completed %></p>
+              <p class="paso-status info_progress label"><strong><%=paso.status%></strong></p>
+             
               <% else %>
-              (Not yet completed)
-              <% end %>
-              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-              <ul>
-                <% paso.logs.each do |log| %>
-                <li class="log <%= log.Progress.parameterize.underscore %>">
-                  Log <%= log.date %>: <span class="log_short_desc"><%= log.explanation %></span>
-                  <ul>
-                    <li>Progress: <%= log.Progress %></li>
-                    <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-                  </ul>
-                </li>
-                <% end %>
-              </ul>
-            </li>
+              <p>Not yet completed</p>
+              
             <% end %>
-          </ul>
+            </div>
+              <% unless paso.Details.blank? %><br>
+              <p><%= paso.Details %><% end %></p>
+            
+                <% paso.logs.each do |log| %>
+                <p class="log <%= log.Progress.parameterize.underscore %>">
+                 <span class="logdate info"><i class="icon-calendar"></i><strong> <%= log.date %></strong></span> <span class="log_short_desc"><%= log.explanation %></span>
+               </p>
+                  <p class="log-progress info_progress label"><strong><%= log.Progress %></strong></p>
+                    <% unless log.detailed_explanation.blank? %>
+                      <p><%= log.detailed_explanation %></p><% end %>
+                  
+                
+                <% end %>
+              
+            
+            <% end %>
+          </div>
          
          </div>
       </div><!-- /.detail_wrap -->
