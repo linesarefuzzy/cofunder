@@ -49,11 +49,11 @@ class Loan < ActiveRecord::Base
   end
   
   def get_short_description(language_code="EN")
-    return get_translation('Loans', 'ShortDescription', self.ID, language_code)
+    get_translation('Loans', 'ShortDescription', self.ID, language_code)
   end
 
   def get_description(language_code='EN')
-    return get_translation('Loans', 'Description', self.ID, language_code)
+    get_translation('Loans', 'Description', self.ID, language_code)
   end
   
   def picture_paths(limit=1)
@@ -63,14 +63,18 @@ class Loan < ActiveRecord::Base
   end
   
   def main_picture
-    return self.picture_paths.try(:first)
+    self.picture_paths.try(:first)
   end
     
   def amount_formatted
-    return currency_format(self.amount, self.country)
+    currency_format(self.amount, self.country)
   end
   
   def project_events(order_by="Completed IS NULL, Completed, Date")
-    return ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+  end
+
+  def logs(order_by="Date DESC")
+    ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 end
