@@ -79,7 +79,7 @@ class Loan < ActiveRecord::Base
   end
   
   def main_picture
-    self.picture_paths.try(:first)
+    self.picture_paths.try(:first) || {thumb: "/assets/ww-avatar-watermark.png"}
   end
     
   def amount_formatted
