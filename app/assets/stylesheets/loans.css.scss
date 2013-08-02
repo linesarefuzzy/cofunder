@@ -27,9 +27,6 @@ li.loan {
   margin: 25px 0;
 }
 
-.loan_item_thumb {
-  width: 120px;
-}
 .coop_pic_sm {
   background-position: center center;
   background-size: cover;
@@ -129,8 +126,21 @@ li.loan {
  
 
 }
-.paso active li{
- background: #f7f7f7;
+
+.calendar li{
+  list-style: none;
+}
+.log_short_desc{
+  width: 440px;
+  float: left;
+  margin-right: 70px;
+  margin-left: -10px;
+
+}
+.info_progress{
+  font-weight: bolder;
+  color: #f3f3f3;
+  
 }
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
