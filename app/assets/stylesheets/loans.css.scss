@@ -125,6 +125,32 @@ li.loan {
   list-style: none;
   width: 620px;
 }
+.loan-feed{
+    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+    background-color: rgb(246, 249, 255);
+    border: 1px solid rgb(236, 240, 244);
+    padding: 0px 12px;
+    margin-top: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.loan-title {
+  font-size: 13px;
+  margin: 0px 0px 0.2em;
+}
+.logs-body {
+ font-size: 13px;
+ vertical-align: baseline;
+ padding: 0px;
+ color:#777;
+}
+
+.loan-feed-img {
+   float: left;
+   padding-top: 5px;
+   margin-right: 5px;
+   width: 52px;
+}
 .paso_short_desc{
   padding: 4px;
   display: block;
@@ -147,6 +173,14 @@ li.loan {
   float: left;
   display: none;
   
+}
+.log-inner{
+  border-radius: 4px;
+  background:rgba(190, 223, 196, 0.20);
+  box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
+  font-size: 12.6px;
+  color: #545454;
+  padding: 4px;
 }
 .info_progress{
   font-weight: bolder;
@@ -211,12 +245,14 @@ li.loan {
 }
 .detail_gutter .info {
   float: left;
-  margin-right: 10px;
+  
 }
 .detail_gutter .short_description {
   clear: both;
 }
-
+.short_description {
+  color: #202020;
+}
 .carousel-control {
   top: 50%;
   &, &:link, &:visited, &:active, &:hover {
@@ -247,9 +283,7 @@ li.loan {
   margin-top: -40px;
   margin-right: 20px;
 }
-.short_description {
-  color: #666;
-}
+
 .paso {
   color: #666;
   width: 350px;
@@ -267,21 +301,18 @@ li.loan {
 }
 
 .update-box {
-  position: relative;
-  margin: 0 auto 15px auto;
-  padding: 10px 15px;
   text-align: left;
-  border-radius: 5px;
-  box-shadow:
-      0 1px 1px rgba(0,0,0,0.3),
-      solid 0 1px 0 rgba(255,255,255,0.1); 
-  cursor: default;
   display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 626px;
+  margin-left:24px;
 }
 
 .update-box-color {
-  background: #f8f9ef;
-  border: 1px solid #e8e8e8;
+  box-shadow: 0px 1px 0px rgb(245, 248, 237) inset;
+  background: rgba(245, 248, 236, 0.58);
 }
 .user_name {
   font-size: 18px;
