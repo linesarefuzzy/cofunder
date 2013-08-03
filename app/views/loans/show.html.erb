@@ -109,7 +109,7 @@
     <div class="span5 sidebar">
       <ul class="nav nav-tabs">
         <li><a href="#summary" data-toggle="tab">Summary</a></li>
-        <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+        <li><a href="#contracts" data-toggle="tab">Contracts</a></li>
         <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
         <% unless @repayments.empty? %>
           <li><a href="#payments" data-toggle="tab">Payments</a></li>
@@ -126,33 +126,20 @@
           </div>
         </div>
 
-        <div class="tab-pane" id="timeline">
-          <ul class="calendar">
-            <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>">
-              <%= paso.date %>: <%= paso.summary %>
-              <% if paso.Completed %>
-              (Completed <%= paso.Completed %>)
-              <% else %>
-              (Not yet completed)
-              <% end %>
-              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-              <ul>
-                <% paso.logs.each do |log| %>
-                <li class="log <%= log.Progress.parameterize.underscore %>">
-                  Log <%= log.date %>: <%= log.explanation %>
-                  <ul>
-                    <li>Progress: <%= log.Progress %></li>
-                    <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-                  </ul>
-                </li>
-                <% end %>
-              </ul>
-            </li>
-            <% end %>
-          </ul>
+        <div class="tab-pane" id="contracts">
+          <h4>All Contracts for this Co-op</h4>
+            <table>
+              <tr>
+                <td>Loan Name</td>
+              </tr>
+              <tr>
+                <td>Loan Officer</td>
+              </tr>
+              <tr>
+                <td>Loan Contract</td>
+              </tr>
+              </table>
         </div>
-    
         <div class="tab-pane" id="other_loans">
           <% if !@other_loans || @other_loans.count <= 1 %>
             <p class="empty">This is the first loan to this cooperative.</p>
