@@ -92,7 +92,7 @@
                 <% paso.logs.each do |log| %>
                 
                 <li class="log logs-body <%= log.Progress.parameterize.underscore %>">
-                <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong>Progress: <%= log.Progress %></strong> </li>
+                <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.Progress %></strong> </li>
                   <p class="log-inner"><i class="icon-adjust"></i> <%= log.explanation %></p><br /> <br /></li>
                   <ul>
                    
