@@ -121,27 +121,53 @@ li.loan {
 .filters .country label {
   margin: 6px;
 }
-.calendar li{
+.timeline li{
   list-style: none;
+  width: 620px;
+}
+.paso_short_desc{
+  padding: 4px;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #282023;
+  
+}
+
+.paso_completed{
+  display: none;
+}
+.log{
+  display: block;
+  font-weight: 400;
 }
 .log_short_desc{
-  width: 460px;
+  
+  width: 430px;
   float: left;
-  margin-right: 60px;
-  margin-left: -10px;
-
+  display: none;
+  
 }
 .info_progress{
   font-weight: bolder;
   color: #f3f3f3;
   
 }
+.paso-summary{
+  width: 470px;
+}
 .paso-status {
   float: right;
-}
-.paso-date{
+  color: #212121;
+  font-weight: 800;
+  margin-right: 5px;
   
 }
+.paso-date{
+  float:right;
+  padding-top:-2px;
+}
+
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
   .no-more-tables {
