@@ -121,91 +121,7 @@ li.loan {
 .filters .country label {
   margin: 6px;
 }
-.timeline li{
-  list-style: none;
-  width: 620px;
-}
-.loan-feed{
-    box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
-    background-color: rgb(246, 249, 255);
-    border: 1px solid rgb(236, 240, 244);
-    padding: 0px 12px;
-    margin-top: 5px;
-    border-radius: 5px 5px 5px 5px;
-}
 
-.loan-title {
-  font-size: 13px;
-  margin: 0px 0px 0.2em;
-}
-.logs-body {
- font-size: 13px;
- vertical-align: baseline;
- padding: 0px;
- color:#777;
-}
-
-.loan-feed-img {
-   float: left;
-   padding-top: 5px;
-   margin-right: 5px;
-   width: 52px;
-}
-.paso_short_desc{
-  padding: 4px;
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #282023;
-  
-}
-
-.paso_completed{
-  display: none;
-}
-.log{
-  display: block;
-  font-weight: 400;
-}
-.log_short_desc{
-  
-  width: 430px;
-  float: left;
-  display: none;
-  
-}
-.log-inner{
-  border-radius: 4px;
-  background:rgba(190, 223, 196, 0.20);
-  box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
-  font-size: 12.6px;
-  color: #545454;
-  padding: 4px;
-}
-.log-progress{
-  float: right;
-  margin-right: 30px;
-
-}
-.info_progress{
-  font-weight: bolder;
-  color: #f3f3f3;
-  
-}
-.paso-summary{
-  width: 470px;
-}
-.paso-status {
-  float: right;
-  color: #212121;
-  font-weight: 800;
-  margin-right: 5px;
-  
-}
-.paso-date{
-  float:right;
-  padding-top:-2px;
-}
 
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
@@ -303,6 +219,84 @@ li.loan {
 .completed {
   color: #555;
   display: table-caption;
+}
+
+.timeline li {
+  list-style: none;
+  width: 620px;
+}
+.loan-feed {
+  box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  background-color: rgb(246, 249, 255);
+  border: 1px solid rgb(236, 240, 244);
+  padding: 0px 12px;
+  margin-top: 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+.loan-title {
+  font-size: 13px;
+  margin: 0px 0px 0.2em;
+}
+.logs-body {
+  font-size: 13px;
+  vertical-align: baseline;
+  padding: 0px;
+  color: #777;
+}
+.loan-feed-img {
+  float: left;
+  padding-top: 5px;
+  margin-right: 5px;
+  width: 52px;
+}
+.paso_short_desc {
+  padding: 4px;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #282023;
+}
+.paso_completed{
+  display: none;
+}
+.log{
+  display: block;
+  font-weight: 400;
+}
+.log_short_desc{
+  width: 430px;
+  float: left;
+  display: none;
+}
+.log-inner{
+  border-radius: 4px;
+  background:rgba(190, 223, 196, 0.20);
+  box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
+  font-size: 12.6px;
+  color: #545454;
+  padding: 4px;
+}
+.log-progress{
+  float: right;
+  margin-right: 30px;
+}
+.info_progress{
+  font-weight: bolder;
+  color: #f3f3f3;
+  
+}
+.paso-summary{
+  width: 470px;
+}
+.paso-status {
+  float: right;
+  color: #212121;
+  font-weight: 800;
+  margin-right: 5px;
+}
+.paso-date{
+  float:right;
+  padding-top:-2px;
 }
 
 .update-box {
