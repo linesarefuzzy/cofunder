@@ -359,9 +359,9 @@ li.loan {
     /*font-weight: bold;*/
     /*color: rgb(164,164,164);*/
   }
-  /*tr.rowlink:hover {
-      background-color: #CC6;
-    }*/
+  tbody tr.rowlink:hover td {
+    background-color: #f3f3f3;
+  }
 }
 
 .repayments {
