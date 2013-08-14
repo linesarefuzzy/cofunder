@@ -40,6 +40,10 @@ a:hover {
 a.currency_symbol {
   color: inherit;
   border-bottom: 1px dotted;
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 hr {
   margin-top: 20px;
@@ -140,7 +144,7 @@ h1, h2, h3 {
 }
 
 .navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .nav > li > a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
-background: none;
+  background: none;
 }
 .nav_link {
   text-decoration: none;
