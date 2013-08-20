@@ -72,10 +72,10 @@
           <div class="info">Status: <%= @loan.status %>
           <i class="icon-coinstack"></i> <%= @loan.amount_formatted %>
           <i class="icon-map-marker"></i> <%= @loan.location %>
-          <i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %></div>
           <div class="short_description"><%= @loan.get_short_description %></div>
         </div>
-        
+        <div class="loan-feed-block">
         <ul class="timeline loan-feed">
           <% @loan.project_events.each do |paso| %>
             <li class="paso active <%= paso.completed_or_not %>"><br />
@@ -101,6 +101,7 @@
             </li>
           <% end %>
         </ul>
+        </div><!-- /.loan-feed-block -->
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
 
