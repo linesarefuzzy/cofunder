@@ -4,8 +4,14 @@
 <% content_for :head do %>
 <script>
   $(function () {
-    $('.nav-tabs a:first').tab('show'); // Select first tab
-    
+    // Javascript to enable link to tab
+    var hash = document.location.hash;
+    var prefix = "_";
+    if (hash)
+      $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+    else 
+      $('.nav-tabs a:first').tab('show'); // Select first tab
+
     // Initiate slideshow
     $('.carousel-inner .item').first().addClass('active')
     $('.carousel-indicators li').first().addClass('active')
@@ -151,7 +157,7 @@
                     <% if loan.id == @loan.id %>
                       <%= loan.signing_date_pretty %>
                     <% else %>
-                      <a class="rowlink" href="<%= url_for (@embedded ? embedded_loan_path(loan) : loan) %>">
+                      <a class="rowlink" href="<%= url_for (@embedded ? embedded_loan_path(loan) : loan) %>#_other_loans">
                         <%= loan.signing_date_pretty %></a>
                     <% end %>
                   </td>
