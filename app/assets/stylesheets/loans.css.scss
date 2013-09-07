@@ -27,9 +27,6 @@ li.loan {
   margin: 25px 0;
 }
 
-.loan_item_thumb {
-  width: 120px;
-}
 .coop_pic_sm {
   background-position: center center;
   background-size: cover;
@@ -62,11 +59,14 @@ li.loan {
 .sign_date {
   font-weight: inherit;
   font-variant: normal;
-  color: #832828;
+  /*color: #832828;*/
 }
 .facts {
   width: 170px;
   margin: 5px;
+}
+.loan_item_facts {
+  color: #072D44;
 }
 .money_sym {
   text-transform: uppercase;
@@ -75,7 +75,7 @@ li.loan {
   color: #5F2B26;
 }
 .loan_amount {
-  color: #612C28;
+  /*color: #612C28;*/
   font-weight: bold
 }
 .loan_info {
@@ -125,6 +125,7 @@ li.loan {
   margin: 6px;
 }
 
+
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
   .no-more-tables {
@@ -168,12 +169,14 @@ li.loan {
 }
 .detail_gutter .info {
   float: left;
-  margin-right: 10px;
+  
 }
 .detail_gutter .short_description {
   clear: both;
 }
-
+.short_description {
+  color: #202020;
+}
 .carousel-control {
   top: 50%;
   &, &:link, &:visited, &:active, &:hover {
@@ -204,9 +207,7 @@ li.loan {
   margin-top: -40px;
   margin-right: 20px;
 }
-.short_description {
-  color: #666;
-}
+
 .paso {
   color: #666;
   width: 350px;
@@ -222,23 +223,103 @@ li.loan {
   color: #555;
   display: table-caption;
 }
+.loan-feed-block{
+   margin-left: -20px;
+}
+.timeline li {
+  list-style: none;
+  width: 500px;
+  margin-left: 10px;
+}
+.loan-feed {
+  box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
+  background-color: rgb(246, 249, 255);
+  border: 1px solid rgb(236, 240, 244);
+  padding: 0px 12px;
+  margin-top: 5px;
+  padding-bottom: 20px;
+  border-radius: 5px 5px 5px 5px;
+  width: 520px;
+}
+.loan-title {
+  font-size: 13px;
+  margin: 0px 0px 0.2em;
+}
+.logs-body {
+  font-size: 13px;
+  vertical-align: baseline;
+  padding: 0px;
+  color: #777;
+}
+.loan-feed-img {
+  float: left;
+  padding-top: 5px;
+  margin-right: 5px;
+  width: 52px;
+}
+.paso_short_desc {
+  padding: 4px;
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #282023;
+}
+.paso_completed{
+  display: none;
+}
+.log{
+  display: block;
+  font-weight: 400;
+}
+.log_short_desc{
+  width: 430px;
+  float: left;
+  display: none;
+}
+.log-inner{
+  border-radius: 4px;
+  background:rgba(190, 223, 196, 0.20);
+  box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
+  font-size: 12.6px;
+  color: #545454;
+  padding: 4px;
+}
+.log-progress{
+  float: right;
+  margin-right: 30px;
+}
+.info_progress{
+  font-weight: bolder;
+  color: #f3f3f3;
+  
+}
+.paso-summary{
+  width: 470px;
+}
+.paso-status {
+  float: right;
+  color: #212121;
+  font-weight: 800;
+  margin-right: 5px;
+}
+.paso-date{
+  float:right;
+  padding-top:-2px;
+}
 
 .update-box {
-  position: relative;
-  margin: 0 auto 15px auto;
-  padding: 10px 15px;
   text-align: left;
-  border-radius: 5px;
-  box-shadow:
-      0 1px 1px rgba(0,0,0,0.3),
-      solid 0 1px 0 rgba(255,255,255,0.1); 
-  cursor: default;
   display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  width: 525px;
+  margin-left:6px;
 }
 
 .update-box-color {
-  background: #f8f9ef;
-  border: 1px solid #e8e8e8;
+  box-shadow: 0px 1px 0px rgb(245, 248, 237) inset;
+  background: rgba(245, 246, 236, 0.60);
 }
 .user_name {
   font-size: 18px;
@@ -281,9 +362,9 @@ li.loan {
     /*font-weight: bold;*/
     /*color: rgb(164,164,164);*/
   }
-  /*tr.rowlink:hover {
-      background-color: #CC6;
-    }*/
+  tbody tr.rowlink:hover td {
+    background-color: #f3f3f3;
+  }
 }
 
 .repayments {
