@@ -1,25 +1,6 @@
 <% content_for :title, @loan.name %>
 <% fluid = @embedded ? '-fluid' : '' %>
 
-<% content_for :head do %>
-<script>
-  $(function () {
-    // Javascript to enable link to tab
-    var hash = document.location.hash;
-    var prefix = "_";
-    if (hash)
-      $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
-    else 
-      $('.nav-tabs a:first').tab('show'); // Select first tab
-
-    // Initiate slideshow
-    $('.carousel-inner .item').first().addClass('active')
-    $('.carousel-indicators li').first().addClass('active')
-    $('.carousel').carousel('fade')
-  })
-</script>
-<% end #content_for %>
-
 <div class="container<%=fluid%> loans detail_page">
   <div class="row<%=fluid%>">
     <div class="span7">
