@@ -24,8 +24,11 @@
   <div class="row<%=fluid%>">
     <div class="span7">
       <div class="back_link pull-left">
-        <a class="btn-link" href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
-          <i class="icon-chevron-left"></i> Back to Loan List</a>
+        <a href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
+          <i class="icon-chevron-left"></i></a> 
+        <% # This a tag is repeated here so that the space doesn't get underlined on hover %>
+        <a href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
+          Back to Loan List</a>
       </div>
       <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
