@@ -1,25 +1,15 @@
 <% content_for :title, @loan.name %>
 <% fluid = @embedded ? '-fluid' : '' %>
 
-<% content_for :head do %>
-<script>
-  $(function () {
-    $('.nav-tabs a:first').tab('show'); // Select first tab
-    
-    // Initiate slideshow
-    $('.carousel-inner .item').first().addClass('active')
-    $('.carousel-indicators li').first().addClass('active')
-    $('.carousel').carousel('fade')
-  })
-</script>
-<% end #content_for %>
-
 <div class="container<%=fluid%> loans detail_page">
   <div class="row<%=fluid%>">
     <div class="span7">
       <div class="back_link pull-left">
-        <a class="btn-link" href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
-          <i class="icon-chevron-left"></i> Back to Loan List</a>
+        <a href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
+          <i class="icon-chevron-left"></i></a> 
+        <% # This a tag is repeated here so that the space doesn't get underlined on hover %>
+        <a href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
+          Back to Loan List</a>
       </div>
       <!-- 
       <div class="btn-group pull-right" data-toggle="buttons-radio">
@@ -68,21 +58,47 @@
         </div>
         <h5 class="coop_name">Current Report</h5> 
         -->
-        <div class="detail_gutter short_description update-box update-box-color pull-left">
-          <div class="info"><%= @loan.status %></div>
-          <div class="info"><%= @loan.amount_formatted %></div>
-          <div class="info"><i class="icon-map-marker"></i> <%= @loan.location %></div>
-          <div class="info"><i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
+        <div class="short_description update-box update-box-color">
+          <div class="info">Status: <%= @loan.status %>
+          <i class="icon-coinstack"></i> <%= @loan.amount_formatted %>
+          <i class="icon-map-marker"></i> <%= @loan.location %>
+          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %></div>
           <div class="short_description"><%= @loan.get_short_description %></div>
         </div>
-   
+        <div class="loan-feed-block">
+        <ul class="timeline loan-feed">
+          <% @loan.project_events.each do |paso| %>
+            <li class="paso active <%= paso.completed_or_not %>"><br />
+              <p class="paso_short_desc well clearfix">
+                <i class=" icon-large icon-user"></i> <span class="paso-summary"><%= paso.summary %></span> 
+                <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
+                <span class="paso-status"><%= paso.status %></span>
+              </p>
+             
+              <% if paso.Completed %>
+                <p class="paso_completed"><%= paso.Completed %></p>
+              <% else %>
+                <p class="paso_completed"><strong>(Not yet completed)</strong></p>
+              <% end %>
+              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
+              <ul>
+                <% paso.logs.each do |log| %>
+                  <li class="log logs-body <%= log.Progress.parameterize.underscore %>">
+                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.Progress %></strong> </li>
+                    <p class="log-inner"><i class="icon-adjust"></i> <%= log.explanation %></p><br /> <br /></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        </ul>
+        </div><!-- /.loan-feed-block -->
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
 
     <div class="span5 sidebar">
       <ul class="nav nav-tabs">
         <li><a href="#summary" data-toggle="tab">Summary</a></li>
-        <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
+        <li><a href="#contracts" data-toggle="tab">Contracts</a></li>
         <li><a href="#other_loans" data-toggle="tab">Past Loans</a></li>
         <% unless @repayments.empty? %>
           <li><a href="#payments" data-toggle="tab">Payments</a></li>
@@ -99,33 +115,20 @@
           </div>
         </div>
 
-        <div class="tab-pane" id="timeline">
-          <ul class="calendar">
-            <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>">
-              <%= paso.date %>: <%= paso.summary %>
-              <% if paso.Completed %>
-              (Completed <%= paso.Completed %>)
-              <% else %>
-              (Not yet completed)
-              <% end %>
-              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-              <ul>
-                <% paso.logs.each do |log| %>
-                <li class="log <%= log.Progress.parameterize.underscore %>">
-                  Log <%= log.date %>: <%= log.explanation %>
-                  <ul>
-                    <li>Progress: <%= log.Progress %></li>
-                    <% unless log.detailed_explanation.blank? %><li>Details: <%= log.detailed_explanation %></li><% end %>
-                  </ul>
-                </li>
-                <% end %>
-              </ul>
-            </li>
-            <% end %>
-          </ul>
+        <div class="tab-pane" id="contracts">
+          <h4>All Contracts for this Co-op</h4>
+          <table>
+            <tr>
+              <td>Loan Name</td>
+            </tr>
+            <tr>
+              <td>Loan Officer</td>
+            </tr>
+            <tr>
+              <td>Loan Contract</td>
+            </tr>
+          </table>
         </div>
-    
         <div class="tab-pane" id="other_loans">
           <% if !@other_loans || @other_loans.count <= 1 %>
             <p class="empty">This is the first loan to this cooperative.</p>
@@ -138,7 +141,7 @@
                     <% if loan.id == @loan.id %>
                       <%= loan.signing_date_pretty %>
                     <% else %>
-                      <a class="rowlink" href="<%= url_for (@embedded ? embedded_loan_path(loan) : loan) %>">
+                      <a class="rowlink" href="<%= url_for (@embedded ? embedded_loan_path(loan) : loan) %>#_other_loans">
                         <%= loan.signing_date_pretty %></a>
                     <% end %>
                   </td>

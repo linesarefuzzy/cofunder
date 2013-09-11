@@ -1,9 +1,8 @@
 module MediaModule
-  def get_picture_paths(table_name, id, limit=1, order_by='Priority, MediaPath')
+  def get_picture_paths(table_name, id, limit=1, order_by='Priority IS NULL, Priority = 0, Priority, MediaPath')
     base_url = "http://www.theworkingworld.org/"
     
     images = Media.where(:ContextTable => table_name, :ContextID => id).order(order_by).limit(limit)
-    return if images.empty?
     
     image_paths = []
     images.each do |image|
