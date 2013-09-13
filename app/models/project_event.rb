@@ -18,11 +18,10 @@ class ProjectEvent < ActiveRecord::Base
   end
   
   def summary(language_code="EN")
-    get_translation('ProjectEvents', 'Summary', self.ID, language_code) || self.Summary
+    self.translation('Summary', language_code) || self.Summary
   end
-  
   def details(language_code="EN")
-    get_translation('ProjectEvents', 'Details', self.ID, language_code) || self.Details
+    self.translation('Details', language_code) || self.Details
   end
 
   def display_date

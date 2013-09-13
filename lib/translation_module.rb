@@ -1,21 +1,21 @@
 module TranslationModule
-  def get_translation(table_name, column_name, id, language_code='EN')
-    translations = Translation.where(
+  # add translation method to all models that include this module
+  extend ActiveSupport::Concern
+  included do
+    def translation(column_name, language_code='EN')
+      get_translation(self.class.table_name.camelize, self.id, column_name, language_code)
+    end
+  end
+
+  def get_translation(table_name, id, column_name, language_code='EN')
+    translations = Translation.joins(:language).where(
       :RemoteTable => table_name,
       :RemoteColumnName => column_name,
       :RemoteID => id
     )
-    begin
-      # content = translations.joins(:language).where(:languages => {:Code => language_code}).first.TranslatedContent
-      content = translations.joins(:language).where('Languages.Code' => language_code).first.TranslatedContent
-    rescue NoMethodError
-      begin
-        content = translations.joins(:language).order('Languages.Priority').first.TranslatedContent
-      rescue NoMethodError
-        return ''
-      end
-    end
-    return content
+    t = translations.where('Languages.Code' => language_code).try(:first) || 
+        translations.order('Languages.Priority').try(:first)
+    return t
   end
   
   include ActionView::Helpers::NumberHelper
