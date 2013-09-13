@@ -3,9 +3,11 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     params[:status] = 'active' if params[:status].blank? # show active loans by default
-    @loans = Loan.filter_by_params(params).paginate(:page => params[:pg], :per_page => 20).order('SigningDate DESC')
-
+    @loans = Loan.filter_by_params(params).
+                  paginate(:page => params[:pg], :per_page => 20).
+                  order('SigningDate DESC')
     @countries = Country.order(:Name).pluck(:Name)
+    @language = 'EN' # to be replaced by session variable
     
     if params[:embedded] 
       _layout = 'embedded'
@@ -25,6 +27,7 @@ class LoansController < ApplicationController
     @pictures = @loan.picture_paths(5) # for slideshow
     @other_loans = @loan.cooperative.loans.status('all').order("SigningDate DESC") if @loan.cooperative
     @repayments = @loan.repayments.order('DateDue')
+    @language = 'EN' # to be replaced by session variable
 
     if params[:embedded] 
       _layout = 'embedded'

@@ -6,4 +6,6 @@ class Translation < ActiveRecord::Base
   
   belongs_to :language, :foreign_key => 'Language'
   attr_accessible :RemoteColumnName, :RemoteID, :RemoteTable, :TranslatedContent
+  alias_attribute :content, :TranslatedContent
+  # attr_accessor :css_class
 end

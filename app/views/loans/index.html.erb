@@ -20,7 +20,8 @@
         <div class="country">
           <div><%= label_tag(:country, "Country: ") %></div>
           <div>
-            <%= select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]), :onchange => "this.form.submit()") %>
+            <%= select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]), 
+              :onchange => "this.form.submit()") %>
           </div>
         </div>
       <% end %>
@@ -43,7 +44,7 @@
             </td>
             <td class="loan_item_desc">
               <h5 class="coop_name"><a href="<%= url_for %>/<%= loan.id %>"><%= loan.name %></a></h5>
-              <p class="about_coop"><%= loan.get_short_description %></p>
+              <p class="about_coop"><%= render loan.short_description(@language) %></p>
               <p class="detail_link pull-right">
                 <a href="<%= url_for %>/<%= loan.id %>">More details<i class="icon-chevron-right"></i></a>
               </p>
