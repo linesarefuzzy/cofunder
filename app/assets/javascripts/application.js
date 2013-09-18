@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-rowlink
+//= require bootstrap-transition
 //= require_tree .
 
 $(function () {

@@ -68,15 +68,14 @@
         <div class="loan-feed-block">
         <ul class="timeline loan-feed">
           <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>"><br />
-              <p class="paso_short_desc well clearfix">
+            <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
+              <div class="paso_short_desc well clearfix">
                 <i class=" icon-large icon-user"></i> <span class="paso-summary">
                   <%= render paso.summary(@language) %></span> 
                 <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
                 <span class="paso-status"><%= paso.status %></span>
-              </p>
-             
-              <% if paso.completed %>
+                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
+                <% if paso.completed %>
                 <p class="paso_completed"><%= paso.completed %></p>
               <% else %>
                 <p class="paso_not_completed"><strong>(Not yet completed)</strong></p>
@@ -84,16 +83,22 @@
               <% unless paso.details(@language).try(:content).blank? %>
                 <br>Details: <%= render paso.details(@language) %>
               <% end %>
-              <ul>
+                <div id="logs-<%=paso.id %>" class="collapse">
+                <ul class="logs-items">
                 <% paso.logs.each do |log| %>
-                  <li class="log logs-body <%= log.progress.parameterize.underscore %>">
+                  <li  class="log logs-body  <%= log.progress.parameterize.underscore %>"> 
                   <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
                     <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
                 <% end %>
-              </ul>
+              </ul> 
+              </div><!--end of well-->
+              
             </li>
           <% end %>
-        </ul>
+          </div><!--end of #show-logs-->
+        </ul>   
+                
+              
         </div><!-- /.loan-feed-block -->
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
