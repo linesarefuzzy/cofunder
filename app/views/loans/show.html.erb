@@ -1,25 +1,6 @@
 <% content_for :title, @loan.name %>
 <% fluid = @embedded ? '-fluid' : '' %>
 
-<% content_for :head do %>
-<script>
-  $(function () {
-    // Javascript to enable link to tab
-    var hash = document.location.hash;
-    var prefix = "_";
-    if (hash)
-      $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
-    else 
-      $('.nav-tabs a:first').tab('show'); // Select first tab
-
-    // Initiate slideshow
-    $('.carousel-inner .item').first().addClass('active')
-    $('.carousel-indicators li').first().addClass('active')
-    $('.carousel').carousel('fade')
-  })
-</script>
-<% end #content_for %>
-
 <div class="container<%=fluid%> loans detail_page">
   <div class="row<%=fluid%>">
     <div class="span7">
@@ -78,33 +59,36 @@
         <h5 class="coop_name">Current Report</h5> 
         -->
         <div class="short_description update-box update-box-color">
-          <div class="info">Status: <%= @loan.status %>
-          <i class="icon-coinstack"></i> <%= @loan.amount_formatted %>
-          <i class="icon-map-marker"></i> <%= @loan.location %>
+          <div class="info">Status: <%= @loan.status %> &nbsp;
+          <i class="icon-coinstack"></i> <%= @loan.amount_formatted %> &nbsp;
+          <i class="icon-map-marker"></i> <%= @loan.location %> &nbsp;
           <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %></div>
-          <div class="short_description"><%= @loan.get_short_description %></div>
+          <div class="short_description"><%= render @loan.short_description(@language) %></div>
         </div>
         <div class="loan-feed-block">
         <ul class="timeline loan-feed">
           <% @loan.project_events.each do |paso| %>
             <li class="paso active <%= paso.completed_or_not %>"><br />
               <p class="paso_short_desc well clearfix">
-                <i class=" icon-large icon-user"></i> <span class="paso-summary"><%= paso.summary %></span> 
+                <i class=" icon-large icon-user"></i> <span class="paso-summary">
+                  <%= render paso.summary(@language) %></span> 
                 <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
                 <span class="paso-status"><%= paso.status %></span>
               </p>
              
-              <% if paso.Completed %>
-                <p class="paso_completed"><%= paso.Completed %></p>
+              <% if paso.completed %>
+                <p class="paso_completed"><%= paso.completed %></p>
               <% else %>
-                <p class="paso_completed"><strong>(Not yet completed)</strong></p>
+                <p class="paso_not_completed"><strong>(Not yet completed)</strong></p>
               <% end %>
-              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
+              <% unless paso.details(@language).try(:content).blank? %>
+                <br>Details: <%= render paso.details(@language) %>
+              <% end %>
               <ul>
                 <% paso.logs.each do |log| %>
-                  <li class="log logs-body <%= log.Progress.parameterize.underscore %>">
-                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.Progress %></strong> </li>
-                    <p class="log-inner"><i class="icon-adjust"></i> <%= log.explanation %></p><br /> <br /></li>
+                  <li class="log logs-body <%= log.progress.parameterize.underscore %>">
+                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
+                    <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
                 <% end %>
               </ul>
             </li>
@@ -129,7 +113,10 @@
           <h4 class="section-title">About This Project</h4>
           <div class="description_box well">
             <p class="loan_description detail_gutter">
-              <%= @loan.get_description || '<span style="font-style:italic;" class="notfound">No description found.</span>' %>
+              <%= # render translation using partial "translations/_translation.html.erb"
+                render @loan.description(@language) || 
+                # if translation doesn't exist:
+                '<span class="notfound">No description found.</span>' %>
             </p>
           </div>
         </div>
@@ -148,6 +135,7 @@
             </tr>
           </table>
         </div>
+
         <div class="tab-pane" id="other_loans">
           <% if !@other_loans || @other_loans.count <= 1 %>
             <p class="empty">This is the first loan to this cooperative.</p>

@@ -67,6 +67,15 @@ iframe[seamless] {
 .empty {
   font-weight: bold;
 }
+.notfound {
+  font-style: italic;
+}
+.foreign_language {
+  font-style: italic;
+  /*&:hover {
+    cursor:help;
+  }*/
+}
 
 
 /* HEADERS, FOOTERS, TITLES */

@@ -1,5 +1,5 @@
 $(function () {
-  // Javascript to enable link to tab
+  // Enable link to tab
   var hash = document.location.hash;
   var prefix = "_";
   if (hash)

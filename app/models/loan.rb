@@ -48,12 +48,11 @@ class Loan < ActiveRecord::Base
     end
   end
   
-  def get_short_description(language_code="EN")
-    get_translation('Loans', 'ShortDescription', self.ID, language_code)
+  def short_description(language_code)
+    self.translation('ShortDescription', language_code)
   end
-
-  def get_description(language_code='EN')
-    get_translation('Loans', 'Description', self.ID, language_code)
+  def description(language_code)
+    self.translation('Description', language_code)
   end
   
   def picture_paths(limit=1)

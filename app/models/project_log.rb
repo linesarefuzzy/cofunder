@@ -7,10 +7,10 @@ class ProjectLog < ActiveRecord::Base
   
   def project; get_project(self); end
   def date; self.Date.to_date; end # times are not used - all are set to midnight
-	def explanation
-	  get_translation('ProjectLogs', 'Explanation', self.ID, language_code='EN')
+  def explanation(language_code='EN')
+    self.translation('Explanation', language_code)
   end
-	def detailed_explanation
-	  get_translation('ProjectLogs', 'DetailedExplanation', self.ID, language_code='EN')
+  def detailed_explanation(language_code='EN')
+    self.translation('DetailedExplanation', language_code)
   end
 end

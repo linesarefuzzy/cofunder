@@ -1,0 +1,5 @@
+<% if translation.language.code == @language %>
+  <span class="home_language"><%= translation.content %></span>
+<% else %>
+  <span class="foreign_language"><%= translation.content %></span>
+<% end %>
