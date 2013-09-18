@@ -58,15 +58,17 @@
         </div>
         <h5 class="coop_name">Current Report</h5> 
         -->
-        <div class="short_description update-box update-box-color">
+        <div class="update-box update-box-color">
           <div class="info">Status: <%= @loan.status %> &nbsp;
           <i class="icon-coinstack"></i> <%= @loan.amount_formatted %> &nbsp;
           <i class="icon-map-marker"></i> <%= @loan.location %> &nbsp;
-          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %></div>
+          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %> &nbsp;
+          </div>
           <div class="short_description"><%= render @loan.short_description(@language) %></div>
-        </div>
+        </div><!--end .update-box -->
+        
         <div class="loan-feed-block">
-        <ul class="timeline loan-feed">
+        <ul class="timeline loan-feed clearfix">
           <% @loan.project_events.each do |paso| %>
             <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
               <div class="paso_short_desc well clearfix">
@@ -74,24 +76,26 @@
                   <%= render paso.summary(@language) %></span> 
                 <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
                 <span class="paso-status"><%= paso.status %></span>
-                <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
+                <% unless paso.logs.empty? %>
+                  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
+                <% end %>
                 <% if paso.completed %>
                 <p class="paso_completed"><%= paso.completed %></p>
               <% else %>
-                <p class="paso_not_completed"><strong>(Not yet completed)</strong></p>
+                <p class="paso_not_completed"><br /><strong class="wellnot-completed"><i class="icon-bell"></i> Not yet completed</strong></p>
               <% end %>
               <% unless paso.details(@language).try(:content).blank? %>
-                <br>Details: <%= render paso.details(@language) %>
+                <br><strong>Details:</strong> <%= render paso.details(@language) %>
               <% end %>
                 <div id="logs-<%=paso.id %>" class="collapse">
                 <ul class="logs-items">
                 <% paso.logs.each do |log| %>
-                  <li  class="log logs-body  <%= log.progress.parameterize.underscore %>"> 
-                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
+                  <li class="log logs-body  <%= log.progress.parameterize.underscore %>"> 
+                  <li><strong class="log-date">Log Date<br /> <i class="icon-calendar"></i> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
                     <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
                 <% end %>
               </ul> 
-              </div><!--end of well-->
+              </div><!--end of .paso_short_desc .well .clearfix-->
               
             </li>
           <% end %>
@@ -100,10 +104,9 @@
                 
               
         </div><!-- /.loan-feed-block -->
-      </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
-
-    <div class="span5 sidebar">
+  
+    <div class="span5 sidebar pull-right">
       <ul class="nav nav-tabs">
         <li><a href="#summary" data-toggle="tab">Summary</a></li>
         <li><a href="#contracts" data-toggle="tab">Contracts</a></li>
