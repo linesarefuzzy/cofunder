@@ -271,7 +271,7 @@ li.loan {
   display: none;
 }
 .not-completed{
-  background: #d6d6d6;
+  background: #f9f9f9;
   color: #333333;
   font-weight: 800;
   border-radius: 4px;
@@ -328,7 +328,8 @@ li.loan {
   
 }
 .paso-summary{
-  width: 410px;
+  font-size: 13.6px;
+  font-weight: 600;
 }
 .paso-status {
   float: right;
