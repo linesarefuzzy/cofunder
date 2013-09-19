@@ -72,10 +72,10 @@
           <% @loan.project_events.each do |paso| %>
             <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
               <div class="paso_short_desc well clearfix">
-                <i class=" icon-large icon-user"></i> <span class="paso-summary">
-                  <%= render paso.summary(@language) %></span> 
-                <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
-                <span class="paso-status"><%= paso.status %></span>
+                <i class=" icon-large icon-user"></i><span class="paso-summary">
+                  <%= render paso.summary(@language) %></span><br /> 
+                <span class="paso-date"><i class="icon-calendar"></i><strong><%= paso.display_date %></strong></span><br />
+                <span class="paso-status"><%= paso.status %></span><br />
                 <% unless paso.logs.empty? %>
                   <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
                 <% end %>

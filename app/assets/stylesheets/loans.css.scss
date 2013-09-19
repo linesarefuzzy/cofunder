@@ -154,6 +154,7 @@ li.loan {
   font-weight: bold;
   color: #999;
   margin-right: 40px;
+  
 }
 .back_link {
   margin-left: 10px;
@@ -233,12 +234,13 @@ li.loan {
 }
 .loan-feed {
   box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
-  background-color: rgb(246, 249, 255);
+  background-color: #f8f8f8;
   border: 1px solid rgb(236, 240, 244);
   padding: 0px 10px;
   margin-top: 5px;
   padding-bottom: 20px;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 5px;
+  
 }
 .loan-title {
   font-size: 13px;
@@ -331,11 +333,12 @@ li.loan {
   font-size: 13.6px;
   font-weight: 600;
 }
+
 .paso-status {
   float: right;
-  color: #212121;
+  color: #333333;
   font-weight: 800;
-  margin-right: 6px;
+  margin-top: 6px;
   
 }
 .paso-date{
@@ -348,15 +351,15 @@ li.loan {
   float: left;
   display: block;
   margin-bottom: 10px;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius-right: 5px;
+  border-radius-left: 5px;
+  padding: 20px;
   width: auto;
   margin-left:6px;
 }
 
 .update-box-color {
-  box-shadow: 0px 1px 0px rgb(245, 248, 237) inset;
-  background: rgba(245, 246, 236, 0.60);
+  background: rgba(88, 134, 27, 0.20);
 }
 
 
