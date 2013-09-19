@@ -82,7 +82,7 @@
                 <% if paso.completed %>
                 <p class="paso_completed"><%= paso.completed %></p>
               <% else %>
-                <p class="paso_not_completed"><br /><strong class="wellnot-completed"><i class="icon-bell"></i> Not yet completed</strong></p>
+                <p class="paso_not_completed"><br /><strong class="not-completed"><i class="icon-bell"> </i>Not yet completed</strong></p>
               <% end %>
               <% unless paso.details(@language).try(:content).blank? %>
                 <br><strong>Details:</strong> <%= render paso.details(@language) %>
@@ -91,7 +91,7 @@
                 <ul class="logs-items">
                 <% paso.logs.each do |log| %>
                   <li class="log logs-body  <%= log.progress.parameterize.underscore %>"> 
-                  <li><strong class="log-date">Log Date<br /> <i class="icon-calendar"></i> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
+                  <li><strong class="log-date">Log Date<br /><strong class="log-date"></strong><i class="icon-calendar"> </i><%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
                     <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
                 <% end %>
               </ul> 

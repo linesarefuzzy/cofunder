@@ -271,12 +271,17 @@ li.loan {
   display: none;
 }
 .not-completed{
-  color: #777; ;
-  font-weight: 600;
-  border-radius: 3px;
-  padding: 4px;
-  margin-bottom: 5px;
-  margin-left:  5px;
+  background: #d6d6d6;
+  color: #333333;
+  font-weight: 800;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  box-shadow: -1px -1px #999 0.5;
+  border: 1px solid #dbd5db;
+  padding: 5px;
+  
   
 }
 .log{
@@ -297,12 +302,12 @@ li.loan {
   padding: 4px;
 }
 .log-date{
-  margin-left: 5px;
+  margin-left: -15px;
   color: #555;
 }
 .log-progress{
   float: right;
-  margin-right: 110px;
+  margin-right: 100px;
  
 }
 
