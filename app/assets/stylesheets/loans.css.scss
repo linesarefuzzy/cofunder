@@ -102,12 +102,6 @@ li.loan {
   background: #efefef;
   border: 1px solid #444;
 }
-.section-title {
-  margin-left: 10px;
-  font-size: 23px;
-  /*font-weight: 400;*/
-  color: #444;
-}
 .filters {
   margin-top: 20px;
   background: transparent;
@@ -161,7 +155,7 @@ li.loan {
 .detail_wrap {
   background: transparent;
 }
-.detail_page {
+.detail_page, .gallery {
   margin-top: 20px;
 }
 .detail_gutter {

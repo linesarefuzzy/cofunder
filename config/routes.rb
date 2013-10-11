@@ -7,8 +7,10 @@ Tww::Application.routes.draw do
 
   get 'embedded/loans', to: 'loans#index', embedded: true, as: :embedded_loans
   get 'embedded/loans/:id', to: 'loans#show', embedded: true, as: :embedded_loan
+  get 'embedded/loans/:id/gallery', to: 'loans#gallery', embedded: true, as: :embedded_gallery
 
   resources :loans, only: [:index, :show]
+  get 'loans/:id/gallery', to: 'loans#gallery'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

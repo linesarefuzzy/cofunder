@@ -1,28 +1,11 @@
 module MediaModule
-  def get_picture_paths(table_name, id, limit=1, order_by='Priority IS NULL, Priority = 0, Priority, MediaPath')
-    base_url = "http://www.theworkingworld.org/"
+  def get_media(table_name, id, limit=1, images_only=false, order_by=nil)
+    order_by ||= 'Priority IS NULL, Priority = 0, Priority, MediaPath'
     
-    images = Media.where(:ContextTable => table_name, :ContextID => id).order(order_by).limit(limit)
+    items = Media.where(ContextTable: table_name, ContextID: id)
+    items = items.type('image') if images_only
+    items = items.order(order_by).limit(limit)
     
-    image_paths = []
-    images.each do |image|
-      path = base_url + image.MediaPath
-
-      # insert various things into file name
-      thumb = path.sub(/(\.[^.]+)$/, '.thumb\1')
-      small = path.sub(/(\.[^.]+)$/, '.small\1')
-      medium = path.sub(/(\.[^.]+)$/, '.medium\1')
-      large = path.sub(/(\.[^.]+)$/, '.large\1')
-      
-      image_paths << {
-        :full => path,
-        :thumb => thumb,
-        :small => small,
-        :medium => medium,
-        :large => large
-      }
-    end
-    
-    return image_paths
+    return items
   end
 end

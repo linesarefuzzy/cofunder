@@ -13,12 +13,14 @@
  *= require home
  *= require loans
  *= require users
+ *= require media
  */
 
 @import "bootstrap";
 /*body { padding-top: 60px; }*/
 @import "bootstrap-responsive";
 @import "bootstrap-rowlink";
+@import "bootstrap-lightbox";
 
 $tww_red: #882222;
 $tww_gold: #C0B18F;
@@ -35,7 +37,7 @@ a:link, a:visited, a:active {
 }
 a:hover {
   color: rgb(73, 18, 13);
-  text-decoration: none;
+  text-decoration: underline;
 }
 a.currency_symbol {
   color: inherit;
@@ -84,11 +86,14 @@ iframe[seamless] {
   font-weight: bolder;
   color: #fff;
 }
-.section-title {
+.page_title {
   margin-left: 10px;
-  font-size: 22px;
+}
+.section_title {
+  margin-left: 10px;
+  font-size: 23px;
+  color: #444;
   font-weight: bold;
-  color: #212121;
 }
 .sub_heading {
   font-size: 23px;

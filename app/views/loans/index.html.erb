@@ -2,7 +2,7 @@
 <% fluid = @embedded ? '-fluid' : '' %>
 
 <div class="container<%=fluid%> loans">
-  <% unless @embedded %><h1 class="section-title">Loans</h1><% end %>
+  <% unless @embedded %><h1 class="section_title">Loans</h1><% end %>
   <div class="row<%=fluid%> filters">
     <div class="span12">
       <%= form_tag({}, {:method => "get"}) do %>
@@ -36,11 +36,9 @@
           <% @loans.each do |loan| %>
           <tr class="loans_items well loan_list_item_wrap" style="opacity: 0.9;"><!-- start lend item from loans list.-->
             <td class="loan_item_thumb">
-              <% if loan.main_picture %>
-                <a href="<%= url_for %>/<%= loan.id %>">
-                  <div class="coop_pic_sm" style="background-image: url('<%= loan.main_picture[:thumb] %>');"></div>
-                </a>
-              <% end %>
+              <a href="<%= url_for %>/<%= loan.id %>">
+                <div class="coop_pic_sm" style="background-image: url('<%= loan.thumb_path %>');"></div>
+              </a>
             </td>
             <td class="loan_item_desc">
               <h5 class="coop_name"><a href="<%= url_for %>/<%= loan.id %>"><%= loan.name %></a></h5>

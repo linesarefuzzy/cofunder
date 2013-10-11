@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-rowlink
+//= require bootstrap-lightbox
 //= require_tree .
 
 $(function () {

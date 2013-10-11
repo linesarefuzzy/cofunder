@@ -23,7 +23,7 @@
   <div class="row<%=fluid%>">
     <div class="span7 main_content">
       <div class="detail_wrap">
-        <h1 class="section-title"><%= @loan.name %></h1>
+        <h1 class="section_title"><%= @loan.name %></h1>
        
         <% if @pictures %>
           <div id="myCarousel" class="carousel slide">
@@ -38,8 +38,8 @@
             <!-- Carousel items -->
             <!-- <a href="<%= url_for %>/gallery"> -->
               <div class="carousel-inner">
-                <% @pictures.each do |path| %>
-                  <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
+                <% @pictures.each do |picture| %>
+                  <div class="item picture" style="background-image: url(<%= picture.paths[:large] %>);"></div>
                 <% end %>
               </div>
             <!-- </a> -->
@@ -110,7 +110,7 @@
       
       <div id="about_loan" class="tab-content">
         <div class="tab-pane" id="summary">
-          <h4 class="section-title">About This Project</h4>
+          <h4 class="section_title">About This Project</h4>
           <div class="description_box well">
             <p class="loan_description detail_gutter">
               <%= # render translation using partial "translations/_translation.html.erb"

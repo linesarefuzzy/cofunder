@@ -1,0 +1,22 @@
+- content_for :title, 'Gallery: ' + @loan.name
+- fluid = @embedded ? '-fluid' : ''
+
+%div{class: "container#{fluid} loans gallery"}
+  .back_link
+    = link_to (@embedded ? embedded_loan_path(@loan) : @loan) do
+      %i.icon-chevron-left>
+    = link_to (@embedded ? embedded_loan_path(@loan) : @loan) do
+      Back to #{@loan.name}
+  
+  %div
+    %h1.page_title Media Gallery
+
+  .gallery
+    %h1.section_title Images of #{@loan.cooperative.name}
+    / = render @coop_media, locals: {alt: @loan.cooperative.name}
+    = render partial: "media/gallery", locals: {media: @coop_media, alt: @loan.cooperative.name}
+    
+    %h1.section_title Images from this project
+    = render partial: "media/gallery", locals: {media: @loan_media, alt: @loan.name}
+    = render partial: "media/gallery", locals: {media: @log_media, alt: @loan.name}
+    
