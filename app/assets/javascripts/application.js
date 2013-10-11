@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-rowlink
 //= require bootstrap-lightbox
+//= require bootstrap-transition
 //= require_tree .
 
 $(function () {

@@ -148,6 +148,7 @@ li.loan {
   font-weight: bold;
   color: #999;
   margin-right: 40px;
+  
 }
 .back_link {
   margin-left: 10px;
@@ -163,7 +164,7 @@ li.loan {
 }
 .detail_gutter .info {
   float: left;
-  
+  display: block;
 }
 .detail_gutter .short_description {
   clear: both;
@@ -218,22 +219,22 @@ li.loan {
   display: table-caption;
 }
 .loan-feed-block{
-   margin-left: -20px;
+   margin-left: -18px;
 }
 .timeline li {
   list-style: none;
-  width: 500px;
-  margin-left: 10px;
+  width: 600px;
+  margin-left: 20px;
 }
 .loan-feed {
   box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
-  background-color: rgb(246, 249, 255);
+  background-color: #f8f8f8;
   border: 1px solid rgb(236, 240, 244);
-  padding: 0px 12px;
+  padding: 0px 10px;
   margin-top: 5px;
   padding-bottom: 20px;
-  border-radius: 5px 5px 5px 5px;
-  width: 520px;
+  border-radius: 5px;
+  
 }
 .loan-title {
   font-size: 13px;
@@ -242,6 +243,7 @@ li.loan {
 .logs-body {
   font-size: 13px;
   vertical-align: baseline;
+  line-height: 1.4em;
   padding: 0px;
   color: #777;
 }
@@ -251,22 +253,39 @@ li.loan {
   margin-right: 5px;
   width: 52px;
 }
-.paso_short_desc {
+.paso_short_desc .well{
   padding: 4px;
   display: block;
-  font-weight: 600;
+  font-weight: 500;
+  width: 560px;
   margin-bottom: 6px;
-  color: #282023;
+  color: #d8d8d8;
+  margin: auto 0;
+  
 }
 .paso_completed{
   display: none;
+}
+.not-completed{
+  background: #f9f9f9;
+  color: #333333;
+  font-weight: 800;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -ms-border-radius: 4px;
+  box-shadow: -1px -1px #999 0.5;
+  border: 1px solid #dbd5db;
+  padding: 5px;
+  
+  
 }
 .log{
   display: block;
   font-weight: 400;
 }
 .log_short_desc{
-  width: 430px;
+  width: 420px;
   float: left;
   display: none;
 }
@@ -278,23 +297,43 @@ li.loan {
   color: #545454;
   padding: 4px;
 }
+.log-date{
+  margin-left: -15px;
+  color: #555;
+}
 .log-progress{
   float: right;
-  margin-right: 30px;
+  margin-right: 100px;
 }
+.details{
+  color: #555;
+  font-style: normal;
+  font-weight: 400;
+  margin: 3px;
+}
+.details-title{
+  color: #555;
+  margin: 3px;
+  font-style: normal;
+  font-weight: bold;
+}
+
 .info_progress{
   font-weight: bolder;
   color: #f3f3f3;
   
 }
 .paso-summary{
-  width: 470px;
+  font-size: 13.6px;
+  font-weight: 600;
 }
+
 .paso-status {
   float: right;
-  color: #212121;
+  color: #333333;
   font-weight: 800;
-  margin-right: 5px;
+  margin-top: 6px;
+  
 }
 .paso-date{
   float:right;
@@ -303,18 +342,21 @@ li.loan {
 
 .update-box {
   text-align: left;
+  float: left;
   display: block;
   margin-bottom: 10px;
-  border-radius: 5px;
-  padding: 10px;
-  width: 525px;
+  border-radius-right: 5px;
+  border-radius-left: 5px;
+  padding: 20px;
+  width: auto;
   margin-left:6px;
 }
 
 .update-box-color {
-  box-shadow: 0px 1px 0px rgb(245, 248, 237) inset;
-  background: rgba(245, 246, 236, 0.60);
+  background: rgba(88, 134, 27, 0.20);
 }
+
+
 .user_name {
   font-size: 18px;
   font-weight: bold;
@@ -346,7 +388,11 @@ li.loan {
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
-
+.logs-items{
+  max-width: 520px;
+  
+  
+}
 .other_loans {
   .rowlink {
     /*background-color: #f3f3f3;*/
