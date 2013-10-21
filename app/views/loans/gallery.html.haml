@@ -11,12 +11,33 @@
   %div
     %h1.page_title Media Gallery
 
-  .gallery
-    %h1.section_title Images of #{@loan.cooperative.name}
+  #links
+    %h1.section_title Images of the #{@loan.cooperative.name} Cooperative
     / = render @coop_media, locals: {alt: @loan.cooperative.name}
     = render partial: "media/gallery", locals: {media: @coop_media, alt: @loan.cooperative.name}
     
     %h1.section_title Images from this project
     = render partial: "media/gallery", locals: {media: @loan_media, alt: @loan.name}
     = render partial: "media/gallery", locals: {media: @log_media, alt: @loan.name}
-    
+
+-# required for blueimp-gallery
+#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls
+  .slides
+  %h3.title
+  %a.prev ‹
+  %a.next ›
+  %a.close ×
+  %a.play-pause
+  %ol.indicator
+
+-# required for blueimp-gallery
+= javascript_include_tag "js/blueimp-gallery"
+:javascript
+  document.getElementById('links').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+      link = target.src ? target.parentNode : target,
+      options = {index: link, event: event},
+      links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+  };

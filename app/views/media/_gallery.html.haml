@@ -14,8 +14,6 @@
       -#        %source{type: "video/mp4", src: item.path}
     - else
       %li.span3
-        %a.thumbnail(data-toggle="lightbox" href="#lightbox-#{item.id}")
+        %a.thumbnail{href: item.paths[:large]}
           %img{src: item.paths[:small], alt: alt}
-        .lightbox.hide.fade(id="lightbox-#{item.id}" tabindex="-1" role="dialog" aria-hidden="true")
-          .lightbox-content
-            %img{src: item.paths[:large], alt: alt}
+

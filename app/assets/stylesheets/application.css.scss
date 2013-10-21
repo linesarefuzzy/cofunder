@@ -14,13 +14,13 @@
  *= require loans
  *= require users
  *= require media
+ *= require css/blueimp-gallery
  */
 
 @import "bootstrap";
 /*body { padding-top: 60px; }*/
 @import "bootstrap-responsive";
 @import "bootstrap-rowlink";
-@import "bootstrap-lightbox";
 
 $tww_red: #882222;
 $tww_gold: #C0B18F;
