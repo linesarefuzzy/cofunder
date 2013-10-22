@@ -11,14 +11,20 @@
   %div
     %h1.page_title Media Gallery
 
-  #links
-    %h1.section_title Images of the #{@loan.cooperative.name} Cooperative
-    / = render @coop_media, locals: {alt: @loan.cooperative.name}
-    = render partial: "media/gallery", locals: {media: @coop_media, alt: @loan.cooperative.name}
-    
-    %h1.section_title Images from this project
-    = render partial: "media/gallery", locals: {media: @loan_media, alt: @loan.name}
-    = render partial: "media/gallery", locals: {media: @log_media, alt: @loan.name}
+  - if (@coop_media + @loan_media + @log_media).empty?
+    .empty
+      No media found.
+  - else
+    #links
+      - unless @coop_media.empty?
+        %h1.section_title Images of #{@loan.cooperative.verbose_name}
+        -# = render @coop_media, locals: {alt: @loan.cooperative.name}
+        = render partial: "media/gallery", locals: {media: @coop_media, alt: @loan.cooperative.name}
+
+      - unless @loan_media.empty? and @log_media.empty?
+        %h1.section_title Images from this project
+        = render partial: "media/gallery", locals: {media: @loan_media, alt: @loan.name}
+        = render partial: "media/gallery", locals: {media: @log_media, alt: @loan.name}
 
 -# required for blueimp-gallery
 #blueimp-gallery.blueimp-gallery.blueimp-gallery-controls
