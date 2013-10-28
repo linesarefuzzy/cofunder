@@ -2,21 +2,21 @@ class Media < ActiveRecord::Base
   include Legacy
   attr_accessible :ContextID, :ContextTable, :Description, :MediaPath, :MemberID, :Priority
 
-  ImageRegex = /(jpe?g|gif|png|\]|\))$/i
-  VideoRegex = /(mov|avi|wmv|mp4)$/i
+  IMAGE_REGEX = /(jpe?g|gif|png|\]|\))$/i
+  VIDEO_REGEX = /(mov|avi|wmv|mp4)$/i
   scope :type, ->(type) {
     case type
       when 'image'
-        where("MediaPath REGEXP ?", ImageRegex.source)
+        where("MediaPath REGEXP ?", IMAGE_REGEX.source)
       when 'video'
-        where("MediaPath REGEXP ?", VideoRegex.source)
+        where("MediaPath REGEXP ?", VIDEO_REGEX.source)
       when 'other'
-        where("MediaPath NOT REGEXP ? AND MediaPath NOT REGEXP ?", ImageRegex.source, VideoRegex.source)
+        where("MediaPath NOT REGEXP ? AND MediaPath NOT REGEXP ?", IMAGE_REGEX.source, VIDEO_REGEX.source)
     end
   }
   def type
-    if self.media_path =~ ImageRegex then 'image'
-    elsif self.media_path =~ VideoRegex then 'video'
+    if self.media_path =~ IMAGE_REGEX then 'image'
+    elsif self.media_path =~ VIDEO_REGEX then 'video'
     else 'other' end
   end
 

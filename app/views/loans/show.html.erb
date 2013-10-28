@@ -66,44 +66,46 @@
           </div>
           <div class="short_description"><%= render @loan.short_description(@language) %></div>
         </div><!--end .update-box -->
-        
+
         <div class="loan-feed-block">
-        <ul class="timeline loan-feed clearfix">
-          <% @loan.project_events.each do |paso| %>
-            <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
-              <div class="paso_short_desc well clearfix">
-                <i class=" icon-large icon-user"></i><span class="paso-summary">
-                  <%= render paso.summary(@language) %></span><br /> 
-                <span class="paso-date"><i class="icon-calendar"></i><strong><%= paso.display_date %></strong></span><br />
-                <span class="paso-status"><%= paso.status %></span><br />
-                <% unless paso.logs.empty? %>
-                  <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
-                <% end %>
-                <% if paso.completed %>
-                <p class="paso_completed"><%= paso.completed %></p>
-              <% else %>
-                <p class="paso_not_completed"><br /><strong class="not-completed"><i class="icon-bell"> </i>Not yet completed</strong></p>
-              <% end %>
-              <% unless paso.details(@language).try(:content).blank? %>
-                <br><div class="well well-small"><i class="icon-bell"></i><strong class="details-title">Details:</strong><em class="details"><%= render paso.details(@language) %></em></div>
-              <% end %>
-                <div id="logs-<%=paso.id %>" class="collapse">
-                <ul class="logs-items">
-                <% paso.logs.each do |log| %>
-                  <li class="log logs-body  <%= log.progress.parameterize.underscore %>"><br /> 
-                  <li><strong class="log-date">Log Date<br /><strong class="log-date"></strong><i class="icon-calendar"> </i><%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
-                    <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
-                <% end %>
-              </ul> 
-              </div><!--end of .paso_short_desc .well .clearfix-->
-              
-            </li>
-          <% end %>
-          </div><!--end of #show-logs-->
-        </ul>   
-                
-              
+          <ul class="timeline loan-feed clearfix">
+            <% @loan.project_events.each do |paso| %>
+              <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
+                <div class="paso_short_desc well clearfix">
+                  <i class=" icon-large icon-user"></i><span class="paso-summary">
+                    <%= render paso.summary(@language) %></span><br />
+                  <span class="paso-date"><i class="icon-calendar"></i><strong><%= paso.display_date %></strong></span><br />
+                  <span class="paso-status"><%= paso.status %></span><br />
+                  <% unless paso.logs.empty? %>
+                    <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
+                  <% end %>
+                  <% if paso.completed %>
+                    <p class="paso_completed"><%= paso.completed %></p>
+                  <% else %>
+                      <p class="paso_not_completed"><br /><strong class="not-completed"><i class="icon-bell"> </i>Not yet completed</strong></p>
+                  <% end %>
+                  <% unless paso.details(@language).try(:content).blank? %>
+                    <br><div class="well well-small"><i class="icon-bell"></i><strong class="details-title">Details:</strong><em class="details"><%= render paso.details(@language) %></em></div>
+                  <% end %>
+                  <div id="logs-<%=paso.id %>" class="collapse">
+                    <ul class="logs-items">
+                      <% paso.logs.each do |log| %>
+                        <li class="log logs-body  <%= log.progress.parameterize.underscore %>"><br /></li>
+                        <li>
+                          <span class="log-date">Log Date<br /></span>
+                          <span class="log-date"><i class="icon-calendar"> </i><%= log.date %></span>
+                          <span class="log-progress">Progress: <%= log.progress %></span>
+                        </li>
+                        <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br />
+                      <% end %>
+                    </ul>
+                  </div>
+                </div><!--end of .paso_short_desc .well .clearfix-->
+              </li>
+            <% end %>
+          </ul>
         </div><!-- /.loan-feed-block -->
+      </div><!-- /.detail-wrap -->
     </div><!-- /.span7.main_content -->
   
     <div class="span5 sidebar pull-right">

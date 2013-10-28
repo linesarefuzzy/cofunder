@@ -26,17 +26,15 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li><a class="nav_link btn-link" href="#">What We Do</a></li>
-            <li><a class="nav_link btn-link"" href="#">Where We Work</a></li>
-            <li><a class="loan_list nav_link btn-link"" href="<%= url_for loans_path %>">Find Loans</a></li>
+            <li><a class="nav_link btn-link" href="#">Where We Work</a></li>
+            <li><a class="loan_list nav_link btn-link" href="<%= url_for loans_path %>">Find Loans</a></li>
             <li><a class="btn sign_in pull-right" href="<%= url_for new_user_session_path %>">Sign In</a></li>
           </ul>
-          
         </div><!--/.nav-collapse -->
       </div><!--/.container -->
     </div><!--/.navbar-inner -->
   </div><!--/.navbar navbar-inverse navbar-fixed-top -->
      
-  </div> 
   <% if notice %>
     <p class="notice alert alert-success">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
