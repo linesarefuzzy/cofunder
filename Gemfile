@@ -16,9 +16,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  # Twitter Bootstrap
+  gem 'bootstrap-sass', '~> 2.3.1.0'
 end
 
 gem 'jquery-rails'
@@ -41,15 +44,8 @@ group :development do
   gem 'debugger'
 end
 
-# JavaScript Runtime
-gem "therubyracer", :require => 'v8'
-
 # Devise (user auth)
 gem 'devise'
-
-# Twitter Bootstrap
-# gem 'twitter-bootstrap-rails'
-gem 'bootstrap-sass', '~> 2.3.1.0'
 
 # Pagination
 gem "will_paginate", "~> 3.0.4"
