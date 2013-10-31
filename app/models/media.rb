@@ -1,5 +1,5 @@
 class Media < ActiveRecord::Base
-  include Legacy
+  include Legacy, TranslationModule
   attr_accessible :ContextID, :ContextTable, :Description, :MediaPath, :MemberID, :Priority
 
   IMAGE_REGEX = /(jpe?g|gif|png|\]|\))$/i
@@ -34,5 +34,9 @@ class Media < ActiveRecord::Base
       medium: path.sub(/(\.[^.]+)$/, '.medium\1'),
       large: path.sub(/(\.[^.]+)$/, '.large\1')
     }
+  end
+
+  def caption(language_code='EN')
+    self.translation('Caption', language_code)
   end
 end

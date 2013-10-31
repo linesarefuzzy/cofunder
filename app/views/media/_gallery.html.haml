@@ -14,6 +14,8 @@
       -#        %source{type: "video/mp4", src: item.path}
     - else
       %li.span3
-        %a.thumbnail{href: item.paths[:large]}
-          %img{src: item.paths[:small], alt: alt}
-
+        .thumbnail
+          %a{href: item.paths[:large]}
+            %img{src: item.paths[:small], alt: alt}
+          - if item.caption(@language)
+            %p.caption= render item.caption(@language)

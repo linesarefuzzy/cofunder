@@ -36,13 +36,13 @@
             <% end %>
 
             <!-- Carousel items -->
-            <!-- <a href="<%= url_for %>/gallery"> -->
+            <a href="<%= url_for %>/gallery">
               <div class="carousel-inner">
                 <% @pictures.each do |picture| %>
                   <div class="item picture" style="background-image: url(<%= picture.paths[:large] %>);"></div>
                 <% end %>
               </div>
-            <!-- </a> -->
+            </a>
 
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>
