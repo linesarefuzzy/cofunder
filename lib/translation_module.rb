@@ -13,11 +13,10 @@ module TranslationModule
       :RemoteColumnName => column_name,
       :RemoteID => id
     )
-    t = translations.where('Languages.Code' => language_code).try(:first) || 
-        translations.order('Languages.Priority').try(:first)
-    return t
+    return translations.where('Languages.Code' => language_code).try(:first) ||
+           translations.order('Languages.Priority').try(:first)
   end
-  
+
   include ActionView::Helpers::NumberHelper
   def currency_format(amount, country, tooltip=true)
     currency = Currency.where(:Country => country).first
