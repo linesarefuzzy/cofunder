@@ -1,8 +1,7 @@
 <% content_for :title, @loan.name %>
-<% fluid = @embedded ? '-fluid' : '' %>
 
-<div class="container<%=fluid%> loans detail_page">
-  <div class="row<%=fluid%>">
+<div class="container-fluid loans detail_page">
+  <div class="row-fluid">
     <div class="span7">
       <div class="back_link pull-left">
         <a href="<%= url_for (@embedded ? embedded_loans_path : loans_path) %>">
@@ -20,7 +19,7 @@
     </div>
   </div><!-- /.row -->
   
-  <div class="row<%=fluid%>">
+  <div class="row-fluid">
     <div class="span7 main_content">
       <div class="detail_wrap">
         <h1 class="section_title"><%= @loan.name %></h1>

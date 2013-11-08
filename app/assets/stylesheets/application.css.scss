@@ -31,6 +31,10 @@ body {
   -webkit-font-smoothing: antialiased;
   color: #333435;
 }
+.container-fluid {
+  max-width: 1100px;
+  margin: auto;
+}
 a:link, a:visited, a:active {
   /*color: #f3f3f3;*/
   color: $tww_red;
