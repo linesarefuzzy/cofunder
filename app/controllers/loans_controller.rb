@@ -24,7 +24,7 @@ class LoansController < ApplicationController
   # GET /loans/1.json
   def show
     @loan = Loan.status('all').find(params[:id])
-    @pictures = @loan.picture_paths(5) # for slideshow
+    @pictures = @loan.featured_pictures(5) # for slideshow
     @other_loans = @loan.cooperative.loans.status('all').order("SigningDate DESC") if @loan.cooperative
     @repayments = @loan.repayments.order('DateDue')
     @language = 'EN' # to be replaced by session variable
@@ -39,6 +39,25 @@ class LoansController < ApplicationController
       format.json { render :json => @loan }
     end
   end
+  
+  # GET /loans/1/gallery
+  def gallery
+    @loan = Loan.status('all').find(params[:id])
+    @language = 'EN' # to be replaced by session variable
+    media = @loan.all_media
+    @coop_media = media[:coop_media]
+    @loan_media = media[:loan_media]
+    @log_media = media[:log_media]
+    
+    if params[:embedded] 
+      _layout = 'embedded'
+      @embedded = true
+    else _layout = 'application' end
+
+    respond_to do |format|
+      format.html { render layout: _layout }
+    end
+  end    
 
   # def lend_form
   #   @loan = Loan.find(params[:id])

@@ -1,29 +1,30 @@
-  <div class="row">
-        <div class="span8">
-<h1 class="user_name"><%= current_user.get_full_name %> (<%= current_user %>)</h1>
-<ul class="breadcrumb">
-    <li><a href="#">Main</a> <span class="divider">/</span></li>
-    <li><a href="#">Account</a></li>
+<div class="row">
+  <div class="span8">
+    <h1 class="user_name"><%= current_user.get_full_name %> (<%= current_user %>)</h1>
+    <ul class="breadcrumb">
+      <li><a href="#">Main</a> <span class="divider">/</span></li>
+      <li><a href="#">Account</a></li>
     </ul>
     <ul class="nav nav-tabs">
-    <li><a href="#profile" data-toggle="tab">Profile</a></li>
-    <li><a href="#messages" data-toggle="tab">Messages</a></li>
-    <li><a href="#settings" data-toggle="tab">Settings</a></li>
+      <li><a href="#profile" data-toggle="tab">Profile</a></li>
+      <li><a href="#messages" data-toggle="tab">Messages</a></li>
+      <li><a href="#settings" data-toggle="tab">Settings</a></li>
     </ul>
     <div id="chart_div" class="chart"></div>
-<div class="balance">Balance: $<%= current_user.balance %></div>
+    <div class="balance">Balance: $<%= current_user.balance %></div>
 
 <%
 =begin %>
+This code was copied from django and hasn't been translated to erb.
 <div class="users_loans">
   <h2>My Loans</h2>
   <ul>
     <% for ulc, loan in users_loans %>
     <li class="loan">
       <div class="pull-right user_img pic">
-        <% if loan.main_picture %>
+        <% if loan.thumb_path %>
           <a href="<% url 'loans.views.loan_detail' loan.id %>">
-            <img src="<%= loan.main_picture[:thumb] %>" alt="<%= loan.cooperative %>">
+            <img src="<%= loan.thumb_path %>" alt="<%= loan.cooperative %>">
           </a>
         <% endif %>
       </div>
@@ -48,17 +49,16 @@
 <%
 =end %>
 
-<p><a class="btn btn-primary pull-right mk_loan_btn" href="<% url_for loans_path %>">Make a New Loan</a></p>
+    <p><a class="btn btn-primary pull-right mk_loan_btn" href="<% url_for loans_path %>">Make a New Loan</a></p>
+  </div><!-- /.span 8 -->
 </div> <!-- /.row -->
-   </div><!-- /.span 8 -->
-   <div class="row">
-        <div class="span4">
-        <h3>Feature Loans</h3>
+<div class="row">
+  <div class="span4">
+    <h3>Feature Loans</h3>
     <p>... image slider </p>
-       <h4>Match Loan</h4>
-       <ul>
-          <li>... match list</li>
-       </ul>
-          
-   </div> <!-- /.row -->
-   </div><!-- /.span 4 -->
+    <h4>Match Loan</h4>
+    <ul>
+      <li>... match list</li>
+    </ul>
+  </div> <!-- /.row -->
+</div><!-- /.span 4 -->

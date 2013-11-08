@@ -12,3 +12,8 @@ $(function () {
   $('.carousel-indicators li').first().addClass('active')
   $('.carousel').carousel('fade')
 })
+
+$('#show-logs').collapse({
+  show: false
+})
+   

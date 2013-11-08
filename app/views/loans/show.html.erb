@@ -23,7 +23,7 @@
   <div class="row<%=fluid%>">
     <div class="span7 main_content">
       <div class="detail_wrap">
-        <h1 class="section-title"><%= @loan.name %></h1>
+        <h1 class="section_title"><%= @loan.name %></h1>
        
         <% if @pictures %>
           <div id="myCarousel" class="carousel slide">
@@ -36,13 +36,13 @@
             <% end %>
 
             <!-- Carousel items -->
-            <!-- <a href="<%= url_for %>/gallery"> -->
+            <a href="<%= url_for %>/gallery">
               <div class="carousel-inner">
-                <% @pictures.each do |path| %>
-                  <div class="item picture" style="background-image: url(<%= path[:large] %>);"></div>
+                <% @pictures.each do |picture| %>
+                  <div class="item picture" style="background-image: url(<%= picture.paths[:large] %>);"></div>
                 <% end %>
               </div>
-            <!-- </a> -->
+            </a>
 
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>
@@ -58,47 +58,59 @@
         </div>
         <h5 class="coop_name">Current Report</h5> 
         -->
-        <div class="short_description update-box update-box-color">
+        <div class="update-box update-box-color">
           <div class="info">Status: <%= @loan.status %> &nbsp;
           <i class="icon-coinstack"></i> <%= @loan.amount_formatted %> &nbsp;
           <i class="icon-map-marker"></i> <%= @loan.location %> &nbsp;
-          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %></div>
+          <i class="icon-calendar"></i>  <%= @loan.signing_date_pretty %> &nbsp;
+          </div>
           <div class="short_description"><%= render @loan.short_description(@language) %></div>
-        </div>
-        <div class="loan-feed-block">
-        <ul class="timeline loan-feed">
-          <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>"><br />
-              <p class="paso_short_desc well clearfix">
-                <i class=" icon-large icon-user"></i> <span class="paso-summary">
-                  <%= render paso.summary(@language) %></span> 
-                <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
-                <span class="paso-status"><%= paso.status %></span>
-              </p>
-             
-              <% if paso.completed %>
-                <p class="paso_completed"><%= paso.completed %></p>
-              <% else %>
-                <p class="paso_not_completed"><strong>(Not yet completed)</strong></p>
-              <% end %>
-              <% unless paso.details(@language).try(:content).blank? %>
-                <br>Details: <%= render paso.details(@language) %>
-              <% end %>
-              <ul>
-                <% paso.logs.each do |log| %>
-                  <li class="log logs-body <%= log.progress.parameterize.underscore %>">
-                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.progress %></strong> </li>
-                    <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br /></li>
-                <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
-        </div><!-- /.loan-feed-block -->
-      </div><!-- /.detail_wrap -->
-    </div><!-- /.span7.main_content -->
+        </div><!--end .update-box -->
 
-    <div class="span5 sidebar">
+        <div class="loan-feed-block">
+          <ul class="timeline loan-feed clearfix">
+            <% @loan.project_events.each do |paso| %>
+              <li class="paso active clearfix <%= paso.completed_or_not %>"><br />
+                <div class="paso_short_desc well clearfix">
+                  <i class=" icon-large icon-user"></i><span class="paso-summary">
+                    <%= render paso.summary(@language) %></span><br />
+                  <span class="paso-date"><i class="icon-calendar"></i><strong><%= paso.display_date %></strong></span><br />
+                  <span class="paso-status"><%= paso.status %></span><br />
+                  <% if paso.completed %>
+                    <p class="paso_completed"><%= paso.completed %></p>
+                  <% else %>
+                    <p class="paso_not_completed"><br /><strong class="not-completed"><i class="icon-bell"></i> Not yet completed</strong></p>
+                  <% end %>
+                  <% unless paso.details(@language).try(:content).blank? %>
+                    <br><div class="well well-small"><i class="icon-bell"></i>
+                      <strong class="details-title">Details:</strong> <span class="details"><%= render paso.details(@language) %></span>
+                    </div>
+                  <% end %>
+                  <% unless paso.logs.empty? %>
+                      <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#logs-<%=paso.id %>">Logs &#8659;</button>
+                  <% end %>
+                  <div id="logs-<%=paso.id %>" class="collapse">
+                    <ul class="logs-items">
+                      <% paso.logs.each do |log| %>
+                        <li class="log logs-body  <%= log.progress.parameterize.underscore %>"><br /></li>
+                        <li>
+                          <span class="log-date">Log Date<br /></span>
+                          <span class="log-date"><i class="icon-calendar"> </i><%= log.date %></span>
+                          <span class="log-progress">Progress: <%= log.progress %></span>
+                        </li>
+                        <p class="log-inner"><i class="icon-adjust"></i> <%= render log.explanation(@language) %></p><br /> <br />
+                      <% end %>
+                    </ul>
+                  </div>
+                </div><!--end of .paso_short_desc .well .clearfix-->
+              </li>
+            <% end %>
+          </ul>
+        </div><!-- /.loan-feed-block -->
+      </div><!-- /.detail-wrap -->
+    </div><!-- /.span7.main_content -->
+  
+    <div class="span5 sidebar pull-right">
       <ul class="nav nav-tabs">
         <li><a href="#summary" data-toggle="tab">Summary</a></li>
         <li><a href="#contracts" data-toggle="tab">Contracts</a></li>
@@ -110,7 +122,7 @@
       
       <div id="about_loan" class="tab-content">
         <div class="tab-pane" id="summary">
-          <h4 class="section-title">About This Project</h4>
+          <h4 class="section_title">About This Project</h4>
           <div class="description_box well">
             <p class="loan_description detail_gutter">
               <%= # render translation using partial "translations/_translation.html.erb"
