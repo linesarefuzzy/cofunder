@@ -44,10 +44,8 @@ class LoansController < ApplicationController
   def gallery
     @loan = Loan.status('all').find(params[:id])
     @language = 'EN' # to be replaced by session variable
-    media = @loan.all_media
-    @coop_media = media[:coop_media]
-    @loan_media = media[:loan_media]
-    @log_media = media[:log_media]
+    @coop_media = @loan.coop_media(100, true).in_groups_of(4, false)
+    @loan_media = (@loan.loan_media(100, true) + @loan.log_media(100, true)).in_groups_of(4, false)
     
     if params[:embedded] 
       _layout = 'embedded'

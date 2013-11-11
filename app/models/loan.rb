@@ -55,7 +55,15 @@ class Loan < ActiveRecord::Base
     self.translation('Description', language_code)
   end
   
-  def log_media(limit, images_only=false)
+  def coop_media(limit=100, images_only=false)
+    get_media('Cooperatives', self.cooperative.id, limit, images_only)
+  end
+  
+  def loan_media(limit=100, images_only=false)
+    get_media('Loans', self.id, limit, images_only)
+  end
+  
+  def log_media(limit=100, images_only=false)
     media = []
     begin
       self.logs("Date").each do |log|
@@ -88,14 +96,6 @@ class Loan < ActiveRecord::Base
     if !self.featured_pictures.empty?
       self.featured_pictures.first.paths[:thumb]
     else "/assets/ww-avatar-watermark.png" end
-  end
-  
-  def all_media
-    {
-      coop_media: get_media('Cooperatives', self.cooperative.id, 100),
-      loan_media: get_media('Loans', self.id, 100),
-      log_media: self.log_media(100)
-    }
   end
   
   def amount_formatted

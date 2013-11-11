@@ -425,6 +425,9 @@ li.loan {
 /* MEDIA GALLERY */
 .thumbnail {
   text-align: center;
+  img {
+    margin: 0 auto;
+  }
 }
 .caption {
   margin: 0;
