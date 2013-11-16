@@ -66,6 +66,7 @@
           <div class="short_description"><%= render @loan.short_description(@language) %></div>
         </div><!--end .update-box -->
 
+        <h4 class="section-title">Timeline</h4>
         <div class="loan-feed-block">
           <ul class="timeline loan-feed clearfix">
             <% @loan.project_events.each do |paso| %>

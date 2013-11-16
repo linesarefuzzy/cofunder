@@ -102,6 +102,12 @@ li.loan {
   background: #efefef;
   border: 1px solid #444;
 }
+.section-title {
+  margin-left: 10px;
+  font-size: 23px;
+  /*font-weight: 400;*/
+  color: #444;
+}
 .filters {
   margin-top: 20px;
   background: transparent;
@@ -263,7 +269,7 @@ li.loan {
   margin: auto 0;
   
 }
-.paso_completed{
+.paso_completed {
   display: none;
 }
 .not-completed{
@@ -280,16 +286,16 @@ li.loan {
   
   
 }
-.log{
+log {
   display: block;
   font-weight: 400;
 }
-.log_short_desc{
-  width: 420px;
+.log_short_desc {
+  width: 430px;
   float: left;
   display: none;
 }
-.log-inner{
+.log-inner {
   border-radius: 4px;
   background:rgba(190, 223, 196, 0.20);
   box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
@@ -302,12 +308,12 @@ li.loan {
   color: #555;
   font-weight: bold;
 }
-.log-progress{
+log-progress {
   float: right;
   margin-right: 100px;
   font-weight: bold;
 }
-.details{
+.details {
   color: #555;
   font-style: normal;
   font-weight: 400;
@@ -320,14 +326,15 @@ li.loan {
   font-weight: bold;
 }
 
-.info_progress{
+info_progress {
   font-weight: bolder;
   color: #f3f3f3;
   
 }
-.paso-summary{
+.paso-summary {
   font-size: 13.6px;
   font-weight: 600;
+  width: 470px;
 }
 
 .paso-status {
@@ -337,7 +344,7 @@ li.loan {
   margin-top: 6px;
   
 }
-.paso-date{
+.paso-date {
   float:right;
   padding-top:-2px;
 }
@@ -347,13 +354,11 @@ li.loan {
   float: left;
   display: block;
   margin-bottom: 10px;
-  border-radius-right: 5px;
-  border-radius-left: 5px;
+  border-radius: 5px;
   padding: 20px;
   width: auto;
   margin-left:6px;
 }
-
 .update-box-color {
   background: rgba(88, 134, 27, 0.20);
 }
