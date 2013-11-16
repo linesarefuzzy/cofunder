@@ -256,19 +256,19 @@ li.loan {
   margin-bottom: 6px;
   color: #282023;
 }
-.paso_completed{
+.paso_completed {
   display: none;
 }
-.log{
+.log {
   display: block;
   font-weight: 400;
 }
-.log_short_desc{
+.log_short_desc {
   width: 430px;
   float: left;
   display: none;
 }
-.log-inner{
+.log-inner {
   border-radius: 4px;
   background:rgba(190, 223, 196, 0.20);
   box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
@@ -276,16 +276,16 @@ li.loan {
   color: #545454;
   padding: 4px;
 }
-.log-progress{
+.log-progress {
   float: right;
   margin-right: 30px;
 }
-.info_progress{
+.info_progress {
   font-weight: bolder;
   color: #f3f3f3;
   
 }
-.paso-summary{
+.paso-summary {
   width: 470px;
 }
 .paso-status {
@@ -294,7 +294,7 @@ li.loan {
   font-weight: 800;
   margin-right: 5px;
 }
-.paso-date{
+.paso-date {
   float:right;
   padding-top:-2px;
 }
@@ -305,10 +305,7 @@ li.loan {
   margin-bottom: 10px;
   border-radius: 5px;
   padding: 10px;
-  width: 626px;
-  margin-left:24px;
 }
-
 .update-box-color {
   box-shadow: 0px 1px 0px rgb(245, 248, 237) inset;
   background: rgba(245, 248, 236, 0.58);

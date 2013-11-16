@@ -75,32 +75,35 @@
           <i class="icon-calendar"></i> <%= @loan.signing_date_pretty %></div>
           <div class="short_description"><%= @loan.get_short_description %></div>
         </div>
-        
-        <ul class="timeline loan-feed">
-          <% @loan.project_events.each do |paso| %>
-            <li class="paso active <%= paso.completed_or_not %>"><br />
-              <p class="paso_short_desc well clearfix">
-                <i class=" icon-large icon-user"></i> <span class="paso-summary"><%= paso.summary %></span> 
-                <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
-                <span class="paso-status"><%= paso.status %></span>
-              </p>
-             
-              <% if paso.Completed %>
-                <p class="paso_completed"><%= paso.Completed %></p>
-              <% else %>
-                <p class="paso_completed"><strong>(Not yet completed)</strong></p>
-              <% end %>
-              <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
-              <ul>
-                <% paso.logs.each do |log| %>
-                  <li class="log logs-body <%= log.Progress.parameterize.underscore %>">
-                  <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.Progress %></strong> </li>
-                    <p class="log-inner"><i class="icon-adjust"></i> <%= log.explanation %></p><br /> <br /></li>
+
+        <h4 class="section-title">Timeline</h4>
+        <div class="timeline">
+          <ul class="loan-feed">
+            <% @loan.project_events.each do |paso| %>
+              <li class="paso active <%= paso.completed_or_not %>"><br />
+                <p class="paso_short_desc well clearfix">
+                  <i class="icon-large icon-user"></i> <span class="paso-summary"><%= paso.summary %></span> 
+                  <span class="paso-date"><i class="icon-calendar"></i> <strong><%= paso.display_date %></strong></span><br />
+                  <span class="paso-status"><%= paso.status %></span>
+                </p>
+               
+                <% if paso.Completed %>
+                  <p class="paso_completed"><%= paso.Completed %></p>
+                <% else %>
+                  <p class="paso_completed"><strong>(Not yet completed)</strong></p>
                 <% end %>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
+                <% unless paso.Details.blank? %><br>Details: <%= paso.Details %><% end %>
+                <ul>
+                  <% paso.logs.each do |log| %>
+                    <li class="log logs-body <%= log.Progress.parameterize.underscore %>">
+                    <li><strong>Loan Logs</strong> <i class="icon-calendar"></i> <strong> <%= log.date %></strong> <strong class="log-progress">Progress: <%= log.Progress %></strong> </li>
+                      <p class="log-inner"><i class="icon-adjust"></i> <%= log.explanation %></p><br /> <br /></li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div><!-- /.detail_wrap -->
     </div><!-- /.span7.main_content -->
 
