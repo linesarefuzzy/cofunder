@@ -1,12 +1,12 @@
 /* Additional styles for pages embedded in wordpress - mainly correcting conflicts between wp styles and bootstrap styles */
 
 body {
-	color: black;
+  color: black;
   background: #F5F5F5;
   padding: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 .container {
   width: 960px;
@@ -31,32 +31,36 @@ footer {
 }
 
 .loans .nav {
-	list-style: none;
-	margin-left: 0;
-	padding: 0;
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
 }
 .loans .filters select {
-	margin-top: 0;
+  margin-top: 0;
 }
 .section-title {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 .coop_name {
   /*letter-spacing: -1px !important;*/
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 }
 .loan_amount {
-	//letter-spacing: -1px;
+  //letter-spacing: -1px;
 }
 
 #search-form #searchinput {
-	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	height: inherit;
-	line-height: normal;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  height: inherit;
+  line-height: normal;
 }
 
 #top-menu a:hover {
-	background: none;
+  background: none;
+}
+
+.loan-feed {
+  padding: 20px !important;
 }

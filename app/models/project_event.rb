@@ -25,6 +25,6 @@ class ProjectEvent < ActiveRecord::Base
   end
 
   def display_date
-    self.completed || self.date
+    (self.completed || self.date).to_formatted_s(:long)
   end
 end

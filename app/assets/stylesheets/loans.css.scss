@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "bootstrap/mixins";
+
 /** LOAN LIST STYLES **/
 
 .loan_list {
@@ -34,7 +36,7 @@ li.loan {
   height: 100px;
   margin: 5px;
   border: 5px solid #e0e0e0;
-  border-radius: 4px;
+  @include border-radius(4px);
 }
 .coop_name {
   font-size: 14pt;
@@ -209,9 +211,17 @@ li.loan {
   margin-right: 20px;
 }
 
+.update-box {
+  margin-bottom: 10px;
+  padding: 20px;
+  @include border-radius(5px);
+}
+.update-box-color {
+  background: rgba(88, 134, 27, 0.20);
+}
+
 .paso {
   color: #666;
-  width: 350px;
   display: block;
   line-height: 1.3em;
 }
@@ -224,23 +234,17 @@ li.loan {
   color: #555;
   display: table-caption;
 }
-.loan-feed-block{
-   margin-left: -18px;
-}
 .timeline li {
   list-style: none;
-  width: 600px;
-  margin-left: 20px;
+  display: block;
 }
 .loan-feed {
   box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
   background-color: #f8f8f8;
   border: 1px solid rgb(236, 240, 244);
-  padding: 0px 10px;
-  margin-top: 5px;
-  padding-bottom: 20px;
-  border-radius: 5px;
-  
+  padding: 20px;
+  margin: 5px 0;
+  @include border-radius(5px);
 }
 .loan-title {
   font-size: 13px;
@@ -259,34 +263,32 @@ li.loan {
   margin-right: 5px;
   width: 52px;
 }
-.paso_short_desc .well{
-  padding: 4px;
-  display: block;
-  font-weight: 500;
-  width: 560px;
-  margin-bottom: 6px;
-  color: #d8d8d8;
-  margin: auto 0;
-  
-}
 .paso_completed {
   display: none;
 }
-.not-completed{
+.not-completed {
   background: #f9f9f9;
   color: #333333;
   font-weight: 800;
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -ms-border-radius: 4px;
+  @include border-radius(4px);
   box-shadow: -1px -1px #999 0.5;
   border: 1px solid #dbd5db;
   padding: 5px;
-  
-  
 }
-log {
+.paso-summary {
+  font-weight: bold;
+  float: left;
+}
+.paso-date {
+  float: right;
+}
+.paso-status {
+  float: right;
+  color: #333333;
+  font-weight: 800;
+}
+
+.log {
   display: block;
   font-weight: 400;
 }
@@ -303,12 +305,12 @@ log {
   color: #545454;
   padding: 4px;
 }
-.log-date{
+.log-date {
   margin-left: -15px;
   color: #555;
   font-weight: bold;
 }
-log-progress {
+.log-progress {
   float: right;
   margin-right: 100px;
   font-weight: bold;
@@ -319,48 +321,11 @@ log-progress {
   font-weight: 400;
   margin: 3px;
 }
-.details-title{
+.details-title {
   color: #555;
   margin: 3px;
   font-style: normal;
   font-weight: bold;
-}
-
-info_progress {
-  font-weight: bolder;
-  color: #f3f3f3;
-  
-}
-.paso-summary {
-  font-size: 13.6px;
-  font-weight: 600;
-  width: 470px;
-}
-
-.paso-status {
-  float: right;
-  color: #333333;
-  font-weight: 800;
-  margin-top: 6px;
-  
-}
-.paso-date {
-  float:right;
-  padding-top:-2px;
-}
-
-.update-box {
-  text-align: left;
-  float: left;
-  display: block;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  padding: 20px;
-  width: auto;
-  margin-left:6px;
-}
-.update-box-color {
-  background: rgba(88, 134, 27, 0.20);
 }
 
 
@@ -388,14 +353,12 @@ info_progress {
   margin: 0 auto 20px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  @include border-radius(5px);
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
           box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
-.logs-items{
+.logs-items {
   max-width: 520px;
   
   
