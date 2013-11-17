@@ -102,7 +102,7 @@ class Loan < ActiveRecord::Base
     currency_format(self.amount, self.country)
   end
   
-  def project_events(order_by="Completed IS NULL, Completed, Date")
+  def project_events(order_by="Completed IS NULL OR Completed = 0, Completed, Date")
     ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 

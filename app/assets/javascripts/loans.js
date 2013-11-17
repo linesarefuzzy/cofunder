@@ -13,7 +13,15 @@ $(function () {
   $('.carousel').carousel('fade')
 })
 
-$('#show-logs').collapse({
-  show: false
-})
-   
+// $('.logs').on('shown', function() {
+//   // $(this).prev().html('Hide Logs')
+//   alert($(this))
+// })
+
+// $('.show-logs a').click(function() {
+//     if ( $(this).hasClass('collapsed') ) {
+//         $(this).html('Show Logs');
+//     } else {
+//         $(this).html('Hide Logs');
+//     }
+// });
