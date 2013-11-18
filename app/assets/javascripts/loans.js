@@ -10,7 +10,7 @@ $(function () {
   // Initiate slideshow
   $('.carousel-inner .item').first().addClass('active')
   $('.carousel-indicators li').first().addClass('active')
-  $('.carousel').carousel('fade')
+  $('.carousel').carousel()
 })
 
 // $('.logs').on('shown', function() {
