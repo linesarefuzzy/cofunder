@@ -291,12 +291,6 @@ li.loan {
 .show-logs a:hover {
   cursor: pointer;
 }
-.show-logs a:before {
-  content: "Hide Logs";
-}
-.show-logs a.collapsed:before {
-  content: "Show Logs";
-}
 
 .logs-items {
   margin: 0;

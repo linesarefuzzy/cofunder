@@ -11,17 +11,13 @@ $(function () {
   $('.carousel-inner .item').first().addClass('active')
   $('.carousel-indicators li').first().addClass('active')
   $('.carousel').carousel()
+  
+  // Show Logs/Hide Logs toggle
+  $('.logs').on('show', function() {
+    $('#show-' + this.id).html('Hide Logs')
+  })
+  $('.logs').on('hide', function() {
+    $('#show-' + this.id).html('Show Logs')
+  })
 })
 
-// $('.logs').on('shown', function() {
-//   // $(this).prev().html('Hide Logs')
-//   alert($(this))
-// })
-
-// $('.show-logs a').click(function() {
-//     if ( $(this).hasClass('collapsed') ) {
-//         $(this).html('Show Logs');
-//     } else {
-//         $(this).html('Hide Logs');
-//     }
-// });

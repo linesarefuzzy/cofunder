@@ -33,7 +33,6 @@
                 <% end %>
               </ol>
             <% end %>
-
             <!-- Carousel items -->
             <a href="<%= url_for %>/gallery">
               <div class="carousel-inner">
@@ -42,7 +41,6 @@
                 <% end %>
               </div>
             </a>
-
             <!-- Carousel nav -->
             <% if @pictures.count > 1 %>
               <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
@@ -84,13 +82,13 @@
                 </div>
                 <% unless paso.logs.empty? %>
                   <div class="show-logs"><br>
-                    <a class="collapsed" id="show-logs-<%=paso.id %>" data-toggle="collapse" data-target="#logs-<%=paso.id %>"></a>
+                    <a class="collapsed" data-toggle="collapse" id="show-logs-<%=paso.id %>" href="#logs-<%=paso.id %>">Show Logs</a>
                   </div>
                   <div id="logs-<%=paso.id %>" class="collapse logs">
                     <ul class="logs-items">
                       <% paso.logs.each do |log| %>
                         <li class="log <%= log.progress.parameterize.underscore %>">
-                          <div class="log-date"><i class="icon-calendar"> </i> <%= log.date.to_formatted_s(:long) %></div>
+                          <div class="log-date"><i class="icon-calendar"></i> <%= log.date.to_formatted_s(:long) %></div>
                           <div class="log-progress"><%= log.progress %></div>
                           <div class="clearfix"></div>
                           <%= render log.explanation(@language) %>
@@ -103,7 +101,8 @@
               </li>
             <% end %>
           </ul>
-        </div><!-- /.loan-feed-block -->
+        </div><!-- /.timeline -->
+
       </div><!-- /.detail-wrap -->
     </div><!-- /.span7.main_content -->
   
