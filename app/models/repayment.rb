@@ -31,6 +31,6 @@ class Repayment < ActiveRecord::Base
     else
       amount = self.amount_due
     end
-    currency_format(amount, self.loan.country)
+    currency_format(amount, self.loan.currency)
   end
 end

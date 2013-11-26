@@ -29,12 +29,18 @@ class Loan < ActiveRecord::Base
     else "Project " + self.ID.to_s end
   end
   
-  def country; self.division.country; end
+  def country
+    Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
+  end
+  
+  def currency
+    self.country.default_currency
+  end
   
   def location
     if self.cooperative.try(:city).present?
-      self.cooperative.city + ', ' + self.country
-    else self.country end
+      self.cooperative.city + ', ' + self.country.name
+    else self.country.name end
   end
   
   def signing_date_pretty
@@ -99,7 +105,7 @@ class Loan < ActiveRecord::Base
   end
   
   def amount_formatted
-    currency_format(self.amount, self.country)
+    currency_format(self.amount, self.currency)
   end
   
   def project_events(order_by="Completed IS NULL OR Completed = 0, Completed, Date")
