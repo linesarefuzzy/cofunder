@@ -72,7 +72,7 @@
                 <div class="paso-summary">
                   <%= render paso.summary(@language) %>
                   <% unless paso.details(@language).try(:content).blank? %>
-                    <br><span class="paso-details"><%= render paso.details(@language) %></span>
+                    <div class="paso-details"><%= render paso.details(@language) %></div>
                   <% end %>
                 </div>
                 <div class="paso-status">
@@ -92,6 +92,14 @@
                           <div class="log-progress"><%= log.progress %></div>
                           <div class="clearfix"></div>
                           <%= render log.explanation(@language) %>
+                          <% if log.detailed_explanation(@language) %>
+                            <div class="log-show-details">
+                              <a class="collapsed" data-toggle="collapse" id="show-log-details-<%=log.id %>" href="#log-details-<%=log.id %>">More</a>
+                            </div>
+                            <div id="log-details-<%=log.id %>" class="collapse log-details">
+                              <%= render log.detailed_explanation(@language) %>
+                            </div>
+                          <% end %>
                         </li>
                       <% end %>
                     </ul>
