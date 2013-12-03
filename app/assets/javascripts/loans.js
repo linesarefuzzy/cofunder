@@ -11,21 +11,5 @@ $(function () {
   $('.carousel-inner .item').first().addClass('active')
   $('.carousel-indicators li').first().addClass('active')
   $('.carousel').carousel()
-  
-  // Show Logs/Hide Logs toggle
-  $('.logs').on('show', function() {
-    $('#show-' + this.id).html('Hide Logs')
-  })
-  $('.logs').on('hide', function() {
-    $('#show-' + this.id).html('Show Logs')
-  })
-
-  // More/Less toggle for log details
-  $('.log-details').on('show', function() {
-    $('#show-' + this.id).html('Less')
-  })
-  $('.log-details').on('hide', function() {
-    $('#show-' + this.id).html('More')
-  })
 })
 

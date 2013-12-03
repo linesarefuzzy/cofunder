@@ -289,8 +289,21 @@ li.loan {
 .show-logs {
   clear: left;
 }
-.show-logs a:hover {
-  cursor: pointer;
+
+// Show Logs/Hide Logs toggle
+.show-logs a:before {
+  content: 'Hide ';
+}
+.show-logs a.collapsed:before {
+  content: 'Show ';
+}
+
+// More/Less toggle for log details
+.log-show-details a:before {
+  content: 'Less';
+}
+.log-show-details a.collapsed:before {
+  content: 'More';
 }
 
 .logs-items {

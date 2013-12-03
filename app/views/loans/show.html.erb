@@ -82,7 +82,7 @@
                 </div>
                 <% unless paso.logs.empty? %>
                   <div class="show-logs"><br>
-                    <a class="collapsed" data-toggle="collapse" id="show-logs-<%=paso.id %>" href="#logs-<%=paso.id %>">Show Logs</a>
+                    <a class="collapsed" data-toggle="collapse" id="show-logs-<%=paso.id %>" href="#logs-<%=paso.id %>">Logs</a>
                   </div>
                   <div id="logs-<%=paso.id %>" class="collapse logs">
                     <ul class="logs-items">
@@ -94,7 +94,7 @@
                           <%= render log.explanation(@language) %>
                           <% if log.detailed_explanation(@language) %>
                             <div class="log-show-details">
-                              <a class="collapsed" data-toggle="collapse" id="show-log-details-<%=log.id %>" href="#log-details-<%=log.id %>">More</a>
+                              <a class="collapsed" data-toggle="collapse" id="show-log-details-<%=log.id %>" href="#log-details-<%=log.id %>"></a>
                             </div>
                             <div id="log-details-<%=log.id %>" class="collapse log-details">
                               <%= render log.detailed_explanation(@language) %>
