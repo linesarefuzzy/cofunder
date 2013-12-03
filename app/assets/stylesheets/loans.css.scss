@@ -290,22 +290,6 @@ li.loan {
   clear: left;
 }
 
-// Show Logs/Hide Logs toggle
-.show-logs a:before {
-  content: 'Hide ';
-}
-.show-logs a.collapsed:before {
-  content: 'Show ';
-}
-
-// More/Less toggle for log details
-.log-show-details a:before {
-  content: 'Less';
-}
-.log-show-details a.collapsed:before {
-  content: 'More';
-}
-
 .logs-items {
   margin: 0;
   padding: 0;
