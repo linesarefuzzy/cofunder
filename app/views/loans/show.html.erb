@@ -96,7 +96,7 @@
                             <div class="log-show-details">
                               <a class="collapsed" data-toggle="collapse" id="show-log-details-<%=log.id %>" href="#log-details-<%=log.id %>">More</a>
                             </div>
-                            <div id="log-details-<%=log.id %>" class="collapse log-details">
+                            <div id="log-details-<%=log.id %>" class="collapse log-details"><br>
                               <%= render log.detailed_explanation(@language) %>
                             </div>
                           <% end %>
