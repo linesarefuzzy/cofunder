@@ -42,6 +42,9 @@ a:hover {
   color: rgb(73, 18, 13);
   text-decoration: underline;
 }
+a.simple:hover {
+  text-decoration: none;
+}
 a.currency_symbol {
   color: inherit;
   border-bottom: 1px dotted;
@@ -197,6 +200,11 @@ a:hover.nav_link {
   color: white;
   background-color: $tww_red;
 }
+
+.back_link {
+  margin-left: 10px;
+}
+
 
 /* EXTRA GLYPHICONS */
 .icon-coinstack {

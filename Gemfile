@@ -55,3 +55,4 @@ gem 'will_paginate-bootstrap'
 gem 'utf8_enforcer_workaround'
 
 gem 'haml-rails'
+gem 'slim'
