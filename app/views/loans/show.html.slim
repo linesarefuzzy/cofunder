@@ -29,8 +29,8 @@
                   .item.picture style=("background-image: url(#{picture.paths[:large]});") 
             / Carousel nav
             - if @pictures.count > 1
-              a.carousel-control.left data-slide="prev" href="#myCarousel" &lsaquo;
-              a.carousel-control.right data-slide="next" href="#myCarousel" &rsaquo;
+              a.carousel-control.left data-slide="prev" href="#myCarousel"  &lsaquo;
+              a.carousel-control.right data-slide="next" href="#myCarousel"  &rsaquo;
               
         / .lend
         /   a.button.lend_button.pull-right href="#"
@@ -66,19 +66,23 @@
                   = paso.status || 'Not yet completed'
                   br
                   span.paso-date = paso.display_date
+                
+                / logs
                 - unless paso.logs.empty?
                   .show-logs
                     br
                     a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}"  Show Logs
-                  .collapse.logs id="logs-#{paso.id}" 
+                  .logs.collapse id="logs-#{paso.id}" 
                     ul.logs-items
                       - paso.logs.each do |log|
-                        li class=("log #{log.progress.parameterize.underscore}") 
+                        li class="log #{log.progress.parameterize.underscore}"
                           .log-date
                             i.icon-calendar>
                             = log.date.to_formatted_s(:long)
                           .log-progress = log.progress
                           .clearfix
+                          - log.media.each do |media|
+                            = render media
                           = render log.explanation(@language)
                           - if log.detailed_explanation(@language)
                             .log-show-details
@@ -86,6 +90,7 @@
                             .collapse.log-details id="log-details-#{log.id}" 
                               br
                               = render log.detailed_explanation(@language)
+
                 .clearfix
     
     .span5.sidebar.pull-right
@@ -146,3 +151,5 @@
                 tr class=pmt.status 
                   td = pmt.status_date
                   td = pmt.amount_formatted
+
+= render 'media/blueimp-gallery'

@@ -15,8 +15,4 @@
     ul.thumbnails
       - row.each do |item|
         li.span3
-          .thumbnail
-            a href=(item.paths[:large]) 
-              img src=(item.paths[:small]) alt=alt 
-            - if item.caption(@language).try(:content) =~ /\S/ # if caption not blank
-              p.caption = render item.caption(@language)
+          = render item

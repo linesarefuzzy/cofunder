@@ -2,8 +2,8 @@
 
 .container-fluid.loans.gallery
   .back_link
-    = link_to (@embedded ? embedded_loan_path(@loan) : @loan) do
-      i.icon-chevron-left
+    = link_to (@embedded ? embedded_loan_path(@loan) : @loan), class: 'simple' do
+      i.icon-chevron-left>
     = link_to (@embedded ? embedded_loan_path(@loan) : @loan) do
       | Back to #{@loan.name}
   
@@ -13,34 +13,14 @@
     .empty
       | No media found.
   - else
-    #links
+    #gallery-links
       - unless @coop_media.empty?
         h1.section_title Images of #{@loan.cooperative.verbose_name}
         / = render @coop_media, locals: {alt: @loan.cooperative.name}
-        = render partial: "media/gallery", locals: {media: @coop_media, alt: @loan.cooperative.name}
+        = render partial: "media/gallery", locals: {media: @coop_media}
 
       - unless @loan_media.empty?
         h1.section_title Images from this project
-        = render partial: "media/gallery", locals: {media: @loan_media, alt: @loan.name}
+        = render partial: "media/gallery", locals: {media: @loan_media}
 
-/ required for blueimp-gallery
-#blueimp-gallery.blueimp-gallery.blueimp-gallery-controls
-  .slides
-  h3.title
-  a.prev ‹
-  a.next ›
-  a.close ×
-  a.play-pause
-  ol.indicator
-
-/ required for blueimp-gallery
-= javascript_include_tag "js/blueimp-gallery"
-javascript:
-  document.getElementById('links').onclick = function (event) {
-    event = event || window.event;
-    var target = event.target || event.srcElement,
-      link = target.src ? target.parentNode : target,
-      options = {index: link, event: event},
-      links = this.getElementsByTagName('a');
-    blueimp.Gallery(links, options);
-  };
+= render 'media/blueimp-gallery'

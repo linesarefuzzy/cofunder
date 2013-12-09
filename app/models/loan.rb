@@ -54,10 +54,10 @@ class Loan < ActiveRecord::Base
     end
   end
   
-  def short_description(language_code)
+  def short_description(language_code='EN')
     self.translation('ShortDescription', language_code)
   end
-  def description(language_code)
+  def description(language_code='EN')
     self.translation('Description', language_code)
   end
   
@@ -73,7 +73,7 @@ class Loan < ActiveRecord::Base
     media = []
     begin
       self.logs("Date").each do |log|
-        media += get_media('ProjectLogs', log.id, limit - media.count, images_only)
+        media += log.media(limit - media.count, images_only)
         return media unless limit > media.count
       end
     rescue Mysql2::Error # some logs have invalid dates

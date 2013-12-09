@@ -1,0 +1,6 @@
+- caption = media.caption(@language)
+figure.thumbnail
+  a href=(media.paths[:large])
+    img src=(media.paths[:small]) alt=(media.alt(@language))
+  - if caption.try(:content) =~ /\S/ # if caption not blank
+    figcaption.caption = render caption

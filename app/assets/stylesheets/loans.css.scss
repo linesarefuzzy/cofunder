@@ -234,6 +234,7 @@ li.loan {
 .timeline li {
   list-style: none;
   display: block;
+  overflow: auto;
 }
 .loan-feed {
   box-shadow: 0px 1px 0px rgb(255, 255, 255) inset;
@@ -246,12 +247,6 @@ li.loan {
 .loan-title {
   font-size: 13px;
   margin: 0px 0px 0.2em;
-}
-.loan-feed-img {
-  float: left;
-  padding-top: 5px;
-  margin-right: 5px;
-  width: 52px;
 }
 .paso_completed {
   display: none;
@@ -307,6 +302,12 @@ li.loan {
   float: right;
   font-weight: bold;
 }
+.log .thumbnail {
+  float: right;
+  margin-left: 5px;
+  max-width: 230px;
+}
+
 
 .user_name {
   font-size: 18px;
@@ -362,16 +363,4 @@ li.loan {
   .due td {
     /*background-color: #d9edf7;*/
   }
-}
-
-
-/* MEDIA GALLERY */
-.thumbnail {
-  text-align: center;
-  img {
-    margin: 0 auto;
-  }
-}
-.caption {
-  margin: 0;
 }

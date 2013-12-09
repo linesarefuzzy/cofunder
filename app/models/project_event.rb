@@ -1,12 +1,16 @@
 class ProjectEvent < ActiveRecord::Base
-  include Legacy, ProjectModule, TranslationModule
+  include Legacy, TranslationModule
   
   belongs_to :member, :foreign_key => 'MemberID'
   has_many :project_logs, :foreign_key => 'PasoID'
   alias_attribute :logs, :project_logs
   attr_accessible :Completed, :Date, :Details, :Finalized, :ProjectID, :ProjectTable, :Summary, :Type
 
-  def project; get_project(self); end
+  def project
+    project_table_model = Object.const_get(self.project_table.classify)
+    project_table_model.find(self.project_id)
+  end
+
   def date; self.Date.to_date; end # times are not used - all are set to midnight
   
   def completed_or_not
