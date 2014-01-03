@@ -62,7 +62,7 @@ class Loan < ActiveRecord::Base
   end
   
   def coop_media(limit=100, images_only=false)
-    get_media('Cooperatives', self.cooperative.id, limit, images_only)
+    get_media('Cooperatives', self.cooperative.try(:id), limit, images_only)
   end
   
   def loan_media(limit=100, images_only=false)
@@ -83,7 +83,7 @@ class Loan < ActiveRecord::Base
   
   def featured_pictures(limit=1)
     pics = []
-    coop_pics = get_media('Cooperatives', self.cooperative.id, limit, images_only=true)
+    coop_pics = get_media('Cooperatives', self.cooperative.try(:id), limit, images_only=true)
     # use first coop picture first
     pics << coop_pics.shift if coop_pics.count > 0
     return pics unless limit > pics.count
