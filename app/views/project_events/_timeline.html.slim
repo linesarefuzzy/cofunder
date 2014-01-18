@@ -1,0 +1,41 @@
+.timeline
+  ul.loan-feed
+    - @loan.project_events.each do |paso|
+      li class="paso well #{paso.completed_or_not}"
+        .paso-summary
+          = render paso.summary(@language)
+          - unless paso.details(@language).try(:content).blank?
+            .paso-details = render paso.details(@language)
+        .paso-status
+          - if paso.completed
+            i.icon-ok>
+          = paso.status || 'Not yet completed'
+          br
+          span.paso-date = paso.display_date
+  
+        / logs
+        - unless paso.logs.empty?
+          .show-logs
+            br
+            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}"  Show Logs
+          .logs.collapse id="logs-#{paso.id}" 
+            ul.logs-items
+              - paso.logs.each do |log|
+                li class="log #{log.progress.parameterize.underscore}"
+                  .log-date
+                    i.icon-calendar>
+                    = log.date.to_formatted_s(:long)
+                  .log-progress = log.progress
+                  .clearfix
+                  - log.media.each do |media|
+                    = render media
+                  = render log.explanation(@language)
+                  - if log.detailed_explanation(@language)
+                    .log-show-details
+                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}"  More
+                    .collapse.log-details id="log-details-#{log.id}" 
+                      br
+                      = render log.detailed_explanation(@language)
+        / end logs
+
+        .clearfix

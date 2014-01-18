@@ -1,0 +1,114 @@
+- content_for :title, @loan.name
+
+.container-fluid.loans.detail_page
+  .row-fluid
+    .span7
+      .back_link.pull-left
+        a.simple href=(url_for (@embedded ? embedded_loans_path : loans_path))
+          i.icon-chevron-left>
+        / This a tag is repeated here so that the space doesn't get underlined on hover
+        a href=(url_for (@embedded ? embedded_loans_path : loans_path))
+          | Back to Loan List
+          
+  .row-fluid
+    .span7.main_content
+      .detail_wrap
+        h1.section_title = @loan.name
+
+        / Carousel
+        - if @pictures
+          #myCarousel.carousel.slide
+            - if @pictures.count > 1
+              ol.carousel-indicators
+                - for i in (0..(@pictures.count-1)) do
+                  li data-slide-to=i data-target="#myCarousel" 
+            / Carousel items
+            a href="#{url_for}/gallery" 
+              .carousel-inner
+                - @pictures.each do |picture|
+                  .item.picture style=("background-image: url(#{picture.paths[:large]});") 
+            / Carousel nav
+            - if @pictures.count > 1
+              a.carousel-control.left data-slide="prev" href="#myCarousel"  &lsaquo;
+              a.carousel-control.right data-slide="next" href="#myCarousel"  &rsaquo;
+              
+        / .lend
+        /   a.button.lend_button.pull-right href="#"
+        / h5.coop_name Current Report
+
+        .update-box.update-box-color
+          .info
+            ' Status: #{@loan.status} &nbsp;
+            i.icon-coinstack>
+            ' #{@loan.amount_formatted} &nbsp;
+            i.icon-map-marker>
+            ' #{@loan.location} &nbsp;
+            i.icon-calendar>
+            ' #{@loan.signing_date_pretty} &nbsp;
+          / render translation using partial "translations/_translation.html.erb"
+          .short_description = render @loan.short_description(@language)
+
+        h4.section-title Timeline
+        = render 'project_events/timeline'
+        
+    
+    .span5.sidebar.pull-right
+      ul.nav.nav-tabs
+        li
+          a data-toggle="tab" href="#summary" Summary
+        li
+          a data-toggle="tab" href="#contracts" Contracts
+        li
+          a data-toggle="tab" href="#other_loans" Past Loans
+        - unless @repayments.empty?
+          li
+            a data-toggle="tab" href="#payments" Payments
+
+      #about_loan.tab-content
+        #summary.tab-pane
+          h4.section_title About This Project
+          .description_box.well
+            p.loan_description.detail_gutter
+              / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
+              = render @loan.description(@language) || '<span class="notfound">No description found.</span>'
+              
+        #contracts.tab-pane
+          h4 All Contracts for this Co-op
+          table
+            tr
+              td Loan Name
+            tr
+              td Loan Officer
+            tr
+              td Loan Contract
+
+        #other_loans.tab-pane
+          - if !@other_loans || @other_loans.count <= 1
+            p.empty This is the first loan to this cooperative.
+          - else
+            h4 All Loans to this Co-op
+            table.table.other_loans data-provides="rowlink" 
+              - @other_loans.each do |loan|
+                tr class="#{'selected' if loan.id == @loan.id}"
+                  td
+                    - if loan.id == @loan.id
+                      = loan.signing_date_pretty
+                    - else
+                      a.rowlink href=("#{url_for (@embedded ? embedded_loan_path(loan) : loan)}#_other_loans")
+                        = loan.signing_date_pretty
+                  td = loan.amount_formatted
+                  td = loan.status
+                  
+        - unless @repayments.empty?
+          #payments.tab-pane
+            h4 Payment Schedule
+            table.table.repayments
+              / tr
+              /   th Status
+              /   th Amount
+              - @repayments.each do |pmt|
+                tr class=pmt.status 
+                  td = pmt.status_date
+                  td = pmt.amount_formatted
+
+= render 'media/blueimp-gallery'

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  level: 1
+  EnglishDisplayWithEvents: MyText
+  SpanishDisplayWithEvents: MyText
+  EnglishDisplayContinuous: MyText
+  SpanishDisplayContinuous: MyText
+
+two:
+  level: 1
+  EnglishDisplayWithEvents: MyText
+  SpanishDisplayWithEvents: MyText
+  EnglishDisplayContinuous: MyText
+  SpanishDisplayContinuous: MyText

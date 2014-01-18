@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text   "Description"
   end
 
-  add_index "AccountClasses", ["ClassID"], :name => "ClassID"
-  add_index "AccountClasses", ["SuperClassID"], :name => "SuperClassID"
+  add_index "accountclasses", ["ClassID"], :name => "ClassID"
+  add_index "accountclasses", ["SuperClassID"], :name => "SuperClassID"
 
   create_table "AccountTypes", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :limit => 50, :default => "", :null => false
@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer "ExternalParty"
   end
 
-  add_index "Accounts", ["DivisionID"], :name => "AccountOwnerID"
-  add_index "Accounts", ["ExternalAccountingID", "DivisionID"], :name => "ExternalAccountingID", :unique => true
-  add_index "Accounts", ["Name", "DivisionID"], :name => "NameDivision", :unique => true
+  add_index "accounts", ["DivisionID"], :name => "AccountOwnerID"
+  add_index "accounts", ["ExternalAccountingID", "DivisionID"], :name => "ExternalAccountingID", :unique => true
+  add_index "accounts", ["Name", "DivisionID"], :name => "NameDivision", :unique => true
 
   create_table "BasicProjects", :primary_key => "ID", :force => true do |t|
     t.string   "Type",             :limit => 30,  :default => "Basic",      :null => false
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "Description"
   end
 
-  add_index "BasicProjects", ["Coordinator"], :name => "MemberID"
-  add_index "BasicProjects", ["Nivel"], :name => "type"
-  add_index "BasicProjects", ["StartDate"], :name => "SigningDate"
+  add_index "basicprojects", ["Coordinator"], :name => "MemberID"
+  add_index "basicprojects", ["Nivel"], :name => "type"
+  add_index "basicprojects", ["StartDate"], :name => "SigningDate"
 
   create_table "Blog", :primary_key => "ID", :force => true do |t|
     t.string   "Title", :null => false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.date    "DateRemoved"
     t.date    "DateBounced"
     t.string  "NumeroDeRecibo"
+    t.float   "Descuento"
     t.float   "Exidente"
     t.float   "GastosFinancieros"
     t.float   "Impuesto"
@@ -91,31 +92,32 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
   create_table "Cooperatives", :primary_key => "ID", :force => true do |t|
     t.integer  "LaBaseFundAccountID"
     t.integer  "RedTekufenFundAccountID"
-    t.string   "Name",                    :limit => 250,                 :null => false
+    t.string   "Name",                    :limit => 250,                     :null => false
+    t.string   "NombreLegalCompleto",                    :default => "Coop", :null => false
     t.string   "Alias",                   :limit => 200
     t.text     "Address"
-    t.string   "City",                    :limit => 200, :default => "", :null => false
-    t.string   "Country",                 :limit => 200, :default => "", :null => false
+    t.string   "City",                    :limit => 200, :default => "",     :null => false
+    t.string   "Country",                 :limit => 200, :default => "",     :null => false
     t.string   "web"
     t.text     "Contact"
     t.string   "Ownership",               :limit => 250
     t.datetime "OwnershipChangeDate"
-    t.integer  "Recuperada",              :limit => 1,   :default => 0,  :null => false
+    t.integer  "Recuperada",              :limit => 1,   :default => 0,      :null => false
     t.string   "Sector",                  :limit => 200
     t.string   "Industry",                :limit => 200
     t.string   "Source",                  :limit => 250
   end
 
-  add_index "Cooperatives", ["Name"], :name => "Name"
-  add_index "Cooperatives", ["Ownership", "OwnershipChangeDate"], :name => "ownership"
-  add_index "Cooperatives", ["Sector", "Industry"], :name => "sector"
+  add_index "cooperatives", ["Name"], :name => "Name"
+  add_index "cooperatives", ["Ownership", "OwnershipChangeDate"], :name => "ownership"
+  add_index "cooperatives", ["Sector", "Industry"], :name => "sector"
 
   create_table "Countries", :primary_key => "ID", :force => true do |t|
     t.string  "Name",       :null => false
     t.integer "LanguageID"
   end
 
-  add_index "Countries", ["Name"], :name => "Name", :unique => true
+  add_index "countries", ["Name"], :name => "Name", :unique => true
 
   create_table "Currencies", :primary_key => "ID", :force => true do |t|
     t.string  "Name",            :limit => 50, :default => "",          :null => false
@@ -126,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "ExchangeRate",                  :default => 1.0,         :null => false
   end
 
-  add_index "Currencies", ["DefaultCurrency"], :name => "Default"
+  add_index "currencies", ["DefaultCurrency"], :name => "Default"
 
   create_table "Divisions", :primary_key => "ID", :force => true do |t|
     t.string  "Name",                           :default => "",          :null => false
@@ -137,7 +139,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text    "Description",                                             :null => false
   end
 
-  add_index "Divisions", ["Name"], :name => "Name"
+  add_index "divisions", ["Name"], :name => "Name"
 
   create_table "ExchangeRates", :primary_key => "ID", :force => true do |t|
     t.integer "CurrencyID",                             :null => false
@@ -177,7 +179,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.datetime "DateModified",                                 :null => false
   end
 
-  add_index "Inventory", ["Current"], :name => "Current"
+  add_index "inventory", ["Current"], :name => "Current"
 
   create_table "Languages", :primary_key => "ID", :force => true do |t|
     t.string  "Code",     :limit => 2,   :null => false
@@ -200,9 +202,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer "LinkedTransaction"
   end
 
-  add_index "LoanAgentTransactions", ["Account"], :name => "Account"
-  add_index "LoanAgentTransactions", ["LinkedTransaction"], :name => "LinkedTransaction"
-  add_index "LoanAgentTransactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "loanagenttransactions", ["Account"], :name => "Account"
+  add_index "loanagenttransactions", ["LinkedTransaction"], :name => "LinkedTransaction"
+  add_index "loanagenttransactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "LoanInstallments", :primary_key => "ID", :force => true do |t|
     t.integer "LoanID",  :default => 0, :null => false
@@ -210,7 +212,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Amount"
   end
 
-  add_index "LoanInstallments", ["LoanID", "DateDue"], :name => "LoanID"
+  add_index "loaninstallments", ["LoanID", "DateDue"], :name => "LoanID"
 
   create_table "LoanQuestions", :force => true do |t|
     t.integer  "Orden",                                         :null => false
@@ -218,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer  "Grupo"
     t.string   "Type",        :limit => 20, :default => "Text", :null => false
     t.integer  "Active",      :limit => 1,  :default => 0,      :null => false
+    t.integer  "IFrame",                    :default => 0,      :null => false
     t.datetime "dateCreated",                                   :null => false
   end
 
@@ -237,21 +240,30 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer "LoanID",        :null => false
   end
 
-  add_index "LoanResponseSets", ["LoanID"], :name => "LoanID", :unique => true
-  add_index "LoanResponseSets", ["ResponseSetID", "LoanID"], :name => "ResponseSetID", :unique => true
+  add_index "loanresponsesets", ["LoanID"], :name => "LoanID", :unique => true
+  add_index "loanresponsesets", ["ResponseSetID", "LoanID"], :name => "ResponseSetID", :unique => true
 
   create_table "LoanResponses", :primary_key => "ID", :force => true do |t|
-    t.integer  "QuestionID",                 :default => 0, :null => false
-    t.integer  "ResponseSetID",              :default => 0, :null => false
-    t.text     "Answer",                                    :null => false
+    t.integer  "QuestionID",                         :default => 0, :null => false
+    t.integer  "ResponseSetID",                      :default => 0, :null => false
+    t.text     "Answer",                                            :null => false
     t.integer  "Rating"
-    t.integer  "Saved",         :limit => 1, :default => 0, :null => false
+    t.integer  "Saved",                 :limit => 1, :default => 0, :null => false
     t.datetime "Created"
+    t.integer  "LoanResponsesIFrameID"
   end
 
-  add_index "LoanResponses", ["Created"], :name => "Created"
-  add_index "LoanResponses", ["QuestionID"], :name => "QuestionID"
-  add_index "LoanResponses", ["ResponseSetID", "QuestionID"], :name => "LoanID"
+  add_index "loanresponses", ["Created"], :name => "Created"
+  add_index "loanresponses", ["QuestionID"], :name => "QuestionID"
+  add_index "loanresponses", ["ResponseSetID", "QuestionID"], :name => "LoanID"
+
+  create_table "LoanResponsesIFrames", :primary_key => "ID", :force => true do |t|
+    t.text    "URL",                          :null => false
+    t.text    "OriginalURL"
+    t.integer "Height",      :default => 250, :null => false
+    t.integer "Width",       :default => 400, :null => false
+    t.text    "HTML"
+  end
 
   create_table "LoanTypes", :primary_key => "ID", :force => true do |t|
     t.string "EnglishName",        :null => false
@@ -286,12 +298,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "NivelPublico",            :limit => 100
   end
 
-  add_index "Loans", ["CooperativeID"], :name => "CooperativeID"
-  add_index "Loans", ["FechaDeFinalizacion"], :name => "FechaDeFinalizacion"
-  add_index "Loans", ["Nivel", "CooperativeID"], :name => "type"
-  add_index "Loans", ["NivelPublico"], :name => "NivelPublico"
-  add_index "Loans", ["PointPerson", "Prospective"], :name => "MemberID"
-  add_index "Loans", ["SigningDate"], :name => "SigningDate"
+  add_index "loans", ["CooperativeID"], :name => "CooperativeID"
+  add_index "loans", ["FechaDeFinalizacion"], :name => "FechaDeFinalizacion"
+  add_index "loans", ["Nivel", "CooperativeID"], :name => "type"
+  add_index "loans", ["NivelPublico"], :name => "NivelPublico"
+  add_index "loans", ["PointPerson", "Prospective"], :name => "MemberID"
+  add_index "loans", ["SigningDate"], :name => "SigningDate"
 
   create_table "Media", :primary_key => "ID", :force => true do |t|
     t.datetime "Date",                        :null => false
@@ -304,9 +316,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "Description"
   end
 
-  add_index "Media", ["ContextID", "ContextTable"], :name => "ContextID"
-  add_index "Media", ["ContextTable"], :name => "ContextTable"
-  add_index "Media", ["MediaPath"], :name => "MediaPath"
+  add_index "media", ["ContextID", "ContextTable"], :name => "ContextID"
+  add_index "media", ["ContextTable"], :name => "ContextTable"
+  add_index "media", ["MediaPath"], :name => "MediaPath"
 
   create_table "Members", :primary_key => "ID", :force => true do |t|
     t.string   "FirstName",     :limit => 150, :default => "", :null => false
@@ -326,10 +338,10 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer  "Payroll",       :limit => 1,   :default => 0,  :null => false
   end
 
-  add_index "Members", ["City", "Country"], :name => "City"
-  add_index "Members", ["LastName", "NationalID", "CooperativeID"], :name => "LastName"
-  add_index "Members", ["Payroll"], :name => "Payroll"
-  add_index "Members", ["Username"], :name => "Username"
+  add_index "members", ["City", "Country"], :name => "City"
+  add_index "members", ["LastName", "NationalID", "CooperativeID"], :name => "LastName"
+  add_index "members", ["Payroll"], :name => "Payroll"
+  add_index "members", ["Username"], :name => "Username"
 
   create_table "NotasDeAsambleas", :primary_key => "ID", :force => true do |t|
     t.integer  "MemberID", :default => 0, :null => false
@@ -337,7 +349,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "Note",                    :null => false
   end
 
-  add_index "NotasDeAsambleas", ["MemberID", "Date"], :name => "MemberID"
+  add_index "notasdeasambleas", ["MemberID", "Date"], :name => "MemberID"
 
   create_table "Notes", :primary_key => "ID", :force => true do |t|
     t.integer  "MemberID",                  :default => 0,  :null => false
@@ -347,9 +359,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "Note",                                      :null => false
   end
 
-  add_index "Notes", ["MemberID", "NotedID", "Date"], :name => "MemberID"
-  add_index "Notes", ["NotedID"], :name => "NotedID"
-  add_index "Notes", ["NotedTable"], :name => "NotedTable"
+  add_index "notes", ["MemberID", "NotedID", "Date"], :name => "MemberID"
+  add_index "notes", ["NotedID"], :name => "NotedID"
+  add_index "notes", ["NotedTable"], :name => "NotedTable"
 
   create_table "Orders", :primary_key => "ID", :force => true do |t|
     t.integer  "UserID"
@@ -377,7 +389,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string "ToAccount"
   end
 
-  add_index "OutflowTypes", ["Name", "ToAccount", "FromAccount"], :name => "Name", :unique => true
+  add_index "outflowtypes", ["Name", "ToAccount", "FromAccount"], :name => "Name", :unique => true
 
   create_table "ProductSubtypeCategories", :primary_key => "ID", :force => true do |t|
     t.string "Name",        :null => false
@@ -392,7 +404,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "DisplayOrder"
   end
 
-  add_index "ProductSubtypes", ["SubtypeCategoryID", "DisplayOrder"], :name => "SubtypeCategoryID"
+  add_index "productsubtypes", ["SubtypeCategoryID", "DisplayOrder"], :name => "SubtypeCategoryID"
 
   create_table "Products", :primary_key => "ID", :force => true do |t|
     t.string   "ProductID",               :limit => 50,  :default => "",        :null => false
@@ -426,9 +438,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string   "AmazonOccasionLifestyle", :limit => 400
   end
 
-  add_index "Products", ["AmazonClothingType"], :name => "AmazonClothingType"
-  add_index "Products", ["CooperativeID", "DisplayOrder"], :name => "coopID_displayOrder"
-  add_index "Products", ["ProductID"], :name => "ProductID"
+  add_index "products", ["AmazonClothingType"], :name => "AmazonClothingType"
+  add_index "products", ["CooperativeID", "DisplayOrder"], :name => "coopID_displayOrder"
+  add_index "products", ["ProductID"], :name => "ProductID"
 
   create_table "ProductsOrdered", :primary_key => "ID", :force => true do |t|
     t.integer  "ProductSubtype",        :default => 0, :null => false
@@ -448,9 +460,17 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float    "CreditTransactionCost"
   end
 
-  add_index "ProductsOrdered", ["OrderID"], :name => "OrderID"
-  add_index "ProductsOrdered", ["ProductID"], :name => "ProductID"
-  add_index "ProductsOrdered", ["ShipmentID"], :name => "ShipmentID"
+  add_index "productsordered", ["OrderID"], :name => "OrderID"
+  add_index "productsordered", ["ProductID"], :name => "ProductID"
+  add_index "productsordered", ["ShipmentID"], :name => "ShipmentID"
+
+  create_table "ProgressMetrics", :primary_key => "ID", :force => true do |t|
+    t.integer "Level",                    :null => false
+    t.string  "EnglishDisplayWithEvents", :null => false
+    t.string  "SpanishDisplayWithEvents", :null => false
+    t.string  "EnglishDisplayContinuous", :null => false
+    t.string  "SpanishDisplayContinuous", :null => false
+  end
 
   create_table "ProjectEvents", :primary_key => "ID", :force => true do |t|
     t.integer  "MemberID",                                                :null => false
@@ -465,8 +485,8 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string   "Type",         :limit => 35,                              :null => false
   end
 
-  add_index "ProjectEvents", ["Date"], :name => "date"
-  add_index "ProjectEvents", ["ProjectID"], :name => "ProjectID"
+  add_index "projectevents", ["Date"], :name => "date"
+  add_index "projectevents", ["ProjectID"], :name => "ProjectID"
 
   create_table "ProjectLogs", :primary_key => "ID", :force => true do |t|
     t.integer  "MemberID",                          :default => 0,               :null => false
@@ -475,14 +495,15 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.integer  "PasoID",                            :default => 1
     t.datetime "Date",                                                           :null => false
     t.string   "Progress",            :limit => 30, :default => "On time",       :null => false
+    t.integer  "ProgressMetric",      :limit => 1,  :default => 0,               :null => false
     t.string   "Explanation"
     t.text     "DetailedExplanation"
     t.text     "NotasPrivadas"
     t.text     "AdditionalNotes"
   end
 
-  add_index "ProjectLogs", ["MemberID", "ProjectID", "Date"], :name => "MemberID"
-  add_index "ProjectLogs", ["ProjectID"], :name => "NotedID"
+  add_index "projectlogs", ["MemberID", "ProjectID", "Date"], :name => "MemberID"
+  add_index "projectlogs", ["ProjectID"], :name => "NotedID"
 
   create_table "QuestionableTransactions", :primary_key => "ID", :force => true do |t|
     t.integer "GroupTransactionID"
@@ -508,12 +529,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Debit",                  :limit => 10
   end
 
-  add_index "QuestionableTransactions", ["Account"], :name => "Account"
-  add_index "QuestionableTransactions", ["CheckID"], :name => "CheckID"
-  add_index "QuestionableTransactions", ["DateCash"], :name => "DateCash"
-  add_index "QuestionableTransactions", ["GroupTransactionID"], :name => "GroupTransactionID"
-  add_index "QuestionableTransactions", ["Loan"], :name => "Loan"
-  add_index "QuestionableTransactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "questionabletransactions", ["Account"], :name => "Account"
+  add_index "questionabletransactions", ["CheckID"], :name => "CheckID"
+  add_index "questionabletransactions", ["DateCash"], :name => "DateCash"
+  add_index "questionabletransactions", ["GroupTransactionID"], :name => "GroupTransactionID"
+  add_index "questionabletransactions", ["Loan"], :name => "Loan"
+  add_index "questionabletransactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "Repayments", :primary_key => "ID", :force => true do |t|
     t.integer  "LoanID",                   :default => 0, :null => false
@@ -525,7 +546,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.date     "DateRefinanced"
   end
 
-  add_index "Repayments", ["LoanID", "DateDue"], :name => "LoanID"
+  add_index "repayments", ["LoanID", "DateDue"], :name => "LoanID"
 
   create_table "Shipments", :primary_key => "ID", :force => true do |t|
     t.integer  "OrderID",                                  :default => 0, :null => false
@@ -537,7 +558,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "Notes"
   end
 
-  add_index "Shipments", ["OrderID", "TrackingNumber"], :name => "OrderID", :unique => true
+  add_index "shipments", ["OrderID", "TrackingNumber"], :name => "OrderID", :unique => true
 
   create_table "ShippingAddresses", :primary_key => "ID", :force => true do |t|
     t.integer "UserID"
@@ -551,7 +572,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "PostalCode"
   end
 
-  add_index "ShippingAddresses", ["UserID", "DefaultAddress"], :name => "UserID_default"
+  add_index "shippingaddresses", ["UserID", "DefaultAddress"], :name => "UserID_default"
 
   create_table "StoreTransactions", :primary_key => "ID", :force => true do |t|
     t.string   "Response"
@@ -587,7 +608,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "PostalCode"
   end
 
-  add_index "StoreUserCreditCards", ["UserID", "DefaultCard"], :name => "UserID"
+  add_index "storeusercreditcards", ["UserID", "DefaultCard"], :name => "UserID"
 
   create_table "StoreUserLog", :primary_key => "ID", :force => true do |t|
     t.datetime "Date",                      :null => false
@@ -597,8 +618,8 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string   "Query",                     :null => false
   end
 
-  add_index "StoreUserLog", ["TrackingID"], :name => "TrackingID"
-  add_index "StoreUserLog", ["UserEmail"], :name => "UserEmail"
+  add_index "storeuserlog", ["TrackingID"], :name => "TrackingID"
+  add_index "storeuserlog", ["UserEmail"], :name => "UserEmail"
 
   create_table "StoreUsers", :primary_key => "ID", :force => true do |t|
     t.string   "Email"
@@ -607,7 +628,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.datetime "StartDate"
   end
 
-  add_index "StoreUsers", ["Email"], :name => "Email", :unique => true
+  add_index "storeusers", ["Email"], :name => "Email", :unique => true
 
   create_table "TransactionTypes", :primary_key => "ID", :force => true do |t|
     t.string "Scope",       :limit => 70, :default => "External", :null => false
@@ -618,7 +639,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string "ToAccount"
   end
 
-  add_index "TransactionTypes", ["Name", "FromAccount", "ToAccount"], :name => "Name", :unique => true
+  add_index "transactiontypes", ["Name", "FromAccount", "ToAccount"], :name => "Name", :unique => true
 
   create_table "Transactions", :primary_key => "ID", :force => true do |t|
     t.integer "GroupTransactionID"
@@ -644,12 +665,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Debit",                  :limit => 10
   end
 
-  add_index "Transactions", ["Account"], :name => "Account"
-  add_index "Transactions", ["CheckID"], :name => "CheckID"
-  add_index "Transactions", ["DateCash"], :name => "DateCash"
-  add_index "Transactions", ["GroupTransactionID"], :name => "GroupTransactionID"
-  add_index "Transactions", ["Loan"], :name => "Loan"
-  add_index "Transactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "transactions", ["Account"], :name => "Account"
+  add_index "transactions", ["CheckID"], :name => "CheckID"
+  add_index "transactions", ["DateCash"], :name => "DateCash"
+  add_index "transactions", ["GroupTransactionID"], :name => "GroupTransactionID"
+  add_index "transactions", ["Loan"], :name => "Loan"
+  add_index "transactions", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "TransactionsArchive", :primary_key => "ID", :force => true do |t|
     t.integer "GroupTransactionID"
@@ -675,12 +696,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Debit",                  :limit => 10
   end
 
-  add_index "TransactionsArchive", ["Account"], :name => "Account"
-  add_index "TransactionsArchive", ["CheckID"], :name => "CheckID"
-  add_index "TransactionsArchive", ["DateCash"], :name => "DateCash"
-  add_index "TransactionsArchive", ["GroupTransactionID"], :name => "GroupTransactionID"
-  add_index "TransactionsArchive", ["Loan"], :name => "Loan"
-  add_index "TransactionsArchive", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "transactionsarchive", ["Account"], :name => "Account"
+  add_index "transactionsarchive", ["CheckID"], :name => "CheckID"
+  add_index "transactionsarchive", ["DateCash"], :name => "DateCash"
+  add_index "transactionsarchive", ["GroupTransactionID"], :name => "GroupTransactionID"
+  add_index "transactionsarchive", ["Loan"], :name => "Loan"
+  add_index "transactionsarchive", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "TransactionsHold", :primary_key => "ID", :force => true do |t|
     t.integer "GroupTransactionID"
@@ -706,12 +727,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Debit",                  :limit => 10
   end
 
-  add_index "TransactionsHold", ["Account"], :name => "Account"
-  add_index "TransactionsHold", ["CheckID"], :name => "CheckID"
-  add_index "TransactionsHold", ["DateCash"], :name => "DateCash"
-  add_index "TransactionsHold", ["GroupTransactionID"], :name => "GroupTransactionID"
-  add_index "TransactionsHold", ["Loan"], :name => "Loan"
-  add_index "TransactionsHold", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "transactionshold", ["Account"], :name => "Account"
+  add_index "transactionshold", ["CheckID"], :name => "CheckID"
+  add_index "transactionshold", ["DateCash"], :name => "DateCash"
+  add_index "transactionshold", ["GroupTransactionID"], :name => "GroupTransactionID"
+  add_index "transactionshold", ["Loan"], :name => "Loan"
+  add_index "transactionshold", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "TransactionsLog", :primary_key => "ID", :force => true do |t|
     t.integer  "User",                                                :null => false
@@ -742,12 +763,12 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float    "Debit",                  :limit => 10
   end
 
-  add_index "TransactionsLog", ["Account"], :name => "Account"
-  add_index "TransactionsLog", ["CheckID"], :name => "CheckID"
-  add_index "TransactionsLog", ["DateCash"], :name => "DateCash"
-  add_index "TransactionsLog", ["GroupTransactionID"], :name => "GroupTransactionID"
-  add_index "TransactionsLog", ["Loan"], :name => "Loan"
-  add_index "TransactionsLog", ["OutflowType", "DateCash"], :name => "ExpenditureType"
+  add_index "transactionslog", ["Account"], :name => "Account"
+  add_index "transactionslog", ["CheckID"], :name => "CheckID"
+  add_index "transactionslog", ["DateCash"], :name => "DateCash"
+  add_index "transactionslog", ["GroupTransactionID"], :name => "GroupTransactionID"
+  add_index "transactionslog", ["Loan"], :name => "Loan"
+  add_index "transactionslog", ["OutflowType", "DateCash"], :name => "ExpenditureType"
 
   create_table "Translations", :primary_key => "ID", :force => true do |t|
     t.integer "Language",                         :null => false
@@ -757,7 +778,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text    "TranslatedContent",                :null => false
   end
 
-  add_index "Translations", ["RemoteID"], :name => "RemoteID"
+  add_index "translations", ["RemoteID"], :name => "RemoteID"
 
   create_table "VendorOrders", :primary_key => "ID", :force => true do |t|
     t.datetime "DateRequested"
@@ -792,7 +813,7 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.text     "ActivityDescription"
   end
 
-  add_index "WorkLog", ["ActivityCategory"], :name => "ActivityCategory"
+  add_index "worklog", ["ActivityCategory"], :name => "ActivityCategory"
 
   create_table "WorkerVacation", :primary_key => "ID", :force => true do |t|
     t.integer "MemberID",  :null => false
@@ -800,9 +821,9 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.date    "EndDate",   :null => false
   end
 
-  add_index "WorkerVacation", ["EndDate"], :name => "EndDate"
-  add_index "WorkerVacation", ["MemberID"], :name => "MemberID"
-  add_index "WorkerVacation", ["StartDate"], :name => "StartDate"
+  add_index "workervacation", ["EndDate"], :name => "EndDate"
+  add_index "workervacation", ["MemberID"], :name => "MemberID"
+  add_index "workervacation", ["StartDate"], :name => "StartDate"
 
   create_table "mailinglist", :force => true do |t|
     t.string   "firstname", :limit => 200, :default => "", :null => false

@@ -29,12 +29,18 @@ class Loan < ActiveRecord::Base
     else "Project " + self.ID.to_s end
   end
   
-  def country; self.division.country; end
+  def country
+    Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
+  end
+  
+  def currency
+    self.country.default_currency
+  end
   
   def location
     if self.cooperative.try(:city).present?
-      self.cooperative.city + ', ' + self.country
-    else self.country end
+      self.cooperative.city + ', ' + self.country.name
+    else self.country.name end
   end
   
   def signing_date_pretty
@@ -48,18 +54,26 @@ class Loan < ActiveRecord::Base
     end
   end
   
-  def short_description(language_code)
+  def short_description(language_code='EN')
     self.translation('ShortDescription', language_code)
   end
-  def description(language_code)
+  def description(language_code='EN')
     self.translation('Description', language_code)
   end
   
-  def log_media(limit, images_only=false)
+  def coop_media(limit=100, images_only=false)
+    get_media('Cooperatives', self.cooperative.try(:id), limit, images_only)
+  end
+  
+  def loan_media(limit=100, images_only=false)
+    get_media('Loans', self.id, limit, images_only)
+  end
+  
+  def log_media(limit=100, images_only=false)
     media = []
     begin
       self.logs("Date").each do |log|
-        media += get_media('ProjectLogs', log.id, limit - media.count, images_only)
+        media += log.media(limit - media.count, images_only)
         return media unless limit > media.count
       end
     rescue Mysql2::Error # some logs have invalid dates
@@ -69,7 +83,7 @@ class Loan < ActiveRecord::Base
   
   def featured_pictures(limit=1)
     pics = []
-    coop_pics = get_media('Cooperatives', self.cooperative.id, limit, images_only=true)
+    coop_pics = get_media('Cooperatives', self.cooperative.try(:id), limit, images_only=true)
     # use first coop picture first
     pics << coop_pics.shift if coop_pics.count > 0
     return pics unless limit > pics.count
@@ -90,19 +104,11 @@ class Loan < ActiveRecord::Base
     else "/assets/ww-avatar-watermark.png" end
   end
   
-  def all_media
-    {
-      coop_media: get_media('Cooperatives', self.cooperative.id, 100),
-      loan_media: get_media('Loans', self.id, 100),
-      log_media: self.log_media(100)
-    }
-  end
-  
   def amount_formatted
-    currency_format(self.amount, self.country)
+    currency_format(self.amount, self.currency)
   end
   
-  def project_events(order_by="Completed IS NULL, Completed, Date")
+  def project_events(order_by="Completed IS NULL OR Completed = 0, Completed, Date")
     ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 

@@ -2,10 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*.thumbnails {
-  margin-left: auto;
-  margin-right: auto;
-}*/
-.thumbnail > img {
-  max-height: 145px;
+.thumbnail {
+  margin: 0;
+  text-align: center;
+  > img {
+    margin: 0 auto;
+    max-height: 145px;
+  }
+}
+.caption {
+  margin: 0;
 }

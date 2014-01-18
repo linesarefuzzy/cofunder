@@ -18,10 +18,9 @@ module TranslationModule
   end
 
   include ActionView::Helpers::NumberHelper
-  def currency_format(amount, country, tooltip=true)
-    currency = Currency.where(:Country => country).first
+  def currency_format(amount, currency, tooltip=true)
     symbol = currency.symbol
-    symbol = symbol.sub(/\$/, ' $') # add space before $ (pretty)
+    symbol = symbol.sub('$', ' $') # add space before $ (pretty)
     if tooltip
       symbol = %Q(<a href="#" onclick="return false" data-toggle="tooltip" class="currency_symbol" title="#{currency.name}s">#{symbol}</a> )
     end
