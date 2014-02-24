@@ -164,16 +164,6 @@ li.loan {
 .detail_page, .gallery {
   margin-top: 20px;
 }
-.detail_gutter {
-  margin-left: 10px;
-}
-.detail_gutter .info {
-  float: left;
-  display: block;
-}
-.detail_gutter .short_description {
-  clear: both;
-}
 .short_description {
   color: #202020;
 }
@@ -183,8 +173,11 @@ li.loan {
     color: white; 
   }
 }
+.carousel-inner {
+  background-color: black;
+}
 .carousel-inner .item {
-  height: 400px;
+  height: 411px;
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -195,10 +188,10 @@ li.loan {
 }
 
 .loan_description {
-  max-width: 510px;
   color: #022121;
   font-weight: inherit;
-  font-size: 13pt;
+  font-size: 115%;
+  margin-bottom: 0;
 }
 .lend_button {
   background: url('/images/lend_btn.png') no-repeat;
