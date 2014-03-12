@@ -61,6 +61,9 @@ hr {
   display: block;
   clear: both;
 }
+th {
+  text-align: left;
+}
 
 iframe[seamless] {
   background-color: transparent;
@@ -77,6 +80,9 @@ iframe[seamless] {
 }
 .notfound {
   font-style: italic;
+}
+.nowrap {
+  white-space: nowrap;
 }
 
 //.translation p:last-child {

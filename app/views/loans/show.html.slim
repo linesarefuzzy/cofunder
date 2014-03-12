@@ -36,79 +36,94 @@
         /   a.button.lend_button.pull-right href="#"
         / h5.coop_name Current Report
 
-        .update-box.update-box-color
-          .info
-            ' Status: #{@loan.status} &nbsp;
-            i.icon-coinstack>
-            ' #{@loan.amount_formatted} &nbsp;
-            i.icon-map-marker>
-            ' #{@loan.location} &nbsp;
-            i.icon-calendar>
-            ' #{@loan.signing_date_pretty} &nbsp;
-          / render translation using partial "translations/_translation.html.erb"
-          .short_description = render @loan.short_description(@language)
+    .span5.sidebar.pull-right
+      h4.section_title About This Project
+      .status-box
+        table.info
+          tr
+            th Status:
+            td = @loan.status
+          tr
+            th Amount:
+            td
+              i.icon-coinstack>
+              = @loan.amount_formatted
+          tr
+            th Location:
+            td
+              i.icon-map-marker>
+              = @loan.location
+          tr
+            th Signing date:
+            td
+              i.icon-calendar>
+              = @loan.signing_date_pretty
+        / render translation using partial "translations/_translation.html.erb"
+        .short_description = render @loan.short_description(@language)
+    
+    .clearfix
+    
+    ul.nav.nav-tabs
+      li
+        a data-toggle="tab" href="#summary" Summary
+      li
+        a data-toggle="tab" href="#timeline" Timeline
+      / li
+      /   a data-toggle="tab" href="#contracts" Contracts
+      - unless @repayments.empty?
+        li
+          a data-toggle="tab" href="#payments" Payments
+      li
+        a data-toggle="tab" href="#other_loans" Past Loans
 
+    #about_loan.tab-content
+      #summary.tab-pane.description_box.well
+        p.loan_description
+          / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
+          = render @loan.description(@language) || '<span class="notfound">No description found.</span>'
+    
+      #timeline.tab-pane
         h4.section-title Timeline
         = render 'project_events/timeline'
-        
     
-    .span5.sidebar.pull-right
-      ul.nav.nav-tabs
-        li
-          a data-toggle="tab" href="#summary" Summary
-        li
-          a data-toggle="tab" href="#contracts" Contracts
-        li
-          a data-toggle="tab" href="#other_loans" Past Loans
-        - unless @repayments.empty?
-          li
-            a data-toggle="tab" href="#payments" Payments
+      / #contracts.tab-pane
+      /   h4 All Contracts for this Co-op
+      /   table
+      /     tr
+      /       td Loan Name
+      /     tr
+      /       td Loan Officer
+      /     tr
+      /       td Loan Contract
 
-      #about_loan.tab-content
-        #summary.tab-pane
-          h4.section_title About This Project
-          .description_box.well
-            p.loan_description.detail_gutter
-              / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
-              = render @loan.description(@language) || '<span class="notfound">No description found.</span>'
-              
-        #contracts.tab-pane
-          h4 All Contracts for this Co-op
-          table
-            tr
-              td Loan Name
-            tr
-              td Loan Officer
-            tr
-              td Loan Contract
+      - unless @repayments.empty?
+        #payments.tab-pane
+          h4 Payment Schedule
+          table.table.repayments
+            / tr
+            /   th Status
+            /   th Amount
+            - @repayments.each do |pmt|
+              tr class=pmt.status 
+                td = pmt.status_date
+                td = pmt.amount_formatted
 
-        #other_loans.tab-pane
-          - if !@other_loans || @other_loans.count <= 1
-            p.empty This is the first loan to this cooperative.
-          - else
-            h4 All Loans to this Co-op
-            table.table.other_loans data-provides="rowlink" 
-              - @other_loans.each do |loan|
-                tr class="#{'selected' if loan.id == @loan.id}"
-                  td
-                    - if loan.id == @loan.id
+      #other_loans.tab-pane
+        - if !@other_loans || @other_loans.count <= 1
+          p.empty This is the first loan to this cooperative.
+        - else
+          h4 All Loans to this Co-op
+          table.table.other_loans data-provides="rowlink" 
+            - @other_loans.each do |loan|
+              tr class="#{'selected' if loan.id == @loan.id}"
+                td
+                  - if loan.id == @loan.id
+                    = loan.signing_date_pretty
+                  - else
+                    a.rowlink href=("#{url_for (@embedded ? embedded_loan_path(loan) : loan)}#_other_loans")
                       = loan.signing_date_pretty
-                    - else
-                      a.rowlink href=("#{url_for (@embedded ? embedded_loan_path(loan) : loan)}#_other_loans")
-                        = loan.signing_date_pretty
-                  td = loan.amount_formatted
-                  td = loan.status
-                  
-        - unless @repayments.empty?
-          #payments.tab-pane
-            h4 Payment Schedule
-            table.table.repayments
-              / tr
-              /   th Status
-              /   th Amount
-              - @repayments.each do |pmt|
-                tr class=pmt.status 
-                  td = pmt.status_date
-                  td = pmt.amount_formatted
-
+                td = loan.amount_formatted
+                td = loan.status
+                
+    
 = render 'media/blueimp-gallery'
