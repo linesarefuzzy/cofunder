@@ -98,15 +98,23 @@
 
       - unless @repayments.empty?
         #payments.tab-pane
-          h4 Payment Schedule
-          table.table.repayments
-            / tr
-            /   th Status
-            /   th Amount
-            - @repayments.each do |pmt|
-              tr class=pmt.status 
-                td = pmt.status_date
-                td = pmt.amount_formatted
+          .row-fluid
+            .span7
+              h4 Payment Schedule
+              table.table.repayments
+                tr
+                  th Status
+                  th Due Date
+                  th Amount
+                - @repayments.each do |pmt|
+                  tr class=pmt.status 
+                    td 
+                      b = pmt.status.titlecase
+                    - if pmt.paid
+                      td = pmt.date_paid.strftime("%B %e, %Y")
+                    - else
+                      td = pmt.date_due.strftime("%B %e, %Y")
+                    td = pmt.amount_formatted
 
       #other_loans.tab-pane
         - if !@other_loans || @other_loans.count <= 1
@@ -124,6 +132,7 @@
                       = loan.signing_date_pretty
                 td = loan.amount_formatted
                 td = loan.status
+                td.hidden-phone style="width: 50%" = render loan.short_description(@language)
                 
     
 = render 'media/blueimp-gallery'
