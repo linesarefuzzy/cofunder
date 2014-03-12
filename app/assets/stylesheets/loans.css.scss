@@ -166,6 +166,7 @@ li.loan {
 }
 .short_description {
   color: #202020;
+  margin-top: 15px;
 }
 .carousel-control {
   top: 50%;
@@ -192,6 +193,7 @@ li.loan {
   font-weight: inherit;
   font-size: 115%;
   margin-bottom: 0;
+  word-wrap: break-word;
 }
 .lend_button {
   background: url('/images/lend_btn.png') no-repeat;
@@ -201,13 +203,15 @@ li.loan {
   margin-right: 20px;
 }
 
-.update-box {
+.status-box {
   margin-bottom: 10px;
   padding: 20px;
   @include border-radius(5px);
-}
-.update-box-color {
   background: rgba(88, 134, 27, 0.20);
+
+  th, td {
+    padding: 0 10px 10px 0;
+  }
 }
 
 .paso {
@@ -354,6 +358,6 @@ li.loan {
     background-color: #dff0d8;
   }
   .due td {
-    /*background-color: #d9edf7;*/
+    background-color: #f3f3f3;
   }
 }

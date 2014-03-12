@@ -21,3 +21,4 @@ config/database.yml
 .idea
 *.swp
 *.swo
+.ruby-version

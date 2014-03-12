@@ -3,7 +3,10 @@
     - @loan.project_events.each do |paso|
       li class="paso well #{paso.completed_or_not}"
         .paso-summary
-          = render paso.summary(@language)
+          - if !paso.summary(@language).try(:content).blank?
+            = render paso.summary(@language)
+          - else 
+            | Project Event ##{paso.id}
           - unless paso.details(@language).try(:content).blank?
             .paso-details = render paso.details(@language)
         .paso-status

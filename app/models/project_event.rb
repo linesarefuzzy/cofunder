@@ -22,10 +22,10 @@ class ProjectEvent < ActiveRecord::Base
   end
   
   def summary(language_code="EN")
-    self.translation('Summary', language_code) || self.Summary
+    self.translation('Summary', language_code)
   end
   def details(language_code="EN")
-    self.translation('Details', language_code) || self.Details
+    self.translation('Details', language_code)
   end
 
   def display_date
