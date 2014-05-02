@@ -5,7 +5,7 @@
         .paso-summary
           - if !paso.summary(@language).try(:content).blank?
             = render paso.summary(@language)
-          - else 
+          - else
             | Project Event ##{paso.id}
           - unless paso.details(@language).try(:content).blank?
             .paso-details = render paso.details(@language)
@@ -15,13 +15,13 @@
           = paso.status || 'Not yet completed'
           br
           span.paso-date = paso.display_date
-  
+
         / logs
         - unless paso.logs.empty?
           .show-logs
             br
-            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}"  Show Logs
-          .logs.collapse id="logs-#{paso.id}" 
+            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}" Show Logs
+          .logs.collapse id="logs-#{paso.id}"
             ul.logs-items
               - paso.logs.each do |log|
                 li class="log #{log.progress.parameterize.underscore}"
@@ -32,11 +32,11 @@
                   .clearfix
                   - log.media.each do |media|
                     = render media
-                  = render log.explanation(@language)
+                  = render log.explanation(@language) if log.explanation(@language)
                   - if log.detailed_explanation(@language)
                     .log-show-details
                       a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}"  More
-                    .collapse.log-details id="log-details-#{log.id}" 
+                    .collapse.log-details id="log-details-#{log.id}"
                       br
                       = render log.detailed_explanation(@language)
         / end logs
