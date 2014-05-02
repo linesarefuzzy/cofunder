@@ -41,7 +41,7 @@ Tww::Application.configure do
   # Bullet
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    # Bullet.alert = true
     Bullet.console = true
   end
 

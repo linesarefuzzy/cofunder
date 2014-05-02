@@ -30,11 +30,11 @@ class Loan < ActiveRecord::Base
   end
 
   def country
-    Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
+    @country ||= Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
   end
 
   def currency
-    self.country.default_currency
+    @currency ||= self.country.default_currency
   end
 
   def location
@@ -109,13 +109,15 @@ class Loan < ActiveRecord::Base
   end
 
   def project_events(order_by="Completed IS NULL OR Completed = '0000-00-00', Completed, Date")
-    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by).reject do |p|
+    @project_events ||= ProjectEvent.includes(project_logs: :progress_metric).
+      where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    @project_events.reject do |p|
       # Hide past uncompleted project events without logs (for now)
       !p.completed && p.project_logs.empty? && p.date <= Date.today
     end
   end
 
   def logs(order_by="Date DESC")
-    ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    @logs ||= ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 end
