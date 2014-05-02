@@ -35,7 +35,7 @@
                   = render log.explanation(@language) if log.explanation(@language)
                   - if log.detailed_explanation(@language)
                     .log-show-details
-                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}"  More
+                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}" More
                     .collapse.log-details id="log-details-#{log.id}"
                       br
                       = render log.detailed_explanation(@language)
