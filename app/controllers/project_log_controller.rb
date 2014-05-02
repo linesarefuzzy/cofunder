@@ -1,2 +1,0 @@
-class ProjectLogController < ApplicationController
-end
