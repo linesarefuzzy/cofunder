@@ -109,9 +109,10 @@ class Loan < ActiveRecord::Base
   end
 
   def project_events(order_by="Completed IS NULL OR Completed = '0000-00-00', Completed, Date")
-    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?
-      and (Completed > '0000-00-00' or date >= CURRENT_DATE)", # Hide past uncompleted project events (for now)
-      self.ID).order(order_by)
+    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by).reject do |p|
+      # Hide past uncompleted project events without logs (for now)
+      !p.completed && p.project_logs.empty? && p.date <= Date.today
+    end
   end
 
   def logs(order_by="Date DESC")
