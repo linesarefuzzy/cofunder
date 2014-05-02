@@ -24,7 +24,7 @@
 $tww_red: #882222;
 $tww_gold: #C0B18F;
 $tww_black: #011C26;
-  
+
 body {
   background: #e5e5e5 url('/images/bg.png') repeat;
   -webkit-font-smoothing: antialiased;
@@ -90,9 +90,9 @@ iframe[seamless] {
 //}
 .foreign_language {
   font-style: italic;
-  /*&:hover {
+  &:hover {
     cursor:help;
-  }*/
+  }
 }
 
 
@@ -116,7 +116,7 @@ iframe[seamless] {
   font-weight: 600;
   text-transform: uppercase;
   color: #262626;
- 
+
 }
 h1, h2, h3 {
   /*font-size: 20px;*/
@@ -228,13 +228,13 @@ a:hover.nav_link {
 
 /* Large desktop */
 @media (min-width: 1200px) {  }
- 
+
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {  }
- 
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {  }
- 
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
   .navbar .navbar-inner ul {
@@ -246,13 +246,13 @@ a:hover.nav_link {
     border-bottom: 1px solid #e9e9e9;
   }
   .home_board {
-    float: none; 
+    float: none;
 
     width: 100%;
     height: 100%;
   }
   .vdio iframe {
-    float: none; 
+    float: none;
     position: absolute;
     top: 0;
     left: 0;
