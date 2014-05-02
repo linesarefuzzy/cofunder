@@ -1,5 +1,4 @@
 $ ->
-
   # Enable link to tab
   hash = document.location.hash
   prefix = "_"
@@ -24,10 +23,3 @@ $ ->
     $("#show-" + @id).html "Less"
   $(".log-details").on "hide", ->
     $("#show-" + @id + ".collapsed").html "More"
-
-  # Tooltip for untranslated text
-  $('.foreign_language').popover(
-    html: true
-    placement: "bottom"
-    content: 'This text has not yet been translated to your language. <a href="/us/contact-us">Contact us if you\'d like to help with translation.</a>'
-  )
