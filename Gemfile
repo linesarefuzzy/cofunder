@@ -42,6 +42,19 @@ gem 'jquery-rails'
 group :development do
   # To use debugger
   gem 'debugger'
+
+  # Report number of queries in server log
+  gem 'sql_queries_count'
+
+  # Watches for inefficient queries and recommends eager loading
+  gem 'bullet'
+  # gem 'ruby-growl'
+
+  # Auto-reload pages in browser when changes saved
+  gem 'guard', '>= 2.2.2',       require: false
+  gem 'guard-livereload',        require: false
+  gem 'rack-livereload'
+  gem 'rb-fsevent',              require: false
 end
 
 # Devise (user auth)

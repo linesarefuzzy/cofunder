@@ -6,8 +6,8 @@ class Loan < ActiveRecord::Base
   has_many :repayments, :foreign_key => 'LoanID'
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
 
-  scope :country, ->(country) { 
-    joins(:division).where('Divisions.Country' => country) unless country == 'all' 
+  scope :country, ->(country) {
+    joins(:division).where('Divisions.Country' => country) unless country == 'all'
   }
   scope :status, ->(status) {
     where(:Nivel => case status
@@ -23,52 +23,52 @@ class Loan < ActiveRecord::Base
     scoped = scoped.status(params[:status]) if params[:status]
     scoped
   end
-  
+
   def name
-    if self.cooperative then "Project with " + self.cooperative.Name 
+    if self.cooperative then "Project with " + self.cooperative.Name
     else "Project " + self.ID.to_s end
   end
-  
+
   def country
-    Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
+    @country ||= Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
   end
-  
+
   def currency
-    self.country.default_currency
+    @currency ||= self.country.default_currency
   end
-  
+
   def location
     if self.cooperative.try(:city).present?
       self.cooperative.city + ', ' + self.country.name
     else self.country.name end
   end
-  
+
   def signing_date_pretty
     self.signing_date.strftime("%b %e, %Y") if self.signing_date
   end
-  
+
   def status
     case self.nivel
       when 'Prestamo Activo' then 'Active'
       when 'Prestamo Completo' then 'Completed'
     end
   end
-  
+
   def short_description(language_code='EN')
     self.translation('ShortDescription', language_code)
   end
   def description(language_code='EN')
     self.translation('Description', language_code)
   end
-  
+
   def coop_media(limit=100, images_only=false)
     get_media('Cooperatives', self.cooperative.try(:id), limit, images_only)
   end
-  
+
   def loan_media(limit=100, images_only=false)
     get_media('Loans', self.id, limit, images_only)
   end
-  
+
   def log_media(limit=100, images_only=false)
     media = []
     begin
@@ -80,7 +80,7 @@ class Loan < ActiveRecord::Base
     end
     return media
   end
-  
+
   def featured_pictures(limit=1)
     pics = []
     coop_pics = get_media('Cooperatives', self.cooperative.try(:id), limit, images_only=true)
@@ -97,22 +97,27 @@ class Loan < ActiveRecord::Base
     pics += coop_pics[0, limit - pics.count]
     return pics
   end
-  
+
   def thumb_path
     if !self.featured_pictures.empty?
       self.featured_pictures.first.paths[:thumb]
     else "/assets/ww-avatar-watermark.png" end
   end
-  
+
   def amount_formatted
     currency_format(self.amount, self.currency)
   end
-  
-  def project_events(order_by="Completed IS NULL OR Completed = 0, Completed, Date")
-    ProjectEvent.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+
+  def project_events(order_by="Completed IS NULL OR Completed = '0000-00-00', Completed, Date")
+    @project_events ||= ProjectEvent.includes(project_logs: :progress_metric).
+      where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    @project_events.reject do |p|
+      # Hide past uncompleted project events without logs (for now)
+      !p.completed && p.project_logs.empty? && p.date <= Date.today
+    end
   end
 
   def logs(order_by="Date DESC")
-    ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
+    @logs ||= ProjectLog.where("lower(ProjectTable) = 'loans' and ProjectID = ?", self.ID).order(order_by)
   end
 end

@@ -37,4 +37,12 @@ Tww::Application.configure do
 
   # For devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Bullet
+  config.after_initialize do
+    Bullet.enable = true
+    # Bullet.alert = true
+    Bullet.console = true
+  end
+
 end

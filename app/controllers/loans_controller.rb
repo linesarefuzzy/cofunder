@@ -4,12 +4,16 @@ class LoansController < ApplicationController
   def index
     params[:status] = 'active' if params[:status].blank? # show active loans by default
     @loans = Loan.filter_by_params(params).
+                  includes(:cooperative, division: :super_division).
                   paginate(:page => params[:pg], :per_page => 20).
                   order('SigningDate DESC')
     @countries = Country.order(:Name).pluck(:Name)
     @language = 'EN' # to be replaced by session variable
-    
-    if params[:embedded] 
+
+    # Set last loan list URL for 'Back to Loan List' link
+    session[:loans_path] = request.fullpath
+
+    if params[:embedded]
       _layout = 'embedded'
       @embedded = true
     else _layout = 'application' end
@@ -19,7 +23,7 @@ class LoansController < ApplicationController
       format.json { render :json => @loans }
     end
   end
-  
+
   # GET /loans/1
   # GET /loans/1.json
   def show
@@ -29,7 +33,7 @@ class LoansController < ApplicationController
     @repayments = @loan.repayments.order('DateDue')
     @language = 'EN' # to be replaced by session variable
 
-    if params[:embedded] 
+    if params[:embedded]
       _layout = 'embedded'
       @embedded = true
     else _layout = 'application' end
@@ -39,15 +43,15 @@ class LoansController < ApplicationController
       format.json { render :json => @loan }
     end
   end
-  
+
   # GET /loans/1/gallery
   def gallery
     @loan = Loan.status('all').find(params[:id])
     @language = 'EN' # to be replaced by session variable
     @coop_media = @loan.coop_media(100, true).in_groups_of(4, false)
     @loan_media = (@loan.loan_media(100, true) + @loan.log_media(100, true)).in_groups_of(4, false)
-    
-    if params[:embedded] 
+
+    if params[:embedded]
       _layout = 'embedded'
       @embedded = true
     else _layout = 'application' end
@@ -55,69 +59,6 @@ class LoansController < ApplicationController
     respond_to do |format|
       format.html { render layout: _layout }
     end
-  end    
+  end
 
-  # def lend_form
-  #   @loan = Loan.find(params[:id])
-  # end
-
-  # GET /loans/new
-  # GET /loans/new.json
-  # def new
-  #   @loan = Loan.new
-  # 
-  #   respond_to do |format|
-  #     format.html # new.html.erb
-  #     format.json { render :json => @loan }
-  #   end
-  # end
-
-  # GET /loans/1/edit
-  # def edit
-  #   @loan = Loan.find(params[:id])
-  # end
-
-  # POST /loans
-  # POST /loans.json
-  # def create
-  #   @loan = Loan.new(params[:loan])
-  # 
-  #   respond_to do |format|
-  #     if @loan.save
-  #       format.html { redirect_to @loan, :notice => 'Loan was successfully created.' }
-  #       format.json { render :json => @loan, :status => :created, :location => @loan }
-  #     else
-  #       format.html { render :action => "new" }
-  #       format.json { render :json => @loan.errors, :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # PUT /loans/1
-  # PUT /loans/1.json
-  # def update
-  #   @loan = Loan.find(params[:id])
-  # 
-  #   respond_to do |format|
-  #     if @loan.update_attributes(params[:loan])
-  #       format.html { redirect_to @loan, :notice => 'Loan was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render :action => "edit" }
-  #       format.json { render :json => @loan.errors, :status => :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /loans/1
-  # DELETE /loans/1.json
-  # def destroy
-  #   @loan = Loan.find(params[:id])
-  #   @loan.destroy
-  # 
-  #   respond_to do |format|
-  #     format.html { redirect_to loans_url }
-  #     format.json { head :no_content }
-  #   end
-  # end
 end
