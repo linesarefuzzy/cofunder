@@ -9,13 +9,13 @@ class LoansController < ApplicationController
     @countries = Country.order(:Name).pluck(:Name)
     @language = 'EN' # to be replaced by session variable
 
+    # Set last loan list URL for 'Back to Loan List' link
+    session[:loans_path] = request.fullpath
+
     if params[:embedded]
       _layout = 'embedded'
       @embedded = true
     else _layout = 'application' end
-
-    # Set last loan list URL for 'Back to Loan List' link
-    session[:loans_path] = request.fullpath
 
     respond_to do |format|
       format.html { render layout: _layout } # index.html.erb
