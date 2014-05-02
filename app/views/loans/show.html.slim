@@ -4,12 +4,12 @@
   .row-fluid
     .span7
       .back_link.pull-left
-        a.simple href=(url_for (@embedded ? embedded_loans_path : loans_path))
+        a.simple href=back_to_loans
           i.icon-chevron-left>
         / This a tag is repeated here so that the space doesn't get underlined on hover
-        a href=(url_for (@embedded ? embedded_loans_path : loans_path))
+        a href=back_to_loans
           | Back to Loan List
-          
+
   .row-fluid
     .span7.main_content
       .detail_wrap
@@ -21,17 +21,17 @@
             - if @pictures.count > 1
               ol.carousel-indicators
                 - for i in (0..(@pictures.count-1)) do
-                  li data-slide-to=i data-target="#myCarousel" 
+                  li data-slide-to=i data-target="#myCarousel"
             / Carousel items
-            a href="#{url_for}/gallery" 
+            a href="#{url_for}/gallery"
               .carousel-inner
                 - @pictures.each do |picture|
-                  .item.picture style=("background-image: url(#{picture.paths[:large]});") 
+                  .item.picture style=("background-image: url(#{picture.paths[:large]});")
             / Carousel nav
             - if @pictures.count > 1
               a.carousel-control.left data-slide="prev" href="#myCarousel"  &lsaquo;
               a.carousel-control.right data-slide="next" href="#myCarousel"  &rsaquo;
-              
+
         / .lend
         /   a.button.lend_button.pull-right href="#"
         / h5.coop_name Current Report
@@ -60,9 +60,9 @@
               = @loan.signing_date_pretty
         / render translation using partial "translations/_translation.html.erb"
         .short_description = render @loan.short_description(@language)
-    
+
     .clearfix
-    
+
     ul.nav.nav-tabs
       li
         a data-toggle="tab" href="#summary" Summary
@@ -81,11 +81,11 @@
         p.loan_description
           / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
           = render @loan.description(@language) || '<span class="notfound">No description found.</span>'
-    
+
       #timeline.tab-pane
         h4.section-title Timeline
         = render 'project_events/timeline'
-    
+
       / #contracts.tab-pane
       /   h4 All Contracts for this Co-op
       /   table
@@ -107,8 +107,8 @@
                   th Due Date
                   th Amount
                 - @repayments.each do |pmt|
-                  tr class=pmt.status 
-                    td 
+                  tr class=pmt.status
+                    td
                       b = pmt.status.titlecase
                     - if pmt.paid
                       td = pmt.date_paid.strftime("%B %e, %Y")
@@ -121,7 +121,7 @@
           p.empty This is the first loan to this cooperative.
         - else
           h4 All Loans to this Co-op
-          table.table.other_loans data-provides="rowlink" 
+          table.table.other_loans data-provides="rowlink"
             - @other_loans.each do |loan|
               tr class="#{'selected' if loan.id == @loan.id}"
                 td
@@ -133,6 +133,6 @@
                 td = loan.amount_formatted
                 td = loan.status
                 td.hidden-phone style="width: 50%" = render loan.short_description(@language)
-                
-    
+
+
 = render 'media/blueimp-gallery'
