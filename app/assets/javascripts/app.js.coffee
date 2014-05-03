@@ -9,4 +9,4 @@ $ ->
     html: true
     placement: "bottom"
     container: "body"
-    content: 'This text has not yet been translated. <a href="/us/contact-us">Contact us</a> if you\'d like to help with translation.'
+    content: 'This text has not yet been translated. <a href="http://www.theworkingworld.org/us/contact-us">Contact us</a> if you\'d like to help with translation.'
