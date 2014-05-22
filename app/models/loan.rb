@@ -7,7 +7,7 @@ class Loan < ActiveRecord::Base
   attr_accessible :Amount, :Nivel, :Rate, :SigningDate
 
   scope :country, ->(country) {
-    joins(:division).where('Divisions.Country' => country) unless country == 'all'
+    joins(division: :super_division).where('super_divisions_Divisions.Country' => country) unless country == 'all'
   }
   scope :status, ->(status) {
     where(:Nivel => case status
