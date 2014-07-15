@@ -67,5 +67,5 @@ gem 'will_paginate-bootstrap'
 # Remove UTF8 parameter from GET forms
 gem 'utf8_enforcer_workaround'
 
-gem 'haml-rails'
+# Slim template language
 gem 'slim'
