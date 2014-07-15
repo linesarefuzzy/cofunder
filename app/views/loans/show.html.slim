@@ -23,7 +23,7 @@
                 - for i in (0..(@pictures.count-1)) do
                   li data-slide-to=i data-target="#myCarousel"
             / Carousel items
-            a href="#{url_for}/gallery"
+            a href="#{url_for gallery_path(@loan)}"
               .carousel-inner
                 - @pictures.each do |picture|
                   .item.picture style=("background-image: url(#{picture.paths[:large]});")
@@ -128,7 +128,7 @@
                   - if loan.id == @loan.id
                     = loan.signing_date_pretty
                   - else
-                    a.rowlink href=("#{url_for (@embedded ? embedded_loan_path(loan) : loan)}#_other_loans")
+                    a.rowlink href=("#{url_for loan}#_other_loans")
                       = loan.signing_date_pretty
                 td = loan.amount_formatted
                 td = loan.status

@@ -1,8 +1,8 @@
 Tww::Application.routes.draw do
 
   devise_for :users
-  devise_scope :user do 
-    match 'profile' => 'devise/registrations#show' 
+  devise_scope :user do
+    match 'profile' => 'devise/registrations#show'
   end
 
   get 'embedded/loans', to: 'loans#index', embedded: true, as: :embedded_loans
@@ -10,7 +10,7 @@ Tww::Application.routes.draw do
   get 'embedded/loans/:id/gallery', to: 'loans#gallery', embedded: true, as: :embedded_gallery
 
   resources :loans, only: [:index, :show]
-  get 'loans/:id/gallery', to: 'loans#gallery'
+  get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
