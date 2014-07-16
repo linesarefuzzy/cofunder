@@ -13,13 +13,6 @@ class LoansController < ApplicationController
     # Set last loan list URL for 'Back to Loan List' link
     session[:loans_path] = request.fullpath
 
-    # require 'open-uri'
-    # url = URI.parse 'http://www.theworkingworld.org/baselab/rails/'
-    # html = url.read
-    # content = 'Content'
-    # html.sub! /\[rails_content\]/, content
-    # render inline: html
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @loans }

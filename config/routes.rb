@@ -8,6 +8,8 @@ Tww::Application.routes.draw do
   resources :loans, only: [:index, :show]
   get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
 
+  get 'update_wordpress_template', to: 'application#update_wordpress_template'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,7 +59,7 @@ Tww::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'loans#index'
 
   # See how all your routes lay out with "rake routes"
 
