@@ -69,3 +69,6 @@ gem 'utf8_enforcer_workaround'
 
 # Slim template language
 gem 'slim'
+
+# Cron jobs
+gem 'whenever', require: false
