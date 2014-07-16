@@ -1,7 +1,7 @@
 - content_for :title, "Loans"
 
 .container-fluid.loans
-  - unless @embedded
+  - unless params[:embedded]
     h1.section_title Loans
 
   .row-fluid.filters

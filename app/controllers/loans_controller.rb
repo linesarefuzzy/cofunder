@@ -15,7 +15,6 @@ class LoansController < ApplicationController
 
     if params[:embedded]
       _layout = 'embedded'
-      @embedded = true
     else _layout = 'application' end
 
     respond_to do |format|
@@ -35,7 +34,6 @@ class LoansController < ApplicationController
 
     if params[:embedded]
       _layout = 'embedded'
-      @embedded = true
     else _layout = 'application' end
 
     respond_to do |format|
@@ -53,7 +51,6 @@ class LoansController < ApplicationController
 
     if params[:embedded]
       _layout = 'embedded'
-      @embedded = true
     else _layout = 'application' end
 
     respond_to do |format|
