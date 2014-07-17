@@ -121,15 +121,14 @@
           p.empty This is the first loan to this cooperative.
         - else
           h4 All Loans to this Co-op
-          table.table.other_loans data-provides="rowlink"
+          table.table.other_loans.rowlink data-link="row"
             - @other_loans.each do |loan|
               tr class="#{'selected' if loan.id == @loan.id}"
                 td
                   - if loan.id == @loan.id
                     = loan.signing_date_pretty
                   - else
-                    a.rowlink href=("#{url_for loan}#_other_loans")
-                      = loan.signing_date_pretty
+                    a href=(url_for loan) = loan.signing_date_pretty
                 td = loan.amount_formatted
                 td = loan.status
                 td.hidden-xs style="width: 50%" = render loan.short_description(@language)

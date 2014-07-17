@@ -16,11 +16,12 @@
  *= require media
  *= require css/blueimp-gallery
  *= require font-awesome
+ *= require jasny-bootstrap
  */
 
 // Bootstrap v3.1.1 is already loaded in the WP theme
+//@import "bootstrap-sprockets";
 //@import "bootstrap";
-@import "bootstrap-rowlink";
 
 $tww_red: #882222;
 $tww_gold: #C0B18F;
