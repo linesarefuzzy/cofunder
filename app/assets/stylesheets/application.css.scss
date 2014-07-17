@@ -15,10 +15,11 @@
  *= require users
  *= require media
  *= require css/blueimp-gallery
+ *= require font-awesome
  */
 
-@import "bootstrap";
-@import "bootstrap-responsive";
+// Bootstrap v3.1.1 is already loaded in the WP theme
+//@import "bootstrap";
 @import "bootstrap-rowlink";
 
 $tww_red: #882222;
@@ -30,7 +31,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: #333435;
 }
-.container-fluid {
+.container {
   max-width: 1100px;
   margin: auto;
 }

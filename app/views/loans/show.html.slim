@@ -1,17 +1,17 @@
 - content_for :title, @loan.name
 
-.container-fluid.loans.detail_page
-  .row-fluid
-    .span7
+.container.loans.detail_page
+  .row
+    .col-md-7
       .back_link.pull-left
         a.simple href=back_to_loans
-          i.icon-chevron-left>
+          i.fa.fa-chevron-left>
         / This a tag is repeated here so that the space doesn't get underlined on hover
         a href=back_to_loans
           | Back to Loan List
 
-  .row-fluid
-    .span7.main_content
+  .row
+    .col-md-7.main_content
       .detail_wrap
         h1.section_title = @loan.name
 
@@ -36,7 +36,7 @@
         /   a.button.lend_button.pull-right href="#"
         / h5.coop_name Current Report
 
-    .span5.sidebar.pull-right
+    .col-md-5.sidebar.pull-right
       h4.section_title About This Project
       .status-box
         table.info
@@ -46,17 +46,17 @@
           tr
             th Amount:
             td
-              i.icon-coinstack>
+              / i.fa.fa-fw.fa-dollar>
               = @loan.amount_formatted
           tr
             th Location:
             td
-              i.icon-map-marker>
+              i.fa.fa-fw.fa-map-marker>
               = @loan.location
           tr
             th Signing date:
             td
-              i.icon-calendar>
+              i.fa.fa-fw.fa-calendar>
               = @loan.signing_date_pretty
         / render translation using partial "translations/_translation.html.erb"
         .short_description = render @loan.short_description(@language)
@@ -98,8 +98,8 @@
 
       - unless @repayments.empty?
         #payments.tab-pane
-          .row-fluid
-            .span7
+          .row
+            .col-md-7
               h4 Payment Schedule
               table.table.repayments
                 tr
@@ -132,7 +132,7 @@
                       = loan.signing_date_pretty
                 td = loan.amount_formatted
                 td = loan.status
-                td.hidden-phone style="width: 50%" = render loan.short_description(@language)
+                td.hidden-xs style="width: 50%" = render loan.short_description(@language)
 
 
 = render 'media/blueimp-gallery'

@@ -1,9 +1,9 @@
 - content_for :title, 'Gallery: ' + @loan.name
 
-.container-fluid.loans.gallery
+.container.loans.gallery
   .back_link
     = link_to @loan, class: 'simple' do
-      i.icon-chevron-left>
+      i.fa.fa-chevron-left>
     = link_to @loan do
       | Back to #{@loan.name}
 

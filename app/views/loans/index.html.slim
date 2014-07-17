@@ -1,11 +1,11 @@
 - content_for :title, t(:loans)
 
-.container-fluid.loans
+.container.loans
   / - unless params[:embedded]
   /   h1.section_title Loans
 
-  .row-fluid.filters
-    .span12
+  .row.filters
+    .col-md-12
       = form_tag({}, {:method => "get"}) do
         .show
           ul.nav.nav-pills
@@ -23,11 +23,11 @@
             = select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]),
                 onchange: "this.form.submit()")
 
-  .row-fluid
+  .row
     - if @loans.empty?
-      .span12.empty No loans found.
+      .col-md-12.empty No loans found.
     - else
-      .span12.loans
+      .col-md-12.loans
         table.table.loan_list_wrap.table-bordered.no-more-tables
           - @loans.each do |loan|
             tr.loans_items.well.loan_list_item_wrap style=("opacity: 0.9;")
@@ -40,20 +40,20 @@
                 p.about_coop = render loan.short_description(@language)
                 p.detail_link.pull-right
                   a href=(url_for loan)
-                    | More details
-                    i.icon-chevron-right
+                    ' More details
+                    i.fa.fa-chevron-right
               td.facts.loan_item_facts
                 .location
-                  i.icon-map-marker
+                  i.fa.fa-fw.fa-map-marker>
                   = loan.location
                 .sign_date
-                  i.icon-calendar
+                  i.fa.fa-fw.fa-calendar>
                   = loan.SigningDate ? loan.SigningDate.to_s(:long) : ''
                 .loan_amount
-                  i.icon-coinstack
+                  / i.fa.fa-fw.fa-dollar>
                   = loan.amount_formatted
                 / p.progress.progress-danger style="background:#444;"
-                /   span.bar data-percentage="75" style=("width: 75%;")
+                /   span.progress-bar data-percentage="75" style=("width: 75%;")
                 / p: button.lend_btn.btn type="button"  Add Loan
 
     = will_paginate @loans, param_name: 'pg', renderer: BootstrapPagination::Rails
