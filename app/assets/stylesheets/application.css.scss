@@ -67,13 +67,6 @@ th {
   text-align: left;
 }
 
-iframe[seamless] {
-  background-color: transparent;
-  border: 0px none transparent;
-  padding: 0px;
-  overflow: hidden;
-}
-
 .errorlist {
   color: red;
 }
@@ -137,74 +130,22 @@ h1, h2, h3 {
 
 
 /* NAVIGATION STYLES*/
-.navbar .nav {
-  float: right;
-  height: auto;
-  width: auto;
-  margin-top: 10px;
-}
-.navbar .nav a {
-  color: #f3f3f3;
-}
-.navbar .nav .sign_in {
-  color: #444;
-}
-.navbar .nav-collapse .collapse{
-  background: #f8f8f8;
-}
-.custom > li > a:hover {
-  background-color: transparent;
-}
-.nav-item a:hover {
-  color: #fdf8f8;
-  text-decoration: none;
-}
-.nav-ui {
-  margin-top: 10px;
-}
-.nav-item {
-  display: inline;
-  vertical-align: baseline;
-}
+$pill_padding: 8px 15px;
 
-.navbar .navbar-inner{
-  background-image: url('/images/navbar.png');
-  background-repeat: repeat-x;
-  background-position: top;
-  height: 60px;
-  padding: 0;
-}
-
-.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .nav > li > a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
-  background: none;
-}
-.nav_link {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: white;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  padding: 5px;
-  margin-right: 34px;
-  color: #f3f3f3;
-}
-a:hover.nav_link {
-  background: rgba(0,0,0,.05);
-}
-.usermenu a.dropdown-toggle {
-  color: white;
-}
-
-.nav-pills a:hover {
-  color: $tww_red;
-}
-.nav-pills .disabled a:hover {
+.nav-pills > li.disabled {
   color: #999;
+  padding: $pill_padding;
 }
-.nav-pills > .active > a,
-.nav-pills > .active > a:hover,
-.nav-pills > .active > a:focus {
+.nav.nav-pills > li > a {
+  padding: $pill_padding;
+}
+.nav.nav-pills > li > a:hover {
+  color: $tww_red;
+  background-color: rgba(145, 145, 145, 0.25);
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
   color: white;
   background-color: $tww_red;
 }
@@ -261,4 +202,10 @@ a:hover.nav_link {
     width: 100%;
     height: 100%;
   }
+}
+
+.css-table {
+  display: table;
+  .tr { display: table-row; }
+  .td { display: table-cell; }
 }

@@ -10,7 +10,7 @@
         .show
           ul.nav.nav-pills
             li.disabled
-              a href="#" Show:
+              | Show:
             li class=('active' if params[:status] == 'active')
               = link_to "Active", params.merge(status: nil, pg: nil)
             li class=('active' if params[:status] == 'completed')
