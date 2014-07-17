@@ -11,7 +11,7 @@ module WordpressTemplate
     require 'open-uri'
     html = URI.parse(url).read
     substitutions.each do |key, val|
-      html.sub! key, val
+      html.gsub! key, val
     end
 
     File.open(file, 'w') { |f| f.write(html) }

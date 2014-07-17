@@ -8,7 +8,7 @@ Tww::Application.routes.draw do
   resources :loans, only: [:index, :show]
   get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
 
-  get 'update_wordpress_template', to: 'application#update_wordpress_template'
+  get 'update_template', to: 'application#update_template'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,6 +3,6 @@
 set :output, "log/cron.log"
 set :environment, ENV['RAILS_ENV']
 
-every :hour do
+every 15.minutes do
   runner "WordpressTemplate.update"
 end
