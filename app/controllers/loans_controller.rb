@@ -14,7 +14,8 @@ class LoansController < ApplicationController
     session[:loans_path] = request.fullpath
 
     respond_to do |format|
-      format.html # index.html.erb
+      # Call update_template to pull layout from wordpress if it hasn't been loaded
+      format.html { redirect_to update_template_path if !template_exists?('layouts/wordpress') }
       format.json { render :json => @loans }
     end
   end
@@ -29,7 +30,7 @@ class LoansController < ApplicationController
     @language = 'EN' # to be replaced by session variable
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.json { render :json => @loan }
     end
   end
