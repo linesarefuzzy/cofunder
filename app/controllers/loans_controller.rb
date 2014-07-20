@@ -13,13 +13,9 @@ class LoansController < ApplicationController
     # Set last loan list URL for 'Back to Loan List' link
     session[:loans_path] = request.fullpath
 
-    if params[:embedded]
-      _layout = 'embedded'
-      @embedded = true
-    else _layout = 'application' end
-
     respond_to do |format|
-      format.html { render layout: _layout } # index.html.erb
+      # Call update_template to pull layout from wordpress if it hasn't been loaded
+      format.html { redirect_to update_template_path if !template_exists?('layouts/wordpress') }
       format.json { render :json => @loans }
     end
   end
@@ -33,13 +29,8 @@ class LoansController < ApplicationController
     @repayments = @loan.repayments.order('DateDue')
     @language = 'EN' # to be replaced by session variable
 
-    if params[:embedded]
-      _layout = 'embedded'
-      @embedded = true
-    else _layout = 'application' end
-
     respond_to do |format|
-      format.html { render layout: _layout } # show.html.erb
+      format.html
       format.json { render :json => @loan }
     end
   end
@@ -51,13 +42,8 @@ class LoansController < ApplicationController
     @coop_media = @loan.coop_media(100, true).in_groups_of(4, false)
     @loan_media = (@loan.loan_media(100, true) + @loan.log_media(100, true)).in_groups_of(4, false)
 
-    if params[:embedded]
-      _layout = 'embedded'
-      @embedded = true
-    else _layout = 'application' end
-
     respond_to do |format|
-      format.html { render layout: _layout }
+      format.html
     end
   end
 

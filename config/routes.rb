@@ -1,16 +1,14 @@
 Tww::Application.routes.draw do
 
   devise_for :users
-  devise_scope :user do 
-    match 'profile' => 'devise/registrations#show' 
+  devise_scope :user do
+    match 'profile' => 'devise/registrations#show'
   end
 
-  get 'embedded/loans', to: 'loans#index', embedded: true, as: :embedded_loans
-  get 'embedded/loans/:id', to: 'loans#show', embedded: true, as: :embedded_loan
-  get 'embedded/loans/:id/gallery', to: 'loans#gallery', embedded: true, as: :embedded_gallery
-
   resources :loans, only: [:index, :show]
-  get 'loans/:id/gallery', to: 'loans#gallery'
+  get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
+
+  get 'update_template', to: 'application#update_template'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,7 +59,7 @@ Tww::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  root :to => 'loans#index'
 
   # See how all your routes lay out with "rake routes"
 

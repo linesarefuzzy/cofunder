@@ -1,0 +1,12 @@
+- content_for :title, t(:loans) if yield(:title).blank?
+
+- content_for :head
+  = javascript_include_tag "application"
+  = stylesheet_link_tag "application", :media => "all"
+  = csrf_meta_tags
+
+- content_for :content
+  = render 'alerts'
+  = yield
+
+= render template: 'layouts/wordpress'

@@ -20,8 +20,11 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 
-  # Twitter Bootstrap
-  gem 'bootstrap-sass', '~> 2.3.1.0'
+  # Twitter bootstrap
+  # gem 'bootstrap-sass', '~> 3.2.0'
+  # gem 'sprockets-rails', '=2.0.0.backport1'
+  # gem 'sprockets', '=2.2.2.backport2'
+  # gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
 end
 
 gem 'jquery-rails'
@@ -69,3 +72,9 @@ gem 'utf8_enforcer_workaround'
 
 # Slim template language
 gem 'slim'
+
+# Cron jobs
+gem 'whenever', require: false
+
+# Icons
+gem "font-awesome-rails"
