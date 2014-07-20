@@ -7,7 +7,7 @@
       <%= form_tag({}, {:method => "get"}) do %>
         <div class="show">
           <ul class="nav nav-pills">
-            <li class="disabled"><a href="#">Show:</a></li>
+            <li class="disabled"><a href="#"><%= t :show %>:</a></li>
             <li class="<%= 'active' if params[:status]=='active' %>">
               <%= link_to "Active", params.merge(status: nil, pg: nil) %></li>
             <li class="<%= 'active' if params[:status]=='completed' %>">
