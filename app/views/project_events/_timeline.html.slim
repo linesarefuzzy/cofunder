@@ -11,7 +11,7 @@
             .paso-details = render paso.details(@language)
         .paso-status
           - if paso.completed
-            i.icon-ok>
+            i.fa.fa-check>
           = paso.status || 'Not yet completed'
           br
           span.paso-date = paso.display_date
@@ -26,7 +26,7 @@
               - paso.logs.each do |log|
                 li class="log #{log.progress.parameterize.underscore}"
                   .log-date
-                    i.icon-calendar>
+                    i.fa.fa-calendar>
                     = log.date.to_formatted_s(:long)
                   .log-progress = log.progress
                   .clearfix

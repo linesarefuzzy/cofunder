@@ -1,13 +1,13 @@
-<div class="container"> 
+<div class="container">
 <div class="row">
-<div class="span3">   
+<div class="col-md-3">
 <h2 class="sub_heading">Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><p class="label"><%= f.label :email %></p>
+  <div><p class="label label-default"><%= f.label :email %></p>
   <p class="input"><%= f.email_field :email, :autofocus => true %></p></div>
 
-  <div><p class="label"><%= f.label :password %></p>
+  <div><p class="label label-default"><%= f.label :password %></p>
   <p class="input"><%= f.password_field :password %></p></div>
 
   <% if devise_mapping.rememberable? -%>
@@ -18,10 +18,10 @@
 <% end %>
 
 <p><%= render "devise/shared/links" %></p>
-</div><!-- /.span3 -->
+</div><!-- /.col-md-3 -->
 </div><!-- /.row -->
 <div class="row">
-<div class="span9"> 
-</div><!-- /.span9 -->
+<div class="col-md-9">
+</div><!-- /.col-md-9 -->
 </div><!-- /.row -->
 </div>

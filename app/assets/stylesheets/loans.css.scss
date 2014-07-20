@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "bootstrap/mixins";
-
 /** LOAN LIST STYLES **/
 
 .loan_list {
@@ -36,7 +34,7 @@ li.loan {
   height: 100px;
   margin: 5px;
   border: 5px solid #e0e0e0;
-  @include border-radius(4px);
+  border-radius: 4px;
 }
 .coop_name {
   font-size: 14pt;
@@ -64,7 +62,7 @@ li.loan {
   /*color: #832828;*/
 }
 .facts {
-  width: 170px;
+  width: 200px;
   margin: 5px;
 }
 .loan_item_facts {
@@ -111,39 +109,51 @@ li.loan {
   color: #444;
 }
 .filters {
-  margin-top: 20px;
   background: transparent;
-}
-.pagination {
-  text-align: center;
-}
-.filters div {
-  float: left;
-}
-.filters .country {
-  float: right;
-}
-.filters .country label {
-  margin: 6px;
+  .show {
+    float: left;
+    margin-bottom: 15px;
+  }
+  .country {
+    float: right;
+    label {
+      line-height: 40px;
+      margin: 0 10px;
+    }
+    select {
+      background-color: white;
+      margin: 0;
+      padding: 8px;
+    }
+  }
 }
 
 
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
   .no-more-tables {
+    background: none;
     &, thead, tbody, th, td, tr {
       display: block;
       border: none;
       padding: 0;
     }
-    td {
-      padding: 15px 15px 0 15px;
-    }
-    td.loan_item_facts {
-      padding: 15px;
-    }
-    .coop_pic_sm {
-      margin: 0;
+    tbody {
+      tr td {
+        padding: 15px 15px 0 15px;
+        border: none;
+      }
+      td.loan_item_facts {
+        padding: 15px;
+        width: auto;
+        clear: both;
+      }
+      .coop_pic_sm {
+        margin: 0;
+      }
+      .detail_link {
+        margin: 5px 0 0 0;
+      }
     }
   }
 }
@@ -151,6 +161,11 @@ li.loan {
 
 /** LOAN DETAIL PAGE STYLES **/
 
+.detail_page, .gallery {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
 .language {
   font-style: normal;
   font-weight: bold;
@@ -160,9 +175,6 @@ li.loan {
 }
 .detail_wrap {
   background: transparent;
-}
-.detail_page, .gallery {
-  margin-top: 20px;
 }
 .short_description {
   color: #202020;
@@ -206,7 +218,7 @@ li.loan {
 .status-box {
   margin-bottom: 10px;
   padding: 20px;
-  @include border-radius(5px);
+  border-radius: 5px;
   background: rgba(88, 134, 27, 0.20);
 
   th, td {
@@ -239,7 +251,7 @@ li.loan {
   border: 1px solid rgb(236, 240, 244);
   padding: 20px 20px 0;
   margin: 5px 0;
-  @include border-radius(5px);
+  border-radius: 5px;
 }
 .loan-title {
   font-size: 13px;
@@ -252,7 +264,7 @@ li.loan {
   background: #f9f9f9;
   color: #333333;
   font-weight: 800;
-  @include border-radius(4px);
+  border-radius: 4px;
   box-shadow: -1px -1px #999 0.5;
   border: 1px solid #dbd5db;
   padding: 5px;
@@ -284,7 +296,7 @@ li.loan {
   padding: 0;
 }
 .log {
-  @include border-radius(4px);
+  border-radius: 4px;
   background: rgba(190, 223, 196, 0.20);
   box-shadow: 0px 1px 0px rgba(190, 223, 196, 0.30) inset;
   color: #545454;
@@ -305,48 +317,17 @@ li.loan {
   max-width: 230px;
 }
 
-
-.user_name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #327d72;
-  margin-top: 10px;
-  margin-right: 0px;
-  margin-bottom: 5px;
-  margin-left: 0px;
+.loan_detail_tabs {
+  ul.nav-tabs {
+    margin: 20px 0;
+  }
 }
-.messages {
-  background-color: rgb(255, 255, 123);
-  display: block;
-}
-.messages p {
-  padding: 3px;
-  font-size: 12px;
-  color: #777;
-}
-.form-signin {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  @include border-radius(5px);
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+.tab-content {
 }
 
 .other_loans {
-  .rowlink {
-    /*background-color: #f3f3f3;*/
-  }
-  .selected {
-    background-color: #f3f3f3;
-    /*font-weight: bold;*/
-    /*color: rgb(164,164,164);*/
-  }
-  tbody tr.rowlink:hover td {
-    background-color: #f3f3f3;
+  tr.selected, tr:hover {
+    background-color: rgba(190, 190, 190, 0.25);
   }
 }
 
