@@ -44,8 +44,11 @@ a:hover {
   color: rgb(73, 18, 13);
   text-decoration: underline;
 }
-a.simple:hover {
+a.no_line:hover {
   text-decoration: none;
+}
+.hover_line:hover {
+  text-decoration: underline;
 }
 a.currency_symbol {
   color: inherit;
@@ -79,6 +82,11 @@ th {
 .nowrap {
   white-space: nowrap;
 }
+.css-table {
+  display: table;
+  .tr { display: table-row; }
+  .td { display: table-cell; }
+}
 
 //.translation p:last-child {
 //  margin-bottom: 0;
@@ -88,44 +96,6 @@ th {
   &:hover {
     cursor:help;
   }
-}
-
-
-/* HEADERS, FOOTERS, TITLES */
-.main_title {
-  font-size: 24px;
-  font-weight: bolder;
-  color: #fff;
-}
-.page_title {
-  margin-left: 10px;
-}
-.section_title {
-  margin-left: 10px;
-  font-size: 23px;
-  color: #444;
-  font-weight: bold;
-}
-.sub_heading {
-  font-size: 23px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #262626;
-
-}
-h1, h2, h3 {
-  /*font-size: 20px;*/
-  font-weight: bolder;
-  color: #ab0a19;
-}
-
-#brand {
-  position: absolute;
-  margin-top: -5px;
-}
-#footer {
-  clear: both;
-  width: 940px;
 }
 
 
@@ -139,26 +109,41 @@ $pill_padding: 8px 15px;
 .nav.nav-pills > li > a {
   padding: $pill_padding;
 }
-.nav.nav-pills > li > a:hover {
-  color: $tww_red;
-  background-color: rgba(145, 145, 145, 0.25);
+.nav-pills, .nav-tabs {
+  > li > a:hover {
+    color: $tww_red;
+    background-color: rgba(145, 145, 145, 0.25);
+  }
 }
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-  color: white;
-  background-color: $tww_red;
+.nav-pills > li.active > a {
+  &, &:hover, &:focus {
+    color: white;
+    background-color: $tww_red;
+  }
+}
+
+.pagination {
+  text-align: center;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: $tww_gold;
+  border-color: $tww_red;
+  color: $tww_red;
 }
 
 .back_link {
-  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 
 /* EXTRA GLYPHICONS */
 .icon-coinstack {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
   background-image: url("/assets/coinstack.png");
-  background-position: 0 0;
+  background-position: 2px 0;
+  background-repeat: no-repeat;
 }
 
 /* CSS TABLE ZEBRA */
@@ -202,10 +187,4 @@ $pill_padding: 8px 15px;
     width: 100%;
     height: 100%;
   }
-}
-
-.css-table {
-  display: table;
-  .tr { display: table-row; }
-  .td { display: table-cell; }
 }

@@ -62,7 +62,7 @@ li.loan {
   /*color: #832828;*/
 }
 .facts {
-  width: 170px;
+  width: 200px;
   margin: 5px;
 }
 .loan_item_facts {
@@ -109,38 +109,51 @@ li.loan {
   color: #444;
 }
 .filters {
-  margin-top: 20px;
   background: transparent;
-}
-.pagination {
-  text-align: center;
-}
-.filters div {
-  float: left;
-}
-.filters .country {
-  float: right;
-  label { margin: 6px; }
-  select { background-color: white; }
+  .show {
+    float: left;
+    margin-bottom: 15px;
+  }
+  .country {
+    float: right;
+    label {
+      line-height: 40px;
+      margin: 0 10px;
+    }
+    select {
+      background-color: white;
+      margin: 0;
+      padding: 8px;
+    }
+  }
 }
 
 
 /* Collapse table into stacked block elements on narrow screens */
 @media (max-width: 700px) {
   .no-more-tables {
+    background: none;
     &, thead, tbody, th, td, tr {
       display: block;
       border: none;
       padding: 0;
     }
-    td {
-      padding: 15px 15px 0 15px;
-    }
-    td.loan_item_facts {
-      padding: 15px;
-    }
-    .coop_pic_sm {
-      margin: 0;
+    tbody {
+      tr td {
+        padding: 15px 15px 0 15px;
+        border: none;
+      }
+      td.loan_item_facts {
+        padding: 15px;
+        width: auto;
+        clear: both;
+      }
+      .coop_pic_sm {
+        margin: 0;
+      }
+      .detail_link {
+        margin: 5px 0 0 0;
+      }
     }
   }
 }
@@ -148,6 +161,11 @@ li.loan {
 
 /** LOAN DETAIL PAGE STYLES **/
 
+.detail_page, .gallery {
+  background: white;
+  padding: 20px;
+  border-radius: 4px;
+}
 .language {
   font-style: normal;
   font-weight: bold;
@@ -157,9 +175,6 @@ li.loan {
 }
 .detail_wrap {
   background: transparent;
-}
-.detail_page, .gallery {
-  margin-top: 20px;
 }
 .short_description {
   color: #202020;
@@ -302,35 +317,12 @@ li.loan {
   max-width: 230px;
 }
 
-
-.user_name {
-  font-size: 18px;
-  font-weight: bold;
-  color: #327d72;
-  margin-top: 10px;
-  margin-right: 0px;
-  margin-bottom: 5px;
-  margin-left: 0px;
+.loan_detail_tabs {
+  ul.nav-tabs {
+    margin: 20px 0;
+  }
 }
-.messages {
-  background-color: rgb(255, 255, 123);
-  display: block;
-}
-.messages p {
-  padding: 3px;
-  font-size: 12px;
-  color: #777;
-}
-.form-signin {
-  max-width: 300px;
-  padding: 19px 29px 29px;
-  margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+.tab-content {
 }
 
 .other_loans {

@@ -1,6 +1,6 @@
 - content_for :title, 'Gallery: ' + @loan.name
 
-.container.loans.gallery
+.loans.gallery
   .back_link
     = link_to @loan, class: 'simple' do
       i.fa.fa-chevron-left>
@@ -15,12 +15,13 @@
   - else
     #gallery-links
       - unless @coop_media.empty?
-        h1.section_title Images of #{@loan.cooperative.verbose_name}
+        h2.section_title Images of #{@loan.cooperative.verbose_name}
         / = render @coop_media, locals: {alt: @loan.cooperative.name}
         = render partial: "media/gallery", locals: {media: @coop_media}
 
       - unless @loan_media.empty?
-        h1.section_title Images from this project
+        h2.section_title Images from this project
         = render partial: "media/gallery", locals: {media: @loan_media}
 
-= render 'media/blueimp-gallery'
+/ FancyBox already enabled by WP theme
+/ = render 'media/blueimp-gallery'

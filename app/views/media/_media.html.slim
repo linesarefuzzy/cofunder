@@ -2,5 +2,5 @@
 figure.thumbnail
   a href=(media.paths[:large])
     img src=(media.paths[:small]) alt=(media.alt(@language))
-  - if caption.try(:content) =~ /\S/ # if caption not blank
+  - if caption.try(:content).present?
     figcaption.caption = render caption
