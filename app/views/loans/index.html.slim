@@ -1,0 +1,59 @@
+- content_for :title, "Loans"
+
+.container-fluid.loans
+  - unless @embedded
+    h1.section_title Loans
+
+  .row-fluid.filters
+    .span12
+      = form_tag({}, {:method => "get"}) do
+        .show
+          ul.nav.nav-pills
+            li.disabled
+              a href="#" Show:
+            li class=('active' if params[:status] == 'active')
+              = link_to "Active", params.merge(status: nil, pg: nil)
+            li class=('active' if params[:status] == 'completed')
+              = link_to "Completed", params.merge(status: 'completed', pg: nil)
+            li class=('active' if params[:status] == 'all')
+              = link_to "All", params.merge(status: 'all', pg: nil)
+        .country
+          div = label_tag(:country, "Country: ")
+          div
+            = select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]),
+                onchange: "this.form.submit()")
+
+  .row-fluid
+    - if @loans.empty?
+      .span12.empty No loans found.
+    - else
+      .span12.loans
+        table.table.loan_list_wrap.table-bordered.no-more-tables
+          - @loans.each do |loan|
+            tr.loans_items.well.loan_list_item_wrap style=("opacity: 0.9;")
+              td.loan_item_thumb
+                a href=(url_for loan)
+                  .coop_pic_sm style=("background-image: url('#{loan.thumb_path}');")
+              td.loan_item_desc
+                h5.coop_name
+                  a href=(url_for loan) = loan.name
+                p.about_coop = render loan.short_description(@language)
+                p.detail_link.pull-right
+                  a href=(url_for loan)
+                    | More details
+                    i.icon-chevron-right
+              td.facts.loan_item_facts
+                .location
+                  i.icon-map-marker
+                  = loan.location
+                .sign_date
+                  i.icon-calendar
+                  = loan.SigningDate ? loan.SigningDate.to_s(:long) : ''
+                .loan_amount
+                  i.icon-coinstack
+                  = loan.amount_formatted
+                / p.progress.progress-danger style="background:#444;"
+                /   span.bar data-percentage="75" style=("width: 75%;")
+                / p: button.lend_btn.btn type="button"  Add Loan
+
+    = will_paginate @loans, param_name: 'pg', renderer: BootstrapPagination::Rails
