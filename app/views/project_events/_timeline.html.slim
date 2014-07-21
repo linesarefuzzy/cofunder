@@ -1,18 +1,18 @@
 .timeline
   ul.loan-feed
     - @loan.project_events.each do |paso|
-      li class="paso well #{paso.completed_or_not}"
+      li class="paso paso-#{paso.id} well #{paso.completed_or_not}"
         .paso-summary
-          - if !paso.summary(@language).try(:content).blank?
-            = render paso.summary(@language)
+          - if !paso.summary.try(:content).blank?
+            = render paso.summary
           - else
             | Project Event ##{paso.id}
-          - unless paso.details(@language).try(:content).blank?
-            .paso-details = render paso.details(@language)
+          - unless paso.details.try(:content).blank?
+            .paso-details = render paso.details
         .paso-status
           - if paso.completed
             i.fa.fa-check>
-          = paso.status || 'Not yet completed'
+          = paso.status || t(:log_not_yet_completed)
           br
           span.paso-date = paso.display_date
 
@@ -20,11 +20,12 @@
         - unless paso.logs.empty?
           .show-logs
             br
-            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}" Show Logs
+            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}" data-alt-text=t(:hide_logs)
+              = t :show_logs
           .logs.collapse id="logs-#{paso.id}"
             ul.logs-items
               - paso.logs.each do |log|
-                li class="log #{log.progress.parameterize.underscore}"
+                li class="log log-#{log.id} #{log.progress.parameterize.underscore}"
                   .log-date
                     i.fa.fa-calendar>
                     = log.date.to_formatted_s(:long)
@@ -32,13 +33,14 @@
                   .clearfix
                   - log.media.each do |media|
                     = render media
-                  = render log.explanation(@language) if log.explanation(@language)
-                  - if log.detailed_explanation(@language)
+                  = render log.explanation if log.explanation
+                  - if log.detailed_explanation
                     .log-show-details
-                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}" More
+                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}" data-alt-text=t(:show_less)
+                        = t :show_more
                     .collapse.log-details id="log-details-#{log.id}"
                       br
-                      = render log.detailed_explanation(@language)
+                      = render log.detailed_explanation
         / end logs
 
         .clearfix

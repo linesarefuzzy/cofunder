@@ -5,22 +5,21 @@
     = form_tag({}, {:method => "get"}) do
       .show
         ul.nav.nav-pills
-          li.disabled
-            | Show:
+          li.disabled #{t :show}:
           li class=('active' if params[:status] == 'active')
-            = link_to "Active", params.merge(status: nil, pg: nil)
+            = link_to t(:show_active), params.merge(status: nil, pg: nil)
           li class=('active' if params[:status] == 'completed')
-            = link_to "Completed", params.merge(status: 'completed', pg: nil)
+            = link_to t(:show_completed), params.merge(status: 'completed', pg: nil)
           li class=('active' if params[:status] == 'all')
-            = link_to "All", params.merge(status: 'all', pg: nil)
+            = link_to t(:show_all), params.merge(status: 'all', pg: nil)
       .country
-        = label_tag(:country, "Country: ")
-        = select_tag(:country, options_for_select([['All', 'all']] + @countries, params[:country]),
+        = label_tag(:country, "#{t :country}: ")
+        = select_tag(:country, options_for_select([[t(:all), 'all']] + @countries, params[:country]),
             onchange: "this.form.submit()")
 
 .row
   - if @loans.empty?
-    .col-xs-12.empty No loans found.
+    .col-xs-12.empty = t :no_loans_found
   - else
     .col-xs-12.loans
       table.table.loan_list_wrap.table-bordered.no-more-tables
@@ -32,10 +31,10 @@
             td.loan_item_desc
               h5.coop_name
                 a href=(url_for loan) = loan.name
-              p.about_coop = render loan.short_description(@language)
+              p.about_coop = render loan.short_description
               p.detail_link.pull-right
                 a.no_line href=(url_for loan)
-                  span.hover_line> More details
+                  span.hover_line> = t :more_details
                   i.fa.fa-chevron-right
             td.facts.loan_item_facts
               .location
