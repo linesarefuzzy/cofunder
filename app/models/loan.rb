@@ -25,8 +25,8 @@ class Loan < ActiveRecord::Base
   end
 
   def name
-    if self.cooperative then "Project with " + self.cooperative.Name
-    else "Project " + self.ID.to_s end
+    if self.cooperative then I18n.t :project_with, name: self.cooperative.Name
+    else I18n.t :project_id, id: self.ID.to_s end
   end
 
   def country
@@ -49,8 +49,8 @@ class Loan < ActiveRecord::Base
 
   def status
     case self.nivel
-      when 'Prestamo Activo' then 'Active'
-      when 'Prestamo Completo' then 'Completed'
+      when 'Prestamo Activo' then I18n.t :active
+      when 'Prestamo Completo' then I18n.t :completed
     end
   end
 

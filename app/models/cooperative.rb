@@ -4,6 +4,6 @@ class Cooperative < ActiveRecord::Base
   has_many :loans, :foreign_key => 'CooperativeID'
 
   def verbose_name
-    (self.name =~ /cooperative/i) ? self.name : "#{self.name} Cooperative"
+    verbose_name ||= (self.name =~ /#{I18n.t :cooperative}/i) ? self.name : t(:cooperative_name, name: self.name)
   end
 end
