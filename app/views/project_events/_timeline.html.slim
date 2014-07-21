@@ -1,7 +1,7 @@
 .timeline
   ul.loan-feed
     - @loan.project_events.each do |paso|
-      li class="paso well #{paso.completed_or_not}"
+      li class="paso paso-#{paso.id} well #{paso.completed_or_not}"
         .paso-summary
           - if !paso.summary.try(:content).blank?
             = render paso.summary
@@ -20,7 +20,8 @@
         - unless paso.logs.empty?
           .show-logs
             br
-            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}" Show Logs
+            a.collapsed data-toggle="collapse" href="#logs-#{paso.id}" id="show-logs-#{paso.id}" data-alt-text=t(:hide_logs)
+              = t :show_logs
           .logs.collapse id="logs-#{paso.id}"
             ul.logs-items
               - paso.logs.each do |log|
@@ -35,7 +36,8 @@
                   = render log.explanation if log.explanation
                   - if log.detailed_explanation
                     .log-show-details
-                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}" More
+                      a.collapsed data-toggle="collapse" href="#log-details-#{log.id}" id="show-log-details-#{log.id}" data-alt-text=t(:show_less)
+                        = t :show_more
                     .collapse.log-details id="log-details-#{log.id}"
                       br
                       = render log.detailed_explanation

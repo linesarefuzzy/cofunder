@@ -38,3 +38,7 @@ en:
   not_yet_translated: This text has not yet been translated. <a href="http://www.theworkingworld.org/us/contact-us">Contact us</a> if you'd like to help with translation.
   log_completed: Completed
   log_not_yet_completed: Not yet completed
+  show_logs: Show Logs
+  hide_logs: Hide Logs
+  show_more: More
+  show_less: Less
