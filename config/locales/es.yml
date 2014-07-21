@@ -8,37 +8,37 @@ es:
   loan_active: Activo
   loan_completed: Completo
   no_loans_found: No hay préstamos.
-  more_details: Más detallas
+  more_details: Más detalles
   project_with: "Proyecto con %{name}"
   project_id: "Proyecto %{id}"
-  back_to_loans: Back to Loan List
-  about_this_project: Sobre Este Proyecto
-  status: Status
-  amount: Amount
-  location: Location
-  signing_date: Signing date
-  summary: Summary
-  timeline: Timeline
-  payments: Payments
-  past_loans: Past Loans
-  no_description_found: No description found.
-  payment_schedule: Payment Schedule
-  status: Status
-  due_date: Due Date
-  first_loan: This is the first loan to this cooperative.
-  all_loans: All Loans to this Co-op
-  gallery: Gallery
-  back_to: "Back to %{name}"
-  media_gallery: Media Gallery
-  no_media_found: No media found.
-  images_of: "Images of %{name}"
-  images_from_this_project: Images from this project
+  back_to_loans: Regresar a la lista de préstamos
+  about_this_project: Sobre este proyecto
+  status: Estatus
+  amount: Cantidad
+  location: Localización
+  signing_date: Fecha de inicío
+  summary: Resumen
+  timeline: Cronología
+  payments: Pagos
+  past_loans: Préstamos pasados
+  no_description_found: No encontramos esa descripcion.
+  payment_schedule: Calendario de Pagos
+  status: Estatus
+  due_date: Fecha de vencimiento
+  first_loan: Este es el primer préstamo de la cooperativa.
+  all_loans: Todos los Préstamos de esta cooperativa
+  gallery: Galeria
+  back_to: "Regresar a %{name}"
+  media_gallery: Galeria de media
+  no_media_found: No encontramos media.
+  images_of: "Imagenes de %{name}"
+  images_from_this_project: Imagenes del proyecto
   cooperative: Cooperativa
   cooperative_name: "Cooperativa %{name}"
   not_yet_translated: This text has not yet been translated. <a href="http://www.theworkingworld.org/us/contact-us">Contact us</a> if you'd like to help with translation.
   log_completed: Completo
-  log_not_yet_completed: No completo
-  show_logs: Mostrar Logs
-  hide_logs: Esconder Logs
+  log_not_yet_completed: No Completo
+  show_logs: Mostrar Registros
+  hide_logs: Guardar Registros
   show_more: Más
   show_less: Menos
