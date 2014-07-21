@@ -7,11 +7,11 @@
         ul.nav.nav-pills
           li.disabled #{t :show}:
           li class=('active' if params[:status] == 'active')
-            = link_to t(:active), params.merge(status: nil, pg: nil)
+            = link_to t(:show_active), params.merge(status: nil, pg: nil)
           li class=('active' if params[:status] == 'completed')
-            = link_to t(:completed), params.merge(status: 'completed', pg: nil)
+            = link_to t(:show_completed), params.merge(status: 'completed', pg: nil)
           li class=('active' if params[:status] == 'all')
-            = link_to t(:all), params.merge(status: 'all', pg: nil)
+            = link_to t(:show_all), params.merge(status: 'all', pg: nil)
       .country
         = label_tag(:country, "#{t :country}: ")
         = select_tag(:country, options_for_select([[t(:all), 'all']] + @countries, params[:country]),
@@ -31,7 +31,7 @@
             td.loan_item_desc
               h5.coop_name
                 a href=(url_for loan) = loan.name
-              p.about_coop = render loan.short_description(@language)
+              p.about_coop = render loan.short_description
               p.detail_link.pull-right
                 a.no_line href=(url_for loan)
                   span.hover_line> = t :more_details

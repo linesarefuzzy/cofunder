@@ -58,6 +58,9 @@ group :development do
   gem 'guard-livereload',        require: false
   gem 'rack-livereload'
   gem 'rb-fsevent',              require: false
+
+  # Console output
+  gem 'hirb'
 end
 
 # Devise (user auth)

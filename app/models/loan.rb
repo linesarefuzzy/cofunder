@@ -49,16 +49,16 @@ class Loan < ActiveRecord::Base
 
   def status
     case self.nivel
-      when 'Prestamo Activo' then I18n.t :active
-      when 'Prestamo Completo' then I18n.t :completed
+      when 'Prestamo Activo' then I18n.t :loan_active
+      when 'Prestamo Completo' then I18n.t :loan_completed
     end
   end
 
-  def short_description(language_code='EN')
-    self.translation('ShortDescription', language_code)
+  def short_description
+    self.translation('ShortDescription')
   end
-  def description(language_code='EN')
-    self.translation('Description', language_code)
+  def description
+    self.translation('Description')
   end
 
   def coop_media(limit=100, images_only=false)
