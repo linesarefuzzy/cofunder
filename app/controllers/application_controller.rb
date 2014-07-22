@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   ## I18n
   LOCALE_MAP = {
     'theworkingworld.org' => :en,
-    'labase.org' => :es,
+    'labase.org' => 'es-AR',
   }
 
   before_filter :set_locale

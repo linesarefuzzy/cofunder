@@ -11,8 +11,6 @@ class ProjectEvent < ActiveRecord::Base
     project_table_model.find(self.project_id)
   end
 
-  def date; self.Date.to_date; end # times are not used - all are set to midnight
-
   def completed_or_not
     self.completed ? 'completed' : 'not_completed'
   end
@@ -33,6 +31,6 @@ class ProjectEvent < ActiveRecord::Base
   end
 
   def display_date
-    (self.completed || self.date).to_formatted_s(:long)
+    I18n.l (self.completed || self.date), format: :long
   end
 end
