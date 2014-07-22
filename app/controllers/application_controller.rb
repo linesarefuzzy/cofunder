@@ -7,26 +7,18 @@ class ApplicationController < ActionController::Base
   end
 
   ## I18n
-  before_filter :set_locale
+  LOCALE_MAP = {
+    'theworkingworld.org' => :en,
+    'labase.org' => :es,
+  }
 
+  before_filter :set_locale
   def set_locale
     I18n.locale = get_locale_from_domain || I18n.default_locale
   end
 
-  # Get locale from top-level domain or return nil if such locale is not available
   def get_locale_from_domain
-    default_locale_map = {
-      /theworkingworld\.org/ => :en,
-      /labase\.org/ => :es,
-    }
-    default_locale = nil
-    default_locale_map.each do |key, val|
-      if request.host =~ key
-        default_locale = val
-        break
-      end
-    end
-    default_locale
+    LOCALE_MAP.select { |host, locale| request.host.include? host }.values.first
   end
   ##
 end
