@@ -28,7 +28,7 @@
                 li class="log log-#{log.id} #{log.progress.parameterize.underscore}"
                   .log-date
                     i.fa.fa-calendar>
-                    = log.date.to_formatted_s(:long)
+                    = l log.date, format: :long
                   .log-progress = log.progress
                   .clearfix
                   - log.media.each do |media|

@@ -43,8 +43,8 @@ class Loan < ActiveRecord::Base
     else self.country.name end
   end
 
-  def signing_date_pretty
-    self.signing_date.strftime("%b %e, %Y") if self.signing_date
+  def signing_date_long
+    I18n.l self.signing_date, format: :long if self.signing_date
   end
 
   def status

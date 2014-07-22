@@ -14,7 +14,7 @@
             = link_to t(:show_all), params.merge(status: 'all', pg: nil)
       .country
         = label_tag(:country, "#{t :country}: ")
-        = select_tag(:country, options_for_select([[t(:all), 'all']] + @countries, params[:country]),
+        = select_tag(:country, options_for_select([[t(:show_all), 'all']] + @countries, params[:country]),
             onchange: "this.form.submit()")
 
 .row
@@ -42,7 +42,7 @@
                 = loan.location
               .sign_date
                 i.fa.fa-fw.fa-calendar>
-                = loan.SigningDate ? loan.SigningDate.to_s(:long) : ''
+                = loan.SigningDate ? l(loan.SigningDate, format: :long) : ''
               .loan_amount
                 / i.icon-coinstack>
                 = loan.amount_formatted

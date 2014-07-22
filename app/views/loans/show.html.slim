@@ -55,7 +55,7 @@
             th #{t(:signing_date)}:
             td
               i.fa.fa-fw.fa-calendar>
-              = @loan.signing_date_pretty
+              = @loan.signing_date_long
         / render translation using partial "translations/_translation.html.erb"
         .short_description = render @loan.short_description
 
@@ -96,11 +96,11 @@
                   - @repayments.each do |pmt|
                     tr class=pmt.status
                       td
-                        b = pmt.status.titlecase
+                        b = t pmt.status
                       - if pmt.paid
-                        td = pmt.date_paid.strftime("%B %e, %Y")
+                        td = l pmt.date_paid, format: :long
                       - else
-                        td = pmt.date_due.strftime("%B %e, %Y")
+                        td = l pmt.date_due, format: :long
                       td = pmt.amount_formatted
 
         #other_loans.tab-pane
@@ -113,9 +113,9 @@
                 tr class="#{'selected' if loan.id == @loan.id}"
                   td
                     - if loan.id == @loan.id
-                      = loan.signing_date_pretty
+                      = loan.signing_date_long
                     - else
-                      a href=(url_for loan) = loan.signing_date_pretty
+                      a href=(url_for loan) = loan.signing_date_long
                   td = loan.amount_formatted
                   td = loan.status
                   td.hidden-xs style="width: 50%" = render loan.short_description

@@ -13,8 +13,6 @@ class ProjectLog < ActiveRecord::Base
     project_table_model.find(self.project_id)
   end
 
-  def date; self.Date.to_date; end # times are not used - all are set to midnight
-
   def explanation
     self.translation('Explanation')
   end
