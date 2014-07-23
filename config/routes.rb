@@ -5,8 +5,9 @@ Tww::Application.routes.draw do
     match 'profile' => 'devise/registrations#show'
   end
 
-  resources :loans, only: [:index, :show]
-  get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
+  get 'prestamos', to: 'loans#index', as: :loans
+  get 'prestamos/:id', to: 'loans#show', as: :loan
+  get 'prestamos/:id/gallery', to: 'loans#gallery', as: :gallery
 
   get 'update_template', to: 'application#update_template'
 
