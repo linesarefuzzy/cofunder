@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 
   ## I18n
   LOCALE_MAP = {
+    'cfdev.theworkingworld.org' => 'es-AR',
     'theworkingworld.org' => :en,
     'labase.org' => 'es-AR',
   }
@@ -18,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_locale_from_domain
-    LOCALE_MAP.select { |host, locale| request.host.include? host }.values.first
+    LOCALE_MAP[request.host] || LOCALE_MAP.select { |host, locale| request.host.include? host }.values.first
   end
   ##
 end
