@@ -19,7 +19,7 @@ class Media < ActiveRecord::Base
     elsif self.media_path =~ VIDEO_REGEX then 'video'
     else 'other' end
   end
-  
+
   def project
     context_table_model = Object.const_get(self.context_table.classify)
     context_table_model.find(self.context_id)
@@ -41,11 +41,11 @@ class Media < ActiveRecord::Base
     }
   end
 
-  def caption(language_code='EN')
-    self.translation('Caption', language_code)
+  def caption
+    self.translation('Caption')
   end
-  
-  def alt(language_code='EN')
-    self.caption(language_code).try(:content) || self.project.try(:name)
+
+  def alt
+    self.caption.try(:content) || self.project.try(:name)
   end
 end

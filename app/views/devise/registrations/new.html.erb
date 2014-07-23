@@ -1,28 +1,28 @@
-<div class="container"> 
+<div class="container">
 <div class="row">
-<div class="span3"> 
+<div class="col-md-3">
 <h2 class="sub_heading">Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
 
-  <div><p class="label"><%= f.label :email %></p>
+  <div><p class="label label-default"><%= f.label :email %></p>
   <p class="input"><%= f.email_field :email, :autofocus => true %></p></div>
 
-  <div><p class="label"><%= f.label :password %></p>
+  <div><p class="label label-default"><%= f.label :password %></p>
   <p class="input"><%= f.password_field :password %></p></div>
 
-  <div><p class="label"><%= f.label :password_confirmation %></p>
+  <div><p class="label label-default"><%= f.label :password_confirmation %></p>
   <p class="input"><%= f.password_field :password_confirmation %></p></div>
 
   <div><p class="pull-right"><%= f.submit "Sign up" %></p></div>
 <% end %>
 
 <p><%= render "devise/shared/links" %></p>
-</div><!-- /.span3 -->
+</div><!-- /.col-md-3 -->
 </div><!-- /.row -->
 <div class="row">
-<div class="span9"> 
-</div><!-- /.span9 -->
+<div class="col-md-9">
+</div><!-- /.col-md-9 -->
 </div><!-- /.row -->
 </div><!-- /.container -->

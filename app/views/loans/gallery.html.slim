@@ -1,26 +1,25 @@
-- content_for :title, 'Gallery: ' + @loan.name
+- content_for :title, "#{t :gallery}: " + @loan.name
 
-.container-fluid.loans.gallery
+.loans.gallery
   .back_link
-    = link_to (@embedded ? embedded_loan_path(@loan) : @loan), class: 'simple' do
-      i.icon-chevron-left>
-    = link_to (@embedded ? embedded_loan_path(@loan) : @loan) do
-      | Back to #{@loan.name}
-  
-  h1.page_title Media Gallery
+    a.no_line href=url_for(@loan)
+      i.fa.fa-chevron-left>
+      span.hover_line = t :back_to, name: @loan.name
+
+  h1.page_title = t :media_gallery
 
   - if (@coop_media + @loan_media).empty?
-    .empty
-      | No media found.
+    .empty = t :no_media_found
   - else
     #gallery-links
       - unless @coop_media.empty?
-        h1.section_title Images of #{@loan.cooperative.verbose_name}
+        h2.section_title = t :images_of, name: @loan.cooperative.verbose_name
         / = render @coop_media, locals: {alt: @loan.cooperative.name}
         = render partial: "media/gallery", locals: {media: @coop_media}
 
       - unless @loan_media.empty?
-        h1.section_title Images from this project
+        h2.section_title = t :images_from_this_project
         = render partial: "media/gallery", locals: {media: @loan_media}
 
-= render 'media/blueimp-gallery'
+/ FancyBox already enabled by WP theme
+/ = render 'media/blueimp-gallery'

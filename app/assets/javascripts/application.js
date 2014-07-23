@@ -12,7 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
-//= require bootstrap-rowlink
+//= require jasny-bootstrap
 //= require_tree .
-

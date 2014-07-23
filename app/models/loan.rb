@@ -25,8 +25,8 @@ class Loan < ActiveRecord::Base
   end
 
   def name
-    if self.cooperative then "Project with " + self.cooperative.Name
-    else "Project " + self.ID.to_s end
+    if self.cooperative then I18n.t :project_with, name: self.cooperative.Name
+    else I18n.t :project_id, id: self.ID.to_s end
   end
 
   def country
@@ -43,22 +43,22 @@ class Loan < ActiveRecord::Base
     else self.country.name end
   end
 
-  def signing_date_pretty
-    self.signing_date.strftime("%b %e, %Y") if self.signing_date
+  def signing_date_long
+    I18n.l self.signing_date, format: :long if self.signing_date
   end
 
   def status
     case self.nivel
-      when 'Prestamo Activo' then 'Active'
-      when 'Prestamo Completo' then 'Completed'
+      when 'Prestamo Activo' then I18n.t :loan_active
+      when 'Prestamo Completo' then I18n.t :loan_completed
     end
   end
 
-  def short_description(language_code='EN')
-    self.translation('ShortDescription', language_code)
+  def short_description
+    self.translation('ShortDescription')
   end
-  def description(language_code='EN')
-    self.translation('Description', language_code)
+  def description
+    self.translation('Description')
   end
 
   def coop_media(limit=100, images_only=false)

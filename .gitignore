@@ -22,3 +22,5 @@ config/database.yml
 *.swp
 *.swo
 .ruby-version
+
+app/views/layouts/wordpress.html.erb

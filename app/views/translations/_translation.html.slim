@@ -1,0 +1,5 @@
+- if translation.language.code == I18n.language_code
+  span.translation.home_language = html_format(translation.content)
+- else
+  span.translation.foreign_language data-content=t(:not_yet_translated)
+    = html_format(translation.content)

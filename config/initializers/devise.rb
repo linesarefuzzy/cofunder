@@ -83,6 +83,7 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "b3cfb725efd8a5f11926d748bcb142dce293fb906485541f6b050367c72d5a349403091dfd8d9f7beaaa9a54bc4d651a7a0eb6c057cdc4174a996e4bd2b41c0c"
+  config.secret_key = 'b725ae7afd5b0806c3072ad53ef0e3539991092911555005070cf337f7f13c8ed720594bf4fcb61d06f5e0242efa08de7e0c8f68439ba65dbd136ae7d4ef2f65'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
