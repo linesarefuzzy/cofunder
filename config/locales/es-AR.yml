@@ -44,7 +44,7 @@ es-AR:
   show_less: Menos
   paid: Pagado
   due: Vence
-  overdue: Vencido
+  overdue: Atrasado
 
   date:
     formats:
@@ -52,5 +52,5 @@ es-AR:
 
   will_paginate:
     previous_label: "&#8592; Anterior"
-    next_label: "Siguiente &#8594;"
+    next_label: "Próximo &#8594;"
     page_gap: "&hellip;"
