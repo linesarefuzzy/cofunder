@@ -1,6 +1,6 @@
 module WordpressTemplate
   def self.update
-    url = 'http://www.theworkingworld.org/baselab/rails/'
+    url = 'http://cfdev.theworkingworld.org/rails'
     file = File.join(Rails.root, 'app', 'views', 'layouts', 'wordpress.html.erb')
     substitutions = {
       '[rails_template]' => '<%= yield :title %>',

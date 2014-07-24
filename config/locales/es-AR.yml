@@ -35,7 +35,7 @@ es-AR:
   images_from_this_project: Imagenes del proyecto
   cooperative: Cooperativa
   cooperative_name: "Cooperativa %{name}"
-  not_yet_translated: Este texto no esta traducido en este momento. <a href="http://labase.org/contacto">Comunicate con nosotros</a> si quisieras ayudarnos con la traducción.
+  not_yet_translated: Este texto no esta traducido en este momento. <a href="/contacto">Comunicate con nosotros</a> si quisieras ayudarnos con la traducción.
   log_completed: Completo
   log_not_yet_completed: No Completo
   show_logs: Mostrar Registros
