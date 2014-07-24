@@ -2,7 +2,6 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
-    params[:status] = 'active' if params[:status].blank? # show active loans by default
     @loans = Loan.filter_by_params(params).
                   includes(:cooperative, division: :super_division).
                   paginate(:page => params[:pg], :per_page => 20).
