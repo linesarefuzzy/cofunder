@@ -1,4 +1,4 @@
-- content_for :title, t(:loans) if yield(:title).blank?
+- content_for :template, yield(:title) || t(:loans)
 
 - content_for :head
   = javascript_include_tag "application"
