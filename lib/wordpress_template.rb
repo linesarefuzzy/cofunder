@@ -9,7 +9,7 @@ module WordpressTemplate
     require 'open-uri'
     html = URI.parse(url).read
     html.gsub!(
-      /(<!--\s*)?\[rails_(?<section>\w+?)\](.*\[\/rails_\k<section>\])?(\s*-->)?/m,
+      /(<!--\s*)?\[rails_(?<section>[\w\-]+?)\](.*\[\/rails_\k<section>\])?(\s*-->)?/m,
       '<%= yield :\k<section> %>'
     )
     additional_substitutions.each { |sub| html.gsub! *sub }
