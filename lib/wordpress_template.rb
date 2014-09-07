@@ -3,7 +3,7 @@ module WordpressTemplate
     url = 'http://cfdev.theworkingworld.org/rails'
     file = File.join(Rails.root, 'app', 'views', 'layouts', 'wordpress.html.erb')
     additional_substitutions = [
-      [/<div class="post-content">.*?<p>(.*?)<\/p>.*?<\/div>/m, '\1']
+      [/<div class="post-content">(.*?)<p>(.*?)<\/p>(.*?)<\/div>/m, '\1\2\3']
     ]
 
     require 'open-uri'
