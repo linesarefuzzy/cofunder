@@ -3,6 +3,7 @@ class LoansController < ApplicationController
   # GET /loans.json
   def index
     @loans = Loan.filter_by_params(params).
+                  where("NivelPublico IS NULL OR NivelPublico != 'Hidden'").
                   includes(:cooperative, division: :super_division).
                   paginate(:page => params[:pg], :per_page => 20).
                   order('SigningDate DESC')
