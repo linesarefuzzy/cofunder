@@ -30,7 +30,7 @@ class Loan < ActiveRecord::Base
   end
 
   def country
-    @country ||= Country.where(name: self.division.super_division.country).first # || Country.where(name: 'United States').first
+    @country ||= Country.where(name: self.division.super_division.country).first || Country.where(name: 'United States').first
   end
 
   def currency
