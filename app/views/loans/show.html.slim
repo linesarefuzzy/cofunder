@@ -80,7 +80,7 @@
       #summary.tab-pane.description_box.well
         p.loan_description
           / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
-          = render @loan.description(@language) || '<span class="notfound">No description found.</span>'
+          == @loan.description(@language) ? render(@loan.description(@language)) : '<span class="notfound">No description found.</span>'
 
       #timeline.tab-pane
         h4.section-title Timeline
