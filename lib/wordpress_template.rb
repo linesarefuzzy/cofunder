@@ -1,6 +1,6 @@
 module WordpressTemplate
   def self.update
-    url = 'http://cfdev.theworkingworld.org/rails'
+    url = 'http://labase.org/rails'
     file = File.join(Rails.root, 'app', 'views', 'layouts', 'wordpress.html.erb')
     additional_substitutions = [
       [/<div class="post-content">(.*?)<p>(.*?)<\/p>(.*?)<\/div>/m, '\1\2\3']
