@@ -84,3 +84,6 @@ gem "font-awesome-rails"
 
 # Internationalization
 gem 'rails-i18n', '~> 3.0.0'
+
+# Translate urls
+gem 'route_translator'
