@@ -2,13 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def update_template
-    WordpressTemplate.update
+    WordpressTemplate.update(get_division_from_url)
     redirect_to root_path
   end
 
   ## I18n
   LOCALE_MAP = {
-    'cfdev.theworkingworld.org' => 'es-AR',
     'theworkingworld.org' => :en,
     'labase.org' => 'es-AR',
   }
@@ -22,4 +21,13 @@ class ApplicationController < ActionController::Base
     LOCALE_MAP[request.host] || LOCALE_MAP.select { |host, locale| request.host.include? host }.values.first
   end
   ##
+  
+  def get_division_from_url
+    @get_division_from_url ||= Rails.configuration.request_urls.select { |key, val| request.url.match val }.keys.first
+  end
+  helper_method :get_division_from_url
+
+  def wordpress_layout
+    "layouts/wordpress-#{get_division_from_url}"
+  end
 end

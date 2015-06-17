@@ -44,5 +44,10 @@ Tww::Application.configure do
   #  # Bullet.alert = true
   #  Bullet.console = true
   #end
+  
+  # For wordpress template
+  config.request_urls = {
+    us: 'http://localhost:3000',
+  }
 
 end
