@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
   ##
   
   def get_division_from_url
-    @get_division_from_url ||= Rails.configuration.request_urls.select { |key, val| request.url.match val }.keys.first
+    @get_division_from_url ||= Rails.configuration.wordpress_template[:request_urls].select { |key, val| 
+      request.url.match val 
+    }.keys.first
   end
   helper_method :get_division_from_url
 

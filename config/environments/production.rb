@@ -66,9 +66,15 @@ Tww::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   # For wordpress template
-  config.request_urls = {
-    us: 'http://cofunder.theworkingworld.org',
-    argentina: 'http://labase.org/inversion',
+  config.wordpress_template = {
+    request_urls: { # what user visits to access rails app
+      us: 'http://cofunder.theworkingworld.org',
+      argentina: 'http://labase.org/inversion',
+    }, 
+    template_urls: { # url of blank wordpress page for rails to retrieve
+      us: 'http://www.theworkingworld.org/rails',
+      argentina: 'http://labase.org/rails',
+    },
   }
 
 end
