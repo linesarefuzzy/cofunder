@@ -1,23 +1,13 @@
 /* Additional styles for pages embedded in wordpress - mainly correcting conflicts with wp styles */
 
-.loan_filters {
-  ul.nav {
-    margin: 0;
-  }
-  
-  select#country {
-    height: 40px;
-    border-color: #C3C3C3;
-    color: #666;
-  }
+select#country {
+  height: 40px;
+  border-color: #C3C3C3;
+  color: #666;
 }
 
 div.pagination {
   display: block;
-  
-  ul.pagination {
-    margin: 0;
-  }  
 }
 
 //body {
