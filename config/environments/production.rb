@@ -67,9 +67,9 @@ Tww::Application.configure do
 
   # For wordpress template
   config.wordpress_template = {
-    request_urls: { # what user visits to access rails app
-      us: 'http://cofunder.theworkingworld.org',
-      argentina: 'http://labase.org/inversion',
+    division_urls: { # get division from request url
+      %r{http://.*\.theworkingworld\.org} => :us,
+      'http://labase.org/inversion' => :argentina,
     }, 
     template_urls: { # url of blank wordpress page for rails to retrieve
       us: 'http://www.theworkingworld.org/rails',
