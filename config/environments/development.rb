@@ -40,8 +40,8 @@ Tww::Application.configure do
 
   # For wordpress template
   config.wordpress_template = {
-    request_urls: { # what user visits to access rails app
-      us: 'http://localhost:3000',
+    division_urls: { # get division from request url
+      'http://localhost:3000' => :us,
     }, 
     template_urls: { # url of blank wordpress page for rails to retrieve
       us: 'http://localhost:8888/us-dev/rails',
