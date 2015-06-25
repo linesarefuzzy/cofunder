@@ -3,12 +3,16 @@ lock '3.4.0'
 
 set :application, 'cofunder'
 set :repo_url, 'https://github.com/linesarefuzzy/cofunder.git'
+set :use_sudo, false
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
+# Set branch to stage name
+set :branch, -> { fetch(:stage) }
+
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+set :deploy_to, -> { "/var/rails/cofunder/#{fetch(:stage)}" }
 
 # Default value for :scm is :git
 # set :scm, :git
