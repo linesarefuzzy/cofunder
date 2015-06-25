@@ -29,6 +29,7 @@ server 'cofunder.theworkingworld.org', user: 'deploy', roles: %w{app db web}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
+set :rails_env, 'production'
 
 
 

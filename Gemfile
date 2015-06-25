@@ -43,7 +43,8 @@ group :development do
   # Deployment
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
-
+  gem 'capistrano-passenger'
+  
   # To use debugger
   gem 'debugger'
 

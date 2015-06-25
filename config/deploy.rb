@@ -2,8 +2,9 @@
 lock '3.4.0'
 
 set :application, 'cofunder'
-set :repo_url, 'https://github.com/linesarefuzzy/cofunder.git'
-set :use_sudo, false
+set :repo_url, 'git@github.com:linesarefuzzy/cofunder.git'
+# set :use_sudo, false
+set :tmp_dir, '/home/deploy/tmp'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
