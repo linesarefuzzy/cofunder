@@ -82,39 +82,30 @@
           / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
           == @loan.description(@language) ? render(@loan.description(@language)) : '<span class="notfound">No description found.</span>'
 
-      #timeline.tab-pane
-        h4.section-title Timeline
-        = render 'project_events/timeline'
-
-      / #contracts.tab-pane
-      /   h4 All Contracts for this Co-op
-      /   table
-      /     tr
-      /       td Loan Name
-      /     tr
-      /       td Loan Officer
-      /     tr
-      /       td Loan Contract
-
-      - unless @repayments.empty?
-        #payments.tab-pane
-          .row-fluid
-            .span7
-              h4 Payment Schedule
-              table.table.repayments
-                tr
-                  th Status
-                  th Due Date
-                  th Amount
-                - @repayments.each do |pmt|
-                  tr class=pmt.status
-                    td
-                      b = pmt.status.titlecase
-                    - if pmt.paid
-                      td = pmt.date_paid.strftime("%B %e, %Y")
-                    - else
-                      td = pmt.date_due.strftime("%B %e, %Y")
-                    td = pmt.amount_formatted
+      / Hide timeline and repayments for now
+      / #timeline.tab-pane
+      /   h4.section-title Timeline
+      /   = render 'project_events/timeline'
+      /
+      / - unless @repayments.empty?
+      /   #payments.tab-pane
+      /     .row-fluid
+      /       .span7
+      /         h4 Payment Schedule
+      /         table.table.repayments
+      /           tr
+      /             th Status
+      /             th Due Date
+      /             th Amount
+      /           - @repayments.each do |pmt|
+      /             tr class=pmt.status
+      /               td
+      /                 b = pmt.status.titlecase
+      /               - if pmt.paid
+      /                 td = pmt.date_paid.strftime("%B %e, %Y")
+      /               - else
+      /                 td = pmt.date_due.strftime("%B %e, %Y")
+      /               td = pmt.amount_formatted
 
       #other_loans.tab-pane
         - if !@other_loans || @other_loans.count <= 1

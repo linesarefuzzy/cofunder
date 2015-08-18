@@ -30,6 +30,7 @@ class Loan < ActiveRecord::Base
   end
 
   def country
+    # TODO: Temporary fix sets country to US when not found
     @country ||= Country.where(name: self.division.super_division.country).first || Country.where(name: 'United States').first
   end
 
