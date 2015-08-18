@@ -66,13 +66,12 @@
     ul.nav.nav-tabs
       li
         a data-toggle="tab" href="#summary" Summary
-      li
-        a data-toggle="tab" href="#timeline" Timeline
+      / Hide timeline and repayments for now
       / li
-      /   a data-toggle="tab" href="#contracts" Contracts
-      - unless @repayments.empty?
-        li
-          a data-toggle="tab" href="#payments" Payments
+      /   a data-toggle="tab" href="#timeline" Timeline
+      / - unless @repayments.empty?
+      /   li
+      /     a data-toggle="tab" href="#payments" Payments
       li
         a data-toggle="tab" href="#other_loans" Past Loans
 
