@@ -2,6 +2,7 @@ module TranslationModule
   # add translation method to all models that include this module
   extend ActiveSupport::Concern
   included do
+    # may return nil
     def translation(column_name, language_code = I18n.language_code)
       get_translation(self.class.table_name.camelize, self.id, column_name, language_code)
     end
