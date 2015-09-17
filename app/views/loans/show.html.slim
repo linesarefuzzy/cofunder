@@ -56,8 +56,7 @@
             td
               i.fa.fa-fw.fa-calendar>
               = @loan.signing_date_long
-        / render translation using partial "translations/_translation.html.erb"
-        .short_description = render @loan.short_description
+        .short_description = render_translation @loan.short_description
 
     .clearfix
 
@@ -77,8 +76,7 @@
       #about_loan.tab-content
         #summary.tab-pane
           p.loan_description
-            / render translation using partial "translations/_translation.html.erb" or 'not found' if none exists
-            = render @loan.description || %Q{<span class="notfound">#{t :no_description_found}</span>}
+            = render_translation(@loan.description) || %Q{<span class="notfound">#{t :no_description_found}</span>}
 
         #timeline.tab-pane
           = render 'project_events/timeline'
@@ -118,7 +116,7 @@
                       a href=(url_for loan) = loan.signing_date_long
                   td = loan.amount_formatted
                   td = loan.status
-                  td.hidden-xs style="width: 50%" = render loan.short_description
+                  td.hidden-xs style="width: 50%" = render_translation loan.short_description
 
 
 / = render 'media/blueimp-gallery'
