@@ -38,11 +38,14 @@ Tww::Application.configure do
   # For devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  # Bullet
-  #config.after_initialize do
-  #  Bullet.enable = true
-  #  # Bullet.alert = true
-  #  Bullet.console = true
-  #end
+  # For wordpress template
+  config.wordpress_template = {
+    division_urls: { # get division from request url
+      'http://localhost:3000' => :us,
+    }, 
+    template_urls: { # url of blank wordpress page for rails to retrieve
+      us: 'http://localhost:8888/us-dev/rails',
+    },
+  }
 
 end

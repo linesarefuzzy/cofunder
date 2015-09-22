@@ -72,7 +72,7 @@ Tww::Application.configure do
       'http://labase.org/inversion' => :argentina,
     }, 
     template_urls: { # url of blank wordpress page for rails to retrieve
-      us: 'http://www.theworkingworld.org/us/rails',
+      us: 'http://dev.theworkingworld.org/us/rails',
       argentina: 'http://labase.org/rails',
     },
   }
