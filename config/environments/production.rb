@@ -68,9 +68,9 @@ Tww::Application.configure do
   # For wordpress template
   config.wordpress_template = {
     division_urls: { # get division from request url
-      %r{http://.*\.theworkingworld\.org} => :us,
+      %r{http://.*\.?theworkingworld\.org} => :us,
       'http://labase.org/inversion' => :argentina,
-    }, 
+    },
     template_urls: { # url of blank wordpress page for rails to retrieve
       us: 'http://www.theworkingworld.org/us/rails',
       argentina: 'http://labase.org/rails',
