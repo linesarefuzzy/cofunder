@@ -20,12 +20,13 @@ class Loan < ActiveRecord::Base
   def self.default_filter
     {
       status: 'active',
-      country: 'Argentina',
+      country: 'all',
     }
   end
 
   def self.filter_by_params(params)
     params.reverse_merge! self.default_filter
+    params[:country] = 'Argentina' if params[:division] == :argentina
     scoped = self.scoped
     scoped = scoped.country(params[:country]) if params[:country]
     scoped = scoped.status(params[:status]) if params[:status]

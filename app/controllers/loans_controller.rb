@@ -2,11 +2,12 @@ class LoansController < ApplicationController
   # GET /loans
   # GET /loans.json
   def index
+    params[:division] = get_division_from_url
     @loans = Loan.filter_by_params(params).
-                  where("NivelPublico IS NULL OR NivelPublico != 'Hidden'").
-                  includes(:cooperative, division: :super_division).
-                  paginate(:page => params[:pg], :per_page => 20).
-                  order('SigningDate DESC')
+      where("NivelPublico IS NULL OR NivelPublico != 'Hidden'").
+      includes(:cooperative, division: :super_division).
+      paginate(:page => params[:pg], :per_page => 20).
+      order('SigningDate DESC')
     @countries = Country.order(:Name).pluck(:Name)
 
     # Set last loan list URL for 'Back to Loan List' link
