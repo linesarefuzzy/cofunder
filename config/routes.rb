@@ -13,5 +13,5 @@ Tww::Application.routes.draw do
 
   get 'update_template', to: 'application#update_template'
 
-  root :to => 'loans#index'
+  root to: 'loans#index'
 end
