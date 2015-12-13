@@ -17,7 +17,9 @@ module Legacy
     column_names.each do |col|
       if col.in? DATE_FIELDS
         # Convert datetimes to date
-        define_method(col.underscore) { send(col).try(:to_date) }
+        # define_method("#{col.underscore}=") { |val| instance_variable_set("@#{col.underscore}", val) }
+        # define_method(col.underscore) { send(col).try(:to_date) }
+        alias_attribute col.underscore, col
       else
         alias_attribute col.underscore, col
       end

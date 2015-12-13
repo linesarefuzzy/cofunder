@@ -5,8 +5,8 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
-
+gem 'mysql2', '~> 0.3.10'
+gem 'net-ssh', '~> 2.9.2'
 gem 'json'
 
 # Gems used only for assets and not required
@@ -38,13 +38,22 @@ gem 'jquery-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'faker'
+  gem 'capybara'
+  gem 'simplecov'
+  gem 'awesome_print'
+end
 
 group :development do
   # Deployment
   gem 'capistrano',  '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-passenger'
-  
+
   # To use debugger
   gem 'debugger'
 
@@ -54,6 +63,7 @@ group :development do
   # Watches for inefficient queries and recommends eager loading
   gem 'bullet'
   # gem 'ruby-growl'
+  gem 'rails-erd'
 
   # Auto-reload pages in browser when changes saved
   gem 'guard', '>= 2.2.2',       require: false
@@ -69,7 +79,7 @@ end
 gem 'devise'
 
 # Pagination
-gem "will_paginate", "~> 3.0.4"
+gem 'will_paginate', '~> 3.0.4'
 gem 'will_paginate-bootstrap'
 
 # Remove UTF8 parameter from GET forms
@@ -82,7 +92,7 @@ gem 'slim'
 gem 'whenever', require: false
 
 # Icons
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 # Internationalization
 gem 'rails-i18n', '~> 3.0.0'
