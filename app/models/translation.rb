@@ -5,6 +5,6 @@ class Translation < ActiveRecord::Base
   remove_method :language
 
   belongs_to :language, :foreign_key => 'Language'
-  attr_accessible :RemoteColumnName, :RemoteID, :RemoteTable, :TranslatedContent
+
   alias_attribute :content, :TranslatedContent
 end

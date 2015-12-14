@@ -5,10 +5,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :balance
-  # attr_accessible :title, :body
-
   def get_full_name
     if self.first_name && self.last_name
       return (self.first_name + ' ' + self.last_name)

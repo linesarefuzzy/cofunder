@@ -71,4 +71,5 @@ def check_loan_content(loan)
   expect(page).to have_content loan.signing_date_long
   expect(page).to have_content loan.short_description
   expect(page).to have_content loan.location
+  expect(page.body).to include loan.amount_formatted
 end

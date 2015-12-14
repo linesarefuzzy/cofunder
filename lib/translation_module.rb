@@ -23,7 +23,7 @@ module TranslationModule
     symbol = currency.symbol
     symbol = symbol.sub('$', ' $') # add space before $ (pretty)
     if tooltip
-      symbol = %Q(<a href="#" onclick="return false" data-toggle="tooltip" class="currency_symbol" title="#{currency.name}s">#{symbol}</a> )
+      symbol = %Q(<a href="#" onclick="return false" data-toggle="tooltip" class="currency_symbol" title="#{currency.name}s">#{symbol}</a> ).html_safe
     end
     return number_to_currency(amount, :unit => symbol)
   end

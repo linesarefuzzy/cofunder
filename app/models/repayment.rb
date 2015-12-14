@@ -2,7 +2,6 @@ class Repayment < ActiveRecord::Base
   include Legacy, TranslationModule
 
   belongs_to :loan, :foreign_key => 'LoanID'
-  attr_accessible :AmountDue, :AmountPaid, :DateDue, :DatePaid, :DateRefinanced, :InterestSinceLastPayment
 
   def paid; self.date_paid ? true : false; end
 
