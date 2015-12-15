@@ -2,6 +2,8 @@ FactoryGirl.define do
   factory :cooperative do
     address { Faker::Address.street_address }
     city { Faker::Address.city }
+    borough { Faker::Address.city }
+    state { Faker::Address.state_abbr }
     contact { Faker::Name.name }
     country { Faker::Address.country }
     industry { Faker::Company.profession }

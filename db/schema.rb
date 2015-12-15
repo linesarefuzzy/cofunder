@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string   "Email"
     t.text     "Address"
     t.string   "City",                    :limit => 200, :default => "",     :null => false
+    t.string   "Borough",                                                    :null => false
+    t.string   "State",                   :limit => 2,                       :null => false
     t.string   "Country",                 :limit => 200, :default => "",     :null => false
     t.string   "TaxID",                   :limit => 15
     t.string   "web"
@@ -306,6 +308,8 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "Nivel",                   :limit => 200, :default => "Relacion", :null => false
     t.integer "CooperativeID",                          :default => 0,          :null => false
     t.integer "CooperativeMembers",      :limit => 2
+    t.integer "ConvertedCoopOwners"
+    t.integer "NonMemberWorker"
     t.integer "POCOwnership"
     t.integer "WomenOwnership"
     t.integer "EnvironmentalImpact"
