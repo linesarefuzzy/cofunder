@@ -2,8 +2,9 @@ shared_examples_for 'translatable' do |column_names|
   let(:translatable_model) { create(described_class.to_s.underscore) }
   context 'with translations' do
     before do
+      @translations = {}
+
       column_names.each do |column_name|
-        @translations ||= {}
         @translations[column_name] = create(:translation, remote_column_name: column_name, remote_table: translatable_model.class.table_name, remote_id: translatable_model.id)
       end
     end
