@@ -19,9 +19,15 @@ shared_examples_for 'mediable' do
       media = media_model.get_media(@table_name, @id, limit = 3)
       expect(media.size).to eq 3
     end
+  end
 
+  context 'with non-image media' do
+    before do
+      create_list(:media, 3, context_table: @table_name, context_id: @id)
+      create(:media, context_table: @table_name, context_id: @id, media_path: 'http://example.com/files/movie.avi')
+    end
     it 'gets only images when flag is set to true' do
-      media = media_model.get_media(@table_name, @id, limit = 3, images_only = true)
+      media = media_model.get_media(@table_name, @id, limit = 10, images_only = true)
       expect(media.size).to eq 3
     end
   end

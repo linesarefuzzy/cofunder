@@ -28,8 +28,17 @@ describe Loan, :type => :model do
     end
 
     describe '.country' do
-      it 'gets country' do
-        expect(loan.country).to eq Country.where(name: loan.division.super_division.country).first
+      context 'with country' do
+        before do
+          @country = create(:country, name: 'Argentina')
+          @division = create(:division, country: @country.name)
+          @loan = create(:loan, source_division: @division.id)
+        end
+
+        it 'gets country' do
+          expect(@loan.country).to eq @country
+          expect(@loan.country.name).to eq 'Argentina'
+        end
       end
 
       context 'without country' do
@@ -45,8 +54,15 @@ describe Loan, :type => :model do
     end
 
     describe '.location' do
+      let(:loan) do
+        create(
+          :loan,
+          cooperative_id: create(:cooperative, city: 'Ann Arbor').id,
+          source_division: create(:division, country: create(:country, name: 'United States').name).id
+        )
+      end
       it 'returns city and country' do
-        expect(loan.location).to eq "#{loan.cooperative.city}, #{loan.country.name}"
+        expect(loan.location).to eq "Ann Arbor, United States"
       end
 
       context 'without city' do
@@ -59,8 +75,9 @@ describe Loan, :type => :model do
     end
 
     describe '.signing_date_long' do
+      let(:loan) { create(:loan, signing_date: Date.civil(2011, 11, 11))}
       it 'returns long formatted date' do
-        expect(loan.signing_date_long).to eq I18n.l(loan.signing_date, format: :long)
+        expect(loan.signing_date_long).to eq "November 11, 2011"
       end
     end
 

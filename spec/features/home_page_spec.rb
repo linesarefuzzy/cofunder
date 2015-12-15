@@ -36,6 +36,8 @@ feature 'visit home page' do
       it 'paginates loan list' do
         visit root_path
         expect(page).to have_selector('div.pagination ul.pagination li.next a')
+        loan_items = page.all('tr.loans_items')
+        expect(loan_items.size).to be < 25
       end
     end
 
