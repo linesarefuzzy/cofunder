@@ -96,5 +96,61 @@ describe Loan, :type => :model do
         end
       end
     end
+
+    describe '.project_events' do
+      let!(:loan) { create(:loan) }
+      let!(:project_events) do
+        project_events = []
+        project_events << create_list(:project_event, 2, :past, :completed, :with_logs, :for_loan, loan_id: loan.id)
+        project_events << create_list(:project_event, 8, :past, :for_loan, loan_id: loan.id)
+        project_events << create_list(:project_event, 2, :future, :for_loan, loan_id: loan.id)
+        project_events << create_list(:project_event, 2, :past, :completed, :for_loan, loan_id: loan.id)
+        project_events << create_list(:project_event, 2, :past, :with_logs, :for_loan, loan_id: loan.id)
+        project_events.flatten
+      end
+
+      it 'it should return all future events and past events if they are complete or have logs' do
+        # puts project_events.awesome_inspect
+        events = loan.project_events
+        expect(events.size).to eq 8
+        events.each do |event|
+          if event.logs.empty? && !event.completed
+            expect(event.date).to be > Date.today
+          end
+        end
+      end
+    end
+
+    describe '.featured_pictures' do
+      let(:loan) { create(:loan, :with_loan_media, :with_coop_media) }
+
+      it 'has a default limit of 1' do
+        expect(loan.featured_pictures.size).to eq 1
+      end
+
+      it 'respects the limit for larger limits' do
+        expect(loan.featured_pictures(limit = 3).size).to eq 3
+      end
+
+      describe 'sorting' do
+        let!(:loan) { create(:loan, :with_one_project_event) }
+        let!(:loan_pics) { create_list(:media, 2, context_table: 'Loans', context_id: loan.id).sort_by(&:media_path) }
+        let!(:coop_pics) { create_list(:media, 2, context_table: 'Cooperatives', context_id: loan.cooperative.id).sort_by(&:media_path) }
+        let!(:log_pics) do
+          log_pics = []
+          loan.logs.each do |log|
+            log_pics << create_list(:media, 2, context_table: 'ProjectLogs', context_id: log.id).sort_by(&:media_path)
+          end
+          log_pics.flatten
+        end
+
+        it 'sorts using first coop pic, loan pics, log pics, and fills in with coop pics' do
+          sorted_pics = [coop_pics.first, loan_pics.first, loan_pics.last, log_pics, coop_pics.last].flatten
+          expect(loan.featured_pictures(limit = 10)).to eq sorted_pics
+        end
+      end
+
+    end
+
   end
 end

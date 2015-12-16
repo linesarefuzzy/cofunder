@@ -51,16 +51,31 @@ FactoryGirl.define do
       end
     end
 
+    trait :with_log_media do
+      with_project_events
+      after(:create) do |loan|
+        loan.logs.each do |log|
+          create_list(:media, 2, context_table: 'ProjectLogs', context_id: log.id)
+        end
+      end
+    end
+
+    trait :with_one_project_event do
+      after(:create) do |loan|
+        create(:project_event, :with_logs, project_table: 'Loans', project_id: loan.id)
+      end
+    end
+
     trait :with_project_events do
       after(:create) do |loan|
         create_list(
           :project_event,
           num_events = 3,
           :with_logs,
-          project_table: 'Loans',
-          project_id: loan.id,
+          :for_loan,
+          loan_id: loan.id
         )
-        create(:project_event, :with_logs, :completed, project_table: 'Loans', project_id: loan.id)
+        create(:project_event, :with_logs, :completed, :for_loan, loan_id: loan.id)
       end
     end
 

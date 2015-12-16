@@ -13,11 +13,27 @@ FactoryGirl.define do
       completed { Faker::Date.between(date, Date.today) }
     end
 
+    trait :past do
+      date { Faker::Date.backward }
+    end
+
+    trait :future do
+      date { Faker::Date.forward }
+    end
+
+    trait :for_loan do
+      transient { loan_id 0 }
+      after(:build) do |event, evaluator|
+        event.project_table = 'Loans'
+        event.project_id = evaluator.loan_id
+      end
+    end
+
     trait :with_logs do
       after(:create) do |event|
         create_list(
           :project_log,
-          num_logs = 4,
+          num_logs = 2,
           paso_id: event.id,
           project_id: event.project_id,
           project_table: event.project_table
