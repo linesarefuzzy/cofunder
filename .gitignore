@@ -26,3 +26,4 @@ config/database.yml
 app/views/layouts/wordpress*.html.erb
 
 config/initializers/local_config.rb
+coverage/

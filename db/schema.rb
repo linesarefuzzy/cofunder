@@ -73,6 +73,27 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string  "Banco",             :limit => 200
     t.string  "NumeroDeCheque",    :limit => 50
     t.string  "AccountHolder"
+    t.float   "Amount_float",                                                    :null => false
+    t.decimal "Amount",                           :precision => 10, :scale => 2, :null => false
+    t.integer "LoanID",                                                          :null => false
+    t.date    "DateEntered",                                                     :null => false
+    t.date    "DateDue",                                                         :null => false
+    t.date    "DateRemoved"
+    t.date    "DateBounced"
+    t.string  "NumeroDeRecibo"
+    t.float   "Descuento"
+    t.float   "Exidente"
+    t.float   "GastosFinancieros"
+    t.float   "Impuesto"
+    t.integer "NewLoanID"
+    t.integer "Bounced",           :limit => 1
+    t.text    "Notes"
+  end
+
+  create_table "Checks_restored", :primary_key => "ID", :force => true do |t|
+    t.string  "Banco",             :limit => 200
+    t.string  "NumeroDeCheque",    :limit => 50
+    t.string  "AccountHolder"
     t.float   "Amount",                           :null => false
     t.integer "LoanID",                           :null => false
     t.date    "DateEntered",                      :null => false
@@ -95,9 +116,14 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.string   "Name",                    :limit => 250,                     :null => false
     t.string   "NombreLegalCompleto",                    :default => "Coop", :null => false
     t.string   "Alias",                   :limit => 200
+    t.string   "Telephone"
+    t.string   "Email"
     t.text     "Address"
     t.string   "City",                    :limit => 200, :default => "",     :null => false
+    t.string   "Borough",                                                    :null => false
+    t.string   "State",                   :limit => 2,                       :null => false
     t.string   "Country",                 :limit => 200, :default => "",     :null => false
+    t.string   "TaxID",                   :limit => 15
     t.string   "web"
     t.text     "Contact"
     t.string   "Ownership",               :limit => 250
@@ -277,10 +303,16 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
     t.float   "Rate"
     t.integer "Length"
     t.integer "LoanType",                :limit => 1,   :default => 3,          :null => false
+    t.string  "ProjectType"
     t.integer "SourceDivision",                         :default => 2,          :null => false
     t.string  "Nivel",                   :limit => 200, :default => "Relacion", :null => false
     t.integer "CooperativeID",                          :default => 0,          :null => false
     t.integer "CooperativeMembers",      :limit => 2
+    t.integer "ConvertedCoopOwners"
+    t.integer "NonMemberWorker"
+    t.integer "POCOwnership"
+    t.integer "WomenOwnership"
+    t.integer "EnvironmentalImpact"
     t.integer "PointPerson",                            :default => 0,          :null => false
     t.integer "Second"
     t.integer "RepresentativeID"
@@ -643,13 +675,13 @@ ActiveRecord::Schema.define(:version => 20130316223303) do
 
   create_table "Transactions", :primary_key => "ID", :force => true do |t|
     t.integer "GroupTransactionID"
-    t.integer "Account",                :limit => 2,  :default => 0, :null => false
+    t.integer "Account",                              :default => 0, :null => false
     t.integer "MemberID",                             :default => 2
-    t.integer "Loan",                   :limit => 2
+    t.integer "Loan"
     t.integer "CheckID"
-    t.integer "TransactionType",        :limit => 1
-    t.integer "InflowType",             :limit => 1
-    t.integer "OutflowType",            :limit => 1
+    t.integer "TransactionType",        :limit => 3
+    t.integer "InflowType",             :limit => 3
+    t.integer "OutflowType",            :limit => 3
     t.text    "Description",                                         :null => false
     t.string  "TipoDeDocumento"
     t.string  "NumeroDeDocumento"

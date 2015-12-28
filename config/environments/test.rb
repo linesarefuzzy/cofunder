@@ -34,4 +34,14 @@ Tww::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # For wordpress template
+  config.wordpress_template = {
+    division_urls: { # get division from request url
+      'http://localhost:3000' => :us,
+    },
+    template_urls: { # url of blank wordpress page for rails to retrieve
+      us: 'http://localhost:8888/us-dev/rails',
+    },
+  }
 end

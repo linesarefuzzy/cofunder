@@ -3,8 +3,7 @@ class ProjectLog < ActiveRecord::Base
 
   remove_method :progress, :progress_metric
 
-  belongs_to :member, :foreign_key => 'MemberID'
-  belongs_to :paso, :foreign_key => 'PasoID'
+  belongs_to :paso, :foreign_key => 'PasoID', class_name: 'ProjectEvent'
   belongs_to :progress_metric, :foreign_key => 'ProgressMetric'
   attr_accessible :AdditionalNotes, :Date, :ProjectID, :ProjectTable
 
