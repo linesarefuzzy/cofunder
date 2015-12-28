@@ -4,7 +4,6 @@ class Loan < ActiveRecord::Base
   belongs_to :cooperative, :foreign_key => 'CooperativeID'
   belongs_to :division, :foreign_key => 'SourceDivision'
   has_many :repayments, :foreign_key => 'LoanID'
-  attr_accessible :Amount, :Nivel, :Rate, :SigningDate
 
   scope :country, ->(country) {
     joins(division: :super_division).where('super_divisions_Divisions.Country' => country) unless country == 'all'
@@ -27,7 +26,7 @@ class Loan < ActiveRecord::Base
   def self.filter_by_params(params)
     params.reverse_merge! self.default_filter
     params[:country] = 'Argentina' if params[:division] == :argentina
-    scoped = self.scoped
+    scoped = self.all
     scoped = scoped.country(params[:country]) if params[:country]
     scoped = scoped.status(params[:status]) if params[:status]
     scoped
@@ -93,7 +92,7 @@ class Loan < ActiveRecord::Base
 
   def featured_pictures(limit=1)
     pics = []
-    coop_pics = get_media('Cooperatives', self.cooperative.try(:id), limit, images_only=true)
+    coop_pics = get_media('Cooperatives', self.cooperative.try(:id), limit, images_only=true).to_a
     # use first coop picture first
     pics << coop_pics.shift if coop_pics.count > 0
     return pics unless limit > pics.count

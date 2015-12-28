@@ -2,12 +2,11 @@ Tww::Application.routes.draw do
 
   devise_for :users
   devise_scope :user do
-    match 'profile' => 'devise/registrations#show'
+    match 'profile' => 'devise/registrations#show', via: [:get, :post]
   end
 
   localized do
-    get 'loans', to: 'loans#index', as: :loans
-    get 'loans/:id', to: 'loans#show', as: :loan
+    resources :loans, only: [:index, :show]
     get 'loans/:id/gallery', to: 'loans#gallery', as: :gallery
   end
 

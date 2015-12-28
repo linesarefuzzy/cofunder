@@ -5,7 +5,6 @@ class ProjectLog < ActiveRecord::Base
 
   belongs_to :paso, :foreign_key => 'PasoID', class_name: 'ProjectEvent'
   belongs_to :progress_metric, :foreign_key => 'ProgressMetric'
-  attr_accessible :AdditionalNotes, :Date, :ProjectID, :ProjectTable
 
   def project
     project_table_model = Object.const_get(self.project_table.classify)

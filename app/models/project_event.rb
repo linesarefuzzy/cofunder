@@ -3,7 +3,6 @@ class ProjectEvent < ActiveRecord::Base
 
   has_many :project_logs, :foreign_key => 'PasoID'
   alias_attribute :logs, :project_logs
-  attr_accessible :Completed, :Date, :Details, :Finalized, :ProjectID, :ProjectTable, :Summary, :Type
 
   def project
     project_table_model = Object.const_get(self.project_table.classify)
