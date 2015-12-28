@@ -1,6 +1,5 @@
 class Media < ActiveRecord::Base
   include Legacy, TranslationModule
-  attr_accessible :ContextID, :ContextTable, :Description, :MediaPath, :MemberID, :Priority
 
   IMAGE_REGEX = /(jpe?g|gif|png|\]|\))$/i
   VIDEO_REGEX = /(mov|avi|wmv|mp4)$/i
